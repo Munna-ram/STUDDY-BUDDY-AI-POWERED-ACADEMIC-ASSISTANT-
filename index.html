@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudyBuddy AI - 4-Year B.Tech Academic Roadmap & Assistant</title>
+  <title>StudyBuddy AI - Real Working 4-Year Academic Assistant</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Puter.js: Real Free AI Model (No API key needed) -->
+  <script src="https://js.puter.com/v2/"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -16,282 +20,188 @@
   <!-- Sidebar -->
   <aside class="w-full md:w-72 bg-white border-r border-slate-200 p-6 flex flex-col justify-between shrink-0">
     <div>
-      <!-- Brand Logo -->
       <div class="flex items-center gap-3 mb-8">
         <div class="w-11 h-11 rounded-2xl bg-indigo-600 flex items-center justify-center text-white font-extrabold shadow-lg shadow-indigo-200">
           <i data-lucide="brain-circuit" class="w-6 h-6"></i>
         </div>
         <div>
           <h1 class="font-extrabold text-lg text-slate-900 leading-tight">StudyBuddy AI</h1>
-          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">4-Year Degree Engine</span>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">Live AI Assistant</span>
         </div>
       </div>
 
-      <!-- Navigation Tabs -->
       <nav class="space-y-1.5">
         <button onclick="switchTab('roadmap')" id="btn-roadmap" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-bold bg-indigo-50 text-indigo-700 transition">
           <i data-lucide="map" class="w-4 h-4"></i> 4-Year B.Tech Roadmap
         </button>
         <button onclick="switchTab('tasks')" id="btn-tasks" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">
-          <i data-lucide="check-square" class="w-4 h-4"></i> Daily Learning Tasks
+          <i data-lucide="check-square" class="w-4 h-4"></i> Interactive Daily Tasks
         </button>
         <button onclick="switchTab('chat')" id="btn-chat" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">
-          <i data-lucide="sparkles" class="w-4 h-4"></i> 24/7 AI Doubt Solver
+          <i data-lucide="sparkles" class="w-4 h-4"></i> Real Live AI Doubt Solver
         </button>
       </nav>
     </div>
 
-    <!-- User Badge -->
     <div class="pt-6 border-t border-slate-100 flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-indigo-700 text-white font-bold flex items-center justify-center text-xs shadow-sm">
+      <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center text-xs shadow-sm">
         AIML
       </div>
       <div>
         <p class="text-xs font-bold text-slate-800">B.Tech Engineering Portal</p>
-        <p class="text-[11px] text-slate-400">Undergraduate AI Roadmap</p>
+        <p class="text-[11px] text-slate-400">Design Thinking Project</p>
       </div>
     </div>
   </aside>
 
-  <!-- Main Content Stage -->
+  <!-- Main Content -->
   <main class="flex-1 p-6 md:p-10 overflow-y-auto">
 
-    <!-- Top Navigation Header -->
     <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
       <div>
-        <h2 class="text-2xl font-extrabold text-slate-900">Academic Career Architect</h2>
-        <p class="text-sm text-slate-500">Syllabus progression, daily target milestones, and curriculum doubt resolution.</p>
+        <h2 class="text-2xl font-extrabold text-slate-900">Academic Career Engine</h2>
+        <p class="text-sm text-slate-500">Fully working curriculum roadmap, dynamic study tracker & real AI tutor.</p>
       </div>
-      <div class="flex items-center gap-2">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
-          <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> B.Tech AI & ML Specialization
-        </span>
-      </div>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Fully Functional
+      </span>
     </header>
 
-    <!-- SECTION 1: 4-YEAR PROGRESSIVE ROADMAP -->
+    <!-- TAB 1: 4-YEAR ROADMAP -->
     <div id="tab-roadmap" class="space-y-6">
-      <!-- Year Switcher Buttons -->
       <div class="flex gap-2 p-1.5 bg-slate-200 rounded-2xl w-fit overflow-x-auto">
-        <button onclick="selectYear(1)" id="year-btn-1" class="px-5 py-2 rounded-xl text-xs font-bold bg-white text-indigo-700 shadow-sm transition">1st Year (Foundations)</button>
-        <button onclick="selectYear(2)" id="year-btn-2" class="px-5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">2nd Year (Core CS & Java)</button>
-        <button onclick="selectYear(3)" id="year-btn-3" class="px-5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">3rd Year (Applied AI/ML)</button>
-        <button onclick="selectYear(4)" id="year-btn-4" class="px-5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">4th Year (Capstone & Placements)</button>
+        <button onclick="selectYear(1)" id="year-btn-1" class="px-5 py-2 rounded-xl text-xs font-bold bg-white text-indigo-700 shadow-sm transition">1st Year (C & C++)</button>
+        <button onclick="selectYear(2)" id="year-btn-2" class="px-5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">2nd Year (Java & DSA)</button>
+        <button onclick="selectYear(3)" id="year-btn-3" class="px-5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">3rd Year (AI & Deep Learning)</button>
+        <button onclick="selectYear(4)" id="year-btn-4" class="px-5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition">4th Year (Capstone & Placement)</button>
       </div>
 
-      <!-- Year 1 Content -->
+      <!-- Year 1 -->
       <div id="year-content-1" class="space-y-4">
-        <div class="bg-indigo-600 text-white rounded-2xl p-6 shadow-md shadow-indigo-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div class="bg-indigo-600 text-white rounded-2xl p-6 shadow-md flex justify-between items-center">
           <div>
-            <h3 class="text-lg font-bold">First Year Goal: Master Core Programming & Computational Thinking</h3>
-            <p class="text-indigo-100 text-sm mt-1 max-w-2xl">Focus on procedural thinking in C, object-oriented concepts in C++, and foundational Engineering Mathematics (Matrices & Calculus).</p>
+            <h3 class="text-lg font-bold">1st Year Goal: Foundations in C, C++ & Engineering Mathematics</h3>
+            <p class="text-indigo-100 text-sm mt-1">Procedural programming, memory pointer basics, and Linear Algebra.</p>
           </div>
-          <button onclick="switchTab('tasks')" class="bg-white text-indigo-700 px-4 py-2 rounded-xl text-xs font-bold hover:bg-indigo-50 transition shrink-0">View 1st Year Tasks</button>
+          <button onclick="switchTab('tasks')" class="bg-white text-indigo-700 px-4 py-2 rounded-xl text-xs font-bold shrink-0">Open Tasks</button>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-white p-5 rounded-2xl border border-slate-200">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg">Semester 1</span>
-              <span class="text-xs text-slate-400">Core Coursework</span>
-            </div>
-            <h4 class="font-bold text-slate-800 text-base">C Programming & Engineering Math I</h4>
-            <ul class="text-xs text-slate-600 space-y-1.5 mt-3">
-              <li>• Flowcharts, Conditionals, Loops, & Memory Layout</li>
-              <li>• Pointers, Dynamic Memory Allocation (malloc, free)</li>
-              <li>• Linear Algebra, Eigenvalues & Matrix Factorization</li>
-            </ul>
+            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Semester 1</span>
+            <h4 class="font-bold text-slate-800 text-base mt-2">C Programming & Engineering Math</h4>
+            <p class="text-xs text-slate-500 mt-2">• Loops, Arrays, Memory layout, Pointer arithmetic<br>• Dynamic Memory (malloc/free)<br>• Matrices, Eigenvalues, Calculus</p>
           </div>
-
           <div class="bg-white p-5 rounded-2xl border border-slate-200">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg">Semester 2</span>
-              <span class="text-xs text-slate-400">Core Coursework</span>
-            </div>
-            <h4 class="font-bold text-slate-800 text-base">C++ OOP & Digital Electronics</h4>
-            <ul class="text-xs text-slate-600 space-y-1.5 mt-3">
-              <li>• Classes, Constructors, Encapsulation, & Polymorphism</li>
-              <li>• Templates, Standard Template Library (STL basics)</li>
-              <li>• Boolean Algebra, Logic Gates, & Combinational Circuits</li>
-            </ul>
+            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Semester 2</span>
+            <h4 class="font-bold text-slate-800 text-base mt-2">C++ OOP & Digital Logic</h4>
+            <p class="text-xs text-slate-500 mt-2">• Classes, Objects, Inheritance, Polymorphism<br>• C++ STL Vector, Stack, Queue<br>• Logic Gates & Boolean Simplification</p>
           </div>
         </div>
       </div>
 
-      <!-- Year 2 Content -->
+      <!-- Year 2 -->
       <div id="year-content-2" class="hidden space-y-4">
-        <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-md flex justify-between items-center">
           <div>
-            <h3 class="text-lg font-bold">Second Year Goal: Java, Data Structures & System Internals</h3>
-            <p class="text-slate-300 text-sm mt-1 max-w-2xl">Construct scalable software with Java Collections, learn Data Structures & Algorithms (DSA), and master Databases (DBMS) and Operating Systems.</p>
+            <h3 class="text-lg font-bold">2nd Year Goal: Java OOP, Data Structures & System Core</h3>
+            <p class="text-slate-300 text-sm mt-1">Enterprise Java, Trees, Graphs, DBMS with SQL, and Operating Systems.</p>
           </div>
-          <button onclick="switchTab('tasks')" class="bg-white text-slate-900 px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-100 transition shrink-0">View 2nd Year Tasks</button>
+          <button onclick="switchTab('tasks')" class="bg-white text-slate-900 px-4 py-2 rounded-xl text-xs font-bold shrink-0">Open Tasks</button>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-white p-5 rounded-2xl border border-slate-200">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold text-slate-800 bg-slate-100 px-2.5 py-1 rounded-lg">Semester 3</span>
-              <span class="text-xs text-slate-400">Core Architecture</span>
-            </div>
-            <h4 class="font-bold text-slate-800 text-base">Java OOP & Data Structures</h4>
-            <ul class="text-xs text-slate-600 space-y-1.5 mt-3">
-              <li>• Java Multithreading, Exception Handling & Collections Framework</li>
-              <li>• Linked Lists, Stacks, Queues, Binary Trees & Heaps</li>
-              <li>• Time Complexity ($O(N)$, $O(\log N)$) & Algorithm Optimization</li>
-            </ul>
+            <span class="text-xs font-bold text-slate-800 bg-slate-100 px-2 py-1 rounded">Semester 3</span>
+            <h4 class="font-bold text-slate-800 text-base mt-2">Java Programming & Data Structures</h4>
+            <p class="text-xs text-slate-500 mt-2">• Java Collections, Interfaces, Multi-threading<br>• Linked Lists, Stacks, Queues, Binary Trees<br>• Time & Space Complexity analysis</p>
           </div>
-
           <div class="bg-white p-5 rounded-2xl border border-slate-200">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold text-slate-800 bg-slate-100 px-2.5 py-1 rounded-lg">Semester 4</span>
-              <span class="text-xs text-slate-400">System Core</span>
-            </div>
-            <h4 class="font-bold text-slate-800 text-base">DBMS, OS & Graph Algorithms</h4>
-            <ul class="text-xs text-slate-600 space-y-1.5 mt-3">
-              <li>• SQL Queries, Indexing, Normalization (1NF to BCNF), ACID Properties</li>
-              <li>• Process Scheduling, Deadlocks, Virtual Memory & Paging</li>
-              <li>• Graph Traversals (BFS, DFS, Dijkstra’s Shortest Path)</li>
-            </ul>
+            <span class="text-xs font-bold text-slate-800 bg-slate-100 px-2 py-1 rounded">Semester 4</span>
+            <h4 class="font-bold text-slate-800 text-base mt-2">DBMS, OS & Advanced Algorithms</h4>
+            <p class="text-xs text-slate-500 mt-2">• SQL Queries, Normalization, ACID Transactions<br>• Process Scheduling, Deadlocks, Paging<br>• Graph Algorithms (BFS, DFS, Dijkstra)</p>
           </div>
         </div>
       </div>
 
-      <!-- Year 3 Content -->
+      <!-- Year 3 -->
       <div id="year-content-3" class="hidden space-y-4">
-        <div class="bg-violet-700 text-white rounded-2xl p-6 shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div class="bg-violet-700 text-white rounded-2xl p-6 shadow-md flex justify-between items-center">
           <div>
-            <h3 class="text-lg font-bold">Third Year Goal: Applied AI, Machine Learning & Deep Learning</h3>
-            <p class="text-violet-100 text-sm mt-1 max-w-2xl">Apply Python libraries (NumPy, Pandas, Scikit-Learn, PyTorch) to train regression models, Neural Networks, Computer Vision, and NLP pipelines.</p>
+            <h3 class="text-lg font-bold">3rd Year Goal: Python for ML, Deep Learning & Computer Vision</h3>
+            <p class="text-violet-100 text-sm mt-1">Scikit-learn, Neural Networks, PyTorch models, and NLP architectures.</p>
           </div>
-          <button onclick="switchTab('tasks')" class="bg-white text-violet-700 px-4 py-2 rounded-xl text-xs font-bold hover:bg-violet-50 transition shrink-0">View 3rd Year Tasks</button>
+          <button onclick="switchTab('tasks')" class="bg-white text-violet-700 px-4 py-2 rounded-xl text-xs font-bold shrink-0">Open Tasks</button>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-white p-5 rounded-2xl border border-slate-200">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold text-violet-600 bg-violet-50 px-2.5 py-1 rounded-lg">Semester 5</span>
-              <span class="text-xs text-slate-400">Core Machine Learning</span>
-            </div>
-            <h4 class="font-bold text-slate-800 text-base">Supervised & Unsupervised ML</h4>
-            <ul class="text-xs text-slate-600 space-y-1.5 mt-3">
-              <li>• Linear/Logistic Regression, Decision Trees, Random Forests</li>
-              <li>• K-Means Clustering, Principal Component Analysis (PCA)</li>
-              <li>• Model Evaluation: Cross-Validation, ROC-AUC, F1-Score</li>
-            </ul>
+            <span class="text-xs font-bold text-violet-700 bg-violet-50 px-2 py-1 rounded">Semester 5</span>
+            <h4 class="font-bold text-slate-800 text-base mt-2">Core Machine Learning</h4>
+            <p class="text-xs text-slate-500 mt-2">• Linear/Logistic Regression, Random Forests<br>• K-Means, PCA Dimensionality Reduction<br>• Model Metrics: Precision, Recall, F1-Score</p>
           </div>
-
           <div class="bg-white p-5 rounded-2xl border border-slate-200">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold text-violet-600 bg-violet-50 px-2.5 py-1 rounded-lg">Semester 6</span>
-              <span class="text-xs text-slate-400">Deep Learning & Vision</span>
-            </div>
-            <h4 class="font-bold text-slate-800 text-base">Neural Networks, CNNs & NLP</h4>
-            <ul class="text-xs text-slate-600 space-y-1.5 mt-3">
-              <li>• Multi-Layer Perceptrons, Backpropagation, Gradient Descent</li>
-              <li>• Convolutional Neural Networks (CNNs) for Image Classification</li>
-              <li>• Recurrent Networks (LSTMs, GRUs) & Transformer Attention</li>
-            </ul>
+            <span class="text-xs font-bold text-violet-700 bg-violet-50 px-2 py-1 rounded">Semester 6</span>
+            <h4 class="font-bold text-slate-800 text-base mt-2">Deep Learning & NLP</h4>
+            <p class="text-xs text-slate-500 mt-2">• Multilayer Perceptrons, Backpropagation<br>• CNNs for Image Recognition<br>• Transformers, Attention & Tokenization</p>
           </div>
         </div>
       </div>
 
-      <!-- Year 4 Content -->
+      <!-- Year 4 -->
       <div id="year-content-4" class="hidden space-y-4">
-        <div class="bg-emerald-700 text-white rounded-2xl p-6 shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div class="bg-emerald-700 text-white rounded-2xl p-6 shadow-md flex justify-between items-center">
           <div>
-            <h3 class="text-lg font-bold">Fourth Year Goal: Production Deployment & Placement Mastery</h3>
-            <p class="text-emerald-100 text-sm mt-1 max-w-2xl">Publish capstone engineering projects, containerize AI models with Docker, scale web APIs via FastAPI, and clear technical interview rounds.</p>
+            <h3 class="text-lg font-bold">4th Year Goal: Major Capstone, MLOps & Placement Readiness</h3>
+            <p class="text-emerald-100 text-sm mt-1">Deploy production models, solve LeetCode algorithms, and pass interviews.</p>
           </div>
-          <button onclick="switchTab('tasks')" class="bg-white text-emerald-800 px-4 py-2 rounded-xl text-xs font-bold hover:bg-emerald-50 transition shrink-0">View 4th Year Tasks</button>
+          <button onclick="switchTab('tasks')" class="bg-white text-emerald-800 px-4 py-2 rounded-xl text-xs font-bold shrink-0">Open Tasks</button>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-white p-5 rounded-2xl border border-slate-200">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">Semester 7</span>
-              <span class="text-xs text-slate-400">MLOps & Cloud</span>
-            </div>
-            <h4 class="font-bold text-slate-800 text-base">MLOps, FastAPI & Cloud Deployments</h4>
-            <ul class="text-xs text-slate-600 space-y-1.5 mt-3">
-              <li>• Model Serialization (ONNX, Pickle) and RESTful API endpoints</li>
-              <li>• Docker Containerization & CI/CD deployment pipelines</li>
-              <li>• Real-Time Inference Optimization & Cloud GPUs (AWS/GCP)</li>
-            </ul>
+            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Semester 7</span>
+            <h4 class="font-bold text-slate-800 text-base mt-2">MLOps & Cloud Engineering</h4>
+            <p class="text-xs text-slate-500 mt-2">• FastAPI endpoints & Docker containerization<br>• Model tracking with MLflow & CI/CD<br>• Cloud inference on AWS/GCP</p>
           </div>
-
           <div class="bg-white p-5 rounded-2xl border border-slate-200">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">Semester 8</span>
-              <span class="text-xs text-slate-400">Graduation & Placement</span>
-            </div>
-            <h4 class="font-bold text-slate-800 text-base">Major Capstone & Coding Interviews</h4>
-            <ul class="text-xs text-slate-600 space-y-1.5 mt-3">
-              <li>• Multi-modal Generative AI Capstone Project</li>
-              <li>• LeetCode / Hard DSA Problem Solving (Dynamic Programming)</li>
-              <li>• System Design Architecture & Mock Interview Assessments</li>
-            </ul>
+            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Semester 8</span>
+            <h4 class="font-bold text-slate-800 text-base mt-2">Capstone Project & Technical Interviews</h4>
+            <p class="text-xs text-slate-500 mt-2">• Full-stack Generative AI Graduation Project<br>• LeetCode Medium/Hard Dynamic Programming<br>• Mock Interviews & System Design</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SECTION 2: DAILY TASK TRACKER -->
-    <div id="tab-tasks" class="hidden space-y-4">
+    <!-- TAB 2: INTERACTIVE DAILY TASKS -->
+    <div id="tab-tasks" class="hidden space-y-6">
       <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
-          <div>
-            <h3 class="text-base font-bold text-slate-800">Assigned Curriculum Daily Tasks</h3>
-            <p class="text-xs text-slate-400">Daily milestones generated automatically according to your selected stage.</p>
-          </div>
-          <span class="text-xs bg-indigo-50 text-indigo-700 font-bold px-3 py-1 rounded-full">3 Tasks Pending</span>
+        <h3 class="text-base font-bold text-slate-800">Add a New Study Goal / Syllabus Task</h3>
+        <p class="text-xs text-slate-400 mb-4">Add your daily engineering study milestones. They persist in your browser.</p>
+        <div class="flex gap-2">
+          <input id="task-input" type="text" placeholder="e.g. Practice 5 pointer problems in C or solve LeetCode array question" class="flex-1 text-sm bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <button onclick="addTask()" class="bg-indigo-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-indigo-700">Add Task</button>
         </div>
+      </div>
 
-        <div class="space-y-3">
-          <label class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 hover:bg-slate-100 cursor-pointer transition">
-            <input type="checkbox" checked class="mt-1 w-4 h-4 text-indigo-600 rounded">
-            <div>
-              <p class="text-sm font-bold text-slate-800">1st Year Milestone: Complete C Pointers & Array Practice</p>
-              <p class="text-xs text-slate-500 mt-0.5">Solve 3 pointer arithmetic problems on swap functions and dynamic allocation.</p>
-              <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded mt-2 inline-block">Done</span>
-            </div>
-          </label>
-
-          <label class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 hover:bg-slate-100 cursor-pointer transition">
-            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded">
-            <div>
-              <p class="text-sm font-bold text-slate-800">2nd Year Milestone: Implement Java Binary Search Tree (BST)</p>
-              <p class="text-xs text-slate-500 mt-0.5">Write recursive insert and inorder traversal methods in Java.</p>
-              <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded mt-2 inline-block">In Progress • Today</span>
-            </div>
-          </label>
-
-          <label class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 hover:bg-slate-100 cursor-pointer transition">
-            <input type="checkbox" class="mt-1 w-4 h-4 text-indigo-600 rounded">
-            <div>
-              <p class="text-sm font-bold text-slate-800">3rd Year Milestone: Train a Convolutional Neural Network in PyTorch</p>
-              <p class="text-xs text-slate-500 mt-0.5">Classify images using 2 Conv2D layers, ReLU activations, and CrossEntropyLoss.</p>
-              <span class="text-[10px] font-bold text-slate-500 bg-slate-200 px-2 py-0.5 rounded mt-2 inline-block">Upcoming</span>
-            </div>
-          </label>
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <h3 class="text-base font-bold text-slate-800 mb-3">Your Daily Academic Checklist</h3>
+        <div id="task-list" class="space-y-3">
+          <!-- Dynamically populated via JS -->
         </div>
       </div>
     </div>
 
-    <!-- SECTION 3: 4-YEAR AI DOUBT SOLVER -->
+    <!-- TAB 3: REAL AI DOUBT SOLVER -->
     <div id="tab-chat" class="hidden">
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col h-[550px]">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col h-[560px]">
         <div class="p-4 border-b border-slate-100 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
               <i data-lucide="bot" class="w-5 h-5"></i>
             </div>
             <div>
-              <p class="text-sm font-bold text-slate-800">4-Year Curriculum AI Tutor</p>
-              <p class="text-[11px] text-slate-400">Pre-trained on C, Java, DSA, ML & System Design</p>
+              <p class="text-sm font-bold text-slate-800">StudyBuddy AI Tutor</p>
+              <p class="text-[11px] text-emerald-600 font-semibold">● Powered by Live Puter.js AI</p>
             </div>
           </div>
-          <span class="text-xs px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-full font-bold">Online</span>
+          <span class="text-xs bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full font-bold">Real AI Model</span>
         </div>
 
         <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4">
@@ -300,19 +210,19 @@
               <i data-lucide="bot" class="w-4 h-4"></i>
             </div>
             <div class="bg-slate-100 text-slate-800 p-4 rounded-2xl text-sm max-w-xl">
-              Hello! I am your 4-Year B.Tech Study Buddy. Tap an example prompt below or type your technical doubt:
+              Hello! I am your <strong>live AI academic assistant</strong>. Type any question from your B.Tech syllabus (C, Java, Python, AI, Math, DSA) and I will explain it step-by-step:
               <div class="flex flex-wrap gap-2 mt-3">
-                <button onclick="sendQuickPrompt('Explain C Pointers vs C++ References')" class="text-xs bg-white text-indigo-700 border border-indigo-200 px-3 py-1 rounded-full font-semibold hover:bg-indigo-50">1st Year: C Pointers vs References</button>
-                <button onclick="sendQuickPrompt('Explain Java Interface vs Abstract Class')" class="text-xs bg-white text-indigo-700 border border-indigo-200 px-3 py-1 rounded-full font-semibold hover:bg-indigo-50">2nd Year: Java Interfaces</button>
-                <button onclick="sendQuickPrompt('How does Backpropagation work in Neural Networks?')" class="text-xs bg-white text-indigo-700 border border-indigo-200 px-3 py-1 rounded-full font-semibold hover:bg-indigo-50">3rd Year: Neural Backpropagation</button>
+                <button onclick="sendQuickPrompt('Explain pointers in C language with a short code example')" class="text-xs bg-white text-indigo-700 border border-indigo-200 px-3 py-1 rounded-full font-semibold hover:bg-indigo-50">C Pointers</button>
+                <button onclick="sendQuickPrompt('How does an Abstract class differ from an Interface in Java?')" class="text-xs bg-white text-indigo-700 border border-indigo-200 px-3 py-1 rounded-full font-semibold hover:bg-indigo-50">Java Interfaces</button>
+                <button onclick="sendQuickPrompt('Explain Gradient Descent in Machine Learning with a simple analogy')" class="text-xs bg-white text-indigo-700 border border-indigo-200 px-3 py-1 rounded-full font-semibold hover:bg-indigo-50">Gradient Descent</button>
               </div>
             </div>
           </div>
         </div>
 
         <div class="p-4 border-t border-slate-100 flex gap-2">
-          <input id="user-input" type="text" placeholder="Ask any B.Tech curriculum doubt..." class="flex-1 text-sm bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          <button onclick="sendMessage()" class="bg-indigo-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-indigo-700 transition">Send</button>
+          <input id="user-input" type="text" placeholder="Ask any engineering doubt (press Enter to send)..." onkeydown="if(event.key==='Enter') sendMessage()" class="flex-1 text-sm bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <button id="send-btn" onclick="sendMessage()" class="bg-indigo-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-indigo-700 transition">Send</button>
         </div>
       </div>
     </div>
@@ -322,5 +232,114 @@
   <script>
     lucide.createIcons();
 
+    // Tab Switching
     function switchTab(tab) {
-      [
+      ['roadmap', 'tasks', 'chat'].forEach(t => {
+        document.getElementById('tab-' + t).classList.add('hidden');
+        document.getElementById('btn-' + t).className = "w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition";
+      });
+      document.getElementById('tab-' + tab).classList.remove('hidden');
+      document.getElementById('btn-' + tab).className = "w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-bold bg-indigo-50 text-indigo-700 transition";
+    }
+
+    // Year Switching
+    function selectYear(yr) {
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById('year-content-' + i).classList.add('hidden');
+        document.getElementById('year-btn-' + i).className = "px-5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition";
+      }
+      document.getElementById('year-content-' + yr).classList.remove('hidden');
+      document.getElementById('year-btn-' + yr).className = "px-5 py-2 rounded-xl text-xs font-bold bg-white text-indigo-700 shadow-sm transition";
+    }
+
+    // Interactive Tasks Storage & Logic
+    let tasks = JSON.parse(localStorage.getItem('study_tasks')) || [
+      { id: 1, text: "1st Year: Complete 3 Pointer & Dynamic Memory allocation exercises in C", done: true },
+      { id: 2, text: "2nd Year: Implement Java Stack and Queue using Arrays and Linked Lists", done: false },
+      { id: 3, text: "3rd Year: Write a Python script to train Linear Regression using Scikit-Learn", done: false }
+    ];
+
+    function renderTasks() {
+      const container = document.getElementById('task-list');
+      container.innerHTML = '';
+      tasks.forEach(t => {
+        container.innerHTML += `
+          <div class="flex items-center justify-between p-3.5 bg-slate-50 rounded-xl border border-slate-100">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTask(${t.id})" class="w-4 h-4 text-indigo-600 rounded">
+              <span class="text-sm font-medium ${t.done ? 'line-through text-slate-400' : 'text-slate-800'}">${t.text}</span>
+            </label>
+            <button onclick="deleteTask(${t.id})" class="text-xs text-rose-500 hover:text-rose-700 font-bold px-2 py-1">Delete</button>
+          </div>
+        `;
+      });
+      localStorage.setItem('study_tasks', JSON.stringify(tasks));
+    }
+
+    function addTask() {
+      const input = document.getElementById('task-input');
+      const text = input.value.trim();
+      if (!text) return;
+      tasks.push({ id: Date.now(), text, done: false });
+      input.value = '';
+      renderTasks();
+    }
+
+    function toggleTask(id) {
+      tasks = tasks.map(t => t.id === id ? { ...t, done: !t.done } : t);
+      renderTasks();
+    }
+
+    function deleteTask(id) {
+      tasks = tasks.filter(t => t.id !== id);
+      renderTasks();
+    }
+    renderTasks();
+
+    // REAL AI Live Chat Solver
+    function sendQuickPrompt(txt) {
+      document.getElementById('user-input').value = txt;
+      sendMessage();
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('user-input');
+      const val = input.value.trim();
+      if (!val) return;
+
+      const chatBox = document.getElementById('chat-messages');
+      const sendBtn = document.getElementById('send-btn');
+
+      // User Message
+      chatBox.innerHTML += `
+        <div class="flex justify-end">
+          <div class="bg-indigo-600 text-white p-3.5 rounded-2xl text-sm max-w-lg leading-relaxed shadow-sm">
+            ${val}
+          </div>
+        </div>
+      `;
+      input.value = '';
+
+      // AI Thinking Placeholder
+      const loadingId = 'ai-load-' + Date.now();
+      chatBox.innerHTML += `
+        <div id="${loadingId}" class="flex gap-3">
+          <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs shrink-0">
+            <i data-lucide='bot' class='w-4 h-4'></i>
+          </div>
+          <div class="bg-slate-100 text-slate-600 p-4 rounded-2xl text-sm italic">
+            Analyzing engineering syllabus and generating answer...
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      sendBtn.disabled = true;
+
+      try {
+        // Real AI call through Puter.js
+        const prompt = `You are StudyBuddy AI, an academic assistant for an undergraduate B.Tech engineering student. Explain this academic concept or question clearly and simply with bullet points or code if applicable: "${val}"`;
+        const response = await puter.ai.chat(prompt);
+
+        // Convert newlin

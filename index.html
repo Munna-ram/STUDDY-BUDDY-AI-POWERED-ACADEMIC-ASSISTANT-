@@ -1,153 +1,875 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>StudyBuddy — Student Workspace</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-:root{--navy:#1f3476;--blue:#526fe5;--bg:#f4f6fb;--ink:#202b3c;--card:#fff;--muted:#64748b}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-header{background:var(--navy);color:white;padding:22px max(18px,calc((100% - 1100px)/2))}
-header h1{margin:0 0 5px}header p{margin:0;color:#e1e7ff}
-main{max-width:1100px;margin:22px auto;padding:0 16px}.panel,.card{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 4px 18px #1725540d;margin-bottom:16px}
-.auth{max-width:460px;margin:26px auto}.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-input,textarea,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;margin:6px 0 12px;font:inherit}
-button{border:0;border-radius:8px;padding:10px 14px;background:var(--blue);color:white;cursor:pointer;font-weight:650;margin:3px}
-button.secondary{background:#e8edff;color:var(--navy)}button.danger{background:#b42318}
-nav{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0}nav button{background:#e8edff;color:var(--navy)}
-.page{display:none}.page.active{display:block}.muted{color:var(--muted);font-size:.92rem}.item{background:#f0f3ff;border-radius:9px;padding:12px;margin:9px 0;overflow-wrap:anywhere}
-.stat{font-size:1.8rem;color:var(--blue);font-weight:750}.chat{height:250px;overflow:auto;background:#f8faff;padding:12px;border-radius:9px}
-.msg{padding:10px;border-radius:9px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}.user{background:#e1e9ff}.bot{background:#e4f7eb}
-.hidden{display:none!important}progress{width:100%;height:22px}h2{color:var(--navy)}footer{text-align:center;color:var(--muted);padding:20px}
-@media(max-width:600px){header h1{font-size:1.6rem}.panel{padding:15px}}
+:root {
+  --navy:#1f3476;
+  --blue:#526fe5;
+  --bg:#f4f6fb;
+  --ink:#202b3c;
+  --card:#fff;
+  --muted:#64748b;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:system-ui,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+header {
+  background:var(--navy);
+  color:white;
+  padding:22px max(18px,calc((100% - 1100px)/2));
+}
+header h1 { margin:0 0 5px; }
+header p { margin:0;color:#e1e7ff; }
+main { max-width:1100px;margin:22px auto;padding:0 16px; }
+.panel,.card {
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 4px 18px #1725540d;
+  margin-bottom:16px;
+}
+.auth { max-width:460px;margin:26px auto; }
+.row {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
+input,textarea,select {
+  width:100%;
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+  margin:6px 0 12px;
+  font:inherit;
+}
+button {
+  border:0;
+  border-radius:8px;
+  padding:10px 14px;
+  background:var(--blue);
+  color:white;
+  cursor:pointer;
+  font-weight:650;
+  margin:3px;
+}
+button:disabled { opacity:.6;cursor:wait; }
+button.secondary { background:#e8edff;color:var(--navy); }
+button.danger { background:#b42318; }
+nav { display:flex;gap:7px;flex-wrap:wrap;margin:16px 0; }
+nav button { background:#e8edff;color:var(--navy); }
+.page { display:none; }
+.page.active { display:block; }
+.muted { color:var(--muted);font-size:.92rem; }
+.item {
+  background:#f0f3ff;
+  border-radius:9px;
+  padding:12px;
+  margin:9px 0;
+  overflow-wrap:anywhere;
+}
+.stat { font-size:1.8rem;color:var(--blue);font-weight:750; }
+.chat {
+  height:280px;
+  overflow:auto;
+  background:#f8faff;
+  padding:12px;
+  border-radius:9px;
+}
+.msg {
+  padding:10px;
+  border-radius:9px;
+  margin:8px 0;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.user { background:#e1e9ff; }
+.bot { background:#e4f7eb; }
+.hidden { display:none!important; }
+progress { width:100%;height:22px; }
+h2 { color:var(--navy); }
+footer { text-align:center;color:var(--muted);padding:20px; }
+@media(max-width:600px) {
+  header h1 { font-size:1.6rem; }
+  .panel { padding:15px; }
+}
 </style>
 </head>
+
 <body>
-<header><h1>📚 StudyBuddy</h1><p>Learn smarter. Stay organized.</p></header>
+
+<header>
+  <h1>📚 StudyBuddy</h1>
+  <p>Learn smarter. Stay organized.</p>
+</header>
+
 <main>
+
+<!-- LOGIN AND SIGN-UP -->
 <section id="authPanel" class="panel auth">
-<h2>Welcome to StudyBuddy</h2><p class="muted">Sign in or create your student account.</p>
-<label>Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com">
-<label>Password</label><input id="password" type="password" autocomplete="current-password" minlength="6" placeholder="At least 6 characters">
-<button id="signIn">Sign in</button><button id="signUp" class="secondary">Create account</button>
-<p id="authMessage" role="status" class="muted"></p>
-<p class="muted">Supabase email confirmation may be required depending on your project settings.</p>
+  <h2>Welcome to StudyBuddy</h2>
+  <p class="muted">Sign in or create your student account.</p>
+
+  <form id="authForm">
+    <label for="email">Email</label>
+    <input id="email" type="email" autocomplete="email"
+           placeholder="you@example.com" required>
+
+    <label for="password">Password</label>
+    <input id="password" type="password" autocomplete="current-password"
+           minlength="6" placeholder="At least 6 characters" required>
+
+    <button type="button" id="signIn">Sign in</button>
+    <button type="button" id="signUp" class="secondary">Create account</button>
+  </form>
+
+  <p id="authMessage" role="status" class="muted"></p>
+  <p class="muted">
+    If email confirmation is enabled, check your inbox before signing in.
+  </p>
 </section>
+
+<!-- MAIN APP -->
 <section id="app" class="hidden">
-<div class="panel"><div class="row"><div><h2 id="welcome">Your dashboard</h2><p class="muted" id="accountLabel"></p></div><div style="text-align:right"><button id="signOut" class="secondary">Sign out</button></div></div></div>
-<nav>
-<button data-page="dashboard">Dashboard</button><button data-page="planner">Study planner</button><button data-page="tasks">Tasks</button><button data-page="assistant">AI assistant</button><button data-page="quiz">Quiz</button>
-</nav>
-<section id="dashboard" class="page active">
-<div class="row">
-<div class="card"><h3>Study plans</h3><div class="stat" id="planCount">0</div></div>
-<div class="card"><h3>Total tasks</h3><div class="stat" id="taskCount">0</div></div>
-<div class="card"><h3>Completed</h3><div class="stat" id="doneCount">0</div></div>
-<div class="card"><h3>Progress</h3><div class="stat" id="percent">0%</div></div>
-</div>
-<div class="panel"><h3>Task completion</h3><progress id="progress" max="100" value="0"></progress><p id="summary" class="muted"></p></div>
-<div class="panel"><h3>Upcoming study plans</h3><div id="upcoming"></div></div>
+
+  <div class="panel">
+    <div class="row">
+      <div>
+        <h2 id="welcome">Your dashboard</h2>
+        <p class="muted" id="accountLabel"></p>
+      </div>
+      <div style="text-align:right">
+        <button id="signOut" class="secondary">Sign out</button>
+      </div>
+    </div>
+  </div>
+
+  <nav>
+    <button data-page="dashboard">Dashboard</button>
+    <button data-page="planner">Study planner</button>
+    <button data-page="tasks">Tasks</button>
+    <button data-page="assistant">AI assistant</button>
+    <button data-page="quiz">Quiz</button>
+  </nav>
+
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="page active">
+    <div class="row">
+      <div class="card">
+        <h3>Study plans</h3>
+        <div class="stat" id="planCount">0</div>
+      </div>
+      <div class="card">
+        <h3>Total tasks</h3>
+        <div class="stat" id="taskCount">0</div>
+      </div>
+      <div class="card">
+        <h3>Completed</h3>
+        <div class="stat" id="doneCount">0</div>
+      </div>
+      <div class="card">
+        <h3>Progress</h3>
+        <div class="stat" id="percent">0%</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Task completion</h3>
+      <progress id="progress" max="100" value="0"></progress>
+      <p id="summary" class="muted"></p>
+    </div>
+
+    <div class="panel">
+      <h3>Upcoming study plans</h3>
+      <div id="upcoming"></div>
+    </div>
+  </section>
+
+  <!-- STUDY PLANNER -->
+  <section id="planner" class="page">
+    <h2>Study planner</h2>
+
+    <div class="panel">
+      <form id="planForm">
+        <label for="subject">Subject</label>
+        <input id="subject" required maxlength="100"
+               placeholder="Mathematics">
+
+        <div class="row">
+          <div>
+            <label for="studyDate">Date</label>
+            <input id="studyDate" type="date" required>
+          </div>
+          <div>
+            <label for="studyTime">Time</label>
+            <input id="studyTime" type="time" required>
+          </div>
+          <div>
+            <label for="duration">Duration (minutes)</label>
+            <input id="duration" type="number" min="1" max="1440"
+                   value="60" required>
+          </div>
+        </div>
+
+        <label for="planNotes">Notes (optional)</label>
+        <textarea id="planNotes" maxlength="1000"
+                  placeholder="Topics to revise..."></textarea>
+
+        <button type="submit">Add study plan</button>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h3>Your plans</h3>
+      <div id="plans"></div>
+    </div>
+  </section>
+
+  <!-- TASKS -->
+  <section id="tasks" class="page">
+    <h2>Assignments and tasks</h2>
+
+    <div class="panel">
+      <form id="taskForm">
+        <label for="taskName">Task</label>
+        <input id="taskName" required maxlength="200"
+               placeholder="Complete C programming assignment">
+
+        <label for="deadline">Deadline</label>
+        <input id="deadline" type="date" required>
+
+        <button type="submit">Add task</button>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h3>Your tasks</h3>
+      <div id="tasksList"></div>
+    </div>
+  </section>
+
+  <!-- AI ASSISTANT -->
+  <section id="assistant" class="page">
+    <h2>AI study assistant</h2>
+
+    <div class="panel">
+      <p class="muted">
+        Ask for explanations, examples, revision plans, or practice questions.
+      </p>
+
+      <div id="chat" class="chat">
+        <div class="msg bot">Hi! Ask me a study question.</div>
+      </div>
+
+      <form id="askForm">
+        <label for="question">Your question</label>
+        <textarea id="question" required maxlength="4000"
+                  placeholder="Explain arrays in C with an example..."></textarea>
+        <button id="askButton" type="submit">Ask StudyBuddy</button>
+      </form>
+
+      <p class="muted">
+        AI responses require a working server endpoint at /api/ask.
+        Never put an AI secret API key in this HTML file.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="page">
+    <h2>Quick quiz</h2>
+
+    <div class="panel">
+      <h3 id="quizQuestion"></h3>
+      <div id="quizOptions"></div>
+      <p id="quizFeedback" role="status"></p>
+      <p id="quizScore" class="muted"></p>
+      <button id="nextQuestion">Next question</button>
+    </div>
+  </section>
+
+  <p id="globalMessage" role="status" class="muted"></p>
 </section>
-<section id="planner" class="page">
-<h2>Study planner</h2><div class="panel"><form id="planForm">
-<label>Subject</label><input id="subject" required maxlength="100" placeholder="Mathematics">
-<div class="row"><div><label>Date</label><input id="studyDate" type="date" required></div><div><label>Time</label><input id="studyTime" type="time" required></div><div><label>Duration (minutes)</label><input id="duration" type="number" min="1" max="1440" value="60" required></div></div>
-<label>Notes (optional)</label><textarea id="planNotes" maxlength="1000" placeholder="Topics to revise..."></textarea><button>Add study plan</button></form></div>
-<div class="panel"><h3>Your plans</h3><div id="plans"></div></div>
-</section>
-<section id="tasks" class="page">
-<h2>Assignments and tasks</h2><div class="panel"><form id="taskForm"><label>Task</label><input id="taskName" required maxlength="200" placeholder="Complete C programming assignment"><label>Deadline</label><input id="deadline" type="date" required><button>Add task</button></form></div>
-<div class="panel"><h3>Your tasks</h3><div id="tasksList"></div></div>
-</section>
-<section id="assistant" class="page">
-<h2>AI study assistant</h2><div class="panel"><p class="muted">Ask for explanations, examples, revision plans, or practice questions.</p><div id="chat" class="chat"><div class="msg bot">Hi! Ask me a study question.</div></div>
-<form id="askForm"><textarea id="question" required maxlength="4000" placeholder="Explain arrays in C with an example..."></textarea><button id="askButton">Ask StudyBuddy</button></form><p class="muted">AI requests are sent to your configured server endpoint. Never put an AI API key in this page.</p></div>
-</section>
-<section id="quiz" class="page">
-<h2>Quick quiz</h2><div class="panel"><h3 id="quizQuestion"></h3><div id="quizOptions"></div><p id="quizFeedback" role="status"></p><p id="quizScore" class="muted"></p><button id="nextQuestion">Next question</button></div>
-</section>
-<p id="globalMessage" role="status" class="muted"></p>
-</section>
-</main><footer>StudyBuddy · Student workspace</footer>
+
+</main>
+
+<footer>StudyBuddy · Student workspace</footer>
+
 <script>
 (() => {
-  // Replace these with values from Supabase → Project Settings → API.
-  const SUPABASE_URL = "YOUR_SUPABASE_URL";
-  const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-  const configured = !SUPABASE_URL.includes("YOUR_") && !SUPABASE_ANON_KEY.includes("YOUR_");
-  const client = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-  let currentUser = null, plans = [], tasks = [];
+  /*
+   * SUPABASE CONFIGURATION
+   * Your project URL and publishable key are inserted below.
+   */
+  const SUPABASE_URL = "https://fnqbiswudqiqpyeefjow.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_oR_lFmcWPPu_KCR2mbIOOA_wEYWHwC5";
+
   const $ = id => document.getElementById(id);
-  const message = (id, text) => { $(id).textContent = text; };
-  function safeText(tag, text) { const e=document.createElement(tag); e.textContent=text ?? ""; return e; }
-  function button(label, fn, cls="secondary") { const b=document.createElement("button"); b.textContent=label;b.className=cls;b.type="button";b.addEventListener("click",fn);return b; }
-  function showPage(id) { document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id)); }
-  document.querySelectorAll("nav [data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
-  function requireConfig() { if (!configured) { message("authMessage","Setup needed: add your Supabase URL and anon key in index.html first."); return false; } return true; }
+  const message = (id, text) => {
+    $(id).textContent = text;
+  };
 
+  if (!window.supabase) {
+    message("authMessage", "Supabase library failed to load. Check your internet connection.");
+    return;
+  }
+
+  const configured =
+    SUPABASE_URL.startsWith("https://") &&
+    !SUPABASE_URL.includes("YOUR_") &&
+    SUPABASE_ANON_KEY.startsWith("sb_publishable_") &&
+    !SUPABASE_ANON_KEY.includes("YOUR_");
+
+  const client = configured
+    ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+    : null;
+
+  let currentUser = null;
+  let plans = [];
+  let tasks = [];
+
+  function safeText(tag, text) {
+    const el = document.createElement(tag);
+    el.textContent = text ?? "";
+    return el;
+  }
+
+  function button(label, fn, cls = "secondary") {
+    const b = document.createElement("button");
+    b.textContent = label;
+    b.className = cls;
+    b.type = "button";
+    b.addEventListener("click", fn);
+    return b;
+  }
+
+  function showPage(id) {
+    document.querySelectorAll(".page").forEach(p => {
+      p.classList.toggle("active", p.id === id);
+    });
+  }
+
+  document.querySelectorAll("nav [data-page]").forEach(b => {
+    b.addEventListener("click", () => showPage(b.dataset.page));
+  });
+
+  function requireConfig() {
+    if (!client) {
+      message("authMessage", "Supabase configuration is missing or invalid.");
+      return false;
+    }
+    return true;
+  }
+
+  // CREATE ACCOUNT
   $("signUp").onclick = async () => {
-    if(!requireConfig()) return;
-    const email=$("email").value.trim(), password=$("password").value;
-    if(!email || password.length<6) return message("authMessage","Enter a valid email and a password of at least 6 characters.");
-    const {error}=await client.auth.signUp({email,password});
-    message("authMessage",error ? error.message : "Account created. Check your email if confirmation is enabled, then sign in.");
+    if (!requireConfig()) return;
+
+    const email = $("email").value.trim();
+    const password = $("password").value;
+
+    if (!email || password.length < 6) {
+      message("authMessage", "Enter a valid email and a password of at least 6 characters.");
+      return;
+    }
+
+    $("signUp").disabled = true;
+    message("authMessage", "Creating your account...");
+
+    try {
+      const { data, error } = await client.auth.signUp({
+        email,
+        password
+      });
+
+      if (error) throw error;
+
+      if (data.session) {
+        message("authMessage", "Account created successfully!");
+        await initSession();
+      } else {
+        message("authMessage", "Account created. Check your email if confirmation is required, then sign in.");
+      }
+    } catch (error) {
+      message("authMessage", "Sign-up failed: " + error.message);
+    } finally {
+      $("signUp").disabled = false;
+    }
   };
+
+  // SIGN IN
   $("signIn").onclick = async () => {
-    if(!requireConfig()) return;
-    const {error}=await client.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
-    message("authMessage",error ? error.message : "Signed in.");
-    if(!error) await initSession();
+    if (!requireConfig()) return;
+
+    const email = $("email").value.trim();
+    const password = $("password").value;
+
+    if (!email || !password) {
+      message("authMessage", "Enter your email and password.");
+      return;
+    }
+
+    $("signIn").disabled = true;
+    message("authMessage", "Signing in...");
+
+    try {
+      const { error } = await client.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) throw error;
+
+      message("authMessage", "Signed in successfully!");
+      await initSession();
+    } catch (error) {
+      message("authMessage", "Sign-in failed: " + error.message);
+    } finally {
+      $("signIn").disabled = false;
+    }
   };
-  $("signOut").onclick = async () => { if(client) await client.auth.signOut(); currentUser=null; $("app").classList.add("hidden"); $("authPanel").classList.remove("hidden"); };
+
+  // SIGN OUT
+  $("signOut").onclick = async () => {
+    if (!client) return;
+
+    const { error } = await client.auth.signOut();
+
+    if (error) {
+      message("globalMessage", "Sign-out failed: " + error.message);
+      return;
+    }
+
+    currentUser = null;
+    plans = [];
+    tasks = [];
+
+    $("app").classList.add("hidden");
+    $("authPanel").classList.remove("hidden");
+    message("authMessage", "You have signed out.");
+  };
+
+  // SESSION
   async function initSession() {
-    if(!client) return;
-    const {data:{session}}=await client.auth.getSession();
-    currentUser=session?.user || null;
-    $("authPanel").classList.toggle("hidden",!!currentUser); $("app").classList.toggle("hidden",!currentUser);
-    if(currentUser){ $("accountLabel").textContent=currentUser.email; $("welcome").textContent="Welcome to StudyBuddy 👋"; await refreshData(); }
+    if (!client) return;
+
+    try {
+      const { data, error } = await client.auth.getSession();
+      if (error) throw error;
+
+      currentUser = data.session?.user || null;
+
+      $("authPanel").classList.toggle("hidden", !!currentUser);
+      $("app").classList.toggle("hidden", !currentUser);
+
+      if (currentUser) {
+        $("accountLabel").textContent = currentUser.email || "";
+        $("welcome").textContent = "Welcome to StudyBuddy 👋";
+        await refreshData();
+      }
+    } catch (error) {
+      message("authMessage", "Could not check your session: " + error.message);
+    }
   }
+
+  // LOAD CLOUD DATA
   async function refreshData() {
-    if(!currentUser) return;
-    const [p,t]=await Promise.all([
-      client.from("study_plans").select("*").order("study_date",{ascending:true}),
-      client.from("study_tasks").select("*").order("created_at",{ascending:false})
-    ]);
-    if(p.error || t.error){ message("globalMessage","Database error: "+(p.error?.message||t.error?.message)+" — check that you ran schema.sql."); return; }
-    plans=p.data||[]; tasks=t.data||[]; renderPlans(); renderTasks(); updateDashboard();
-  }
-  async function addRow(table,row) { const {error}=await client.from(table).insert({...row,user_id:currentUser.id}); if(error) message("globalMessage",error.message); else {message("globalMessage","Saved successfully."); await refreshData();} }
-  async function removeRow(table,id) { const {error}=await client.from(table).delete().eq("id",id); if(error) message("globalMessage",error.message); else await refreshData(); }
-  async function updateTask(id,done) { const {error}=await client.from("study_tasks").update({is_done:done}).eq("id",id); if(error) message("globalMessage",error.message); else await refreshData(); }
+    if (!currentUser) return;
 
-  $("planForm").onsubmit=async e=>{e.preventDefault();if(!currentUser)return;await addRow("study_plans",{subject:$("subject").value.trim(),study_date:$("studyDate").value,study_time:$("studyTime").value,duration_minutes:Number($("duration").value),notes:$("planNotes").value.trim()||null});e.target.reset();$("duration").value=60;};
-  $("taskForm").onsubmit=async e=>{e.preventDefault();if(!currentUser)return;await addRow("study_tasks",{title:$("taskName").value.trim(),deadline:$("deadline").value,is_done:false});e.target.reset();};
-  function renderPlans(){
-    const list=$("plans");list.replaceChildren();
-    if(!plans.length)list.append(safeText("p","No plans yet — add your first study session."));
-    plans.forEach(p=>{const item=document.createElement("div");item.className="item";item.append(safeText("strong",p.subject),safeText("p",`${p.study_date} at ${String(p.study_time).slice(0,5)} · ${p.duration_minutes} minutes`));if(p.notes)item.append(safeText("p",p.notes));item.append(button("Delete",()=>removeRow("study_plans",p.id),"danger"));list.append(item);});
-    const up=$("upcoming");up.replaceChildren();plans.slice(0,3).forEach(p=>{const d=safeText("p",`${p.study_date} · ${p.subject} (${p.duration_minutes} min)`);up.append(d);});if(!plans.length)up.textContent="No upcoming plans yet.";
-  }
-  function renderTasks(){
-    const list=$("tasksList");list.replaceChildren();
-    if(!tasks.length)list.append(safeText("p","No tasks yet."));
-    tasks.forEach(t=>{const item=document.createElement("div");item.className="item";const title=safeText("strong",t.title);if(t.is_done)title.style.textDecoration="line-through";item.append(title,safeText("p","Deadline: "+t.deadline));item.append(button(t.is_done?"Mark incomplete":"Mark complete",()=>updateTask(t.id,!t.is_done)));item.append(button("Delete",()=>removeRow("study_tasks",t.id),"danger"));list.append(item);});
-  }
-  function updateDashboard(){const done=tasks.filter(t=>t.is_done).length;const pct=tasks.length?Math.round(done/tasks.length*100):0;$("planCount").textContent=plans.length;$("taskCount").textContent=tasks.length;$("doneCount").textContent=done;$("percent").textContent=pct+"%";$("progress").value=pct;$("summary").textContent=`${done} completed · ${tasks.length-done} remaining · ${plans.length} study plans.`;}
-  function addChat(text,cls){const d=safeText("div",text);d.className="msg "+cls;$("chat").append(d);$("chat").scrollTop=$("chat").scrollHeight;}
-  $("askForm").onsubmit=async e=>{e.preventDefault();const q=$("question").value.trim();if(!q)return;addChat("You: "+q,"user");$("question").value="";$("askButton").disabled=true;message("globalMessage","Thinking…");try{const res=await fetch("/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:q})});const data=await res.json();if(!res.ok)throw new Error(data.error||"AI request failed.");addChat("StudyBuddy: "+data.answer,"bot");message("globalMessage","");}catch(err){addChat("StudyBuddy: "+err.message,"bot");message("globalMessage","Check the API deployment and AI environment variable.");}finally{$("askButton").disabled=false;}};
+    message("globalMessage", "Loading your study data...");
 
-  const questions=[
-    {q:"Which language is commonly used to structure web pages?",o:["Python","HTML","C","SQL"],a:1},
-    {q:"What is 5 + 3?",o:["6","7","8","9"],a:2},
-    {q:"Which data structure follows FIFO?",o:["Stack","Queue","Tree","Graph"],a:1},
-    {q:"What does CPU stand for?",o:["Central Processing Unit","Computer Power Utility","Central Program User","Control Processing Usage"],a:0},
-    {q:"Which CSS property changes text color?",o:["font-style","color","padding","display"],a:1}
-  ];let qi=0,score=0,answered=false;
-  function renderQuiz(){const q=questions[qi];$("quizQuestion").textContent=`Question ${qi+1}/${questions.length}: ${q.q}`;$("quizOptions").replaceChildren();$("quizFeedback").textContent="";answered=false;q.o.forEach((o,i)=>$("quizOptions").append(button(o,()=>{if(answered)return;answered=true;if(i===q.a){score++;message("quizFeedback","Correct! 🎉");}else message("quizFeedback","Correct answer: "+q.o[q.a]);message("quizScore",`Score: ${score}/${qi+1}`);})));$("nextQuestion").textContent=qi===questions.length-1?"Restart quiz":"Next question";}
-  $("nextQuestion").onclick=()=>{if(qi===questions.length-1){message("quizFeedback",`Quiz finished! Score: ${score}/${questions.length}`);qi=0;score=0;}else qi++;renderQuiz();};
-  renderQuiz();
-  if(client){client.auth.onAuthStateChange(()=>{setTimeout(initSession,0);});initSession();}
-  else { message("authMessage","Before using accounts, configure Supabase in index.html. See README.md."); }
+    try {
+      const [p, t] = await Promise.all([
+        client.from("study_plans")
+          .select("*")
+          .order("study_date", { ascending: true }),
+        client.from("study_tasks")
+          .select("*")
+          .order("created_at", { ascending: false })
+      ]);
+
+      if (p.error) throw p.error;
+      if (t.error) throw t.error;
+
+      plans = p.data || [];
+      tasks = t.data || [];
+
+      renderPlans();
+      renderTasks();
+      updateDashboard();
+
+      message("globalMessage", "");
+    } catch (error) {
+      message("globalMessage",
+        "Database error: " + error.message +
+        ". Check that schema.sql ran successfully and RLS policies are enabled."
+      );
+    }
+  }
+
+  // SAVE DATA
+  async function addRow(table, row) {
+    if (!currentUser) return;
+
+    message("globalMessage", "Saving...");
+
+    try {
+      const { error } = await client.from(table).insert({
+        ...row,
+        user_id: currentUser.id
+      });
+
+      if (error) throw error;
+
+      message("globalMessage", "Saved successfully.");
+      await refreshData();
+    } catch (error) {
+      message("globalMessage", "Could not save: " + error.message);
+    }
+  }
+
+  // DELETE DATA
+  async function removeRow(table, id) {
+    if (!currentUser) return;
+
+    try {
+      const { error } = await client.from(table)
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+
+      message("globalMessage", "Deleted successfully.");
+      await refreshData();
+    } catch (error) {
+      message("globalMessage", "Could not delete: " + error.message);
+    }
+  }
+
+  // MARK TASK COMPLETE / INCOMPLETE
+  async function updateTask(id, done) {
+    if (!currentUser) return;
+
+    try {
+      const { error } = await client.from("study_tasks")
+        .update({ is_done: done })
+        .eq("id", id);
+
+      if (error) throw error;
+
+      await refreshData();
+    } catch (error) {
+      message("globalMessage", "Could not update task: " + error.message);
+    }
+  }
+
+  // ADD STUDY PLAN
+  $("planForm").onsubmit = async e => {
+    e.preventDefault();
+
+    if (!currentUser) return;
+
+    const subject = $("subject").value.trim();
+    const date = $("studyDate").value;
+    const time = $("studyTime").value;
+    const duration = Number($("duration").value);
+
+    if (!subject || !date || !time || !duration) {
+      message("globalMessage", "Please fill in all required study-plan fields.");
+      return;
+    }
+
+    await addRow("study_plans", {
+      subject,
+      study_date: date,
+      study_time: time,
+      duration_minutes: duration,
+      notes: $("planNotes").value.trim() || null
+    });
+
+    e.target.reset();
+    $("duration").value = 60;
+  };
+
+  // ADD TASK
+  $("taskForm").onsubmit = async e => {
+    e.preventDefault();
+
+    if (!currentUser) return;
+
+    const title = $("taskName").value.trim();
+    const deadline = $("deadline").value;
+
+    if (!title || !deadline) {
+      message("globalMessage", "Enter the task and deadline.");
+      return;
+    }
+
+    await addRow("study_tasks", {
+      title,
+      deadline,
+      is_done: false
+    });
+
+    e.target.reset();
+  };
+
+  // RENDER PLANS
+  function renderPlans() {
+    const list = $("plans");
+    list.replaceChildren();
+
+    if (!plans.length) {
+      list.append(safeText("p", "No plans yet — add your first study session."));
+    }
+
+    plans.forEach(p => {
+      const item = document.createElement("div");
+      item.className = "item";
+
+      item.append(
+        safeText("strong", p.subject),
+        safeText("p",
+          `${p.study_date} at ${String(p.study_time).slice(0, 5)} · ${p.duration_minutes} minutes`
+        )
+      );
+
+      if (p.notes) item.append(safeText("p", p.notes));
+
+      item.append(
+        button("Delete", () => removeRow("study_plans", p.id), "danger")
+      );
+
+      list.append(item);
+    });
+
+    const upcoming = $("upcoming");
+    upcoming.replaceChildren();
+
+    const today = new Date().toLocaleDateString("en-CA");
+
+    const upcomingPlans = plans
+      .filter(p => p.study_date >= today)
+      .slice(0, 3);
+
+    if (!upcomingPlans.length) {
+      upcoming.textContent = "No upcoming plans yet.";
+    } else {
+      upcomingPlans.forEach(p => {
+        upcoming.append(
+          safeText("p",
+            `${p.study_date} · ${p.subject} (${p.duration_minutes} min)`
+          )
+        );
+      });
+    }
+  }
+
+  // RENDER TASKS
+  function renderTasks() {
+    const list = $("tasksList");
+    list.replaceChildren();
+
+    if (!tasks.length) {
+      list.append(safeText("p", "No tasks yet."));
+    }
+
+    tasks.forEach(t => {
+      const item = document.createElement("div");
+      item.className = "item";
+
+      const title = safeText("strong", t.title);
+
+      if (t.is_done) title.style.textDecoration = "line-through";
+
+      item.append(
+        title,
+        safeText("p", "Deadline: " + t.deadline)
+      );
+
+      item.append(
+        button(
+          t.is_done ? "Mark incomplete" : "Mark complete",
+          () => updateTask(t.id, !t.is_done)
+        ),
+        button("Delete", () => removeRow("study_tasks", t.id), "danger")
+      );
+
+      list.append(item);
+    });
+  }
+
+  // DASHBOARD STATISTICS
+  function updateDashboard() {
+    const done = tasks.filter(t => t.is_done).length;
+    const pct = tasks.length
+      ? Math.round(done / tasks.length * 100)
+      : 0;
+
+    $("planCount").textContent = plans.length;
+    $("taskCount").textContent = tasks.length;
+    $("doneCount").textContent = done;
+    $("percent").textContent = pct + "%";
+    $("progress").value = pct;
+
+    $("summary").textContent =
+      `${done} completed · ${tasks.length - done} remaining · ${plans.length} study plans.`;
+  }
+
+  // CHAT DISPLAY
+  function addChat(text, cls) {
+    const d = safeText("div", text);
+    d.className = "msg " + cls;
+    $("chat").append(d);
+    $("chat").scrollTop = $("chat").scrollHeight;
+  }
+
+  // AI ASSISTANT
+  $("askForm").onsubmit = async e => {
+    e.preventDefault();
+
+    const q = $("question").value.trim();
+    if (!q) return;
+
+    addChat("You: " + q, "user");
+    $("question").value = "";
+    $("askButton").disabled = true;
+    message("globalMessage", "Thinking...");
+
+    try {
+      const response = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: q })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "AI request failed.");
+      }
+
+      addChat("StudyBuddy: " + data.answer, "bot");
+      message("globalMessage", "");
+    } catch (error) {
+      addChat("StudyBuddy: " + error.message, "bot");
+      message("globalMessage",
+        "The AI endpoint is not available yet. Check your deployment and server configuration."
+      );
+    } finally {
+      $("askButton").disabled = false;
+    }
+  };
+
+  // QUICK QUIZ
+  const questions = [
+    {
+      q: "Which language is commonly used to structure web pages?",
+      o: ["Python", "HTML", "C", "SQL"],
+      a: 1
+    },
+    {
+      q: "What is 5 + 3?",
+      o: ["6", "7", "8", "9"],
+      a: 2
+    },
+    {
+      q: "Which data structure follows FIFO?",
+      o: ["Stack", "Queue", "Tree", "Graph"],
+      a: 1
+    },
+    {
+      q: "What does CPU stand for?",
+      o: [
+        "Central Processing Unit",
+        "Computer Power Utility",
+        "Central Program User",
+        "Control Processing Usage"
+      ],
+      a: 0
+    },
+    {
+      q: "Which CSS property changes text color?",
+      o: ["font-style", "color", "padding", "display"],
+      a: 1
+    }
+  ];
+
+  let qi = 0;
+  let score = 0;
+  let answered = false;
+
+  function renderQuiz() {
+    const q = questions[qi];
+
+    $("quizQuestion").textContent =
+      `Question ${qi + 1}/${questions.length}: ${q.q}`;
+
+    $("quizOptions").replaceChildren();
+    $("quizFeedback").textContent = "";
+    $("quizScore").textContent = `Current score: ${score}`;
+    answered = false;
+
+    q.o.forEach((option, i) => {
+      $("quizOptions").append(
+        button(option, () => {
+          if (answered) return;
+
+          answered = true;
+
+          if (i === q.a) {
+            score++;
+            message("quizFeedback", "Correct! 🎉");
+          } else {
+            message("quizFeedback", "Correct answer: " + q.o[q.a]);
+          }
+
+          message("quizScore", `Score: ${score}/${qi + 1}`);
+        })
+      );
+    });
+
+    $("nextQuestion").textContent =
+      qi === questions.length - 1 ? "Restart quiz" : "Next question";
+  }
+
+  $("nextQuestion").onclick = () => {
+    if (qi === questions.length - 1) {
+      message("quizFeedback",
+        `Quiz finished! Your score: ${score}/${questions.length}`
+      );
+      qi = 0;
+      score = 0;
+    } else {
+      qi++;
+    }
+
+    renderQuiz();
+  };
+
+  // START APPLICATION
+  if (client) {
+    client.auth.onAuthStateChange(() => {
+      setTimeout(() => initSession(), 0);
+    });
+
+    initSession();
+  } else {
+    message("authMessage",
+      "Configuration error. Check your Supabase URL and publishable key."
+    );
+  }
 })();
 </script>
-</body></html>
+
+</body>
+</html>

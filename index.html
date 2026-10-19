@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>StudyBuddy AI - Academic Assistant</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
@@ -236,11 +234,7 @@ button{cursor:pointer}
 <script>
 "use strict";
 
-/*
-  IMPORTANT:
-  The AI API runs on Vercel, not GitHub Pages.
-  Keep your Gemini API key on the Vercel server only.
-*/
+// Connect directly to your deployed Vercel domain endpoint
 const API_URL = "https://studybuddy-ai-assistant-nine.vercel.app/api/ask";
 
 /* Navigation */
@@ -284,7 +278,7 @@ function saveData(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
-    console.warn("Could not save data in this browser.", error);
+    console.warn("Could not save data.", error);
   }
 }
 
@@ -292,7 +286,6 @@ let tasks = loadData("studybuddy_tasks_v1", []);
 let plans = loadData("studybuddy_plans_v1", []);
 let bestQuizScore = loadData("studybuddy_quiz_v1", 0);
 
-/* Safe HTML output */
 function escapeHTML(value) {
   return String(value).replace(/[&<>"']/g, character => ({
     "&":"&amp;",
@@ -314,7 +307,6 @@ function formatDate(date) {
 /* Tasks */
 document.getElementById("taskForm").addEventListener("submit", event => {
   event.preventDefault();
-
   tasks.push({
     id: Date.now(),
     title: document.getElementById("taskTitle").value.trim(),
@@ -323,7 +315,6 @@ document.getElementById("taskForm").addEventListener("submit", event => {
     priority: document.getElementById("taskPriority").value,
     done: false
   });
-
   saveData("studybuddy_tasks_v1", tasks);
   event.target.reset();
   document.getElementById("taskDue").value = "";
@@ -331,9 +322,7 @@ document.getElementById("taskForm").addEventListener("submit", event => {
 });
 
 function toggleTask(id) {
-  tasks = tasks.map(task =>
-    task.id === id ? {...task, done: !task.done} : task
-  );
+  tasks = tasks.map(task => task.id === id ? {...task, done: !task.done} : task);
   saveData("studybuddy_tasks_v1", tasks);
   renderTasks();
 }
@@ -388,7 +377,6 @@ function renderTasks() {
 /* Study planner */
 document.getElementById("plannerForm").addEventListener("submit", event => {
   event.preventDefault();
-
   plans.push({
     id: Date.now(),
     subject: document.getElementById("planSubject").value.trim(),
@@ -396,7 +384,6 @@ document.getElementById("plannerForm").addEventListener("submit", event => {
     date: document.getElementById("planDate").value,
     duration: Number(document.getElementById("planDuration").value)
   });
-
   saveData("studybuddy_plans_v1", plans);
   event.target.reset();
   document.getElementById("planDuration").value = 60;
@@ -411,28 +398,23 @@ function deletePlan(id) {
 
 function renderPlans() {
   const list = document.getElementById("plannerList");
-
   if (!plans.length) {
     list.innerHTML = '<p class="text-slate-500 text-sm">No study sessions planned yet.</p>';
   } else {
-    list.innerHTML = plans
-      .slice()
-      .sort((a, b) => a.date.localeCompare(b.date))
-      .map(plan => `
-        <div class="border rounded-xl p-4 flex flex-wrap justify-between gap-3">
-          <div>
-            <p class="font-semibold">${escapeHTML(plan.subject)} — ${escapeHTML(plan.topic)}</p>
-            <p class="small">${formatDate(plan.date)} · ${Number(plan.duration)} minutes</p>
-          </div>
-          <button class="secondary" onclick="deletePlan(${plan.id})">Delete</button>
+    list.innerHTML = plans.slice().sort((a, b) => a.date.localeCompare(b.date)).map(plan => `
+      <div class="border rounded-xl p-4 flex flex-wrap justify-between gap-3">
+        <div>
+          <p class="font-semibold">${escapeHTML(plan.subject)} — ${escapeHTML(plan.topic)}</p>
+          <p class="small">${formatDate(plan.date)} · ${Number(plan.duration)} minutes</p>
         </div>
-      `).join("");
+        <button class="secondary" onclick="deletePlan(${plan.id})">Delete</button>
+      </div>
+    `).join("");
   }
-
   document.getElementById("progressPlans").textContent = plans.length;
 }
 
-/* AI chat */
+/* AI Chat */
 const chatForm = document.getElementById("chatForm");
 const questionInput = document.getElementById("question");
 const chatbox = document.getElementById("chatbox");
@@ -455,7 +437,6 @@ function clearChat() {
 
 chatForm.addEventListener("submit", async event => {
   event.preventDefault();
-
   const question = questionInput.value.trim();
   if (!question) return;
 
@@ -466,55 +447,38 @@ chatForm.addEventListener("submit", async event => {
   chatStatus.textContent = "StudyBuddy is preparing your answer...";
 
   try {
-    /*
-      This is the important fix:
-      Call the full Vercel API URL, not the GitHub Pages /api/ask path.
-    */
     const response = await fetch(API_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({question})
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question })
     });
 
     const data = await response.json().catch(() => ({}));
 
     if (!response.ok) {
-      throw new Error(data.error || ("Server error: " + response.status));
+      throw new Error(data.error || `Server error: ${response.status}`);
     }
 
-    const answer =
-      data.answer ||
-      data.response ||
-      data.text ||
-      data.message;
-
+    const answer = data.answer || data.response || data.text || data.message;
     if (!answer) {
-      throw new Error("The server returned no answer. Check the Vercel API code and Gemini API key.");
+      throw new Error("Empty response received from backend.");
     }
 
     addMessage(answer, "ai");
     chatStatus.textContent = "Answer received successfully.";
   } catch (error) {
-    console.error("StudyBuddy AI error:", error);
-    addMessage(
-      "Sorry, I couldn't get an AI response. " +
-      (error.message || "Please try again.") +
-      "\n\nIf this says 'Failed to fetch', check the Vercel API deployment and CORS settings.",
-      "ai"
-    );
-    chatStatus.textContent = "Connection failed. Please check your internet connection and Vercel API.";
+    console.error("AI error:", error);
+    addMessage("Error: " + error.message, "ai");
+    chatStatus.textContent = "Request failed. Check Vercel logs and API key.";
   } finally {
     sendButton.disabled = false;
     sendButton.textContent = "Send Question ✨";
   }
 });
 
-/* Quick quiz */
+/* Quick Quiz */
 document.getElementById("quizForm").addEventListener("submit", event => {
   event.preventDefault();
-
   const answers = {q1:"b", q2:"c", q3:"a"};
   let score = 0;
   let attempted = 0;
@@ -528,8 +492,7 @@ document.getElementById("quizForm").addEventListener("submit", event => {
   }
 
   if (attempted < 3) {
-    document.getElementById("quizResult").textContent =
-      "Please answer all 3 questions before submitting.";
+    document.getElementById("quizResult").textContent = "Please answer all 3 questions before submitting.";
     return;
   }
 
@@ -543,7 +506,7 @@ document.getElementById("quizForm").addEventListener("submit", event => {
     (score === 3 ? "Excellent work! 🎉" : "Keep practising! 💪");
 });
 
-/* Initial setup */
+/* Initialize */
 document.getElementById("planDate").value = new Date().toLocaleDateString("en-CA");
 renderTasks();
 renderPlans();

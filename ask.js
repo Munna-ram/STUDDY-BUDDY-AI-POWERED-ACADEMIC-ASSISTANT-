@@ -1,6 +1,6 @@
+
 export default async function handler(req, res) {
-  const allowedOrigin =
-    "https://munna-ram.github.io";
+  const allowedOrigin = "https://munna-ram.github.io";
 
   res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -11,9 +11,7 @@ export default async function handler(req, res) {
   }
 
   if (req.method !== "POST") {
-    return res.status(405).json({
-      error: "Method not allowed."
-    });
+    return res.status(405).json({ error: "Method not allowed." });
   }
 
   const question =
@@ -70,10 +68,9 @@ export default async function handler(req, res) {
       });
     }
 
-    const answer =
-      data.candidates?.[0]?.content?.parts
-        ?.map(part => part.text || "")
-        .join("") || "";
+    const answer = data.candidates?.[0]?.content?.parts
+      ?.map(part => part.text || "")
+      .join("") || "";
 
     if (!answer) {
       return res.status(502).json({
@@ -82,8 +79,7 @@ export default async function handler(req, res) {
     }
 
     return res.status(200).json({ answer });
-
-  } catch (error) {
+  } catch {
     return res.status(502).json({
       error: "Could not contact the AI service. Please try again."
     });

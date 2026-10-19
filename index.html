@@ -24,6 +24,41 @@ button{cursor:pointer}
 .user-message{background:#e0e7ff;margin-left:auto}
 .ai-message{background:white;border:1px solid #e2e8f0}
 .small{font-size:13px;color:#64748b}
+@media(max-width:700px){.layout{display:block}.sidebar{min-height:auto}.navI apologize for missing the HTML code in the previous response. Let's fix the HTML so your frontend points to the correct place.
+
+The key change is updating the `API_URL` to ensure it looks at the root of whatever Vercel URL you are currently visiting.
+
+Here is the full, updated **`index.html`** code.
+
+### 1. Update `index.html`
+
+Copy this exact code and paste it into `index.html` in your GitHub repository:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyBuddy AI - Academic Assistant</title>
+<script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+.sidebar{background:#111c35;color:white;min-height:100vh}
+.nav-btn{display:block;width:100%;padding:12px;border:0;border-radius:10px;text-align:left;background:transparent;color:#dbeafe;margin:5px 0;cursor:pointer}
+.nav-btn:hover,.nav-btn.active{background:#293b60;color:white}
+.card{background:white;border-radius:16px;padding:20px;box-shadow:0 4px 18px #0f172a0b}
+.page{display:none}.page.active{display:block}
+input,textarea,select{width:100%;padding:11px;border:1px solid #d7deea;border-radius:9px;margin:6px 0 12px;background:white}
+button{cursor:pointer}
+.primary{background:#4f46e5;color:white;padding:10px 16px;border-radius:9px;border:0}
+.secondary{background:#e8eaff;color:#4338ca;padding:9px 14px;border-radius:9px;border:0}
+.chatbox{height:340px;overflow-y:auto;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+.message{padding:10px 12px;margin:8px 0;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;max-width:95%}
+.user-message{background:#e0e7ff;margin-left:auto}
+.ai-message{background:white;border:1px solid #e2e8f0}
+.small{font-size:13px;color:#64748b}
 @media(max-width:700px){.layout{display:block}.sidebar{min-height:auto}.navlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}.nav-btn{font-size:13px}.main{padding:14px!important}}
 </style>
 </head>
@@ -217,11 +252,11 @@ button{cursor:pointer}
     <h2 class="text-xl font-bold mb-4">📖 Learning Resources</h2>
     <p class="text-slate-600 mb-4">Useful starting points for your B.Tech subjects.</p>
     <div class="space-y-3">
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://www.programiz.com/c-programming" target="_blank" rel="noopener">💻 <b>C Programming</b><p class="small">Learn C concepts and examples.</p></a>
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://docs.oracle.com/javase/tutorial/" target="_blank" rel="noopener">☕ <b>Java Tutorials</b><p class="small">Java language fundamentals.</p></a>
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://www.khanacademy.org/math" target="_blank" rel="noopener">➗ <b>Mathematics</b><p class="small">Practice math topics.</p></a>
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://www.khanacademy.org/science/chemistry" target="_blank" rel="noopener">🧪 <b>Chemistry</b><p class="small">Study chemistry fundamentals.</p></a>
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://developers.google.com/machine-learning" target="_blank" rel="noopener">🧠 <b>Machine Learning</b><p class="small">Explore machine-learning concepts.</p></a>
+      <a class="block rounded-xl bg-slate-50 p-4" href="[https://www.programiz.com/c-programming](https://www.programiz.com/c-programming)" target="_blank" rel="noopener">💻 <b>C Programming</b><p class="small">Learn C concepts and examples.</p></a>
+      <a class="block rounded-xl bg-slate-50 p-4" href="[https://docs.oracle.com/javase/tutorial/](https://docs.oracle.com/javase/tutorial/)" target="_blank" rel="noopener">☕ <b>Java Tutorials</b><p class="small">Java language fundamentals.</p></a>
+      <a class="block rounded-xl bg-slate-50 p-4" href="[https://www.khanacademy.org/math](https://www.khanacademy.org/math)" target="_blank" rel="noopener">➗ <b>Mathematics</b><p class="small">Practice math topics.</p></a>
+      <a class="block rounded-xl bg-slate-50 p-4" href="[https://www.khanacademy.org/science/chemistry](https://www.khanacademy.org/science/chemistry)" target="_blank" rel="noopener">🧪 <b>Chemistry</b><p class="small">Study chemistry fundamentals.</p></a>
+      <a class="block rounded-xl bg-slate-50 p-4" href="[https://developers.google.com/machine-learning](https://developers.google.com/machine-learning)" target="_blank" rel="noopener">🧠 <b>Machine Learning</b><p class="small">Explore machine-learning concepts.</p></a>
     </div>
   </div>
 </section>
@@ -236,7 +271,7 @@ button{cursor:pointer}
 <script>
 "use strict";
 
-/* Uses the local relative endpoint on whatever Vercel URL serves this page */
+/* This is the most important change. It points to the API on the SAME domain. */
 const API_URL = "/api/ask";
 
 /* Navigation */
@@ -353,7 +388,7 @@ function renderTasks() {
         <div>
           <p class="font-semibold ${task.done ? "line-through text-slate-400" : ""}">${escapeHTML(task.title)}</p>
           <p class="small">${escapeHTML(task.subject)} · Due ${formatDate(task.due)}</p>
-          <p class="small">Priority: ${escapeHTML(task.priority)} · ${task.done ? "Completed" : "Pending"}</p>
+          <p class="small">Priority: ${escapeHTML(task.priority)} ·${task.done ? "Completed" : "Pending"}</p>
         </div>
         <div class="flex gap-2">
           <button class="secondary" onclick="toggleTask(${task.id})">${task.done ? "Undo" : "Complete"}</button>
@@ -364,182 +399,4 @@ function renderTasks() {
 
     const upcoming = tasks.filter(t => !t.done).slice(0, 4);
     dashboard.innerHTML = upcoming.length
-      ? upcoming.map(t => `<div class="py-2 border-b last:border-0"><b>${escapeHTML(t.title)}</b><p class="small">Due ${formatDate(t.due)}</p></div>`).join("")
-      : "All tasks completed! 🎉";
-  }
-
-  const completed = tasks.filter(t => t.done).length;
-  const pending = tasks.length - completed;
-  const percent = tasks.length ? Math.round(completed / tasks.length * 100) : 0;
-
-  document.getElementById("totalTasks").textContent = tasks.length;
-  document.getElementById("completedTasks").textContent = completed;
-  document.getElementById("pendingTasks").textContent = pending;
-  document.getElementById("progressCompleted").textContent = completed;
-  document.getElementById("progressBar").style.width = percent + "%";
-  document.getElementById("progressText").textContent = percent + "% completed";
-  document.getElementById("progressPlans").textContent = plans.length;
-}
-
-/* Study planner */
-document.getElementById("plannerForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  plans.push({
-    id: Date.now(),
-    subject: document.getElementById("planSubject").value.trim(),
-    topic: document.getElementById("planTopic").value.trim(),
-    date: document.getElementById("planDate").value,
-    duration: Number(document.getElementById("planDuration").value)
-  });
-
-  saveData("studybuddy_plans_v1", plans);
-  event.target.reset();
-  document.getElementById("planDuration").value = 60;
-  renderPlans();
-});
-
-function deletePlan(id) {
-  plans = plans.filter(plan => plan.id !== id);
-  saveData("studybuddy_plans_v1", plans);
-  renderPlans();
-}
-
-function renderPlans() {
-  const list = document.getElementById("plannerList");
-
-  if (!plans.length) {
-    list.innerHTML = '<p class="text-slate-500 text-sm">No study sessions planned yet.</p>';
-  } else {
-    list.innerHTML = plans
-      .slice()
-      .sort((a, b) => a.date.localeCompare(b.date))
-      .map(plan => `
-        <div class="border rounded-xl p-4 flex flex-wrap justify-between gap-3">
-          <div>
-            <p class="font-semibold">${escapeHTML(plan.subject)} — ${escapeHTML(plan.topic)}</p>
-            <p class="small">${formatDate(plan.date)} · ${Number(plan.duration)} minutes</p>
-          </div>
-          <button class="secondary" onclick="deletePlan(${plan.id})">Delete</button>
-        </div>
-      `).join("");
-  }
-
-  document.getElementById("progressPlans").textContent = plans.length;
-}
-
-/* AI chat */
-const chatForm = document.getElementById("chatForm");
-const questionInput = document.getElementById("question");
-const chatbox = document.getElementById("chatbox");
-const chatStatus = document.getElementById("chatStatus");
-const sendButton = document.getElementById("sendButton");
-
-function addMessage(text, role) {
-  const message = document.createElement("div");
-  message.className = "message " + (role === "user" ? "user-message" : "ai-message");
-  message.textContent = text;
-  chatbox.appendChild(message);
-  chatbox.scrollTop = chatbox.scrollHeight;
-}
-
-function clearChat() {
-  chatbox.innerHTML = "";
-  addMessage("Chat cleared! What would you like to learn today?", "ai");
-  chatStatus.textContent = "";
-}
-
-chatForm.addEventListener("submit", async event => {
-  event.preventDefault();
-
-  const question = questionInput.value.trim();
-  if (!question) return;
-
-  addMessage(question, "user");
-  questionInput.value = "";
-  sendButton.disabled = true;
-  sendButton.textContent = "Thinking...";
-  chatStatus.textContent = "StudyBuddy is preparing your answer...";
-
-  try {
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({question})
-    });
-
-    const data = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
-      throw new Error(data.error || ("Server error: " + response.status));
-    }
-
-    const answer =
-      data.answer ||
-      data.response ||
-      data.text ||
-      data.message;
-
-    if (!answer) {
-      throw new Error("The server returned no answer. Check the Vercel API code and Gemini API key.");
-    }
-
-    addMessage(answer, "ai");
-    chatStatus.textContent = "Answer received successfully.";
-  } catch (error) {
-    console.error("StudyBuddy AI error:", error);
-    addMessage(
-      "Sorry, I couldn't get an AI response. " +
-      (error.message || "Please try again.") +
-      "\n\nIf this says 'Failed to fetch', check the Vercel API deployment and CORS settings.",
-      "ai"
-    );
-    chatStatus.textContent = "Connection failed. Please check your internet connection and Vercel API.";
-  } finally {
-    sendButton.disabled = false;
-    sendButton.textContent = "Send Question ✨";
-  }
-});
-
-/* Quick quiz */
-document.getElementById("quizForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  const answers = {q1:"b", q2:"c", q3:"a"};
-  let score = 0;
-  let attempted = 0;
-
-  for (const [name, correct] of Object.entries(answers)) {
-    const selected = document.querySelector('input[name="' + name + '"]:checked');
-    if (selected) {
-      attempted++;
-      if (selected.value === correct) score++;
-    }
-  }
-
-  if (attempted < 3) {
-    document.getElementById("quizResult").textContent =
-      "Please answer all 3 questions before submitting.";
-    return;
-  }
-
-  const percent = Math.round(score / 3 * 100);
-  bestQuizScore = Math.max(bestQuizScore, percent);
-  saveData("studybuddy_quiz_v1", bestQuizScore);
-
-  document.getElementById("quizScore").textContent = percent + "%";
-  document.getElementById("quizResult").textContent =
-    "Your score: " + score + "/3 (" + percent + "%). " +
-    (score === 3 ? "Excellent work! 🎉" : "Keep practising! 💪");
-});
-
-/* Initial setup */
-document.getElementById("planDate").value = new Date().toLocaleDateString("en-CA");
-renderTasks();
-renderPlans();
-document.getElementById("quizScore").textContent = bestQuizScore + "%";
-</script>
-</body>
-</html>
+      ? upcoming.map(t => `<div class="py-2 border-b last:border-0"><b>${escapeHTML(t.title)}

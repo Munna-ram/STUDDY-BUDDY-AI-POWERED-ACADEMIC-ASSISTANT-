@@ -1,6 +1,6 @@
 
 export default async function handler(req, res) {
-  const allowedOrigin = "https://munna-ram.github.io";
+  const allowedOrigin = "*";
 
   res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");

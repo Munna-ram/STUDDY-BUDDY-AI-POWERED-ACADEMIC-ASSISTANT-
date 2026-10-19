@@ -746,7 +746,7 @@ footer { text-align:center;color:var(--muted);padding:20px; }
     message("globalMessage", "Thinking...");
 
     try {
-      const response = await fetch("/api/ask", {
+      const response = await fetch("https://studybuddy-ai-assistant-nine.vercel.app/api/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: q })

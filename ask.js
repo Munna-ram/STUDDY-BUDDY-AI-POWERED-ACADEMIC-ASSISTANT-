@@ -1,60 +1,43 @@
-
 export default async function handler(req, res) {
-  const allowedOrigin = ("https://munna-ram.github.io");
-  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+  // Allow requests from your GitHub Pages frontend
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
+  // Handle browser CORS preflight check
   if (req.method === "OPTIONS") {
-    return res.status(204).end();
+    return res.status(200).end();
   }
 
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed." });
+    return res.status(405).json({ error: "Method not allowed. Use POST." });
   }
 
-  const question =
-    typeof req.body?.question === "string"
-      ? req.body.question.trim()
-      : "";
+  const { question } = req.body || {};
 
-  if (!question || question.length > 4000) {
-    return res.status(400).json({
-      error: "Enter a question under 4000 characters."
-    });
+  if (!question || typeof question !== "string" || !question.trim()) {
+    return res.status(400).json({ error: "A valid question is required." });
   }
 
-  const key = process.env.GEMINI_API_KEY;
-
-  if (!key) {
-    return res.status(503).json({
-      error: "AI is not configured. Check GEMINI_API_KEY."
-    });
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: "GEMINI_API_KEY environment variable is missing on Vercel." });
   }
 
   try {
     const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "x-goog-api-key": key
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          system_instruction: {
-            parts: [{
-              text: "You are StudyBuddy, a helpful academic assistant for B.Tech students. Explain concepts clearly, help with assignments and programming, and show step-by-step solutions."
-            }]
-          },
-          contents: [{
-            role: "user",
-            parts: [{ text: question }]
-          }],
-          generationConfig: {
-            temperature: 0.4,
-            maxOutputTokens: 1200
-          }
+          contents: [
+            {
+              parts: [{ text: question.trim() }]
+            }
+          ]
         })
       }
     );
@@ -62,25 +45,17 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-      return res.status(502).json({
-        error: data.error?.message || "Gemini API request failed."
+      return res.status(response.status).json({
+        error: data.error?.message || "Error calling Gemini API"
       });
     }
 
-    const answer = data.candidates?.[0]?.content?.parts
-      ?.map(part => part.text || "")
-      .join("") || "";
-
-    if (!answer) {
-      return res.status(502).json({
-        error: "The AI returned no answer. Please try again."
-      });
-    }
+    const answer =
+      data.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "No response generated.";
 
     return res.status(200).json({ answer });
-  } catch {
-    return res.status(502).json({
-      error: "Could not contact the AI service. Please try again."
-    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message || "Internal server error." });
   }
 }

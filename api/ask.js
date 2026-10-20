@@ -23,18 +23,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    // UPDATED TO THE LATEST STABLE TAG
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${encodeURIComponent(key)}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(key)}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          system_instruction: {
-            parts: [{ text: "You are StudyBuddy, a helpful academic tutor. Explain concepts clearly for a college student, use examples where helpful, and do not invent facts. If unsure, say so. Encourage learning rather than simply doing graded work for the student." }]
-          },
-          contents: [{ role: "user", parts: [{ text: question.trim() }] }],
-          generationConfig: { temperature: 0.4, maxOutputTokens: 1200 }
+          contents: [{ role: "user", parts: [{ text: question.trim() }] }]
         })
       }
     );

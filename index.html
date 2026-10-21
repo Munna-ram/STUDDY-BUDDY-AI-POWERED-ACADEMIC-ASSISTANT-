@@ -1,543 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StudyBuddy AI - Academic Assistant</title>
-<script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
-.sidebar{background:#111c35;color:white;min-height:100vh}
-.nav-btn{display:block;width:100%;padding:12px;border:0;border-radius:10px;text-align:left;background:transparent;color:#dbeafe;margin:5px 0;cursor:pointer}
-.nav-btn:hover,.nav-btn.active{background:#293b60;color:white}
-.card{background:white;border-radius:16px;padding:20px;box-shadow:0 4px 18px #0f172a0b}
-.page{display:none}.page.active{display:block}
-input,textarea,select{width:100%;padding:11px;border:1px solid #d7deea;border-radius:9px;margin:6px 0 12px;background:white}
-button{cursor:pointer}
-.primary{background:#4f46e5;color:white;padding:10px 16px;border-radius:9px;border:0}
-.secondary{background:#e8eaff;color:#4338ca;padding:9px 14px;border-radius:9px;border:0}
-.chatbox{height:340px;overflow-y:auto;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
-.message{padding:10px 12px;margin:8px 0;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;max-width:95%}
-.user-message{background:#e0e7ff;margin-left:auto}
-.ai-message{background:white;border:1px solid #e2e8f0}
-.small{font-size:13px;color:#64748b}
-@media(max-width:700px){.layout{display:block}.sidebar{min-height:auto}.navlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}.nav-btn{font-size:13px}.main{padding:14px!important}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyBuddy - Academic Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .page { display: none; }
+    .page.active { display: block; }
+    .card { background: white; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+  </style>
 </head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex">
 
-<body>
-<div class="layout grid md:grid-cols-[240px_1fr] min-h-screen">
-
-<aside class="sidebar p-5">
-  <div class="text-2xl font-bold mb-1">📚 StudyBuddy</div>
-  <p class="text-sm text-blue-200 mb-6">Your AI Academic Assistant</p>
-
-  <div class="navlist">
-    <button class="nav-btn active" data-page="dashboard">🏠 Dashboard</button>
-    <button class="nav-btn" data-page="assistant">🤖 AI Assistant</button>
-    <button class="nav-btn" data-page="planner">📅 Study Planner</button>
-    <button class="nav-btn" data-page="tasks">✅ Tasks</button>
-    <button class="nav-btn" data-page="quiz">📝 Quick Quiz</button>
-    <button class="nav-btn" data-page="progress">📊 Progress</button>
-    <button class="nav-btn" data-page="resources">📖 Resources</button>
-  </div>
-
-  <div class="mt-8 text-xs text-blue-200">
-    Study smart. Stay organized. Achieve more.
-  </div>
-</aside>
-
-<main class="main p-7">
-
-<header class="flex flex-wrap justify-between items-center gap-3 mb-7">
-  <div>
-    <h1 id="pageTitle" class="text-2xl font-bold">Dashboard</h1>
-    <p class="text-slate-500 text-sm">Your personal learning space</p>
-  </div>
-  <div class="text-sm bg-white rounded-xl px-4 py-3 shadow-sm">
-    🎓 B.Tech Study Workspace
-  </div>
-</header>
-
-<!-- DASHBOARD -->
-<section id="dashboard" class="page active">
-  <div class="rounded-2xl p-7 text-white mb-6" style="background:linear-gradient(120deg,#4338ca,#7c3aed)">
-    <h2 class="text-2xl font-bold mb-2">Welcome to StudyBuddy! 👋</h2>
-    <p class="mb-4">Organize your studies, ask questions, and prepare for exams.</p>
-    <button class="bg-white text-indigo-700 rounded-lg px-4 py-2 font-semibold" onclick="showPage('assistant')">Ask AI Assistant →</button>
-  </div>
-
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-    <div class="card"><p class="small">Total Tasks</p><h2 id="totalTasks" class="text-3xl font-bold mt-2">0</h2></div>
-    <div class="card"><p class="small">Completed</p><h2 id="completedTasks" class="text-3xl font-bold mt-2 text-green-600">0</h2></div>
-    <div class="card"><p class="small">Pending</p><h2 id="pendingTasks" class="text-3xl font-bold mt-2 text-orange-500">0</h2></div>
-    <div class="card"><p class="small">Quiz Score</p><h2 id="quizScore" class="text-3xl font-bold mt-2">0%</h2></div>
-  </div>
-
-  <div class="grid lg:grid-cols-2 gap-5">
-    <div class="card">
-      <h3 class="font-bold text-lg mb-3">🚀 Quick Actions</h3>
-      <div class="flex flex-wrap gap-2">
-        <button class="secondary" onclick="showPage('planner')">Create Study Plan</button>
-        <button class="secondary" onclick="showPage('tasks')">Add Task</button>
-        <button class="secondary" onclick="showPage('quiz')">Take Quiz</button>
+  <!-- Sidebar Navigation -->
+  <aside class="w-64 bg-indigo-900 text-white p-6 hidden md:flex flex-col justify-between">
+    <div>
+      <div class="text-xl font-bold mb-8 flex items-center gap-2">
+        <span>📚</span> StudyBuddy
       </div>
+      <nav class="space-y-2">
+        <button onclick="showPage('dashboard')" class="w-full text-left px-4 py-2 rounded-lg bg-indigo-800 font-medium">🏠 Dashboard</button>
+        <button onclick="showPage('planner')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-indigo-800 transition">📅 Study Planner</button>
+        <button onclick="showPage('tasks')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-indigo-800 transition">✅ Tasks</button>
+        <button onclick="showPage('quiz')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-indigo-800 transition">📝 Quick Quiz</button>
+      </nav>
     </div>
-    <div class="card">
-      <h3 class="font-bold text-lg mb-3">📌 Upcoming Tasks</h3>
-      <div id="dashboardTasks" class="text-sm text-slate-500">No tasks added yet.</div>
+    <div class="text-xs text-indigo-200">
+      Study smart. Stay organized. Achieve more.
     </div>
-  </div>
-</section>
+  </aside>
 
-<!-- AI ASSISTANT -->
-<section id="assistant" class="page">
-  <div class="card">
-    <h2 class="text-xl font-bold mb-2">🤖 StudyBuddy AI Assistant</h2>
-    <p class="small mb-4">Ask questions about C, Java, mathematics, chemistry, AI/ML, or other subjects.</p>
-
-    <div id="chatbox" class="chatbox mb-3">
-      <div class="message ai-message">Hello! 👋 I am your StudyBuddy assistant. What topic would you like help with today?</div>
-    </div>
-
-    <form id="chatForm">
-      <label for="question" class="font-semibold text-sm">Your question</label>
-      <textarea id="question" rows="3" placeholder="Example: Explain arrays in C with a simple example." required></textarea>
-      <div class="flex flex-wrap gap-2">
-        <button id="sendButton" class="primary" type="submit">Send Question ✨</button>
-        <button class="secondary" type="button" onclick="clearChat()">Clear Chat</button>
+  <!-- Main Content Area -->
+  <main class="flex-1 p-7 overflow-y-auto">
+    <header class="flex flex-wrap justify-between items-center gap-3 mb-7">
+      <div>
+        <h1 id="pageTitle" class="text-2xl font-bold">Dashboard</h1>
+        <p class="text-slate-500 text-sm">Your personal learning space</p>
       </div>
-    </form>
-    <p id="chatStatus" class="small mt-3" role="status"></p>
-  </div>
-</section>
-
-<!-- PLANNER -->
-<section id="planner" class="page">
-  <div class="card">
-    <h2 class="text-xl font-bold mb-4">📅 Study Planner</h2>
-    <form id="plannerForm">
-      <label>Subject</label>
-      <input id="planSubject" placeholder="Example: Mathematics" required>
-      <label>Topic</label>
-      <input id="planTopic" placeholder="Example: Matrices" required>
-      <label>Study date</label>
-      <input id="planDate" type="date" required>
-      <label>Study duration (minutes)</label>
-      <input id="planDuration" type="number" min="5" max="600" value="60" required>
-      <button class="primary" type="submit">Add to Study Plan</button>
-    </form>
-    <h3 class="font-bold mt-6 mb-3">My Study Schedule</h3>
-    <div id="plannerList" class="space-y-3"></div>
-  </div>
-</section>
-
-<!-- TASKS -->
-<section id="tasks" class="page">
-  <div class="card">
-    <h2 class="text-xl font-bold mb-4">✅ Assignment & Task Manager</h2>
-    <form id="taskForm">
-      <label>Task title</label>
-      <input id="taskTitle" placeholder="Example: Complete C assignment" required>
-      <label>Subject</label>
-      <input id="taskSubject" placeholder="Example: Programming for Problem Solving" required>
-      <label>Due date</label>
-      <input id="taskDue" type="date" required>
-      <label>Priority</label>
-      <select id="taskPriority">
-        <option>High</option>
-        <option selected>Medium</option>
-        <option>Low</option>
-      </select>
-      <button class="primary" type="submit">Add Task</button>
-    </form>
-    <h3 class="font-bold mt-6 mb-3">My Tasks</h3>
-    <div id="taskList" class="space-y-3"></div>
-  </div>
-</section>
-
-<!-- QUIZ -->
-<section id="quiz" class="page">
-  <div class="card">
-    <h2 class="text-xl font-bold mb-2">📝 Quick Knowledge Quiz</h2>
-    <p class="small mb-5">Test your basic programming knowledge.</p>
-    <form id="quizForm">
-      <div class="mb-5">
-        <p class="font-semibold mb-2">1. Which symbol ends most C statements?</p>
-        <label><input type="radio" name="q1" value="a" style="width:auto"> Colon (:)</label><br>
-        <label><input type="radio" name="q1" value="b" style="width:auto"> Semicolon (;)</label><br>
-        <label><input type="radio" name="q1" value="c" style="width:auto"> Comma (,)</label>
+      <div class="text-sm bg-white rounded-xl px-4 py-3 shadow-sm">
+        🎓 B.Tech Study Workspace
       </div>
-      <div class="mb-5">
-        <p class="font-semibold mb-2">2. Which function is commonly the entry point of a C program?</p>
-        <label><input type="radio" name="q2" value="a" style="width:auto"> start()</label><br>
-        <label><input type="radio" name="q2" value="b" style="width:auto"> print()</label><br>
-        <label><input type="radio" name="q2" value="c" style="width:auto"> main()</label>
+    </header>
+
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboard" class="page active">
+      <div class="rounded-2xl p-7 text-white mb-6" style="background: linear-gradient(120deg,#4338ca,#7c3aed)">
+        <h2 class="text-2xl font-bold mb-2">Welcome to StudyBuddy! 👋</h2>
+        <p class="mb-4">Organize your studies, manage tasks, and prepare for exams efficiently.</p>
       </div>
-      <div class="mb-5">
-        <p class="font-semibold mb-2">3. Which format specifier is commonly used for an int in C?</p>
-        <label><input type="radio" name="q3" value="a" style="width:auto"> %d</label><br>
-        <label><input type="radio" name="q3" value="b" style="width:auto"> %s</label><br>
-        <label><input type="radio" name="q3" value="c" style="width:auto"> %c</label>
-      </div>
-      <button class="primary" type="submit">Submit Quiz</button>
-    </form>
-    <div id="quizResult" class="mt-4 font-bold"></div>
-  </div>
-</section>
 
-<!-- PROGRESS -->
-<section id="progress" class="page">
-  <div class="card">
-    <h2 class="text-xl font-bold mb-4">📊 Your Study Progress</h2>
-    <p class="mb-2">Task completion</p>
-    <div class="w-full bg-slate-200 rounded-full h-4 mb-2">
-      <div id="progressBar" class="bg-indigo-600 h-4 rounded-full" style="width:0%"></div>
-    </div>
-    <p id="progressText" class="small mb-6">0% completed</p>
-    <div class="grid sm:grid-cols-2 gap-4">
-      <div class="bg-indigo-50 rounded-xl p-4">
-        <p class="small">Tasks completed</p>
-        <h3 id="progressCompleted" class="text-2xl font-bold">0</h3>
-      </div>
-      <div class="bg-purple-50 rounded-xl p-4">
-        <p class="small">Study sessions planned</p>
-        <h3 id="progressPlans" class="text-2xl font-bold">0</h3>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESOURCES -->
-<section id="resources" class="page">
-  <div class="card">
-    <h2 class="text-xl font-bold mb-4">📖 Learning Resources</h2>
-    <p class="text-slate-600 mb-4">Useful starting points for your B.Tech subjects.</p>
-    <div class="space-y-3">
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://www.programiz.com/c-programming" target="_blank" rel="noopener">💻 <b>C Programming</b><p class="small">Learn C concepts and examples.</p></a>
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://docs.oracle.com/javase/tutorial/" target="_blank" rel="noopener">☕ <b>Java Tutorials</b><p class="small">Java language fundamentals.</p></a>
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://www.khanacademy.org/math" target="_blank" rel="noopener">➗ <b>Mathematics</b><p class="small">Practice math topics.</p></a>
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://www.khanacademy.org/science/chemistry" target="_blank" rel="noopener">🧪 <b>Chemistry</b><p class="small">Study chemistry fundamentals.</p></a>
-      <a class="block rounded-xl bg-slate-50 p-4" href="https://developers.google.com/machine-learning" target="_blank" rel="noopener">🧠 <b>Machine Learning</b><p class="small">Explore machine-learning concepts.</p></a>
-    </div>
-  </div>
-</section>
-
-<footer class="text-center text-xs text-slate-400 mt-8 pb-5">
-  StudyBuddy AI Academic Assistant · Keep learning every day 🌟
-</footer>
-
-</main>
-</div>
-
-<script>
-"use strict";
-
-const API_URL = "/api/ask";
-
-/* Navigation */
-function showPage(pageId) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
-
-  const page = document.getElementById(pageId);
-  if (page) page.classList.add("active");
-
-  const button = document.querySelector('[data-page="' + pageId + '"]');
-  if (button) button.classList.add("active");
-
-  const titles = {
-    dashboard:"Dashboard",
-    assistant:"AI Assistant",
-    planner:"Study Planner",
-    tasks:"Tasks",
-    quiz:"Quick Quiz",
-    progress:"Progress",
-    resources:"Resources"
-  };
-  document.getElementById("pageTitle").textContent = titles[pageId] || "StudyBuddy";
-}
-
-document.querySelectorAll(".nav-btn").forEach(button => {
-  button.addEventListener("click", () => showPage(button.dataset.page));
-});
-
-/* Local storage */
-function loadData(key, fallback) {
-  try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : fallback;
-  } catch (error) {
-    return fallback;
-  }
-}
-
-function saveData(key, value) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch (error) {
-    console.warn("Could not save data in this browser.", error);
-  }
-}
-
-let tasks = loadData("studybuddy_tasks_v1", []);
-let plans = loadData("studybuddy_plans_v1", []);
-let bestQuizScore = loadData("studybuddy_quiz_v1", 0);
-
-/* Safe HTML output */
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, character => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#039;"
-  })[character]);
-}
-
-function formatDate(date) {
-  if (!date) return "No date";
-  const parsed = new Date(date + "T00:00:00");
-  return Number.isNaN(parsed.getTime())
-    ? escapeHTML(date)
-    : parsed.toLocaleDateString();
-}
-
-/* Tasks */
-document.getElementById("taskForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  tasks.push({
-    id: Date.now(),
-    title: document.getElementById("taskTitle").value.trim(),
-    subject: document.getElementById("taskSubject").value.trim(),
-    due: document.getElementById("taskDue").value,
-    priority: document.getElementById("taskPriority").value,
-    done: false
-  });
-
-  saveData("studybuddy_tasks_v1", tasks);
-  event.target.reset();
-  document.getElementById("taskDue").value = "";
-  renderTasks();
-});
-
-function toggleTask(id) {
-  tasks = tasks.map(task =>
-    task.id === id ? {...task, done: !task.done} : task
-  );
-  saveData("studybuddy_tasks_v1", tasks);
-  renderTasks();
-}
-
-function deleteTask(id) {
-  tasks = tasks.filter(task => task.id !== id);
-  saveData("studybuddy_tasks_v1", tasks);
-  renderTasks();
-}
-
-function renderTasks() {
-  const list = document.getElementById("taskList");
-  const dashboard = document.getElementById("dashboardTasks");
-
-  if (!tasks.length) {
-    list.innerHTML = '<p class="text-slate-500 text-sm">No tasks yet. Add your first task above.</p>';
-    dashboard.textContent = "No tasks added yet.";
-  } else {
-    list.innerHTML = tasks.map(task => `
-      <div class="border rounded-xl p-4 flex flex-wrap justify-between items-center gap-3">
-        <div>
-          <p class="font-semibold ${task.done ? "line-through text-slate-400" : ""}">${escapeHTML(task.title)}</p>
-          <p class="small">${escapeHTML(task.subject)} · Due ${formatDate(task.due)}</p>
-          <p class="small">Priority: ${escapeHTML(task.priority)} · ${task.done ? "Completed" : "Pending"}</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div class="card">
+          <p class="text-xs text-slate-400 font-semibold uppercase">Total Tasks</p>
+          <h2 id="totalTasks" class="text-3xl font-bold mt-2">0</h2>
         </div>
-        <div class="flex gap-2">
-          <button class="secondary" onclick="toggleTask(${task.id})">${task.done ? "Undo" : "Complete"}</button>
-          <button class="secondary" onclick="deleteTask(${task.id})">Delete</button>
+        <div class="card">
+          <p class="text-xs text-slate-400 font-semibold uppercase">Completed</p>
+          <h2 id="completedTasks" class="text-3xl font-bold mt-2 text-green-600">0</h2>
+        </div>
+        <div class="card">
+          <p class="text-xs text-slate-400 font-semibold uppercase">Pending</p>
+          <h2 id="pendingTasks" class="text-3xl font-bold mt-2 text-orange-500">0</h2>
+        </div>
+        <div class="card">
+          <p class="text-xs text-slate-400 font-semibold uppercase">Quiz Score</p>
+          <h2 id="quizScore" class="text-3xl font-bold mt-2">0%</h2>
         </div>
       </div>
-    `).join("");
 
-    const upcoming = tasks.filter(t => !t.done).slice(0, 4);
-    dashboard.innerHTML = upcoming.length
-      ? upcoming.map(t => `<div class="py-2 border-b last:border-0"><b>${escapeHTML(t.title)}</b><p class="small">Due ${formatDate(t.due)}</p></div>`).join("")
-      : "All tasks completed! 🎉";
-  }
-
-  const completed = tasks.filter(t => t.done).length;
-  const pending = tasks.length - completed;
-  const percent = tasks.length ? Math.round(completed / tasks.length * 100) : 0;
-
-  document.getElementById("totalTasks").textContent = tasks.length;
-  document.getElementById("completedTasks").textContent = completed;
-  document.getElementById("pendingTasks").textContent = pending;
-  document.getElementById("progressCompleted").textContent = completed;
-  document.getElementById("progressBar").style.width = percent + "%";
-  document.getElementById("progressText").textContent = percent + "% completed";
-  document.getElementById("progressPlans").textContent = plans.length;
-}
-
-/* Study planner */
-document.getElementById("plannerForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  plans.push({
-    id: Date.now(),
-    subject: document.getElementById("planSubject").value.trim(),
-    topic: document.getElementById("planTopic").value.trim(),
-    date: document.getElementById("planDate").value,
-    duration: Number(document.getElementById("planDuration").value)
-  });
-
-  saveData("studybuddy_plans_v1", plans);
-  event.target.reset();
-  document.getElementById("planDuration").value = 60;
-  renderPlans();
-});
-
-function deletePlan(id) {
-  plans = plans.filter(plan => plan.id !== id);
-  saveData("studybuddy_plans_v1", plans);
-  renderPlans();
-}
-
-function renderPlans() {
-  const list = document.getElementById("plannerList");
-
-  if (!plans.length) {
-    list.innerHTML = '<p class="text-slate-500 text-sm">No study sessions planned yet.</p>';
-  } else {
-    list.innerHTML = plans
-      .slice()
-      .sort((a, b) => a.date.localeCompare(b.date))
-      .map(plan => `
-        <div class="border rounded-xl p-4 flex flex-wrap justify-between gap-3">
-          <div>
-            <p class="font-semibold">${escapeHTML(plan.subject)} — ${escapeHTML(plan.topic)}</p>
-            <p class="small">${formatDate(plan.date)} · ${Number(plan.duration)} minutes</p>
+      <div class="grid lg:grid-cols-2 gap-5">
+        <div class="card">
+          <h3 class="font-bold text-lg mb-3">🚀 Quick Actions</h3>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="showPage('planner')" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700">Create Study Plan</button>
+            <button onclick="showPage('tasks')" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700">Add Task</button>
+            <button onclick="showPage('quiz')" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700">Take Quiz</button>
           </div>
-          <button class="secondary" onclick="deletePlan(${plan.id})">Delete</button>
         </div>
-      `).join("");
-  }
+        <div class="card">
+          <h3 class="font-bold text-lg mb-3">📌 Upcoming Tasks</h3>
+          <div id="dashboardTasks" class="text-sm text-slate-500">No tasks added yet.</div>
+        </div>
+      </div>
+    </section>
 
-  document.getElementById("progressPlans").textContent = plans.length;
-}
+    <!-- STUDY PLANNER SECTION -->
+    <section id="planner" class="page">
+      <div class="card">
+        <h2 class="text-xl font-bold mb-2">📅 Study Planner</h2>
+        <p class="text-sm text-slate-500 mb-4">Plan out your study sessions and milestones.</p>
+        <p class="text-sm text-slate-600">Planner features go here.</p>
+      </div>
+    </section>
 
-/* AI chat */
-const chatForm = document.getElementById("chatForm");
-const questionInput = document.getElementById("question");
-const chatbox = document.getElementById("chatbox");
-const chatStatus = document.getElementById("chatStatus");
-const sendButton = document.getElementById("sendButton");
+    <!-- TASKS SECTION -->
+    <section id="tasks" class="page">
+      <div class="card">
+        <h2 class="text-xl font-bold mb-2">✅ Tasks & To-Dos</h2>
+        <p class="text-sm text-slate-500 mb-4">Keep track of your academic assignments.</p>
+        <p class="text-sm text-slate-600">Task management controls go here.</p>
+      </div>
+    </section>
 
-function addMessage(text, role) {
-  const message = document.createElement("div");
-  message.className = "message " + (role === "user" ? "user-message" : "ai-message");
-  message.textContent = text;
-  chatbox.appendChild(message);
-  chatbox.scrollTop = chatbox.scrollHeight;
-}
+    <!-- QUIZ SECTION -->
+    <section id="quiz" class="page">
+      <div class="card">
+        <h2 class="text-xl font-bold mb-2">📝 Quick Quiz</h2>
+        <p class="text-sm text-slate-500 mb-4">Test your knowledge on core technical subjects.</p>
+        <p class="text-sm text-slate-600">Quiz modules go here.</p>
+      </div>
+    </section>
+  </main>
 
-function clearChat() {
-  chatbox.innerHTML = "";
-  addMessage("Chat cleared! What would you like to learn today?", "ai");
-  chatStatus.textContent = "";
-}
-
-chatForm.addEventListener("submit", async event => {
-  event.preventDefault();
-
-  const question = questionInput.value.trim();
-  if (!question) return;
-
-  addMessage(question, "user");
-  questionInput.value = "";
-  sendButton.disabled = true;
-  sendButton.textContent = "Thinking...";
-  chatStatus.textContent = "StudyBuddy is preparing your answer...";
-
-  try {
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({question})
-    });
-
-    const data = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
-      throw new Error(data.error || ("Server error: " + response.status));
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      
+      const titles = {
+        dashboard: 'Dashboard',
+        planner: 'Study Planner',
+        tasks: 'Tasks',
+        quiz: 'Quick Quiz'
+      };
+      document.getElementById('pageTitle').textContent = titles[pageId] || 'Dashboard';
     }
-
-    const answer =
-      data.answer ||
-      data.response ||
-      data.text ||
-      data.message;
-
-    if (!answer) {
-      throw new Error("The server returned no answer. Check the Vercel API code and Gemini API key.");
-    }
-
-    addMessage(answer, "ai");
-    chatStatus.textContent = "Answer received successfully.";
-  } catch (error) {
-    console.error("StudyBuddy AI error:", error);
-    addMessage(
-      "Sorry, I couldn't get an AI response. " +
-      (error.message || "Please try again.") +
-      "\n\nIf this says 'Failed to fetch', check the Vercel API deployment and CORS settings.",
-      "ai"
-    );
-    chatStatus.textContent = "Connection failed. Please check your internet connection and Vercel API.";
-  } finally {
-    sendButton.disabled = false;
-    sendButton.textContent = "Send Question ✨";
-  }
-});
-
-/* Quick quiz */
-document.getElementById("quizForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  const answers = {q1:"b", q2:"c", q3:"a"};
-  let score = 0;
-  let attempted = 0;
-
-  for (const [name, correct] of Object.entries(answers)) {
-    const selected = document.querySelector('input[name="' + name + '"]:checked');
-    if (selected) {
-      attempted++;
-      if (selected.value === correct) score++;
-    }
-  }
-
-  if (attempted < 3) {
-    document.getElementById("quizResult").textContent =
-      "Please answer all 3 questions before submitting.";
-    return;
-  }
-
-  const percent = Math.round(score / 3 * 100);
-  bestQuizScore = Math.max(bestQuizScore, percent);
-  saveData("studybuddy_quiz_v1", bestQuizScore);
-
-  document.getElementById("quizScore").textContent = percent + "%";
-  document.getElementById("quizResult").textContent =
-    "Your score: " + score + "/3 (" + percent + "%). " +
-    (score === 3 ? "Excellent work! 🎉" : "Keep practising! 💪");
-});
-
-/* Initial setup */
-document.getElementById("planDate").value = new Date().toLocaleDateString("en-CA");
-renderTasks();
-renderPlans();
-document.getElementById("quizScore").textContent = bestQuizScore + "%";
-</script>
+  </script>
 </body>
 </html>

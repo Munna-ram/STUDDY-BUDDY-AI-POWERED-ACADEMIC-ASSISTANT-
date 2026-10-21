@@ -30,9 +30,9 @@ export default async function handler(req, res) {
     // Initialize Google Gen AI SDK
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-    // Generate content using a currently supported model name
+    // Use gemini-flash-latest to ensure full compatibility with the SDK
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-flash-latest',
       contents: userPrompt,
     });
 

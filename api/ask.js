@@ -1,52 +1,43 @@
+import { GoogleGenAI } from '@google/genai';
+
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  // Enable CORS headers so your frontend can communicate with the API
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
 
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
   }
 
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed. Use POST." });
-  }
-
-  const { question } = req.body || {};
-
-  if (!question || typeof question !== "string" || !question.trim()) {
-    return res.status(400).json({ error: "A valid question is required." });
-  }
-
-  const key = process.env.GEMINI_API_KEY;
-  if (!key) {
-    return res.status(503).json({ error: "AI is not configured yet. Add GEMINI_API_KEY to your deployment environment." });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(key)}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ role: "user", parts: [{ text: question.trim() }] }]
-        })
-      }
-    );
+    const { prompt } = req.body;
 
-    const data = await response.json();
-
-    if (response.ok) {
-      const answer = data.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("").trim();
-      if (answer) {
-        return res.status(200).json({ answer });
-      } else {
-        return res.status(502).json({ error: "The AI did not return an answer." });
-      }
-    } else {
-      return res.status(502).json({ error: data.error?.message || "AI provider returned an error." });
+    if (!prompt) {
+      return res.status(400).json({ error: 'Prompt is required' });
     }
-  } catch (err) {
-    return res.status(502).json({ error: "Could not contact the AI service. Try again later." });
+
+    // Initialize the Google Gen AI SDK with your Vercel environment variable
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+    // Call the model (using gemini-2.5-flash)
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+    });
+
+    return res.status(200).json({ text: response.text });
+  } catch (error) {
+    console.error('Gemini API Error:', error);
+    return res.status(500).json({ error: error.message || 'Internal server error' });
   }
 }

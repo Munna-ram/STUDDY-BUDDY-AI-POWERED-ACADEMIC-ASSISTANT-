@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StudyBuddy - Academic Assistant</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Supabase JS Client Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     .page { display: none; }
     .page.active { display: block; }
@@ -20,14 +22,15 @@
         <span>📚</span> StudyBuddy
       </div>
       <nav class="space-y-2">
-        <button onclick="showPage('dashboard')" class="w-full text-left px-4 py-2 rounded-lg bg-indigo-800 font-medium">🏠 Dashboard</button>
-        <button onclick="showPage('planner')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-indigo-800 transition">📅 Study Planner</button>
-        <button onclick="showPage('tasks')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-indigo-800 transition">✅ Tasks</button>
-        <button onclick="showPage('quiz')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-indigo-800 transition">📝 Quick Quiz</button>
+        <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full text-left px-4 py-2 rounded-lg bg-indigo-800 font-medium transition">🏠 Dashboard</button>
+        <button onclick="showPage('planner')" id="nav-planner" class="w-full text-left px-4 py-2 rounded-lg hover:bg-indigo-800 transition">📅 Study Planner</button>
+        <button onclick="showPage('tasks')" id="nav-tasks" class="w-full text-left px-4 py-2 rounded-lg hover:bg-indigo-800 transition">✅ Tasks</button>
+        <button onclick="showPage('quiz')" id="nav-quiz" class="w-full text-left px-4 py-2 rounded-lg hover:bg-indigo-800 transition">📝 Quick Quiz</button>
       </nav>
     </div>
-    <div class="text-xs text-indigo-200">
-      Study smart. Stay organized. Achieve more.
+    <div>
+      <div id="userInfo" class="text-xs text-indigo-200 mb-2 truncate">Not signed in</div>
+      <button onclick="handleAuthAction()" id="authBtn" class="w-full bg-indigo-700 hover:bg-indigo-600 text-white text-xs py-2 rounded-lg transition font-medium">Sign In / Sign Up</button>
     </div>
   </aside>
 
@@ -38,7 +41,7 @@
         <h1 id="pageTitle" class="text-2xl font-bold">Dashboard</h1>
         <p class="text-slate-500 text-sm">Your personal learning space</p>
       </div>
-      <div class="text-sm bg-white rounded-xl px-4 py-3 shadow-sm">
+      <div class="text-sm bg-white rounded-xl px-4 py-3 shadow-sm font-medium">
         🎓 B.Tech Study Workspace
       </div>
     </header>
@@ -46,7 +49,7 @@
     <!-- DASHBOARD SECTION -->
     <section id="dashboard" class="page active">
       <div class="rounded-2xl p-7 text-white mb-6" style="background: linear-gradient(120deg,#4338ca,#7c3aed)">
-        <h2 class="text-2xl font-bold mb-2">Welcome to StudyBuddy! 👋</h2>
+        <h2 class="text-2xl font-bold mb-2">Welcome back! 👋</h2>
         <p class="mb-4">Organize your studies, manage tasks, and prepare for exams efficiently.</p>
       </div>
 
@@ -90,7 +93,11 @@
       <div class="card">
         <h2 class="text-xl font-bold mb-2">📅 Study Planner</h2>
         <p class="text-sm text-slate-500 mb-4">Plan out your study sessions and milestones.</p>
-        <p class="text-sm text-slate-600">Planner features go here.</p>
+        <div class="space-y-3">
+          <input type="text" id="planTitle" placeholder="Subject / Milestone title..." class="w-full border rounded-lg p-2 text-sm">
+          <button onclick="addPlan()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700">Add Study Plan</button>
+        </div>
+        <div id="plannerList" class="mt-4 space-y-2"></div>
       </div>
     </section>
 
@@ -99,7 +106,11 @@
       <div class="card">
         <h2 class="text-xl font-bold mb-2">✅ Tasks & To-Dos</h2>
         <p class="text-sm text-slate-500 mb-4">Keep track of your academic assignments.</p>
-        <p class="text-sm text-slate-600">Task management controls go here.</p>
+        <div class="flex gap-2 mb-4">
+          <input type="text" id="taskInput" placeholder="New task name..." class="flex-1 border rounded-lg p-2 text-sm">
+          <button onclick="addTask()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700">Add Task</button>
+        </div>
+        <div id="taskList" class="space-y-2"></div>
       </div>
     </section>
 
@@ -108,15 +119,75 @@
       <div class="card">
         <h2 class="text-xl font-bold mb-2">📝 Quick Quiz</h2>
         <p class="text-sm text-slate-500 mb-4">Test your knowledge on core technical subjects.</p>
-        <p class="text-sm text-slate-600">Quiz modules go here.</p>
+        <div id="quizContainer">
+          <p class="text-sm font-medium mb-2">Q: Which data structure uses LIFO (Last In, First Out)?</p>
+          <div class="space-y-2 mb-4">
+            <label class="block text-sm"><input type="radio" name="q1" value="queue"> Queue</label>
+            <label class="block text-sm"><input type="radio" name="q1" value="stack"> Stack</label>
+            <label class="block text-sm"><input type="radio" name="q1" value="array"> Array</label>
+          </div>
+          <button onclick="submitQuiz()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700">Submit Answer</button>
+          <p id="quizResult" class="mt-3 text-sm font-semibold"></p>
+        </div>
       </div>
     </section>
   </main>
 
   <script>
+    // Supabase Configuration (Replace with your keys if needed)
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    let supabaseClient = null;
+    let currentUser = null;
+
+    if (SUPABASE_URL !== 'YOUR_SUPABASE_URL' && window.supabase) {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      checkUser();
+    }
+
+    async function checkUser() {
+      const { data } = await supabaseClient.auth.getSession();
+      if (data?.session) {
+        currentUser = data.session.user;
+        document.getElementById('userInfo').textContent = currentUser.email;
+        document.getElementById('authBtn').textContent = 'Sign Out';
+      }
+    }
+
+    async function handleAuthAction() {
+      if (!supabaseClient) {
+        alert('Supabase is not configured yet. Please update YOUR_SUPABASE_URL and YOUR_SUPABASE_ANON_KEY in index.html.');
+        return;
+      }
+      if (currentUser) {
+        await supabaseClient.auth.signOut();
+        currentUser = null;
+        document.getElementById('userInfo').textContent = 'Not signed in';
+        document.getElementById('authBtn').textContent = 'Sign In / Sign Up';
+      } else {
+        const email = prompt('Enter your email for sign in/sign up:');
+        if (!email) return;
+        const password = prompt('Enter your password:');
+        if (!password) return;
+        
+        const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) {
+          const { error: signUpErr } = await supabaseClient.auth.signUp({ email, password });
+          if (signUpErr) alert(signUpErr.message);
+          else alert('Sign up successful! Check your email or try signing in.');
+        } else {
+          location.reload();
+        }
+      }
+    }
+
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('aside nav button').forEach(b => b.classList.remove('bg-indigo-800', 'font-medium'));
+      
       document.getElementById(pageId).classList.add('active');
+      const activeBtn = document.getElementById('nav-' + pageId);
+      if (activeBtn) activeBtn.classList.add('bg-indigo-800', 'font-medium');
       
       const titles = {
         dashboard: 'Dashboard',
@@ -125,6 +196,81 @@
         quiz: 'Quick Quiz'
       };
       document.getElementById('pageTitle').textContent = titles[pageId] || 'Dashboard';
+    }
+
+    // Local state managers for fallback / mock view
+    let tasks = [];
+    let plans = [];
+
+    function addTask() {
+      const input = document.getElementById('taskInput');
+      if (!input.value.trim()) return;
+      tasks.push({ text: input.value.trim(), completed: false });
+      input.value = '';
+      renderTasks();
+    }
+
+    function toggleTask(index) {
+      tasks[index].completed = !tasks[index].completed;
+      renderTasks();
+    }
+
+    function renderTasks() {
+      const list = document.getElementById('taskList');
+      const dashList = document.getElementById('dashboardTasks');
+      
+      let html = '';
+      tasks.forEach((t, i) => {
+        html += `<div class="flex items-center justify-between p-2 bg-slate-50 rounded border">
+          <label class="flex items-center gap-2 text-sm ${t.completed ? 'line-through text-slate-400' : ''}">
+            <input type="checkbox" ${t.completed ? 'checked' : ''} onchange="toggleTask(${i})"> ${t.text}
+          </label>
+        </div>`;
+      });
+      list.innerHTML = html || '<p class="text-sm text-slate-500">No tasks added yet.</p>';
+      dashList.innerHTML = html || '<p class="text-sm text-slate-500">No tasks added yet.</p>';
+
+      const total = tasks.length;
+      const completed = tasks.filter(t => t.completed).length;
+      document.getElementById('totalTasks').textContent = total;
+      document.getElementById('completedTasks').textContent = completed;
+      document.getElementById('pendingTasks').textContent = total - completed;
+    }
+
+    function addPlan() {
+      const input = document.getElementById('planTitle');
+      if (!input.value.trim()) return;
+      plans.push(input.value.trim());
+      input.value = '';
+      renderPlans();
+    }
+
+    function renderPlans() {
+      const list = document.getElementById('plannerList');
+      let html = '';
+      plans.forEach(p => {
+        html += `<div class="p-3 bg-indigo-50 border border-indigo-100 rounded-lg text-sm text-indigo-900 font-medium">${p}</div>`;
+      });
+      list.innerHTML = html || '<p class="text-sm text-slate-500">No study plans created yet.</p>';
+    }
+
+    function submitQuiz() {
+      const selected = document.querySelector('input[name="q1"]:checked');
+      const res = document.getElementById('quizResult');
+      if (!selected) {
+        res.textContent = 'Please select an answer.';
+        res.className = 'mt-3 text-sm font-semibold text-orange-500';
+        return;
+      }
+      if (selected.value === 'stack') {
+        res.textContent = 'Correct! Stack uses LIFO.';
+        res.className = 'mt-3 text-sm font-semibold text-green-600';
+        document.getElementById('quizScore').textContent = '100%';
+      } else {
+        res.textContent = 'Incorrect. Try again!';
+        res.className = 'mt-3 text-sm font-semibold text-red-500';
+        document.getElementById('quizScore').textContent = '0%';
+      }
     }
   </script>
 </body>

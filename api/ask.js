@@ -1,7 +1,7 @@
 import { GoogleGenAI } from '@google/genai';
 
 export default async function handler(req, res) {
-  // Enable CORS headers so your frontend can communicate with the API
+  // CORS Headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -20,19 +20,20 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { prompt } = req.body;
+    const { prompt, question } = req.body;
+    const userPrompt = prompt || question;
 
-    if (!prompt) {
+    if (!userPrompt) {
       return res.status(400).json({ error: 'Prompt is required' });
     }
 
-    // Initialize the Google Gen AI SDK with your Vercel environment variable
+    // Initialize Google Gen AI SDK
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-    // Call the model (using gemini-2.5-flash)
+    // Generate content using a currently supported model name
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
-      contents: prompt,
+      contents: userPrompt,
     });
 
     return res.status(200).json({ text: response.text });

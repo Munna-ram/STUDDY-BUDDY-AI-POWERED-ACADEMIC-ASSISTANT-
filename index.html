@@ -103,18 +103,28 @@
         <p class="text-indigo-100 text-lg max-w-xl relative z-10 font-medium">Organize your assignments, track milestones, and crush your academic goals with style.</p>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        <div class="glass-card p-6">
+      <!-- Stats & Progress Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="glass-card p-6 flex flex-col justify-center">
           <p class="text-xs text-slate-500 font-bold uppercase">Total Tasks</p>
           <h2 id="totalTasks" class="text-4xl font-extrabold mt-1 text-slate-800">0</h2>
         </div>
-        <div class="glass-card p-6">
+        <div class="glass-card p-6 flex flex-col justify-center">
           <p class="text-xs text-slate-500 font-bold uppercase">Completed</p>
           <h2 id="completedTasks" class="text-4xl font-extrabold mt-1 text-green-500">0</h2>
         </div>
-        <div class="glass-card p-6">
+        <div class="glass-card p-6 flex flex-col justify-center">
           <p class="text-xs text-slate-500 font-bold uppercase">Pending</p>
           <h2 id="pendingTasks" class="text-4xl font-extrabold mt-1 text-orange-500">0</h2>
+        </div>
+        <div class="glass-card p-6">
+          <p class="text-xs text-slate-500 font-bold uppercase">Progress</p>
+          <div class="flex flex-col mt-1">
+            <h2 id="taskProgress" class="text-4xl font-extrabold text-indigo-600">0%</h2>
+            <div class="w-full bg-slate-200 rounded-full h-2.5 mt-3 overflow-hidden">
+              <div id="progressBar" class="bg-gradient-to-r from-indigo-500 to-purple-500 h-2.5 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -122,9 +132,9 @@
         <div class="glass-card p-7">
           <h3 class="font-extrabold text-xl mb-4 text-slate-800">⚡ Quick Actions</h3>
           <div class="flex flex-wrap gap-3">
-            <button onclick="showPage('planner')" class="bg-indigo-50 text-indigo-600 px-5 py-2.5 rounded-xl font-bold hover:bg-indigo-600 hover:text-white transition-all">Create Plan</button>
-            <button onclick="showPage('tasks')" class="bg-pink-50 text-pink-600 px-5 py-2.5 rounded-xl font-bold hover:bg-pink-500 hover:text-white transition-all">Add Task</button>
-            <button onclick="showPage('roadmap')" class="bg-purple-50 text-purple-600 px-5 py-2.5 rounded-xl font-bold hover:bg-purple-600 hover:text-white transition-all">View Roadmap</button>
+            <button onclick="showPage('planner')" class="bg-indigo-50 text-indigo-600 px-5 py-2.5 rounded-xl font-bold hover:bg-indigo-600 hover:text-white transition-all shadow-sm">Create Plan</button>
+            <button onclick="showPage('tasks')" class="bg-pink-50 text-pink-600 px-5 py-2.5 rounded-xl font-bold hover:bg-pink-500 hover:text-white transition-all shadow-sm">Add Task</button>
+            <button onclick="showPage('roadmap')" class="bg-purple-50 text-purple-600 px-5 py-2.5 rounded-xl font-bold hover:bg-purple-600 hover:text-white transition-all shadow-sm">View Roadmap</button>
           </div>
         </div>
         <div class="glass-card p-7">
@@ -140,14 +150,16 @@
         <h2 class="text-2xl font-extrabold mb-2 text-slate-800">📅 Strategy & Milestones</h2>
         <p class="text-slate-500 font-medium mb-6">Schedule your major study blocks.</p>
         
-        <div class="flex flex-col md:flex-row gap-3 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200">
-          <input type="text" id="planTitle" placeholder="E.g., Complete Data Structures Module..." class="flex-1 border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
-          <div class="flex gap-3">
-            <input type="date" id="planDate" class="border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
-            <input type="time" id="planTime" class="border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
+        <!-- FIXED LAYOUT: Using flex-col and wrapping to prevent overflow -->
+        <div class="flex flex-col lg:flex-row gap-3 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <input type="text" id="planTitle" placeholder="E.g., Complete Data Structures Module..." class="flex-1 min-w-0 border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
+          <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+            <input type="date" id="planDate" class="flex-1 sm:flex-none w-full sm:w-auto border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
+            <input type="time" id="planTime" class="flex-1 sm:flex-none w-full sm:w-auto border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
           </div>
-          <button onclick="addPlan()" class="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all">Schedule</button>
+          <button onclick="addPlan()" class="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all shrink-0 whitespace-nowrap">Schedule</button>
         </div>
+        
         <div id="plannerList" class="space-y-3"></div>
       </div>
     </section>
@@ -158,14 +170,16 @@
         <h2 class="text-2xl font-extrabold mb-2 text-slate-800">✅ Action Items</h2>
         <p class="text-slate-500 font-medium mb-6">Add assignments and deadlines, and mark them complete.</p>
         
-        <div class="flex flex-col md:flex-row gap-3 mb-8 bg-slate-50 p-4 rounded-2xl border border-slate-200">
-          <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
-          <div class="flex gap-3">
-            <input type="date" id="taskDate" class="border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
-            <input type="time" id="taskTime" class="border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
+        <!-- FIXED LAYOUT: Using flex-col and wrapping to prevent overflow -->
+        <div class="flex flex-col lg:flex-row gap-3 mb-8 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 min-w-0 border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
+          <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+            <input type="date" id="taskDate" class="flex-1 sm:flex-none w-full sm:w-auto border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
+            <input type="time" id="taskTime" class="flex-1 sm:flex-none w-full sm:w-auto border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
           </div>
-          <button onclick="addTask()" class="bg-pink-500 text-white px-8 py-3 rounded-xl font-bold hover:bg-pink-600 transition-all">Add Task</button>
+          <button onclick="addTask()" class="bg-pink-500 text-white px-8 py-3 rounded-xl font-bold hover:bg-pink-600 transition-all shrink-0 whitespace-nowrap">Add Task</button>
         </div>
+        
         <div id="taskList" class="space-y-3"></div>
       </div>
     </section>
@@ -432,9 +446,18 @@
       });
       dashList.innerHTML = dashHtml || empty;
 
-      document.getElementById('totalTasks').textContent = tasks.length;
-      document.getElementById('completedTasks').textContent = tasks.filter(t=>t.completed).length;
-      document.getElementById('pendingTasks').textContent = tasks.filter(t=>!t.completed).length;
+      // Update Dashboard Stats and Progress Bar
+      const total = tasks.length;
+      const completed = tasks.filter(t => t.completed).length;
+      const pending = total - completed;
+      const progressPercent = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+      document.getElementById('totalTasks').textContent = total;
+      document.getElementById('completedTasks').textContent = completed;
+      document.getElementById('pendingTasks').textContent = pending;
+      
+      document.getElementById('taskProgress').textContent = progressPercent + '%';
+      document.getElementById('progressBar').style.width = progressPercent + '%';
     }
 
     let plans = [];
@@ -461,8 +484,8 @@
       plans.forEach(p => {
         const { formattedDate, formattedTime } = formatDateTime(p.date, p.time);
         
-        let dateHtml = formattedDate ? `<div>📅 Date: ${formattedDate}</div>` : '';
-        let timeHtml = formattedTime ? `<div>⏰ Time: ${formattedTime}</div>` : '';
+        let dateHtml = formattedDate ? `<div>📅 ${formattedDate}</div>` : '';
+        let timeHtml = formattedTime ? `<div>⏰ ${formattedTime}</div>` : '';
 
         const detailsContainer = (dateHtml || timeHtml) ? `
           <div class="bg-white/50 px-4 py-2 rounded-xl text-xs font-bold text-indigo-600 flex flex-col items-end gap-1">

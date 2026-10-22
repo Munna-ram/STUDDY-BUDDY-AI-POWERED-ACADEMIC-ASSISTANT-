@@ -260,13 +260,12 @@
     <section id="planner" class="page px-2">
       <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
         <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-800 bg-indigo-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-indigo-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press an item to delete it.</span></p>
+        <p class="text-slate-700 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-800 bg-indigo-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-indigo-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press an item to delete it. Notifications active!</span></p>
         
         <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/80 p-8 rounded-[2rem] shadow-lg border-2 border-white items-center">
           <input type="text" id="planTitle" placeholder="What's your next big milestone?" class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 shadow-inner transition-all text-xl">
           <div class="flex flex-col sm:flex-row gap-5 shrink-0 w-full lg:w-auto">
             <input type="date" id="planDate" class="flex-1 sm:flex-none w-full sm:w-auto bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 shadow-inner transition-all text-lg">
-            <!-- DEFAULT SET TO 00:00 -->
             <input type="time" id="planTime" value="00:00" class="flex-1 sm:flex-none w-full sm:w-auto bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 shadow-inner transition-all text-lg">
           </div>
           <button onclick="addPlan()" class="w-full lg:w-auto bg-slate-900 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all text-xl transform hover:-translate-y-1">Schedule</button>
@@ -279,13 +278,12 @@
     <section id="tasks" class="page px-2">
       <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
         <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">✅ Action Items</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Add assignments and deadlines. <span class="text-pink-800 bg-pink-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-pink-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press a task to delete it.</span></p>
+        <p class="text-slate-700 font-extrabold mb-10 text-xl">Add assignments and deadlines. <span class="text-pink-800 bg-pink-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-pink-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press to delete. Notifications active!</span></p>
         
         <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/80 p-8 rounded-[2rem] shadow-lg border-2 border-white items-center">
           <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-pink-400 focus:border-pink-500 shadow-inner transition-all text-xl">
           <div class="flex flex-col sm:flex-row gap-5 shrink-0 w-full lg:w-auto">
             <input type="date" id="taskDate" class="flex-1 sm:flex-none w-full sm:w-auto bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-pink-400 focus:border-pink-500 shadow-inner transition-all text-lg">
-            <!-- DEFAULT SET TO 00:00 -->
             <input type="time" id="taskTime" value="00:00" class="flex-1 sm:flex-none w-full sm:w-auto bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-pink-400 focus:border-pink-500 shadow-inner transition-all text-lg">
           </div>
           <button onclick="addTask()" class="w-full lg:w-auto bg-slate-900 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all text-xl transform hover:-translate-y-1">Add Task</button>
@@ -306,7 +304,6 @@
             <p class="text-slate-800 font-extrabold mt-6 text-xl bg-white/70 inline-block px-6 py-3 rounded-xl shadow-sm border border-white">Your 4-year structured path to becoming a highly sought-after Software Engineer.</p>
           </div>
           
-          <!-- NEW ROADMAP PROGRESS BAR -->
           <div class="inner-glass bg-white/95 p-8 rounded-[2rem] w-full md:w-96 shadow-xl border-2 border-white transform hover:scale-105 transition-transform">
             <div class="flex justify-between items-end mb-4">
               <span class="text-xl font-black uppercase text-slate-600 tracking-widest">Completion</span>
@@ -429,7 +426,7 @@
             <p class="text-slate-800 font-extrabold mt-6 text-2xl bg-white/80 inline-block px-6 py-3 rounded-xl shadow-sm border border-white">Check these off to prove to recruiters you are the top 1% candidate.</p>
           </div>
           
-          <div class="inner-glass bg-white/95 p-8 rounded-[2rem] w-full md:w-96 shadow-2xl border-2 border-white transform hover:scale-105 transition-transform">
+          <div class="inner-glass bg-white/95 p-8 rounded-[2rem] w-full md:w-[28rem] shadow-2xl border-2 border-white transform hover:scale-105 transition-transform">
             <div class="flex justify-between items-end mb-4">
               <span class="text-xl font-black uppercase text-slate-600 tracking-widest">Readiness Score</span>
               <span id="interviewScore" class="text-6xl font-black text-emerald-600 drop-shadow-md">0%</span>
@@ -440,7 +437,6 @@
           </div>
         </div>
         
-        <!-- FIXED GRID TO md:grid-cols-2 lg:grid-cols-2 FOR MAXIMUM SPACING AND READABILITY -->
         <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-10 relative z-10">
           
           <!-- Column 1: Core Technical -->
@@ -507,6 +503,13 @@
   <script>
     let currentUser = null;
 
+    // --- REQUEST NOTIFICATION PERMISSIONS ON FIRST CLICK ---
+    document.addEventListener('click', () => {
+      if (Notification.permission === "default") {
+        Notification.requestPermission();
+      }
+    }, { once: true });
+
     function toggleAuth() {
       if (currentUser) {
         currentUser = null;
@@ -555,7 +558,7 @@
       const navs = ['dashboard', 'planner', 'tasks', 'roadmap', 'career'];
       navs.forEach(id => {
         const btn = document.getElementById('nav-' + id);
-        if(btn) btn.className = "w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-700 hover:text-indigo-700 transition-all text-lg hover:shadow-lg";
+        if(btn) btn.className = "w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-700 hover:text-indigo-700 transition-all text-lg hover:shadow-md";
       });
       document.getElementById(pageId).classList.add('active');
       const activeBtn = document.getElementById('nav-' + pageId);
@@ -625,7 +628,6 @@
       document.getElementById('taskModal').classList.remove('active');
     }
 
-    // --- Interview Readiness Progress Bar Logic ---
     function updateInterviewProgress() {
       const checkboxes = document.querySelectorAll('.interview-check');
       const total = checkboxes.length;
@@ -636,7 +638,6 @@
       document.getElementById('interviewProgressBar').style.width = percent + '%';
     }
 
-    // --- B.Tech Roadmap Progress Bar Logic ---
     function updateRoadmapProgress() {
       const checkboxes = document.querySelectorAll('.btech-check');
       const total = checkboxes.length;
@@ -647,7 +648,6 @@
       document.getElementById('roadmapProgressBar').style.width = percent + '%';
     }
 
-    // --- FORMAT DATE/TIME AND ENSURE 00:00 BEHAVIOR ---
     function formatDateTime(dateStr, timeStr) {
       let formattedDate = "";
       let formattedTime = "";
@@ -673,6 +673,51 @@
       return { formattedDate, formattedTime };
     }
 
+    // --- REAL TIME NOTIFICATIONS LOGIC ---
+    function sendNotification(title, body) {
+      try {
+        const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+        audio.play().catch(e => console.log('Audio blocked by browser:', e));
+      } catch(e) {}
+      
+      if (Notification.permission === "granted") {
+        new Notification(title, { body: body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' });
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") new Notification(title, { body: body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' });
+        });
+      }
+    }
+
+    function checkNotifications() {
+      const now = new Date();
+      
+      tasks.forEach(t => {
+        if (!t.completed && !t.notified && t.date !== "No Date") {
+          const taskTime = t.time || '00:00';
+          const taskDateTime = new Date(`${t.date}T${taskTime}`);
+          if (now >= taskDateTime) {
+            sendNotification("Task Due: " + t.text, "It is time to complete your action task!");
+            t.notified = true;
+          }
+        }
+      });
+
+      plans.forEach(p => {
+        if (!p.notified && p.date !== "No Date") {
+          const planTime = p.time || '00:00';
+          const planDateTime = new Date(`${p.date}T${planTime}`);
+          if (now >= planDateTime) {
+            sendNotification("Milestone Reached: " + p.text, "Your study plan milestone is happening now!");
+            p.notified = true;
+          }
+        }
+      });
+    }
+
+    // Run checker every 10 seconds
+    setInterval(checkNotifications, 10000);
+
     let holdTimer;
     function startHold(type, index) {
       holdTimer = setTimeout(() => {
@@ -687,6 +732,8 @@
 
     let tasks = []; 
     function addTask() {
+      if (Notification.permission === "default") Notification.requestPermission();
+      
       const input = document.getElementById('taskInput');
       const date = document.getElementById('taskDate');
       const time = document.getElementById('taskTime');
@@ -696,7 +743,8 @@
         text: input.value.trim(), 
         date: date.value || "No Date", 
         time: time.value || "00:00",
-        completed: false 
+        completed: false,
+        notified: false
       });
       
       input.value = ''; date.value = ''; time.value = '00:00';
@@ -719,13 +767,13 @@
         let timeHtml = `<div>⏰ Time: ${formattedTime}</div>`;
         
         const detailsContainer = `
-          <div class="text-lg font-black mt-4 flex flex-col gap-1.5 ${t.completed ? 'text-slate-400' : 'text-pink-600'}">
+          <div class="text-lg font-black mt-4 flex flex-col sm:flex-row gap-4 ${t.completed ? 'text-slate-400' : 'text-pink-600'}">
             ${dateHtml}
             ${timeHtml}
           </div>`;
 
         html += `
-        <div class="no-select inner-glass p-8 rounded-[2rem] flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all border-2 border-white ${t.completed ? 'opacity-60 bg-white/50' : 'bg-white/90 cursor-pointer'}"
+        <div class="no-select inner-glass p-8 rounded-[2rem] flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all border-2 border-white ${t.completed ? 'opacity-60 bg-white/50' : 'bg-white/95 cursor-pointer'}"
              onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
              ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()" ontouchmove="cancelHold()">
           <div class="flex-1 w-full min-w-0 pr-4">
@@ -740,7 +788,7 @@
         </div>`;
       });
       
-      const empty = '<div class="text-slate-500 font-black p-10 inner-glass rounded-[2rem] text-center text-2xl border-2 border-white border-dashed bg-white/40">No tasks yet! Add one above.</div>';
+      const empty = '<div class="text-slate-500 font-black p-10 inner-glass rounded-[2rem] text-center text-2xl border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
       list.innerHTML = html || empty; 
       
       const total = tasks.length;
@@ -758,6 +806,8 @@
 
     let plans = [];
     function addPlan() {
+      if (Notification.permission === "default") Notification.requestPermission();
+
       const input = document.getElementById('planTitle');
       const date = document.getElementById('planDate');
       const time = document.getElementById('planTime');
@@ -766,7 +816,8 @@
       plans.push({
         text: input.value.trim(),
         date: date.value || "No Date", 
-        time: time.value || "00:00" 
+        time: time.value || "00:00",
+        notified: false
       });
       
       input.value = ''; date.value = ''; time.value = '00:00';
@@ -784,7 +835,7 @@
         let timeHtml = `<div>⏰ Time: ${formattedTime}</div>`;
 
         const detailsContainer = `
-          <div class="bg-white/90 px-6 py-4 rounded-2xl text-lg font-black text-indigo-700 flex flex-col sm:items-end gap-1.5 shadow-sm border-2 border-white shrink-0 mt-4 sm:mt-0 min-w-max">
+          <div class="bg-white/95 px-6 py-4 rounded-2xl text-lg font-black text-indigo-700 flex flex-col sm:items-end gap-1.5 shadow-sm border-2 border-white shrink-0 mt-4 sm:mt-0 min-w-max">
             ${dateHtml}
             ${timeHtml}
           </div>`;
@@ -795,13 +846,13 @@
              ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()" ontouchmove="cancelHold()">
           <div class="flex items-start gap-6 font-black text-slate-900 text-3xl sm:text-4xl flex-1 w-full min-w-0 pr-4">
             <div class="w-2.5 h-full min-h-[4rem] bg-indigo-500 rounded-full shrink-0 shadow-[0_0_15px_rgba(99,102,241,0.6)]"></div>
-            <p class="force-wrap w-full mt-1 leading-snug">${p.text}</p>
+            <div class="force-wrap w-full mt-2 leading-snug">${p.text}</div>
           </div>
           ${detailsContainer}
         </div>`;
       });
       
-      list.innerHTML = html || '<div class="text-slate-500 font-black p-10 inner-glass rounded-[2rem] text-center text-2xl border-2 border-white border-dashed bg-white/40">No plans yet. Schedule a milestone above!</div>';
+      list.innerHTML = html || '<div class="text-slate-500 font-black p-10 inner-glass rounded-[2rem] text-center text-2xl border-2 border-white border-dashed bg-white/60">No plans yet. Schedule a milestone above!</div>';
     }
 
     renderTasks(); 

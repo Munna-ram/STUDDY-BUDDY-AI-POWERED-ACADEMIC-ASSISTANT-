@@ -33,7 +33,6 @@
     .modal-overlay { display: none; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); }
     .modal-overlay.active { display: flex; animation: fadeIn 0.3s ease forwards; }
 
-    /* Custom Input styling for Date/Time */
     input[type="date"], input[type="time"] {
       color: #475569;
     }
@@ -177,7 +176,6 @@
         <h2 class="text-3xl font-extrabold mb-2 text-slate-800">🗺️ B.Tech Technical Skills Roadmap</h2>
         <p class="text-slate-500 font-medium mb-8">Select a year to see what you need to focus on to become an industry-ready engineer.</p>
         
-        <!-- Interactive Tabs -->
         <div class="flex flex-wrap gap-3 mb-8 border-b-2 border-slate-100 pb-4">
           <button onclick="showYear('year1', this)" class="year-tab-btn bg-indigo-600 text-white px-6 py-2.5 rounded-full font-bold shadow-md transition-all transform hover:-translate-y-0.5">Year 1</button>
           <button onclick="showYear('year2', this)" class="year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all">Year 2</button>
@@ -186,8 +184,6 @@
         </div>
 
         <div class="relative min-h-[300px]">
-          
-          <!-- YEAR 1 CONTENT -->
           <div id="year1" class="year-content active grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-100">
             <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 shadow-sm">
               <div class="font-extrabold text-indigo-800 mb-4 text-lg border-b-2 border-indigo-200 pb-2">Semester 1</div>
@@ -209,7 +205,6 @@
             </div>
           </div>
 
-          <!-- YEAR 2 CONTENT -->
           <div id="year2" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
             <div class="bg-pink-50 p-6 rounded-2xl border border-pink-100 shadow-sm">
               <div class="font-extrabold text-pink-800 mb-4 text-lg border-b-2 border-pink-200 pb-2">Semester 3</div>
@@ -231,7 +226,6 @@
             </div>
           </div>
 
-          <!-- YEAR 3 CONTENT -->
           <div id="year3" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
             <div class="bg-purple-50 p-6 rounded-2xl border border-purple-100 shadow-sm">
               <div class="font-extrabold text-purple-800 mb-4 text-lg border-b-2 border-purple-200 pb-2">Semester 5</div>
@@ -253,7 +247,6 @@
             </div>
           </div>
 
-          <!-- YEAR 4 CONTENT -->
           <div id="year4" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
             <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 shadow-sm">
               <div class="font-extrabold text-emerald-800 mb-4 text-lg border-b-2 border-emerald-200 pb-2">Semester 7</div>
@@ -274,14 +267,12 @@
               </ul>
             </div>
           </div>
-
         </div>
       </div>
     </section>
   </main>
 
   <script>
-    // --- 1. MOCK AUTHENTICATION ---
     let currentUser = null;
 
     function toggleAuth() {
@@ -327,7 +318,6 @@
       mockSignIn();
     }
 
-    // --- 2. NAVIGATION ---
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       const navs = ['dashboard', 'planner', 'tasks', 'roadmap'];
@@ -343,42 +333,50 @@
       document.getElementById('pageTitle').textContent = titles[pageId];
     }
 
-    // --- 3. ROADMAP TABS ---
     function showYear(yearId, btnElement) {
-      // Hide all year content
       document.querySelectorAll('.year-content').forEach(el => {
         el.classList.add('hidden', 'opacity-0', 'pointer-events-none');
         el.classList.remove('active', 'opacity-100');
       });
-      
-      // Reset all buttons to unselected state
       document.querySelectorAll('.year-tab-btn').forEach(btn => {
         btn.className = "year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all";
       });
       
-      // Show selected year
       const target = document.getElementById(yearId);
       target.classList.remove('hidden', 'pointer-events-none');
-      
-      // Slight delay to allow display:block to apply before animating opacity
-      setTimeout(() => {
-        target.classList.add('active', 'opacity-100');
-      }, 10);
-
-      // Highlight selected button
+      setTimeout(() => { target.classList.add('active', 'opacity-100'); }, 10);
       btnElement.className = "year-tab-btn bg-indigo-600 text-white px-6 py-2.5 rounded-full font-bold shadow-md transition-all transform hover:-translate-y-0.5";
     }
 
-    // --- 4. TASKS LOGIC (WITH DATE/TIME & COMPLETE BUTTON) ---
+    // --- Format Helper: DD/MM/YYYY and 12-Hour AM/PM ---
+    function formatDateTime(dateStr, timeStr) {
+      let formattedDate = "";
+      let formattedTime = "";
+      
+      if (dateStr && dateStr !== "No Date") {
+        const [yyyy, mm, dd] = dateStr.split('-');
+        formattedDate = `${dd}/${mm}/${yyyy}`;
+      }
+      
+      if (timeStr && timeStr !== "No Time") {
+        let [hour, minute] = timeStr.split(':');
+        hour = parseInt(hour, 10);
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        hour = hour % 12;
+        hour = hour ? hour : 12; // 0 becomes 12
+        formattedTime = `${hour}:${minute} ${ampm}`;
+      }
+      
+      return { formattedDate, formattedTime };
+    }
+
     let tasks = []; 
-    
     function addTask() {
       const input = document.getElementById('taskInput');
       const date = document.getElementById('taskDate');
       const time = document.getElementById('taskTime');
       
       if (!input.value.trim()) return;
-      
       tasks.push({ 
         text: input.value.trim(), 
         date: date.value || "No Date", 
@@ -401,13 +399,23 @@
       let html = '';
       
       tasks.forEach((t, i) => {
-        const dateTimeStr = (t.date !== "No Date" || t.time !== "No Time") ? `<div class="text-xs font-bold mt-1 ${t.completed ? 'text-slate-400' : 'text-pink-500'}">⏰ Deadline: ${t.date} ${t.time}</div>` : '';
+        const { formattedDate, formattedTime } = formatDateTime(t.date, t.time);
         
+        let dateHtml = formattedDate ? `<div>📅 Date: ${formattedDate}</div>` : '';
+        let timeHtml = formattedTime ? `<div>⏰ Time: ${formattedTime}</div>` : '';
+        
+        // flex-col ensures time is directly below the date
+        const detailsContainer = (dateHtml || timeHtml) ? `
+          <div class="text-xs font-bold mt-2 flex flex-col gap-1 ${t.completed ? 'text-slate-400' : 'text-pink-500'}">
+            ${dateHtml}
+            ${timeHtml}
+          </div>` : '';
+
         html += `
         <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-all ${t.completed ? 'opacity-70 bg-slate-50' : ''}">
           <div>
             <span class="font-bold text-lg ${t.completed ? 'line-through text-slate-400' : 'text-slate-800'}">${t.text}</span>
-            ${dateTimeStr}
+            ${detailsContainer}
           </div>
           <button onclick="markTaskComplete(${i})" class="px-5 py-2 rounded-xl font-bold transition-all text-sm whitespace-nowrap ${t.completed ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-green-100 text-green-700 hover:bg-green-500 hover:text-white border border-green-200'}">
             ${t.completed ? 'Undo' : '✓ Mark Complete'}
@@ -418,7 +426,6 @@
       const empty = '<div class="text-slate-500 font-medium p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 text-center">No tasks yet! Add one above.</div>';
       list.innerHTML = html || empty; 
       
-      // Simplify dashboard view
       let dashHtml = '';
       tasks.filter(t => !t.completed).slice(0,3).forEach(t => {
         dashHtml += `<div class="p-3 bg-white rounded-lg border border-slate-100 shadow-sm mb-2 font-bold text-slate-700">${t.text}</div>`;
@@ -430,20 +437,17 @@
       document.getElementById('pendingTasks').textContent = tasks.filter(t=>!t.completed).length;
     }
 
-    // --- 5. PLANNER LOGIC (WITH DATE/TIME) ---
     let plans = [];
-
     function addPlan() {
       const input = document.getElementById('planTitle');
       const date = document.getElementById('planDate');
       const time = document.getElementById('planTime');
       
       if (!input.value.trim()) return;
-      
       plans.push({
         text: input.value.trim(),
         date: date.value || "No Date", 
-        time: time.value || ""
+        time: time.value || "No Time"
       });
       
       input.value = ''; date.value = ''; time.value = '';
@@ -455,21 +459,29 @@
       let html = '';
       
       plans.forEach(p => {
-        const dateTimeStr = (p.date !== "No Date" || p.time !== "") ? `<span class="bg-white/50 px-3 py-1 rounded-full text-xs font-bold text-indigo-600">📅 ${p.date} ${p.time}</span>` : '';
+        const { formattedDate, formattedTime } = formatDateTime(p.date, p.time);
+        
+        let dateHtml = formattedDate ? `<div>📅 Date: ${formattedDate}</div>` : '';
+        let timeHtml = formattedTime ? `<div>⏰ Time: ${formattedTime}</div>` : '';
+
+        const detailsContainer = (dateHtml || timeHtml) ? `
+          <div class="bg-white/50 px-4 py-2 rounded-xl text-xs font-bold text-indigo-600 flex flex-col items-end gap-1">
+            ${dateHtml}
+            ${timeHtml}
+          </div>` : '';
         
         html += `
         <div class="p-5 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl border border-indigo-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div class="flex items-center gap-3 font-bold text-indigo-900 text-lg">
             <span class="text-2xl">🎯</span> ${p.text}
           </div>
-          ${dateTimeStr}
+          ${detailsContainer}
         </div>`;
       });
       
       list.innerHTML = html || '<div class="text-slate-500 font-medium p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 text-center">No plans yet. Schedule a milestone above!</div>';
     }
 
-    // Initialize UI
     renderTasks(); 
     renderPlans();
   </script>

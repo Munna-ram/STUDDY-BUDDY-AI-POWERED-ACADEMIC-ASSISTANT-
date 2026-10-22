@@ -272,7 +272,7 @@
     <section id="planner" class="page px-2">
       <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
         <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-800 bg-indigo-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-indigo-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press to delete. Notifications active! 🔔</span></p>
+        <p class="text-slate-700 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-800 bg-indigo-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-indigo-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press an item to delete it. Notifications active! 🔔</span></p>
         
         <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/80 p-8 rounded-[2rem] shadow-lg border-2 border-white items-center">
           <input type="text" id="planTitle" placeholder="What's your next big milestone?" class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 shadow-inner transition-all text-xl">
@@ -311,9 +311,10 @@
         <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-14 gap-8">
           <div>
             <h2 class="text-5xl font-black text-slate-800 flex items-center gap-5 tracking-tight">
-              <span class="p-4 bg-indigo-100 text-indigo-700 rounded-3xl shadow-inner border border-indigo-300">🗺️</span> B.Tech Skills Roadmap
+              <svg class="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+              B.Tech Skills Roadmap
             </h2>
-            <p class="text-slate-800 font-extrabold mt-6 text-xl bg-white/70 inline-block px-6 py-3 rounded-xl shadow-sm border border-white">Your 4-year structured path to becoming a highly sought-after Software Engineer.</p>
+            <p class="text-slate-800 font-extrabold mb-12 text-xl bg-white/70 inline-block px-6 py-3 rounded-xl shadow-sm border border-white">Your 4-year structured path to becoming a highly sought-after Software Engineer.</p>
           </div>
           
           <div class="inner-glass bg-white/95 p-8 rounded-[2rem] w-full md:w-96 shadow-xl border-2 border-white transform hover:scale-105 transition-transform">
@@ -433,7 +434,8 @@
         <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-14 gap-8">
           <div>
             <h2 class="text-5xl sm:text-6xl font-black text-slate-800 flex items-center gap-5 tracking-tighter drop-shadow-md">
-              <span class="p-4 bg-emerald-100 text-emerald-700 rounded-3xl shadow-inner border border-emerald-300">💼</span> Ultimate Interview Mastery
+              <svg class="w-12 h-12 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              Ultimate Interview Mastery
             </h2>
             <p class="text-slate-800 font-extrabold mt-6 text-2xl bg-white/80 inline-block px-6 py-3 rounded-xl shadow-sm border border-white">Check these off to prove to recruiters you are the top 1% candidate.</p>
           </div>
@@ -454,7 +456,8 @@
           <!-- Column 1: Core Technical -->
           <div class="inner-glass bg-white/80 p-10 rounded-[2rem] border-t-[10px] border-t-blue-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
             <div class="flex items-center gap-4 font-black text-blue-900 mb-8 text-4xl border-b-4 border-blue-200 pb-4">
-              <span class="text-6xl drop-shadow-md">🧠</span> Technical Core
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+              Technical Core
             </div>
             <div class="space-y-6">
               <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-blue-700 force-wrap w-full">Solved 150+ LeetCode (Easy/Med)</span></label>
@@ -468,7 +471,8 @@
           <!-- Column 2: Communication -->
           <div class="inner-glass bg-white/80 p-10 rounded-[2rem] border-t-[10px] border-t-amber-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
             <div class="flex items-center gap-4 font-black text-amber-900 mb-8 text-4xl border-b-4 border-amber-200 pb-4">
-              <span class="text-6xl drop-shadow-md">🗣️</span> Communication
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+              Communication
             </div>
             <div class="space-y-6">
               <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-amber-700 force-wrap w-full">"Thinking Aloud" while coding</span></label>
@@ -482,7 +486,8 @@
           <!-- Column 3: HR & Behavioral -->
           <div class="inner-glass bg-white/80 p-10 rounded-[2rem] border-t-[10px] border-t-rose-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
             <div class="flex items-center gap-4 font-black text-rose-900 mb-8 text-4xl border-b-4 border-rose-200 pb-4">
-              <span class="text-6xl drop-shadow-md">🤝</span> HR & Behavioral
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.514"></path></svg>
+              HR & Behavioral
             </div>
             <div class="space-y-6">
               <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-rose-700 force-wrap w-full">Mastered STAR Storytelling Method</span></label>
@@ -496,7 +501,8 @@
           <!-- Column 4: Personal Branding -->
           <div class="inner-glass bg-white/80 p-10 rounded-[2rem] border-t-[10px] border-t-purple-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
             <div class="flex items-center gap-4 font-black text-purple-900 mb-8 text-4xl border-b-4 border-purple-200 pb-4">
-              <span class="text-6xl drop-shadow-md">🚀</span> Personal Brand
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+              Personal Brand
             </div>
             <div class="space-y-6">
               <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-purple-700 force-wrap w-full">1-Page ATS-Optimized Resume</span></label>
@@ -514,7 +520,6 @@
 
   <script>
     // --- PWA & SERVICE WORKER INJECTION ---
-    // This dynamically turns your single HTML file into an installable Mobile/Desktop App.
     const manifestJSON = {
       "name": "StudyBuddy",
       "short_name": "StudyBuddy",
@@ -545,23 +550,19 @@
       navigator.serviceWorker.register(URL.createObjectURL(swBlob)).then(reg => console.log('Service Worker Registered'));
     }
 
-    // Handle "Install App" logic
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       const installBtn = document.getElementById('installAppBtn');
-      installBtn.classList.remove('hidden');
-      installBtn.addEventListener('click', () => {
+      if(installBtn) installBtn.classList.remove('hidden');
+      installBtn?.addEventListener('click', () => {
         installBtn.classList.add('hidden');
         deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          deferredPrompt = null;
-        });
+        deferredPrompt.userChoice.then((choiceResult) => { deferredPrompt = null; });
       });
     });
 
-    // Request permissions early
     document.addEventListener('click', () => {
       if (Notification.permission === "default") Notification.requestPermission();
     }, { once: true });
@@ -710,7 +711,7 @@
       let formattedDate = "";
       let formattedTime = "";
       
-      if (dateStr && dateStr !== "No Date") {
+      if (dateStr && dateStr !== "No Date" && dateStr !== "") {
         const [yyyy, mm, dd] = dateStr.split('-');
         formattedDate = `${dd}/${mm}/${yyyy}`;
       } else {
@@ -731,15 +732,12 @@
       return { formattedDate, formattedTime };
     }
 
-    // --- REAL NATIVE NOTIFICATIONS FOR MOBILES AND DESKTOP ---
     function sendNotification(title, body) {
-      // 1. Play Sound
       try {
         const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
         audio.play().catch(e => console.log('Audio blocked', e));
       } catch(e) {}
       
-      // 2. Trigger native mobile/desktop push via Service Worker
       if (Notification.permission === 'granted') {
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.ready.then(function(registration) {
@@ -750,7 +748,6 @@
             });
           });
         } else {
-          // Desktop fallback
           new Notification(title, { body: body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' });
         }
       }
@@ -758,10 +755,9 @@
 
     function checkNotifications() {
       const now = new Date();
-      
       tasks.forEach(t => {
-        if (!t.completed && !t.notified && t.date !== "No Date") {
-          const taskTime = t.time || '00:00';
+        if (!t.completed && !t.notified && t.date !== "No Date" && t.date !== "") {
+          const taskTime = (t.time && t.time !== "No Time") ? t.time : '00:00';
           const taskDateTime = new Date(`${t.date}T${taskTime}`);
           if (now >= taskDateTime) {
             sendNotification("Task Due: " + t.text, "It is time to complete your action task!");
@@ -769,10 +765,9 @@
           }
         }
       });
-
       plans.forEach(p => {
-        if (!p.notified && p.date !== "No Date") {
-          const planTime = p.time || '00:00';
+        if (!p.notified && p.date !== "No Date" && p.date !== "") {
+          const planTime = (p.time && p.time !== "No Time") ? p.time : '00:00';
           const planDateTime = new Date(`${p.date}T${planTime}`);
           if (now >= planDateTime) {
             sendNotification("Milestone Reached!", p.text);
@@ -782,7 +777,7 @@
       });
     }
 
-    setInterval(checkNotifications, 10000); // Check every 10s
+    setInterval(checkNotifications, 10000); 
 
     let holdTimer;
     function startHold(type, index) {
@@ -807,8 +802,8 @@
       if (!input.value.trim()) return;
       tasks.push({ 
         text: input.value.trim(), 
-        date: date.value || "No Date", 
-        time: time.value || "00:00",
+        date: date.value, 
+        time: time.value,
         completed: false,
         notified: false
       });
@@ -881,8 +876,8 @@
       if (!input.value.trim()) return;
       plans.push({
         text: input.value.trim(),
-        date: date.value || "No Date", 
-        time: time.value || "00:00",
+        date: date.value, 
+        time: time.value,
         notified: false
       });
       
@@ -901,18 +896,18 @@
         let timeHtml = `<div>⏰ Time: ${formattedTime}</div>`;
 
         const detailsContainer = `
-          <div class="bg-white/95 px-6 py-4 rounded-2xl text-lg font-black text-indigo-700 flex flex-col sm:items-end gap-1.5 shadow-sm border-2 border-white shrink-0 mt-4 sm:mt-0 min-w-max">
+          <div class="bg-indigo-50 px-6 py-4 rounded-2xl text-xl font-black text-indigo-700 flex flex-col sm:items-end gap-2 shadow-inner border-2 border-indigo-100 shrink-0 mt-6 sm:mt-0 min-w-max">
             ${dateHtml}
             ${timeHtml}
           </div>`;
         
         html += `
-        <div class="no-select cursor-pointer p-8 bg-gradient-to-r from-indigo-50/95 to-blue-50/95 rounded-[2rem] border-2 border-white shadow-lg flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all"
+        <div class="no-select cursor-pointer p-8 bg-white/95 rounded-[2rem] border-2 border-white shadow-xl flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all"
              onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
              ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()" ontouchmove="cancelHold()">
           <div class="flex items-start gap-6 font-black text-slate-900 text-3xl sm:text-4xl flex-1 w-full min-w-0 pr-4">
             <div class="w-2.5 h-full min-h-[4rem] bg-indigo-500 rounded-full shrink-0 shadow-[0_0_15px_rgba(99,102,241,0.6)]"></div>
-            <div class="force-wrap w-full mt-2 leading-snug">${p.text}</div>
+            <p class="force-wrap w-full mt-1 leading-snug">${p.text}</p>
           </div>
           ${detailsContainer}
         </div>`;

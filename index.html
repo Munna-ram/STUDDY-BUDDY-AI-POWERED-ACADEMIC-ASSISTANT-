@@ -36,6 +36,12 @@
     input[type="date"], input[type="time"] {
       color: #475569;
     }
+    
+    /* Disables text selection while holding down on an item */
+    .no-select {
+      user-select: none;
+      -webkit-user-select: none;
+    }
   </style>
 </head>
 <body class="text-slate-800 min-h-screen flex p-2 sm:p-4 gap-4">
@@ -148,9 +154,8 @@
     <section id="planner" class="page px-2">
       <div class="glass-card p-8 max-w-5xl mx-auto">
         <h2 class="text-2xl font-extrabold mb-2 text-slate-800">📅 Strategy & Milestones</h2>
-        <p class="text-slate-500 font-medium mb-6">Schedule your major study blocks.</p>
+        <p class="text-slate-500 font-medium mb-6">Schedule your major study blocks. <span class="text-indigo-500">💡 Pro tip: Long-press an item to delete it.</span></p>
         
-        <!-- FIXED LAYOUT: Using flex-col and wrapping to prevent overflow -->
         <div class="flex flex-col lg:flex-row gap-3 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200">
           <input type="text" id="planTitle" placeholder="E.g., Complete Data Structures Module..." class="flex-1 min-w-0 border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
           <div class="flex flex-col sm:flex-row gap-3 shrink-0">
@@ -168,9 +173,8 @@
     <section id="tasks" class="page px-2">
       <div class="glass-card p-8 max-w-5xl mx-auto">
         <h2 class="text-2xl font-extrabold mb-2 text-slate-800">✅ Action Items</h2>
-        <p class="text-slate-500 font-medium mb-6">Add assignments and deadlines, and mark them complete.</p>
+        <p class="text-slate-500 font-medium mb-6">Add assignments and deadlines. <span class="text-pink-500">💡 Pro tip: Long-press a task to delete it.</span></p>
         
-        <!-- FIXED LAYOUT: Using flex-col and wrapping to prevent overflow -->
         <div class="flex flex-col lg:flex-row gap-3 mb-8 bg-slate-50 p-4 rounded-2xl border border-slate-200">
           <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 min-w-0 border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
           <div class="flex flex-col sm:flex-row gap-3 shrink-0">
@@ -384,6 +388,29 @@
       return { formattedDate, formattedTime };
     }
 
+    // --- Hold to Delete Logic ---
+    let holdTimer;
+    
+    function startHold(type, index) {
+      holdTimer = setTimeout(() => {
+        if (type === 'task') {
+          if (confirm('Delete this task?')) {
+            tasks.splice(index, 1);
+            renderTasks();
+          }
+        } else if (type === 'plan') {
+          if (confirm('Delete this study plan?')) {
+            plans.splice(index, 1);
+            renderPlans();
+          }
+        }
+      }, 1000); // 1000ms = 1 second hold
+    }
+
+    function cancelHold() {
+      clearTimeout(holdTimer);
+    }
+
     let tasks = []; 
     function addTask() {
       const input = document.getElementById('taskInput');
@@ -418,7 +445,6 @@
         let dateHtml = formattedDate ? `<div>📅 Date: ${formattedDate}</div>` : '';
         let timeHtml = formattedTime ? `<div>⏰ Time: ${formattedTime}</div>` : '';
         
-        // flex-col ensures time is directly below the date
         const detailsContainer = (dateHtml || timeHtml) ? `
           <div class="text-xs font-bold mt-2 flex flex-col gap-1 ${t.completed ? 'text-slate-400' : 'text-pink-500'}">
             ${dateHtml}
@@ -426,12 +452,14 @@
           </div>` : '';
 
         html += `
-        <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-all ${t.completed ? 'opacity-70 bg-slate-50' : ''}">
+        <div class="no-select p-5 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-all ${t.completed ? 'opacity-70 bg-slate-50' : 'cursor-pointer'}"
+             onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
+             ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()" ontouchmove="cancelHold()">
           <div>
             <span class="font-bold text-lg ${t.completed ? 'line-through text-slate-400' : 'text-slate-800'}">${t.text}</span>
             ${detailsContainer}
           </div>
-          <button onclick="markTaskComplete(${i})" class="px-5 py-2 rounded-xl font-bold transition-all text-sm whitespace-nowrap ${t.completed ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-green-100 text-green-700 hover:bg-green-500 hover:text-white border border-green-200'}">
+          <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-bold transition-all text-sm whitespace-nowrap ${t.completed ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-green-100 text-green-700 hover:bg-green-500 hover:text-white border border-green-200'}">
             ${t.completed ? 'Undo' : '✓ Mark Complete'}
           </button>
         </div>`;
@@ -481,11 +509,11 @@
       const list = document.getElementById('plannerList');
       let html = '';
       
-      plans.forEach(p => {
+      plans.forEach((p, i) => {
         const { formattedDate, formattedTime } = formatDateTime(p.date, p.time);
         
-        let dateHtml = formattedDate ? `<div>📅 ${formattedDate}</div>` : '';
-        let timeHtml = formattedTime ? `<div>⏰ ${formattedTime}</div>` : '';
+        let dateHtml = formattedDate ? `<div>📅 Date: ${formattedDate}</div>` : '';
+        let timeHtml = formattedTime ? `<div>⏰ Time: ${formattedTime}</div>` : '';
 
         const detailsContainer = (dateHtml || timeHtml) ? `
           <div class="bg-white/50 px-4 py-2 rounded-xl text-xs font-bold text-indigo-600 flex flex-col items-end gap-1">
@@ -494,7 +522,9 @@
           </div>` : '';
         
         html += `
-        <div class="p-5 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl border border-indigo-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="no-select cursor-pointer p-5 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl border border-indigo-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+             onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
+             ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()" ontouchmove="cancelHold()">
           <div class="flex items-center gap-3 font-bold text-indigo-900 text-lg">
             <span class="text-2xl">🎯</span> ${p.text}
           </div>

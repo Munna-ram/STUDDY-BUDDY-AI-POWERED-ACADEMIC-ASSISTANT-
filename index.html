@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>StudyBuddy - Premium Academic Assistant</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -18,6 +21,7 @@
       background-color: #f8fafc;
       color: #0f172a;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
     
     /* ULTRA-VIBRANT ANIMATED MESH GRADIENT BACKGROUND */
@@ -166,11 +170,11 @@
   <!-- Premium Sidebar -->
   <aside class="w-72 glass-card hidden lg:flex flex-col justify-between p-8 shrink-0 z-10 relative shadow-2xl">
     <div>
-      <div class="text-3xl font-black mb-12 flex items-center gap-4 tracking-tighter cursor-default">
+      <div class="text-3xl font-black mb-10 flex items-center gap-4 tracking-tighter cursor-default">
         <svg class="w-10 h-10 text-indigo-600 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         <span class="text-gradient">StudyBuddy</span>
       </div>
-      <nav class="space-y-4">
+      <nav class="space-y-3">
         <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl bg-slate-900 text-white shadow-[0_8px_25px_rgba(0,0,0,0.3)] font-black transition-all text-lg transform hover:scale-105">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
           Dashboard
@@ -192,8 +196,16 @@
           Interview Mastery
         </button>
       </nav>
+      
+      <!-- INSTALL APP BUTTON -->
+      <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
+        <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white py-4 rounded-2xl transition-all shadow-[0_5px_15px_rgba(16,185,129,0.4)] font-black transform hover:-translate-y-1 text-lg mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          Install App
+        </button>
+      </div>
     </div>
-    <div class="mt-8 pt-8 border-t-2 border-white/50">
+    <div class="mt-2">
       <div id="userInfo" class="text-base text-indigo-900 mb-4 truncate font-black bg-white/80 px-4 py-3 rounded-xl text-center shadow-sm border border-white">Not signed in</div>
       <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-2xl transition-all shadow-xl font-black transform hover:-translate-y-1 text-lg">Sign In / Sign Up</button>
     </div>
@@ -260,7 +272,7 @@
     <section id="planner" class="page px-2">
       <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
         <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-800 bg-indigo-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-indigo-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press an item to delete it. Notifications active!</span></p>
+        <p class="text-slate-700 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-800 bg-indigo-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-indigo-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press to delete. Notifications active! 🔔</span></p>
         
         <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/80 p-8 rounded-[2rem] shadow-lg border-2 border-white items-center">
           <input type="text" id="planTitle" placeholder="What's your next big milestone?" class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 shadow-inner transition-all text-xl">
@@ -278,7 +290,7 @@
     <section id="tasks" class="page px-2">
       <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
         <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">✅ Action Items</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Add assignments and deadlines. <span class="text-pink-800 bg-pink-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-pink-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press to delete. Notifications active!</span></p>
+        <p class="text-slate-700 font-extrabold mb-10 text-xl">Add assignments and deadlines. <span class="text-pink-800 bg-pink-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-pink-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press to delete. Notifications active! 🔔</span></p>
         
         <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/80 p-8 rounded-[2rem] shadow-lg border-2 border-white items-center">
           <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-pink-400 focus:border-pink-500 shadow-inner transition-all text-xl">
@@ -501,14 +513,60 @@
   </main>
 
   <script>
-    let currentUser = null;
+    // --- PWA & SERVICE WORKER INJECTION ---
+    // This dynamically turns your single HTML file into an installable Mobile/Desktop App.
+    const manifestJSON = {
+      "name": "StudyBuddy",
+      "short_name": "StudyBuddy",
+      "start_url": ".",
+      "display": "standalone",
+      "background_color": "#f1f5f9",
+      "theme_color": "#4f46e5",
+      "icons": [{
+        "src": "https://cdn-icons-png.flaticon.com/512/3233/3233483.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
+      }]
+    };
+    const manifestBlob = new Blob([JSON.stringify(manifestJSON)], {type: 'application/json'});
+    document.querySelector('head').insertAdjacentHTML('beforeend', `<link rel="manifest" href="${URL.createObjectURL(manifestBlob)}">`);
 
-    // --- REQUEST NOTIFICATION PERMISSIONS ON FIRST CLICK ---
+    const swCode = `
+      self.addEventListener('install', (e) => self.skipWaiting());
+      self.addEventListener('activate', (e) => e.waitUntil(clients.claim()));
+      self.addEventListener('push', (e) => {
+        const data = e.data ? e.data.json() : { title: 'StudyBuddy', body: 'You have a notification!' };
+        e.waitUntil(self.registration.showNotification(data.title, { body: data.body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' }));
+      });
+    `;
+    const swBlob = new Blob([swCode], {type: 'application/javascript'});
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register(URL.createObjectURL(swBlob)).then(reg => console.log('Service Worker Registered'));
+    }
+
+    // Handle "Install App" logic
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const installBtn = document.getElementById('installAppBtn');
+      installBtn.classList.remove('hidden');
+      installBtn.addEventListener('click', () => {
+        installBtn.classList.add('hidden');
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          deferredPrompt = null;
+        });
+      });
+    });
+
+    // Request permissions early
     document.addEventListener('click', () => {
-      if (Notification.permission === "default") {
-        Notification.requestPermission();
-      }
+      if (Notification.permission === "default") Notification.requestPermission();
     }, { once: true });
+
+    let currentUser = null;
 
     function toggleAuth() {
       if (currentUser) {
@@ -673,19 +731,28 @@
       return { formattedDate, formattedTime };
     }
 
-    // --- REAL TIME NOTIFICATIONS LOGIC ---
+    // --- REAL NATIVE NOTIFICATIONS FOR MOBILES AND DESKTOP ---
     function sendNotification(title, body) {
+      // 1. Play Sound
       try {
         const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-        audio.play().catch(e => console.log('Audio blocked by browser:', e));
+        audio.play().catch(e => console.log('Audio blocked', e));
       } catch(e) {}
       
-      if (Notification.permission === "granted") {
-        new Notification(title, { body: body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' });
-      } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(permission => {
-          if (permission === "granted") new Notification(title, { body: body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' });
-        });
+      // 2. Trigger native mobile/desktop push via Service Worker
+      if (Notification.permission === 'granted') {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification(title, {
+              body: body,
+              icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png',
+              vibrate: [200, 100, 200]
+            });
+          });
+        } else {
+          // Desktop fallback
+          new Notification(title, { body: body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' });
+        }
       }
     }
 
@@ -708,15 +775,14 @@
           const planTime = p.time || '00:00';
           const planDateTime = new Date(`${p.date}T${planTime}`);
           if (now >= planDateTime) {
-            sendNotification("Milestone Reached: " + p.text, "Your study plan milestone is happening now!");
+            sendNotification("Milestone Reached!", p.text);
             p.notified = true;
           }
         }
       });
     }
 
-    // Run checker every 10 seconds
-    setInterval(checkNotifications, 10000);
+    setInterval(checkNotifications, 10000); // Check every 10s
 
     let holdTimer;
     function startHold(type, index) {
@@ -733,7 +799,7 @@
     let tasks = []; 
     function addTask() {
       if (Notification.permission === "default") Notification.requestPermission();
-      
+
       const input = document.getElementById('taskInput');
       const date = document.getElementById('taskDate');
       const time = document.getElementById('taskTime');

@@ -1,1 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyBuddy - Premium Academic Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.4);
+      --glass-border: rgba(255, 255, 255, 0.7);
+      --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+    
+    /* VIBRANT ANIMATED MESH GRADIENT BACKGROUND */
+    .mesh-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: -1;
+      background: linear-gradient(to bottom right, #fdfbfb, #f3f4f6);
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.8;
+      animation: move 20s infinite alternate ease-in-out;
+    }
+    .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #c084fc; animation-delay: 0s; }
+    .blob-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: #60a5fa; animation-delay: -3s; animation-direction: alternate-reverse; }
+    .blob-3 { top: 30%; left: 20%; width: 45vw; height: 45vw; background: #f472b6; animation-delay: -5s; }
+    .blob-4 { top: 10%; right: 20%; width: 40vw; height: 40vw; background: #34d399; animation-delay: -7s; }
 
+    @keyframes move {
+      0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      50% { transform: translate(8%, 12%) scale(1.15) rotate(90deg); }
+      100% { transform: translate(-5%, -8%) scale(0.9) rotate(180deg); }
+    }
+
+    .page { display: none; opacity: 0; }
+    .page.active { display: block; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes slideUp { 0% { opacity: 0; transform: translateY(40px); filter: blur(10px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
+    
+    /* HYPER-PREMIUM GLASSMORPHISM */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid var(--glass-border);
+      border-radius: 2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .inner-glass {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 1);
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.8), 0 10px 20px rgba(0,0,0,0.03);
+      border-radius: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .interactive-card { cursor: pointer; }
+    .interactive-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 25px 50px rgba(79, 70, 229, 0.15), inset 0 0 20px rgba(255, 255, 255, 1);
+      border-color: rgba(79, 70, 229, 0.3);
+    }
+
+    .text-gradient { 
+      background: linear-gradient(135deg, #4f46e5, #d946ef, #f43f5e); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    
+    .modal-overlay { display: none; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(16px); }
+    .modal-overlay.active { display: flex; animation: slideUp 0.3s ease forwards; z-index: 100;}
+
+    input[type="date"], input[type="time"] { color: #1e293b; cursor: pointer; }
+    ::placeholder { color: #94a3b8; opacity: 1; font-weight: 600; }
+    .no-select { user-select: none; -webkit-user-select: none; }
+    
+    /* Custom Checkboxes */
+    .roadmap-check {
+      appearance: none; width: 1.75rem; height: 1.75rem;
+      border: 3px solid #cbd5e1; border-radius: 0.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative;
+      background: white;
+    }
+    .roadmap-check:checked { background-color: #4f46e5; border-color: #4f46e5; transform: scale(1.15) rotate(5deg); box-shadow: 0 0 20px rgba(79, 70, 229, 0.4); }
+    .roadmap-check:checked::after {
+      content: '✓'; position: absolute; color: white; font-size: 1.1rem; font-weight: 900;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+    .roadmap-check:checked + span { text-decoration: line-through; color: #94a3b8; opacity: 0.7;}
+    
+    .break-words { word-break: break-word; overflow-wrap: break-word; white-space: normal; }
+  </style>
+</head>
+<body class="min-h-screen flex p-3 sm:p-6 gap-6 relative">
+
+  <!-- VIBRANT MESH BACKGROUND -->
+  <div class="mesh-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <!-- Authentication Modal -->
+  <div id="authModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
+    <div class="glass-card bg-white/95 p-12 w-full max-w-md relative shadow-[0_30px_60px_rgba(0,0,0,0.15)] border-2 border-white">
+      <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-3xl font-black transition-colors">&times;</button>
+      <h2 class="text-4xl font-black mb-8 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
+      <div class="space-y-6">
+        <div>
+          <label class="block text-sm font-black text-slate-700 mb-2 tracking-wide uppercase">Email Address</label>
+          <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-white border-2 border-slate-200 rounded-2xl p-4 focus:border-indigo-500 outline-none transition-all shadow-sm font-bold text-lg text-slate-800">
+        </div>
+        <div>
+          <label class="block text-sm font-black text-slate-700 mb-2 tracking-wide uppercase">Password</label>
+          <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-white border-2 border-slate-200 rounded-2xl p-4 focus:border-indigo-500 outline-none transition-all shadow-sm font-bold text-lg text-slate-800">
+        </div>
+        <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
+        <div class="flex gap-4 pt-4">
+          <button onclick="mockSignIn()" class="flex-1 bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white py-4 rounded-2xl font-black hover:shadow-[0_10px_25px_rgba(79,70,229,0.4)] transition-all transform hover:-translate-y-1 text-lg">Sign In</button>
+          <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-sm hover:shadow-md text-lg">Create Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Task Details Modal (Popup when clicking Dashboard Cards) -->
+  <div id="taskModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
+    <div class="glass-card bg-white/95 p-10 w-full max-w-2xl relative shadow-[0_30px_60px_rgba(0,0,0,0.15)] border-2 border-white">
+      <button onclick="closeTaskModal()" class="absolute top-5 right-5 text-slate-400 hover:text-rose-500 text-3xl font-black transition-colors">&times;</button>
+      <h2 id="taskModalTitle" class="text-4xl font-black mb-8 text-slate-800 text-gradient tracking-tight">Tasks</h2>
+      <div id="taskModalList" class="max-h-[60vh] overflow-y-auto space-y-4 pr-3 custom-scrollbar">
+        <!-- Tasks will inject here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="w-72 glass-card hidden md:flex flex-col justify-between p-7 shrink-0 z-10 relative shadow-2xl border-white border-2">
+    <div>
+      <div class="text-3xl font-black mb-12 flex items-center gap-3 tracking-tighter">
+        <span class="text-5xl drop-shadow-lg">🚀</span> 
+        <span class="text-gradient">StudyBuddy</span>
+      </div>
+      <nav class="space-y-4">
+        <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full text-left px-6 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white shadow-lg font-black transition-all text-lg transform hover:scale-105 hover:shadow-xl">🏠 Dashboard</button>
+        <button onclick="showPage('planner')" id="nav-planner" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md border border-transparent hover:border-white">📅 Study Planner</button>
+        <button onclick="showPage('tasks')" id="nav-tasks" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md border border-transparent hover:border-white">✅ Action Tasks</button>
+        <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md border border-transparent hover:border-white">🗺️ B.Tech Roadmap</button>
+        <button onclick="showPage('career')" id="nav-career" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md border border-transparent hover:border-white">💼 Interview Mastery</button>
+      </nav>
+    </div>
+    <div class="mt-8 pt-8 border-t-2 border-white/60">
+      <div id="userInfo" class="text-base text-indigo-900 mb-4 truncate font-black bg-white/70 border border-white px-4 py-3 rounded-xl text-center shadow-sm">Not signed in</div>
+      <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-2xl transition-all shadow-xl font-black transform hover:-translate-y-1 text-lg border-2 border-slate-700">Sign In / Sign Up</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 overflow-y-auto pr-2 pb-10 z-0">
+    <header class="flex flex-wrap justify-between items-center gap-4 mb-12 mt-2 px-2">
+      <div>
+        <h1 id="pageTitle" class="text-6xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
+        <p class="text-slate-700 font-extrabold mt-4 text-xl bg-white/60 border border-white inline-block px-5 py-2 rounded-full shadow-sm">Your premium academic command center</p>
+      </div>
+      <div class="text-base glass-card bg-white/90 px-6 py-3.5 font-black text-indigo-800 flex items-center gap-3 shadow-lg border-2 border-white transform hover:scale-105 transition-transform">
+        <span class="w-4 h-4 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
+      </div>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active px-2">
+      <div class="glass-card p-14 text-white mb-12 relative overflow-hidden shadow-2xl border-2 border-white/60" style="background: linear-gradient(135deg, rgba(79,70,229,0.9) 0%, rgba(217,70,239,0.9) 100%);">
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-white opacity-20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-indigo-400 opacity-30 rounded-full blur-3xl"></div>
+        <h2 class="text-6xl font-black mb-5 relative z-10 drop-shadow-xl tracking-tight">Welcome to your future! ✨</h2>
+        <p class="text-indigo-50 text-2xl max-w-3xl relative z-10 font-bold leading-relaxed drop-shadow-md">Organize your assignments, track milestones, and crush your academic goals with absolute precision.</p>
+      </div>
+
+      <!-- Clickable Interactive Stats & Progress Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        
+        <div class="inner-glass interactive-card p-10 flex flex-col justify-center relative overflow-hidden group" onclick="openTaskModal('all')">
+          <div class="absolute -right-4 -top-4 text-8xl opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500">📋</div>
+          <p class="text-base text-indigo-600 font-black uppercase tracking-widest drop-shadow-sm">Total Tasks</p>
+          <h2 id="totalTasks" class="text-7xl font-black mt-3 text-slate-800 drop-shadow-md tracking-tighter">0</h2>
+          <div class="mt-6 text-sm font-black text-indigo-700 bg-indigo-100 border border-indigo-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors">View details 👉</div>
+        </div>
+
+        <div class="inner-glass interactive-card p-10 flex flex-col justify-center relative overflow-hidden group" onclick="openTaskModal('completed')">
+          <div class="absolute -right-4 -top-4 text-8xl opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500">✅</div>
+          <p class="text-base text-emerald-600 font-black uppercase tracking-widest drop-shadow-sm">Completed</p>
+          <h2 id="completedTasks" class="text-7xl font-black mt-3 text-emerald-500 drop-shadow-md tracking-tighter">0</h2>
+          <div class="mt-6 text-sm font-black text-emerald-700 bg-emerald-100 border border-emerald-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-emerald-500 group-hover:text-white transition-colors">View details 👉</div>
+        </div>
+
+        <div class="inner-glass interactive-card p-10 flex flex-col justify-center relative overflow-hidden group" onclick="openTaskModal('pending')">
+          <div class="absolute -right-4 -top-4 text-8xl opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500">⏳</div>
+          <p class="text-base text-rose-500 font-black uppercase tracking-widest drop-shadow-sm">Pending</p>
+          <h2 id="pendingTasks" class="text-7xl font-black mt-3 text-rose-500 drop-shadow-md tracking-tighter">0</h2>
+          <div class="mt-6 text-sm font-black text-rose-700 bg-rose-100 border border-rose-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-rose-500 group-hover:text-white transition-colors">View details 👉</div>
+        </div>
+
+        <div class="inner-glass interactive-card p-10 flex flex-col justify-center group" onclick="openTaskModal('all')">
+          <p class="text-base text-fuchsia-600 font-black uppercase tracking-widest drop-shadow-sm">Productivity</p>
+          <div class="flex flex-col mt-3">
+            <h2 id="taskProgress" class="text-7xl font-black text-fuchsia-600 drop-shadow-md tracking-tighter">0%</h2>
+            <div class="w-full bg-slate-200/80 rounded-full h-5 mt-6 overflow-hidden shadow-inner border border-white">
+              <div id="progressBar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_20px_rgba(217,70,239,0.8)]" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="mt-6 text-sm font-black text-fuchsia-700 bg-fuchsia-100 border border-fuchsia-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-fuchsia-600 group-hover:text-white transition-colors">View details 👉</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANNER -->
+    <section id="planner" class="page px-2">
+      <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
+        <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
+        <p class="text-slate-600 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-700 bg-indigo-100/90 border border-indigo-300 px-3 py-1 rounded-lg shadow-sm">💡 Pro tip: Long-press an item to delete it.</span></p>
+        
+        <!-- FIXED TWO-ROW LAYOUT FOR INPUTS -->
+        <div class="flex flex-col gap-5 mb-12 inner-glass p-8 rounded-3xl shadow-lg border-2 border-white">
+          <!-- Row 1: Full width text input -->
+          <input type="text" id="planTitle" placeholder="E.g., Complete Data Structures Module..." class="w-full bg-white border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 shadow-sm transition-all text-xl">
+          
+          <!-- Row 2: Date, Time, and Button -->
+          <div class="flex flex-col sm:flex-row gap-5 items-center w-full">
+            <input type="date" id="planDate" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 shadow-sm transition-all text-lg">
+            <input type="time" id="planTime" value="00:00" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 shadow-sm transition-all text-lg">
+            <button onclick="addPlan()" class="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_25px_rgba(79,70,229,0.5)] transition-all text-xl transform hover:-translate-y-1">Schedule</button>
+          </div>
+        </div>
+        
+        <div id="plannerList" class="space-y-6"></div>
+      </div>
+    </section>
+
+    <!-- TASKS -->
+    <section id="tasks" class="page px-2">
+      <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
+        <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">✅ Action Items</h2>
+        <p class="text-slate-600 font-extrabold mb-10 text-xl">Add assignments and deadlines. <span class="text-rose-700 bg-rose-100/90 border border-rose-300 px-3 py-1 rounded-lg shadow-sm">💡 Pro tip: Long-press a task to delete it.</span></p>
+        
+        <!-- FIXED TWO-ROW LAYOUT FOR INPUTS -->
+        <div class="flex flex-col gap-5 mb-12 inner-glass p-8 rounded-3xl shadow-lg border-2 border-white">
+          <!-- Row 1: Full width text input -->
+          <input type="text" id="taskInput" placeholder="What needs to be done?" class="w-full bg-white border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100 shadow-sm transition-all text-xl">
+          
+          <!-- Row 2: Date, Time, and Button -->
+          <div class="flex flex-col sm:flex-row gap-5 items-center w-full">
+            <input type="date" id="taskDate" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100 shadow-sm transition-all text-lg">
+            <input type="time" id="taskTime" value="00:00" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100 shadow-sm transition-all text-lg">
+            <button onclick="addTask()" class="w-full sm:w-auto bg-gradient-to-r from-rose-500 to-pink-600 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_25px_rgba(244,63,94,0.5)] transition-all text-xl transform hover:-translate-y-1">Add Task</button>
+          </div>
+        </div>
+        
+        <div id="taskList" class="space-y-6"></div>
+      </div>
+    </section>
+
+    <!-- B.TECH TECH SKILLS ROADMAP -->
+    <section id="roadmap" class="page px-2">
+      <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-t-[10px] border-t-indigo-600 border border-white">
+        <h2 class="text-5xl font-black mb-6 text-slate-800 flex items-center gap-5 tracking-tight">
+          <span class="p-4 bg-indigo-100 text-indigo-600 rounded-3xl shadow-inner border border-indigo-200">🗺️</span> B.Tech Skills Roadmap
+        </h2>
+        <p class="text-slate-600 font-extrabold mb-12 text-xl bg-white/70 border border-white inline-block px-6 py-3 rounded-2xl shadow-sm">Your 4-year structured path to becoming a highly sought-after Sof

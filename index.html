@@ -8,8 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --glass-bg: rgba(255, 255, 255, 0.5);
-      --glass-border: rgba(255, 255, 255, 0.8);
+      --glass-bg: rgba(255, 255, 255, 0.45);
+      --glass-border: rgba(255, 255, 255, 0.6);
       --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
     }
     
@@ -20,92 +20,104 @@
       overflow-x: hidden;
     }
     
-    /* VIBRANT ANIMATED MESH GRADIENT BACKGROUND */
+    /* ULTRA-VIBRANT ANIMATED MESH GRADIENT BACKGROUND */
     .mesh-bg {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      z-index: -1;
-      background: #fdfbfb;
-      overflow: hidden;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: -1; background: #f8fafc; overflow: hidden;
     }
     .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.7;
-      animation: move 15s infinite alternate ease-in-out;
+      position: absolute; border-radius: 50%; filter: blur(100px);
+      opacity: 0.8; animation: move 20s infinite alternate ease-in-out;
     }
-    .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #a78bfa; animation-delay: 0s; }
-    .blob-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: #60a5fa; animation-delay: -2s; animation-direction: alternate-reverse; }
-    .blob-3 { top: 40%; left: 30%; width: 40vw; height: 40vw; background: #f472b6; animation-delay: -4s; }
-    .blob-4 { top: 10%; right: 20%; width: 35vw; height: 35vw; background: #34d399; animation-delay: -6s; }
+    .blob-1 { top: -10%; left: -10%; width: 55vw; height: 55vw; background: #a78bfa; animation-delay: 0s; }
+    .blob-2 { bottom: -20%; right: -10%; width: 65vw; height: 65vw; background: #38bdf8; animation-delay: -3s; animation-direction: alternate-reverse; }
+    .blob-3 { top: 30%; left: 20%; width: 45vw; height: 45vw; background: #f472b6; animation-delay: -6s; }
+    .blob-4 { top: 10%; right: 10%; width: 40vw; height: 40vw; background: #34d399; animation-delay: -9s; }
+    .blob-5 { bottom: 10%; left: 30%; width: 50vw; height: 50vw; background: #fbbf24; opacity: 0.5; animation-delay: -12s; animation-direction: alternate-reverse; }
 
     @keyframes move {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(5%, 10%) scale(1.1); }
-      100% { transform: translate(-5%, -5%) scale(0.95); }
+      0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      50% { transform: translate(8%, 12%) scale(1.1) rotate(10deg); }
+      100% { transform: translate(-8%, -8%) scale(0.95) rotate(-10deg); }
     }
 
     .page { display: none; opacity: 0; }
-    .page.active { display: block; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    @keyframes slideUp { 0% { opacity: 0; transform: translateY(30px); filter: blur(8px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
+    .page.active { display: block; animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes slideUp { 
+      0% { opacity: 0; transform: translateY(40px); filter: blur(10px); } 
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); } 
+    }
     
     /* HYPER-PREMIUM GLASSMORPHISM */
     .glass-card {
       background: var(--glass-bg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
       border: 1px solid var(--glass-border);
-      border-radius: 1.75rem;
+      border-radius: 2rem;
       box-shadow: var(--glass-shadow);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .glass-card:hover { 
-      box-shadow: 0 25px 50px rgba(31, 38, 135, 0.15); 
+      box-shadow: 0 30px 60px rgba(31, 38, 135, 0.15); 
       background: rgba(255, 255, 255, 0.65);
     }
     
     .inner-glass {
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6);
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6), 0 4px 15px rgba(0,0,0,0.03);
       border-radius: 1.5rem;
     }
     
-    .interactive-card { cursor: pointer; transition: all 0.3s ease; }
+    .interactive-card { cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
     .interactive-card:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-10px) scale(1.03);
       background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.2);
+      box-shadow: 0 25px 50px rgba(79, 70, 229, 0.25);
+      border-color: rgba(79, 70, 229, 0.4);
     }
 
     .text-gradient { 
-      background: linear-gradient(135deg, #4f46e5, #d946ef, #f43f5e); 
+      background: linear-gradient(135deg, #4f46e5, #d946ef, #f43f5e, #fbbf24); 
+      background-size: 300% 300%;
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
+      animation: gradientShift 6s ease infinite;
     }
+    @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     
-    .modal-overlay { display: none; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(12px); }
-    .modal-overlay.active { display: flex; animation: slideUp 0.3s ease forwards; z-index: 100;}
+    .modal-overlay { display: none; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(16px); }
+    .modal-overlay.active { display: flex; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; z-index: 100;}
 
-    input[type="date"], input[type="time"] { color: #334155; background: transparent; cursor: pointer; }
+    input[type="date"], input[type="time"] { color: #1e293b; background: transparent; cursor: pointer; }
     .no-select { user-select: none; -webkit-user-select: none; }
     
-    /* Custom Checkboxes */
+    /* Custom Checkboxes with Glow */
     .roadmap-check {
-      appearance: none; width: 1.5rem; height: 1.5rem;
+      appearance: none; width: 1.75rem; height: 1.75rem;
       border: 3px solid #cbd5e1; border-radius: 0.5rem;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative;
+      background: rgba(255,255,255,0.5);
     }
-    .roadmap-check:checked { background-color: #4f46e5; border-color: #4f46e5; transform: scale(1.1); box-shadow: 0 0 15px rgba(79, 70, 229, 0.5); }
+    .roadmap-check:checked { 
+      background-color: #4f46e5; border-color: #4f46e5; transform: scale(1.15); 
+      box-shadow: 0 0 20px rgba(79, 70, 229, 0.6); 
+    }
     .roadmap-check:checked::after {
-      content: '✓'; position: absolute; color: white; font-size: 1rem; font-weight: 900;
+      content: '✓'; position: absolute; color: white; font-size: 1.1rem; font-weight: 900;
       top: 50%; left: 50%; transform: translate(-50%, -50%);
     }
-    .roadmap-check:checked + span { text-decoration: line-through; color: #94a3b8; }
+    .roadmap-check:checked + span { text-decoration: line-through; color: #94a3b8; opacity: 0.7;}
     
-    /* Ensure long text doesn't break boxes */
-    .break-words { word-break: break-word; overflow-wrap: break-word; white-space: normal; }
+    /* FIX FOR LONG TEXT OVERFLOW */
+    .force-wrap { 
+      overflow-wrap: anywhere; 
+      word-wrap: break-word; 
+      word-break: break-word; 
+      hyphens: auto; 
+      white-space: normal;
+    }
   </style>
 </head>
 <body class="min-h-screen flex p-2 sm:p-5 gap-5 relative">
@@ -116,26 +128,27 @@
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
     <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
   </div>
 
   <!-- Authentication Modal -->
   <div id="authModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
     <div class="glass-card bg-white/90 p-10 w-full max-w-md relative shadow-2xl border-2 border-white">
-      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-3xl font-black transition-colors">&times;</button>
-      <h2 class="text-4xl font-black mb-6 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
-      <div class="space-y-5">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-5 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
+      <h2 class="text-4xl font-black mb-8 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
+      <div class="space-y-6">
         <div>
-          <label class="block text-sm font-extrabold text-slate-700 mb-2">Email Address</label>
+          <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-wide">Email Address</label>
           <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50/80 border-2 border-slate-200 rounded-2xl p-4 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
         </div>
         <div>
-          <label class="block text-sm font-extrabold text-slate-700 mb-2">Password</label>
+          <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-wide">Password</label>
           <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50/80 border-2 border-slate-200 rounded-2xl p-4 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
         </div>
         <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
         <div class="flex gap-4 pt-4">
-          <button onclick="mockSignIn()" class="flex-1 bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white py-4 rounded-2xl font-black hover:shadow-[0_10px_25px_rgba(79,70,229,0.4)] transition-all transform hover:-translate-y-1 text-lg">Sign In</button>
-          <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-sm hover:shadow-md text-lg">Create Account</button>
+          <button onclick="mockSignIn()" class="flex-1 bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white py-4 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(79,70,229,0.5)] transition-all transform hover:-translate-y-1 text-lg">Sign In</button>
+          <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-md hover:shadow-lg text-lg">Create Account</button>
         </div>
       </div>
     </div>
@@ -144,9 +157,9 @@
   <!-- Task Details Modal (Popup when clicking Dashboard Cards) -->
   <div id="taskModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
     <div class="glass-card bg-white/95 p-10 w-full max-w-2xl relative shadow-2xl border-2 border-white">
-      <button onclick="closeTaskModal()" class="absolute top-5 right-5 text-slate-400 hover:text-rose-500 text-3xl font-black transition-colors">&times;</button>
+      <button onclick="closeTaskModal()" class="absolute top-5 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
       <h2 id="taskModalTitle" class="text-4xl font-black mb-8 text-slate-800 text-gradient tracking-tight">Tasks</h2>
-      <div id="taskModalList" class="max-h-[60vh] overflow-y-auto space-y-4 pr-3 custom-scrollbar">
+      <div id="taskModalList" class="max-h-[60vh] overflow-y-auto space-y-4 pr-3">
         <!-- Tasks will inject here -->
       </div>
     </div>
@@ -155,20 +168,20 @@
   <!-- Sidebar -->
   <aside class="w-72 glass-card hidden md:flex flex-col justify-between p-7 shrink-0 z-10 relative shadow-2xl">
     <div>
-      <div class="text-3xl font-black mb-12 flex items-center gap-3 tracking-tighter">
-        <span class="text-5xl drop-shadow-lg">🚀</span> 
+      <div class="text-3xl font-black mb-12 flex items-center gap-4 tracking-tighter">
+        <span class="text-5xl drop-shadow-lg hover:scale-110 transition-transform cursor-pointer">🚀</span> 
         <span class="text-gradient">StudyBuddy</span>
       </div>
       <nav class="space-y-4">
-        <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full text-left px-6 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white shadow-lg font-black transition-all text-lg transform hover:scale-105 hover:shadow-xl">🏠 Dashboard</button>
-        <button onclick="showPage('planner')" id="nav-planner" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/80 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">📅 Study Planner</button>
-        <button onclick="showPage('tasks')" id="nav-tasks" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/80 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">✅ Action Tasks</button>
-        <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/80 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">🗺️ B.Tech Roadmap</button>
-        <button onclick="showPage('career')" id="nav-career" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/80 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">💼 Interview Mastery</button>
+        <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full text-left px-6 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white shadow-[0_8px_20px_rgba(79,70,229,0.4)] font-black transition-all text-lg transform hover:scale-105">🏠 Dashboard</button>
+        <button onclick="showPage('planner')" id="nav-planner" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-700 hover:text-indigo-700 transition-all text-lg hover:shadow-lg">📅 Study Planner</button>
+        <button onclick="showPage('tasks')" id="nav-tasks" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-700 hover:text-indigo-700 transition-all text-lg hover:shadow-lg">✅ Action Tasks</button>
+        <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-700 hover:text-indigo-700 transition-all text-lg hover:shadow-lg">🗺️ B.Tech Roadmap</button>
+        <button onclick="showPage('career')" id="nav-career" class="w-full text-left px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-700 hover:text-indigo-700 transition-all text-lg hover:shadow-lg">💼 Interview Mastery</button>
       </nav>
     </div>
     <div class="mt-8 pt-8 border-t-2 border-white/40">
-      <div id="userInfo" class="text-base text-indigo-900 mb-4 truncate font-black bg-white/50 px-4 py-2 rounded-xl text-center shadow-sm">Not signed in</div>
+      <div id="userInfo" class="text-base text-indigo-900 mb-4 truncate font-black bg-white/60 px-4 py-2.5 rounded-xl text-center shadow-inner border border-white">Not signed in</div>
       <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-2xl transition-all shadow-xl font-black transform hover:-translate-y-1 text-lg border-2 border-slate-700">Sign In / Sign Up</button>
     </div>
   </aside>
@@ -178,55 +191,55 @@
     <header class="flex flex-wrap justify-between items-center gap-4 mb-10 mt-2 px-2">
       <div>
         <h1 id="pageTitle" class="text-5xl sm:text-6xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
-        <p class="text-slate-700 font-extrabold mt-3 text-xl bg-white/40 inline-block px-4 py-1 rounded-full shadow-sm">Your premium academic command center</p>
+        <p class="text-slate-700 font-extrabold mt-3 text-xl bg-white/60 inline-block px-5 py-1.5 rounded-full shadow-sm border border-white">Your premium academic command center</p>
       </div>
       <div class="text-base glass-card bg-white/90 px-6 py-3.5 font-black text-indigo-800 flex items-center gap-3 shadow-lg border-2 border-white transform hover:scale-105 transition-transform">
-        <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_12px_rgba(16,185,129,0.9)]"></span> Workspace Active
+        <span class="w-4 h-4 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
       </div>
     </header>
 
     <!-- DASHBOARD -->
     <section id="dashboard" class="page active px-2">
-      <div class="glass-card p-12 text-white mb-10 relative overflow-hidden shadow-2xl border-2 border-white/50" style="background: linear-gradient(135deg, rgba(79,70,229,0.85) 0%, rgba(217,70,239,0.85) 100%);">
+      <div class="glass-card p-12 text-white mb-12 relative overflow-hidden shadow-[0_20px_50px_rgba(79,70,229,0.3)] border-2 border-white/50" style="background: linear-gradient(135deg, rgba(79,70,229,0.85) 0%, rgba(217,70,239,0.85) 100%);">
         <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-white opacity-20 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-indigo-400 opacity-30 rounded-full blur-3xl"></div>
-        <h2 class="text-5xl sm:text-6xl font-black mb-5 relative z-10 drop-shadow-xl tracking-tight">Welcome to your future! ✨</h2>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-indigo-400 opacity-40 rounded-full blur-3xl"></div>
+        <h2 class="text-5xl sm:text-7xl font-black mb-6 relative z-10 drop-shadow-2xl tracking-tight">Welcome to your future! ✨</h2>
         <p class="text-indigo-50 text-xl sm:text-2xl max-w-3xl relative z-10 font-bold leading-relaxed drop-shadow-md">Organize your assignments, track milestones, and crush your academic goals with absolute precision.</p>
       </div>
 
       <!-- Clickable Interactive Stats & Progress Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
         
         <div class="glass-card inner-glass interactive-card p-8 flex flex-col justify-center relative overflow-hidden group" onclick="openTaskModal('all')">
-          <div class="absolute -right-4 -top-4 text-8xl opacity-[0.07] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500">📋</div>
+          <div class="absolute -right-4 -top-4 text-8xl opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500">📋</div>
           <p class="text-base text-indigo-600 font-black uppercase tracking-widest drop-shadow-sm">Total Tasks</p>
           <h2 id="totalTasks" class="text-7xl font-black mt-3 text-slate-800 drop-shadow-md tracking-tighter">0</h2>
-          <div class="mt-5 text-sm font-black text-indigo-600 bg-indigo-50 border border-indigo-100 px-4 py-2 rounded-full w-max shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors">View details 👉</div>
+          <div class="mt-6 text-sm font-black text-indigo-600 bg-indigo-50 border border-indigo-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors">View details 👉</div>
         </div>
 
         <div class="glass-card inner-glass interactive-card p-8 flex flex-col justify-center relative overflow-hidden group" onclick="openTaskModal('completed')">
-          <div class="absolute -right-4 -top-4 text-8xl opacity-[0.07] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500">✅</div>
+          <div class="absolute -right-4 -top-4 text-8xl opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500">✅</div>
           <p class="text-base text-emerald-600 font-black uppercase tracking-widest drop-shadow-sm">Completed</p>
           <h2 id="completedTasks" class="text-7xl font-black mt-3 text-emerald-500 drop-shadow-md tracking-tighter">0</h2>
-          <div class="mt-5 text-sm font-black text-emerald-600 bg-emerald-50 border border-emerald-100 px-4 py-2 rounded-full w-max shadow-sm group-hover:bg-emerald-500 group-hover:text-white transition-colors">View details 👉</div>
+          <div class="mt-6 text-sm font-black text-emerald-600 bg-emerald-50 border border-emerald-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-emerald-500 group-hover:text-white transition-colors">View details 👉</div>
         </div>
 
         <div class="glass-card inner-glass interactive-card p-8 flex flex-col justify-center relative overflow-hidden group" onclick="openTaskModal('pending')">
-          <div class="absolute -right-4 -top-4 text-8xl opacity-[0.07] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500">⏳</div>
+          <div class="absolute -right-4 -top-4 text-8xl opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500">⏳</div>
           <p class="text-base text-rose-500 font-black uppercase tracking-widest drop-shadow-sm">Pending</p>
           <h2 id="pendingTasks" class="text-7xl font-black mt-3 text-rose-500 drop-shadow-md tracking-tighter">0</h2>
-          <div class="mt-5 text-sm font-black text-rose-600 bg-rose-50 border border-rose-100 px-4 py-2 rounded-full w-max shadow-sm group-hover:bg-rose-500 group-hover:text-white transition-colors">View details 👉</div>
+          <div class="mt-6 text-sm font-black text-rose-600 bg-rose-50 border border-rose-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-rose-500 group-hover:text-white transition-colors">View details 👉</div>
         </div>
 
         <div class="glass-card inner-glass interactive-card p-8 flex flex-col justify-center group" onclick="openTaskModal('all')">
           <p class="text-base text-fuchsia-600 font-black uppercase tracking-widest drop-shadow-sm">Productivity</p>
-          <div class="flex flex-col mt-3">
+          <div class="flex flex-col mt-4">
             <h2 id="taskProgress" class="text-7xl font-black text-fuchsia-600 drop-shadow-md tracking-tighter">0%</h2>
-            <div class="w-full bg-slate-200/70 rounded-full h-4 mt-5 overflow-hidden shadow-inner border border-white">
+            <div class="w-full bg-slate-200/80 rounded-full h-5 mt-6 overflow-hidden shadow-inner border border-white">
               <div id="progressBar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_15px_rgba(217,70,239,0.8)]" style="width: 0%"></div>
             </div>
           </div>
-          <div class="mt-5 text-sm font-black text-fuchsia-600 bg-fuchsia-50 border border-fuchsia-100 px-4 py-2 rounded-full w-max shadow-sm group-hover:bg-fuchsia-600 group-hover:text-white transition-colors">View details 👉</div>
+          <div class="mt-6 text-sm font-black text-fuchsia-600 bg-fuchsia-50 border border-fuchsia-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-fuchsia-600 group-hover:text-white transition-colors">View details 👉</div>
         </div>
       </div>
     </section>
@@ -235,14 +248,14 @@
     <section id="planner" class="page px-2">
       <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
         <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
-        <p class="text-slate-600 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-700 bg-indigo-100/90 px-3 py-1 rounded-lg shadow-sm border border-indigo-200">💡 Pro tip: Long-press an item to delete it.</span></p>
+        <p class="text-slate-600 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-700 bg-indigo-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-indigo-200 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press an item to delete it.</span></p>
         
-        <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/60 p-8 rounded-3xl shadow-lg border-2 border-white items-center">
-          <input type="text" id="planTitle" placeholder="E.g., Complete Data Structures Module..." class="flex-1 w-full bg-white/90 border-2 border-white rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-indigo-300 shadow-sm transition-all text-xl">
+        <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/70 p-8 rounded-[2rem] shadow-lg border-2 border-white items-center">
+          <input type="text" id="planTitle" placeholder="E.g., Complete Data Structures Module..." class="flex-1 w-full min-w-0 bg-white/95 border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-indigo-400 shadow-inner transition-all text-xl">
           <div class="flex flex-col sm:flex-row gap-5 shrink-0 w-full lg:w-auto">
-            <input type="date" id="planDate" class="flex-1 sm:flex-none w-full sm:w-auto bg-white/90 border-2 border-white rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-indigo-300 shadow-sm transition-all text-lg">
-            <!-- Set default value to 00:00 so it doesn't show ------- -->
-            <input type="time" id="planTime" value="00:00" class="flex-1 sm:flex-none w-full sm:w-auto bg-white/90 border-2 border-white rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-indigo-300 shadow-sm transition-all text-lg">
+            <input type="date" id="planDate" class="flex-1 sm:flex-none w-full sm:w-auto bg-white/95 border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-indigo-400 shadow-inner transition-all text-lg">
+            <!-- FIXED TIME DEFAULT TO 00:00 -->
+            <input type="time" id="planTime" value="00:00" class="flex-1 sm:flex-none w-full sm:w-auto bg-white/95 border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-indigo-400 shadow-inner transition-all text-lg">
           </div>
           <button onclick="addPlan()" class="w-full lg:w-auto bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_25px_rgba(79,70,229,0.5)] transition-all text-xl transform hover:-translate-y-1">Schedule</button>
         </div>
@@ -254,14 +267,14 @@
     <section id="tasks" class="page px-2">
       <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
         <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">✅ Action Items</h2>
-        <p class="text-slate-600 font-extrabold mb-10 text-xl">Add assignments and deadlines. <span class="text-rose-700 bg-rose-100/90 px-3 py-1 rounded-lg shadow-sm border border-rose-200">💡 Pro tip: Long-press a task to delete it.</span></p>
+        <p class="text-slate-600 font-extrabold mb-10 text-xl">Add assignments and deadlines. <span class="text-rose-700 bg-rose-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-rose-200 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press a task to delete it.</span></p>
         
-        <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/60 p-8 rounded-3xl shadow-lg border-2 border-white items-center">
-          <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 w-full bg-white/90 border-2 border-white rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-rose-300 shadow-sm transition-all text-xl">
+        <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/70 p-8 rounded-[2rem] shadow-lg border-2 border-white items-center">
+          <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 w-full min-w-0 bg-white/95 border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-rose-400 shadow-inner transition-all text-xl">
           <div class="flex flex-col sm:flex-row gap-5 shrink-0 w-full lg:w-auto">
-            <input type="date" id="taskDate" class="flex-1 sm:flex-none w-full sm:w-auto bg-white/90 border-2 border-white rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-rose-300 shadow-sm transition-all text-lg">
-            <!-- Set default value to 00:00 so it doesn't show ------- -->
-            <input type="time" id="taskTime" value="00:00" class="flex-1 sm:flex-none w-full sm:w-auto bg-white/90 border-2 border-white rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-rose-300 shadow-sm transition-all text-lg">
+            <input type="date" id="taskDate" class="flex-1 sm:flex-none w-full sm:w-auto bg-white/95 border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-rose-400 shadow-inner transition-all text-lg">
+            <!-- FIXED TIME DEFAULT TO 00:00 -->
+            <input type="time" id="taskTime" value="00:00" class="flex-1 sm:flex-none w-full sm:w-auto bg-white/95 border-2 border-slate-200 rounded-2xl p-5 font-black text-slate-800 outline-none focus:ring-4 focus:ring-rose-400 shadow-inner transition-all text-lg">
           </div>
           <button onclick="addTask()" class="w-full lg:w-auto bg-gradient-to-r from-rose-500 to-pink-600 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_25px_rgba(244,63,94,0.5)] transition-all text-xl transform hover:-translate-y-1">Add Task</button>
         </div>
@@ -271,38 +284,38 @@
 
     <!-- B.TECH TECH SKILLS ROADMAP -->
     <section id="roadmap" class="page px-2">
-      <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-t-8 border-t-indigo-600 border border-white">
-        <h2 class="text-5xl font-black mb-4 text-slate-800 flex items-center gap-5 tracking-tight">
+      <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-t-[10px] border-t-indigo-600 border border-white">
+        <h2 class="text-5xl font-black mb-6 text-slate-800 flex items-center gap-5 tracking-tight">
           <span class="p-4 bg-indigo-100 text-indigo-600 rounded-3xl shadow-inner border border-indigo-200">🗺️</span> B.Tech Skills Roadmap
         </h2>
-        <p class="text-slate-600 font-extrabold mb-12 text-xl bg-white/50 inline-block px-5 py-2 rounded-xl">Your 4-year structured path to becoming a highly sought-after Software Engineer.</p>
+        <p class="text-slate-600 font-extrabold mb-12 text-xl bg-white/60 inline-block px-6 py-2.5 rounded-xl shadow-sm border border-white">Your 4-year structured path to becoming a highly sought-after Software Engineer.</p>
         
-        <div class="flex flex-wrap gap-4 mb-10 border-b-4 border-white/60 pb-8">
-          <button onclick="showYear('year1', this)" class="year-tab-btn bg-indigo-600 text-white px-10 py-4 rounded-2xl font-black shadow-lg transition-all transform hover:-translate-y-1 text-xl border-2 border-indigo-500">Year 1</button>
+        <div class="flex flex-wrap gap-4 mb-10 border-b-4 border-white/80 pb-8">
+          <button onclick="showYear('year1', this)" class="year-tab-btn bg-indigo-600 text-white px-10 py-4 rounded-2xl font-black shadow-xl transition-all transform hover:-translate-y-1 text-xl border-2 border-indigo-500">Year 1</button>
           <button onclick="showYear('year2', this)" class="year-tab-btn bg-white/90 text-slate-700 hover:bg-white px-10 py-4 rounded-2xl font-black transition-all border-2 border-white text-xl shadow-md hover:shadow-lg">Year 2</button>
           <button onclick="showYear('year3', this)" class="year-tab-btn bg-white/90 text-slate-700 hover:bg-white px-10 py-4 rounded-2xl font-black transition-all border-2 border-white text-xl shadow-md hover:shadow-lg">Year 3</button>
           <button onclick="showYear('year4', this)" class="year-tab-btn bg-white/90 text-slate-700 hover:bg-white px-10 py-4 rounded-2xl font-black transition-all border-2 border-white text-xl shadow-md hover:shadow-lg">Year 4</button>
         </div>
 
-        <div class="relative min-h-[450px]">
+        <div class="relative min-h-[480px]">
           <!-- YEAR 1 -->
           <div id="year1" class="year-content active grid md:grid-cols-2 gap-8 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-100">
             <div class="inner-glass p-10 rounded-[2rem] bg-white/70 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
               <div class="font-black text-indigo-900 mb-8 text-3xl border-b-4 border-indigo-200/50 pb-4">Semester 1: The Foundation</div>
               <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors break-words w-full">C / C++ Programming Basics</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors break-words w-full">Terminal & Linux Command Line</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors break-words w-full">Git & GitHub (Version Control)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors break-words w-full">Basic HTML5 & CSS3</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors force-wrap w-full">C / C++ Programming Basics</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors force-wrap w-full">Terminal & Linux Command Line</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors force-wrap w-full">Git & GitHub (Version Control)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors force-wrap w-full">Basic HTML5 & CSS3</span></label>
               </div>
             </div>
             <div class="inner-glass p-10 rounded-[2rem] bg-white/70 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
               <div class="font-black text-indigo-900 mb-8 text-3xl border-b-4 border-indigo-200/50 pb-4">Semester 2: Data & Logic</div>
               <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors break-words w-full">Data Structures (Arrays, Lists, Stacks)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors break-words w-full">Python Scripting & Automation</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors break-words w-full">Intro to JavaScript (DOM)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors break-words w-full">Relational Algebra & SQL Basics</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors force-wrap w-full">Data Structures (Arrays, Lists, Stacks)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors force-wrap w-full">Python Scripting & Automation</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors force-wrap w-full">Intro to JavaScript (DOM)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check"><span class="text-xl font-bold text-slate-700 group-hover:text-indigo-700 transition-colors force-wrap w-full">Relational Algebra & SQL Basics</span></label>
               </div>
             </div>
           </div>
@@ -312,19 +325,19 @@
             <div class="inner-glass p-10 rounded-[2rem] bg-white/70 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
               <div class="font-black text-pink-900 mb-8 text-3xl border-b-4 border-pink-200/50 pb-4">Semester 3: Core CS</div>
               <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors break-words w-full">Object-Oriented Programming (Java/C++)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors break-words w-full">Advanced DSA (Trees, Graphs, Hash Maps)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors break-words w-full">Algorithm Design (Sorting, DP, Recursion)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors break-words w-full">DBMS Architecture & Normalization</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors force-wrap w-full">Object-Oriented Programming (Java/C++)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors force-wrap w-full">Advanced DSA (Trees, Graphs, Hash Maps)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors force-wrap w-full">Algorithm Design (Sorting, DP, Recursion)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors force-wrap w-full">DBMS Architecture & Normalization</span></label>
               </div>
             </div>
             <div class="inner-glass p-10 rounded-[2rem] bg-white/70 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
               <div class="font-black text-pink-900 mb-8 text-3xl border-b-4 border-pink-200/50 pb-4">Semester 4: Systems</div>
               <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors break-words w-full">Operating Systems (Threads, Memory)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors break-words w-full">Computer Networks (TCP/IP, HTTP)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors break-words w-full">Frontend Frameworks (React.js)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors break-words w-full">Building RESTful APIs</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors force-wrap w-full">Operating Systems (Threads, Memory)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors force-wrap w-full">Computer Networks (TCP/IP, HTTP)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors force-wrap w-full">Frontend Frameworks (React.js)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-700 group-hover:text-pink-700 transition-colors force-wrap w-full">Building RESTful APIs</span></label>
               </div>
             </div>
           </div>
@@ -334,19 +347,19 @@
             <div class="inner-glass p-10 rounded-[2rem] bg-white/70 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
               <div class="font-black text-purple-900 mb-8 text-3xl border-b-4 border-purple-200/50 pb-4">Semester 5: Architecture</div>
               <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors break-words w-full">Backend Engineering (Node.js/Spring)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors break-words w-full">NoSQL Databases (MongoDB/Redis)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors break-words w-full">Cloud Platforms (AWS Core Services)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors break-words w-full">Machine Learning Fundamentals</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors force-wrap w-full">Backend Engineering (Node.js/Spring)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors force-wrap w-full">NoSQL Databases (MongoDB/Redis)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors force-wrap w-full">Cloud Platforms (AWS Core Services)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors force-wrap w-full">Machine Learning Fundamentals</span></label>
               </div>
             </div>
             <div class="inner-glass p-10 rounded-[2rem] bg-white/70 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
               <div class="font-black text-purple-900 mb-8 text-3xl border-b-4 border-purple-200/50 pb-4">Semester 6: Engineering</div>
               <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors break-words w-full">DevOps Culture (Docker, CI/CD)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors break-words w-full">Cross-platform Mobile (React Native)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors break-words w-full">App Security & Cryptography</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors break-words w-full">TDD (Unit & Integration Testing)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors force-wrap w-full">DevOps Culture (Docker, CI/CD)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors force-wrap w-full">Cross-platform Mobile (React Native)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors force-wrap w-full">App Security & Cryptography</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-700 group-hover:text-purple-700 transition-colors force-wrap w-full">TDD (Unit & Integration Testing)</span></label>
               </div>
             </div>
           </div>
@@ -356,19 +369,19 @@
             <div class="inner-glass p-10 rounded-[2rem] bg-white/70 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
               <div class="font-black text-teal-900 mb-8 text-3xl border-b-4 border-teal-200/50 pb-4">Semester 7: Scale & Polish</div>
               <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors break-words w-full">System Design (Microservices, Scalability)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors break-words w-full">Advanced Tech (GenAI / Web3)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors break-words w-full">Kubernetes & Orchestration</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors break-words w-full">Major Capstone Product Launch</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors force-wrap w-full">System Design (Microservices, Scalability)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors force-wrap w-full">Advanced Tech (GenAI / Web3)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors force-wrap w-full">Kubernetes & Orchestration</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors force-wrap w-full">Major Capstone Product Launch</span></label>
               </div>
             </div>
             <div class="inner-glass p-10 rounded-[2rem] bg-white/70 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
               <div class="font-black text-teal-900 mb-8 text-3xl border-b-4 border-teal-200/50 pb-4">Semester 8: Industry Ready</div>
               <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors break-words w-full">Elite DSA Problem Solving for Interviews</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors break-words w-full">Significant Open Source Contributions</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors break-words w-full">Mock Interviews (Peers & Platforms)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors break-words w-full">Internship Conversion & Networking</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors force-wrap w-full">Elite DSA Problem Solving for Interviews</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors force-wrap w-full">Significant Open Source Contributions</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors force-wrap w-full">Mock Interviews (Peers & Platforms)</span></label>
+                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" class="roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-700 group-hover:text-teal-700 transition-colors force-wrap w-full">Internship Conversion & Networking</span></label>
               </div>
             </div>
           </div>
@@ -378,23 +391,23 @@
 
     <!-- CAREER LAUNCHPAD & INTERVIEW SKILLS -->
     <section id="career" class="page px-2">
-      <div class="glass-card p-10 max-w-[1500px] mx-auto shadow-2xl border-2 border-white" style="border-top: 8px solid #10b981;">
+      <div class="glass-card p-10 max-w-[1500px] mx-auto shadow-2xl border-2 border-white" style="border-top: 10px solid #10b981;">
         
         <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-14 gap-8">
           <div>
-            <h2 class="text-5xl font-black text-slate-800 flex items-center gap-5 tracking-tight drop-shadow-sm">
+            <h2 class="text-5xl sm:text-6xl font-black text-slate-800 flex items-center gap-5 tracking-tighter drop-shadow-md">
               <span class="p-4 bg-emerald-100 text-emerald-600 rounded-3xl shadow-inner border border-emerald-200">💼</span> Ultimate Interview Mastery
             </h2>
-            <p class="text-slate-600 font-extrabold mt-5 text-2xl bg-white/50 inline-block px-5 py-2 rounded-xl">Check these off to prove to recruiters you are the top 1% candidate.</p>
+            <p class="text-slate-600 font-extrabold mt-6 text-2xl bg-white/70 inline-block px-6 py-2.5 rounded-xl shadow-sm border border-white">Check these off to prove to recruiters you are the top 1% candidate.</p>
           </div>
           
-          <div class="inner-glass bg-white/80 p-8 rounded-[2rem] w-full md:w-96 shadow-xl border-2 border-white transform hover:scale-105 transition-transform">
+          <div class="inner-glass bg-white/90 p-8 rounded-[2rem] w-full md:w-96 shadow-2xl border-2 border-white transform hover:scale-105 transition-transform">
             <div class="flex justify-between items-end mb-4">
               <span class="text-lg font-black uppercase text-slate-500 tracking-widest">Readiness Score</span>
-              <span id="interviewScore" class="text-5xl font-black text-emerald-600 drop-shadow-md">0%</span>
+              <span id="interviewScore" class="text-6xl font-black text-emerald-600 drop-shadow-md">0%</span>
             </div>
             <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white/50">
-              <div id="interviewProgressBar" class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-[0_0_15px_rgba(52,211,153,0.9)]" style="width: 0%"></div>
+              <div id="interviewProgressBar" class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-[0_0_20px_rgba(52,211,153,0.9)]" style="width: 0%"></div>
             </div>
           </div>
         </div>
@@ -402,58 +415,58 @@
         <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8 relative z-10">
           
           <!-- Column 1: Core Technical -->
-          <div class="inner-glass bg-white/70 p-8 rounded-3xl border-t-8 border-t-blue-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
+          <div class="inner-glass bg-white/80 p-8 rounded-3xl border-t-[8px] border-t-blue-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
             <div class="flex items-center gap-4 font-black text-blue-900 mb-8 text-3xl">
-              <span class="text-4xl drop-shadow-md">🧠</span> Technical Core
+              <span class="text-5xl drop-shadow-md">🧠</span> Technical Core
             </div>
             <div class="space-y-6">
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 break-words w-full">Solved 150+ LeetCode (Easy/Med)</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 break-words w-full">Mastered 1 Primary Language</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 break-words w-full">System Design (HLD & LLD Basics)</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 break-words w-full">Clean Code & SOLID Principles</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 break-words w-full">Debugging & Testing Skills</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 force-wrap w-full">Solved 150+ LeetCode (Easy/Med)</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 force-wrap w-full">Mastered 1 Primary Language</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 force-wrap w-full">System Design (HLD & LLD Basics)</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 force-wrap w-full">Clean Code & SOLID Principles</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-lg font-bold text-slate-700 group-hover:text-blue-700 force-wrap w-full">Debugging & Testing Skills</span></label>
             </div>
           </div>
 
           <!-- Column 2: Communication -->
-          <div class="inner-glass bg-white/70 p-8 rounded-3xl border-t-8 border-t-amber-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
+          <div class="inner-glass bg-white/80 p-8 rounded-3xl border-t-[8px] border-t-amber-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
             <div class="flex items-center gap-4 font-black text-amber-900 mb-8 text-3xl">
-              <span class="text-4xl drop-shadow-md">🗣️</span> Communication
+              <span class="text-5xl drop-shadow-md">🗣️</span> Communication
             </div>
             <div class="space-y-6">
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 break-words w-full">"Thinking Aloud" while coding</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 break-words w-full">Clear & Confident Articulation</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 break-words w-full">Active Listening to Interviewer</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 break-words w-full">Explaining complex logic simply</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 break-words w-full">Asking intelligent questions at end</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 force-wrap w-full">"Thinking Aloud" while coding</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 force-wrap w-full">Clear & Confident Articulation</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 force-wrap w-full">Active Listening to Interviewer</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 force-wrap w-full">Explaining complex logic simply</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-lg font-bold text-slate-700 group-hover:text-amber-700 force-wrap w-full">Asking intelligent questions at end</span></label>
             </div>
           </div>
 
           <!-- Column 3: HR & Behavioral -->
-          <div class="inner-glass bg-white/70 p-8 rounded-3xl border-t-8 border-t-rose-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
+          <div class="inner-glass bg-white/80 p-8 rounded-3xl border-t-[8px] border-t-rose-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
             <div class="flex items-center gap-4 font-black text-rose-900 mb-8 text-3xl">
-              <span class="text-4xl drop-shadow-md">🤝</span> HR & Behavioral
+              <span class="text-5xl drop-shadow-md">🤝</span> HR & Behavioral
             </div>
             <div class="space-y-6">
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 break-words w-full">Mastered STAR Storytelling Method</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 break-words w-full">Handled "Conflict Resolution" Qs</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 break-words w-full">Company & Culture Research</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 break-words w-full">Teamwork & Leadership Examples</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 break-words w-full">Salary Negotiation Basics</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 force-wrap w-full">Mastered STAR Storytelling Method</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 force-wrap w-full">Handled "Conflict Resolution" Qs</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 force-wrap w-full">Company & Culture Research</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 force-wrap w-full">Teamwork & Leadership Examples</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-lg font-bold text-slate-700 group-hover:text-rose-700 force-wrap w-full">Salary Negotiation Basics</span></label>
             </div>
           </div>
 
           <!-- Column 4: Personal Branding -->
-          <div class="inner-glass bg-white/70 p-8 rounded-3xl border-t-8 border-t-purple-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
+          <div class="inner-glass bg-white/80 p-8 rounded-3xl border-t-[8px] border-t-purple-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
             <div class="flex items-center gap-4 font-black text-purple-900 mb-8 text-3xl">
-              <span class="text-4xl drop-shadow-md">🚀</span> Personal Brand
+              <span class="text-5xl drop-shadow-md">🚀</span> Personal Brand
             </div>
             <div class="space-y-6">
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 break-words w-full">1-Page ATS-Optimized Resume</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 break-words w-full">Active GitHub (Green Squares)</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 break-words w-full">Optimized LinkedIn Profile</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 break-words w-full">2 Live Deployed Full-stack Projects</span></label>
-              <label class="flex items-start gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-0.5 border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 break-words w-full">Personal Portfolio Website Built</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 force-wrap w-full">1-Page ATS-Optimized Resume</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 force-wrap w-full">Active GitHub (Green Squares)</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 force-wrap w-full">Optimized LinkedIn Profile</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 force-wrap w-full">2 Live Deployed Full-stack Projects</span></label>
+              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-lg font-bold text-slate-700 group-hover:text-purple-700 force-wrap w-full">Personal Portfolio Website Built</span></label>
             </div>
           </div>
 
@@ -517,7 +530,7 @@
       });
       document.getElementById(pageId).classList.add('active');
       const activeBtn = document.getElementById('nav-' + pageId);
-      if (activeBtn) activeBtn.className = "w-full text-left px-6 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white shadow-lg font-black transition-all text-lg transform hover:scale-105 hover:shadow-xl";
+      if (activeBtn) activeBtn.className = "w-full text-left px-6 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white shadow-[0_8px_20px_rgba(79,70,229,0.4)] font-black transition-all text-lg transform hover:scale-105";
       
       const titles = { 
         dashboard: 'Dashboard', 
@@ -565,15 +578,15 @@
       let html = '';
       filteredTasks.forEach(t => {
         html += `
-          <div class="p-5 bg-white/80 rounded-2xl border-2 border-white shadow-sm flex items-center gap-5">
-            <div class="w-5 h-5 shrink-0 rounded-full shadow-sm ${t.completed ? 'bg-emerald-500' : 'bg-orange-500'}"></div>
-            <div class="font-extrabold text-xl break-words w-full ${t.completed ? 'line-through text-slate-400' : 'text-slate-800'}">${t.text}</div>
+          <div class="p-6 bg-white/80 rounded-2xl border-2 border-white shadow-sm flex items-center gap-5">
+            <div class="w-6 h-6 shrink-0 rounded-full shadow-sm ${t.completed ? 'bg-emerald-500' : 'bg-orange-500'}"></div>
+            <div class="font-extrabold text-2xl force-wrap w-full ${t.completed ? 'line-through text-slate-400' : 'text-slate-800'}">${t.text}</div>
           </div>
         `;
       });
 
       if (filteredTasks.length === 0) {
-        html = '<div class="text-center text-slate-500 font-black py-8 text-xl bg-white/50 rounded-2xl border-2 border-white border-dashed">No tasks found in this category.</div>';
+        html = '<div class="text-center text-slate-500 font-black py-10 text-2xl bg-white/50 rounded-3xl border-2 border-white border-dashed">No tasks found in this category.</div>';
       }
       
       listContainer.innerHTML = html;
@@ -599,6 +612,7 @@
       document.getElementById('interviewProgressBar').style.width = percent + '%';
     }
 
+    // --- Format Helper: DEFAULT TO 00:00 AM IF EMPTY ---
     function formatDateTime(dateStr, timeStr) {
       let formattedDate = "";
       let formattedTime = "";
@@ -606,15 +620,19 @@
       if (dateStr && dateStr !== "No Date") {
         const [yyyy, mm, dd] = dateStr.split('-');
         formattedDate = `${dd}/${mm}/${yyyy}`;
+      } else {
+        formattedDate = `00/00/0000`; // Ultimate fallback if missing
       }
       
-      if (timeStr && timeStr !== "No Time") {
+      if (timeStr && timeStr !== "No Time" && timeStr !== "") {
         let [hour, minute] = timeStr.split(':');
         hour = parseInt(hour, 10);
         const ampm = hour >= 12 ? 'PM' : 'AM';
         hour = hour % 12;
         hour = hour ? hour : 12; 
         formattedTime = `${hour}:${minute} ${ampm}`;
+      } else {
+        formattedTime = `12:00 AM`; // Defaults to this if empty
       }
       
       return { formattedDate, formattedTime };
@@ -648,7 +666,7 @@
       tasks.push({ 
         text: input.value.trim(), 
         date: date.value || "No Date", 
-        time: time.value || "No Time",
+        time: time.value || "00:00",
         completed: false 
       });
       
@@ -668,32 +686,32 @@
       tasks.forEach((t, i) => {
         const { formattedDate, formattedTime } = formatDateTime(t.date, t.time);
         
-        let dateHtml = formattedDate ? `<div>📅 Date: ${formattedDate}</div>` : '';
-        let timeHtml = formattedTime ? `<div>⏰ Time: ${formattedTime}</div>` : '';
+        let dateHtml = `<div>📅 Date: ${formattedDate}</div>`;
+        let timeHtml = `<div>⏰ Time: ${formattedTime}</div>`;
         
-        const detailsContainer = (dateHtml || timeHtml) ? `
-          <div class="text-sm font-black mt-3 flex flex-col gap-1 ${t.completed ? 'text-slate-400' : 'text-pink-600'}">
+        const detailsContainer = `
+          <div class="text-base font-black mt-4 flex flex-col gap-1 ${t.completed ? 'text-slate-400' : 'text-pink-600'}">
             ${dateHtml}
             ${timeHtml}
-          </div>` : '';
+          </div>`;
 
         html += `
-        <div class="no-select inner-glass p-8 rounded-3xl flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all border-2 border-white ${t.completed ? 'opacity-60 bg-white/40' : 'bg-white/80 cursor-pointer'}"
+        <div class="no-select inner-glass p-8 rounded-[2rem] flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all border-2 border-white ${t.completed ? 'opacity-60 bg-white/40' : 'bg-white/80 cursor-pointer'}"
              onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
              ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()" ontouchmove="cancelHold()">
-          <div class="flex-1 w-full min-w-0">
-            <div class="font-black text-3xl break-words w-full ${t.completed ? 'line-through text-slate-400' : 'text-slate-800'}">${t.text}</div>
+          <div class="flex-1 w-full min-w-0 pr-4">
+            <p class="font-black text-3xl/tight force-wrap w-full ${t.completed ? 'line-through text-slate-400' : 'text-slate-800'}">${t.text}</p>
             ${detailsContainer}
           </div>
-          <div class="shrink-0 flex items-center">
-            <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-8 py-4 rounded-2xl font-black transition-all text-lg whitespace-nowrap shadow-md hover:shadow-xl transform hover:-translate-y-1 ${t.completed ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-gradient-to-r from-emerald-400 to-green-500 text-white border-2 border-green-300'}">
+          <div class="shrink-0 flex items-center mt-4 sm:mt-0">
+            <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-8 py-4 rounded-2xl font-black transition-all text-xl whitespace-nowrap shadow-md hover:shadow-xl transform hover:-translate-y-1 ${t.completed ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-gradient-to-r from-emerald-400 to-green-500 text-white border-2 border-green-300'}">
               ${t.completed ? 'Undo' : '✓ Complete Task'}
             </button>
           </div>
         </div>`;
       });
       
-      const empty = '<div class="text-slate-500 font-black p-10 inner-glass rounded-3xl text-center text-2xl border-2 border-white border-dashed bg-white/40">No tasks yet! Add one above.</div>';
+      const empty = '<div class="text-slate-500 font-black p-10 inner-glass rounded-[2rem] text-center text-2xl border-2 border-white border-dashed bg-white/40">No tasks yet! Add one above.</div>';
       list.innerHTML = html || empty; 
       
       const total = tasks.length;
@@ -719,7 +737,7 @@
       plans.push({
         text: input.value.trim(),
         date: date.value || "No Date", 
-        time: time.value || "No Time"
+        time: time.value || "00:00"
       });
       
       input.value = ''; date.value = ''; time.value = '00:00';
@@ -733,28 +751,28 @@
       plans.forEach((p, i) => {
         const { formattedDate, formattedTime } = formatDateTime(p.date, p.time);
         
-        let dateHtml = formattedDate ? `<div>📅 Date: ${formattedDate}</div>` : '';
-        let timeHtml = formattedTime ? `<div>⏰ Time: ${formattedTime}</div>` : '';
+        let dateHtml = `<div>📅 Date: ${formattedDate}</div>`;
+        let timeHtml = `<div>⏰ Time: ${formattedTime}</div>`;
 
-        const detailsContainer = (dateHtml || timeHtml) ? `
-          <div class="bg-white/90 px-6 py-3 rounded-2xl text-lg font-black text-indigo-700 flex flex-col items-end gap-1 shadow-sm border-2 border-white shrink-0 mt-4 sm:mt-0">
+        const detailsContainer = `
+          <div class="bg-white/90 px-6 py-4 rounded-2xl text-lg font-black text-indigo-700 flex flex-col sm:items-end gap-1 shadow-sm border-2 border-white shrink-0 mt-4 sm:mt-0 min-w-max">
             ${dateHtml}
             ${timeHtml}
-          </div>` : '';
+          </div>`;
         
         html += `
-        <div class="no-select cursor-pointer p-8 bg-gradient-to-r from-indigo-50/95 to-blue-50/95 rounded-3xl border-2 border-white shadow-lg flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all"
+        <div class="no-select cursor-pointer p-8 bg-gradient-to-r from-indigo-50/95 to-blue-50/95 rounded-[2rem] border-2 border-white shadow-lg flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all"
              onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
              ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()" ontouchmove="cancelHold()">
-          <div class="flex items-start gap-4 font-black text-indigo-900 text-3xl flex-1 w-full min-w-0">
+          <div class="flex items-start gap-4 font-black text-indigo-900 text-3xl flex-1 w-full min-w-0 pr-4">
             <span class="text-5xl drop-shadow-md shrink-0">🎯</span>
-            <span class="break-words w-full mt-1">${p.text}</span>
+            <p class="force-wrap w-full mt-2 leading-tight">${p.text}</p>
           </div>
           ${detailsContainer}
         </div>`;
       });
       
-      list.innerHTML = html || '<div class="text-slate-500 font-black p-10 inner-glass rounded-3xl text-center text-2xl border-2 border-white border-dashed bg-white/40">No plans yet. Schedule a milestone above!</div>';
+      list.innerHTML = html || '<div class="text-slate-500 font-black p-10 inner-glass rounded-[2rem] text-center text-2xl border-2 border-white border-dashed bg-white/40">No plans yet. Schedule a milestone above!</div>';
     }
 
     renderTasks(); 

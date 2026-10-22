@@ -37,7 +37,6 @@
       color: #475569;
     }
     
-    /* Disables text selection while holding down on an item */
     .no-select {
       user-select: none;
       -webkit-user-select: none;
@@ -191,100 +190,129 @@
     <!-- B.TECH TECH SKILLS ROADMAP SECTION -->
     <section id="roadmap" class="page px-2">
       <div class="glass-card p-8 max-w-5xl mx-auto border-t-4 border-t-indigo-500">
-        <h2 class="text-3xl font-extrabold mb-2 text-slate-800">🗺️ B.Tech Technical Skills Roadmap</h2>
-        <p class="text-slate-500 font-medium mb-8">Select a year to see what you need to focus on to become an industry-ready engineer.</p>
+        <h2 class="text-3xl font-extrabold mb-2 text-slate-800">🗺️ Tech Skills & Interview Roadmap</h2>
+        <p class="text-slate-500 font-medium mb-8">Track your progress across 4 years. Check off the skills as you master them to become industry-ready.</p>
         
         <div class="flex flex-wrap gap-3 mb-8 border-b-2 border-slate-100 pb-4">
           <button onclick="showYear('year1', this)" class="year-tab-btn bg-indigo-600 text-white px-6 py-2.5 rounded-full font-bold shadow-md transition-all transform hover:-translate-y-0.5">Year 1</button>
           <button onclick="showYear('year2', this)" class="year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all">Year 2</button>
           <button onclick="showYear('year3', this)" class="year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all">Year 3</button>
           <button onclick="showYear('year4', this)" class="year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all">Year 4</button>
+          <button onclick="showYear('interview', this)" class="year-tab-btn bg-amber-100 text-amber-700 hover:bg-amber-200 px-6 py-2.5 rounded-full font-bold transition-all border border-amber-300">🎯 Interview Skills</button>
         </div>
 
         <div class="relative min-h-[300px]">
+          
+          <!-- YEAR 1 CONTENT -->
           <div id="year1" class="year-content active grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-100">
             <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 shadow-sm">
               <div class="font-extrabold text-indigo-800 mb-4 text-lg border-b-2 border-indigo-200 pb-2">Semester 1</div>
-              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
-                <li>C / C++ Programming Basics</li>
-                <li>Terminal / Command Line Mastery</li>
-                <li>Git & GitHub (Version Control)</li>
-                <li>Basic HTML & CSS (Web structure)</li>
-              </ul>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-indigo-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">C / C++ Programming Basics</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-indigo-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Terminal / Command Line Mastery</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-indigo-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Git & GitHub (Version Control)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-indigo-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Basic HTML & CSS (Web structure)</span></label>
+              </div>
             </div>
             <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 shadow-sm">
               <div class="font-extrabold text-indigo-800 mb-4 text-lg border-b-2 border-indigo-200 pb-2">Semester 2</div>
-              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
-                <li>Data Structures Fundamentals (Arrays, Lists, Stacks, Queues)</li>
-                <li>Python Scripting Basics</li>
-                <li>Intro to JavaScript (DOM Manipulation)</li>
-                <li>Basic SQL Queries</li>
-              </ul>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-indigo-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Data Structures Basics (Arrays, Lists)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-indigo-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Python Scripting Fundamentals</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-indigo-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Intro to JavaScript (DOM Manipulation)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-indigo-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Basic SQL Queries & DB Design</span></label>
+              </div>
             </div>
           </div>
 
+          <!-- YEAR 2 CONTENT -->
           <div id="year2" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
             <div class="bg-pink-50 p-6 rounded-2xl border border-pink-100 shadow-sm">
               <div class="font-extrabold text-pink-800 mb-4 text-lg border-b-2 border-pink-200 pb-2">Semester 3</div>
-              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
-                <li>Object-Oriented Programming (Java / C++)</li>
-                <li>Advanced Data Structures (Trees, Graphs, Hash Maps)</li>
-                <li>Algorithms (Sorting, Searching, Recursion)</li>
-                <li>Relational Databases (MySQL / PostgreSQL)</li>
-              </ul>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-pink-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Object-Oriented Programming (Java/C++)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-pink-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Advanced DSA (Trees, Graphs, Hash Maps)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-pink-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Algorithms (Sorting, Searching, Recursion)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-pink-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Relational Databases (MySQL/PostgreSQL)</span></label>
+              </div>
             </div>
             <div class="bg-pink-50 p-6 rounded-2xl border border-pink-100 shadow-sm">
               <div class="font-extrabold text-pink-800 mb-4 text-lg border-b-2 border-pink-200 pb-2">Semester 4</div>
-              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
-                <li>Operating Systems Core Concepts</li>
-                <li>Computer Networks & Protocols (TCP/IP, HTTP)</li>
-                <li>Frontend Frameworks (React.js or Vue)</li>
-                <li>API Integration (RESTful services)</li>
-              </ul>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-pink-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Operating Systems Core Concepts</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-pink-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Computer Networks & Protocols (TCP/IP)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-pink-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Frontend Frameworks (React.js or Vue)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-pink-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">API Integration & RESTful services</span></label>
+              </div>
             </div>
           </div>
 
+          <!-- YEAR 3 CONTENT -->
           <div id="year3" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
             <div class="bg-purple-50 p-6 rounded-2xl border border-purple-100 shadow-sm">
               <div class="font-extrabold text-purple-800 mb-4 text-lg border-b-2 border-purple-200 pb-2">Semester 5</div>
-              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
-                <li>Backend Development (Node.js / Django / Spring Boot)</li>
-                <li>NoSQL Databases (MongoDB)</li>
-                <li>Cloud Basics (AWS EC2, S3 / Google Cloud)</li>
-                <li>Intro to Machine Learning (Scikit-learn, Pandas)</li>
-              </ul>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-purple-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Backend Dev (Node.js / Django / Spring)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-purple-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">NoSQL Databases (MongoDB)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-purple-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Cloud Basics (AWS EC2, S3 / GCP)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-purple-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Intro to Machine Learning (Scikit-learn)</span></label>
+              </div>
             </div>
             <div class="bg-purple-50 p-6 rounded-2xl border border-purple-100 shadow-sm">
               <div class="font-extrabold text-purple-800 mb-4 text-lg border-b-2 border-purple-200 pb-2">Semester 6</div>
-              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
-                <li>DevOps Fundamentals (Docker, CI/CD Pipelines)</li>
-                <li>Mobile App Development (Flutter or React Native)</li>
-                <li>Cybersecurity & Cryptography Basics</li>
-                <li>Software Testing (Unit & Integration tests)</li>
-              </ul>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-purple-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">DevOps Fundamentals (Docker, CI/CD)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-purple-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Mobile App Development (Flutter/React Native)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-purple-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Cybersecurity & Cryptography Basics</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-purple-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Software Testing (Unit & Integration)</span></label>
+              </div>
             </div>
           </div>
 
+          <!-- YEAR 4 CONTENT -->
           <div id="year4" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
             <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 shadow-sm">
               <div class="font-extrabold text-emerald-800 mb-4 text-lg border-b-2 border-emerald-200 pb-2">Semester 7</div>
-              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
-                <li>System Design (Scalability, Microservices, Caching)</li>
-                <li>Advanced AI/ML / GenAI APIs or Blockchain</li>
-                <li>Kubernetes & Container Orchestration</li>
-                <li>Major Capstone Project Development</li>
-              </ul>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-emerald-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">System Design (Scalability, Microservices)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-emerald-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Advanced AI/ML / GenAI APIs</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-emerald-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Kubernetes & Container Orchestration</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-emerald-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Major Capstone Project Development</span></label>
+              </div>
             </div>
             <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 shadow-sm">
               <div class="font-extrabold text-emerald-800 mb-4 text-lg border-b-2 border-emerald-200 pb-2">Semester 8</div>
-              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
-                <li>Advanced Competitive Programming & DSA practice</li>
-                <li>Open Source Contributions</li>
-                <li>Technical Interview Prep (LeetCode / System Design)</li>
-                <li>Final Capstone Deployment & Internship Focus</li>
-              </ul>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-emerald-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Advanced Competitive Programming (DSA)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-emerald-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Open Source Contributions</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-emerald-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Technical Interview Prep (LeetCode)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-emerald-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Final Capstone Deployment & Internship</span></label>
+              </div>
             </div>
           </div>
+
+          <!-- INTERVIEW SKILLS CONTENT (NEW) -->
+          <div id="interview" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
+            <div class="bg-amber-50 p-6 rounded-2xl border border-amber-200 shadow-sm">
+              <div class="font-extrabold text-amber-800 mb-4 text-lg border-b-2 border-amber-200 pb-2">Technical Core</div>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-amber-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">DSA Problem Solving (Arrays, Trees, DP)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-amber-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Core CS Subjects (OS, DBMS, OOPS, CN)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-amber-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">System Design Fundamentals (HLD & LLD)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-amber-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Database Querying & Indexing Optimization</span></label>
+              </div>
+            </div>
+            <div class="bg-amber-50 p-6 rounded-2xl border border-amber-200 shadow-sm">
+              <div class="font-extrabold text-amber-800 mb-4 text-lg border-b-2 border-amber-200 pb-2">HR, Portfolio & Soft Skills</div>
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-amber-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Behavioral Q's (STAR Method Preparation)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-amber-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Resume Optimization (ATS Friendly)</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-amber-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Live Portfolio / Hosted Personal Projects</span></label>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-white/60 rounded-lg transition-all"><input type="checkbox" onchange="toggleSkill(this)" class="mt-1 w-4 h-4 text-amber-600 rounded cursor-pointer"><span class="text-sm text-slate-700 font-medium transition-all select-none">Mock Interviews & Communication Practice</span></label>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -347,7 +375,7 @@
       const activeBtn = document.getElementById('nav-' + pageId);
       if (activeBtn) activeBtn.className = "w-full text-left px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md font-semibold transition-all";
       
-      const titles = { dashboard: 'Dashboard', planner: 'Study Planner', tasks: 'Action Tasks', roadmap: 'B.Tech Skills Roadmap' };
+      const titles = { dashboard: 'Dashboard', planner: 'Study Planner', tasks: 'Action Tasks', roadmap: 'Tech Skills & Interview Roadmap' };
       document.getElementById('pageTitle').textContent = titles[pageId];
     }
 
@@ -357,13 +385,34 @@
         el.classList.remove('active', 'opacity-100');
       });
       document.querySelectorAll('.year-tab-btn').forEach(btn => {
-        btn.className = "year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all";
+        if(btn.innerText.includes("Interview")) {
+          btn.className = "year-tab-btn bg-amber-100 text-amber-700 hover:bg-amber-200 px-6 py-2.5 rounded-full font-bold transition-all border border-amber-300";
+        } else {
+          btn.className = "year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all";
+        }
       });
       
       const target = document.getElementById(yearId);
       target.classList.remove('hidden', 'pointer-events-none');
       setTimeout(() => { target.classList.add('active', 'opacity-100'); }, 10);
-      btnElement.className = "year-tab-btn bg-indigo-600 text-white px-6 py-2.5 rounded-full font-bold shadow-md transition-all transform hover:-translate-y-0.5";
+      
+      if(yearId === 'interview') {
+        btnElement.className = "year-tab-btn bg-amber-600 text-white px-6 py-2.5 rounded-full font-bold shadow-md transition-all transform hover:-translate-y-0.5 border border-amber-600";
+      } else {
+        btnElement.className = "year-tab-btn bg-indigo-600 text-white px-6 py-2.5 rounded-full font-bold shadow-md transition-all transform hover:-translate-y-0.5";
+      }
+    }
+
+    // Toggle styling for Roadmap Skills Checkboxes
+    function toggleSkill(checkbox) {
+      const textSpan = checkbox.nextElementSibling;
+      if(checkbox.checked) {
+        textSpan.classList.add('line-through', 'text-slate-400');
+        textSpan.classList.remove('text-slate-700');
+      } else {
+        textSpan.classList.remove('line-through', 'text-slate-400');
+        textSpan.classList.add('text-slate-700');
+      }
     }
 
     // --- Format Helper: DD/MM/YYYY and 12-Hour AM/PM ---

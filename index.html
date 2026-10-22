@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StudyBuddy - Premium Academic Assistant</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
@@ -18,6 +17,7 @@
     .page { display: none; opacity: 0; }
     .page.active { display: block; animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
     @keyframes fadeIn { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+    
     .glass-card {
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(12px);
@@ -30,9 +30,13 @@
     .glass-card:hover { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); background: rgba(255, 255, 255, 0.9); }
     .text-gradient { background: linear-gradient(to right, #4f46e5, #ec4899, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     
-    /* Modal Styles */
     .modal-overlay { display: none; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); }
     .modal-overlay.active { display: flex; animation: fadeIn 0.3s ease forwards; }
+
+    /* Custom Input styling for Date/Time */
+    input[type="date"], input[type="time"] {
+      color: #475569;
+    }
   </style>
 </head>
 <body class="text-slate-800 min-h-screen flex p-2 sm:p-4 gap-4">
@@ -53,8 +57,8 @@
         </div>
         <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
         <div class="flex gap-3 pt-2">
-          <button onclick="signIn()" class="flex-1 bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 hover:shadow-lg transition-all transform hover:-translate-y-0.5">Sign In</button>
-          <button onclick="signUp()" class="flex-1 bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition-all">Create Account</button>
+          <button onclick="mockSignIn()" class="flex-1 bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 hover:shadow-lg transition-all transform hover:-translate-y-0.5">Sign In</button>
+          <button onclick="mockSignUp()" class="flex-1 bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition-all">Create Account</button>
         </div>
       </div>
     </div>
@@ -76,7 +80,7 @@
     </div>
     <div class="mt-8 pt-6 border-t border-slate-200/50">
       <div id="userInfo" class="text-sm text-slate-500 mb-3 truncate font-medium">Not signed in</div>
-      <button onclick="openAuthModal()" id="authBtn" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl transition-all shadow-md font-semibold transform hover:-translate-y-0.5">Sign In / Sign Up</button>
+      <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl transition-all shadow-md font-semibold transform hover:-translate-y-0.5">Sign In / Sign Up</button>
     </div>
   </aside>
 
@@ -133,11 +137,17 @@
 
     <!-- PLANNER -->
     <section id="planner" class="page px-2">
-      <div class="glass-card p-8 max-w-4xl mx-auto">
+      <div class="glass-card p-8 max-w-5xl mx-auto">
         <h2 class="text-2xl font-extrabold mb-2 text-slate-800">📅 Strategy & Milestones</h2>
-        <div class="flex gap-3 mb-6">
-          <input type="text" id="planTitle" placeholder="E.g., Complete Data Structures Module..." class="flex-1 border-2 rounded-xl p-4 font-medium outline-none focus:border-indigo-500">
-          <button onclick="addPlan()" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all">Add Milestone</button>
+        <p class="text-slate-500 font-medium mb-6">Schedule your major study blocks.</p>
+        
+        <div class="flex flex-col md:flex-row gap-3 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <input type="text" id="planTitle" placeholder="E.g., Complete Data Structures Module..." class="flex-1 border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
+          <div class="flex gap-3">
+            <input type="date" id="planDate" class="border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
+            <input type="time" id="planTime" class="border-2 rounded-xl p-3 font-medium outline-none focus:border-indigo-500">
+          </div>
+          <button onclick="addPlan()" class="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all">Schedule</button>
         </div>
         <div id="plannerList" class="space-y-3"></div>
       </div>
@@ -145,11 +155,17 @@
 
     <!-- TASKS -->
     <section id="tasks" class="page px-2">
-      <div class="glass-card p-8 max-w-4xl mx-auto">
+      <div class="glass-card p-8 max-w-5xl mx-auto">
         <h2 class="text-2xl font-extrabold mb-2 text-slate-800">✅ Action Items</h2>
-        <div class="flex gap-3 mb-8">
-          <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 border-2 rounded-xl p-4 font-medium outline-none focus:border-pink-500">
-          <button onclick="addTask()" class="bg-pink-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-pink-600 transition-all">Create Task</button>
+        <p class="text-slate-500 font-medium mb-6">Add assignments and deadlines, and mark them complete.</p>
+        
+        <div class="flex flex-col md:flex-row gap-3 mb-8 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
+          <div class="flex gap-3">
+            <input type="date" id="taskDate" class="border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
+            <input type="time" id="taskTime" class="border-2 rounded-xl p-3 font-medium outline-none focus:border-pink-500">
+          </div>
+          <button onclick="addTask()" class="bg-pink-500 text-white px-8 py-3 rounded-xl font-bold hover:bg-pink-600 transition-all">Add Task</button>
         </div>
         <div id="taskList" class="space-y-3"></div>
       </div>
@@ -159,107 +175,103 @@
     <section id="roadmap" class="page px-2">
       <div class="glass-card p-8 max-w-5xl mx-auto border-t-4 border-t-indigo-500">
         <h2 class="text-3xl font-extrabold mb-2 text-slate-800">🗺️ B.Tech Technical Skills Roadmap</h2>
-        <p class="text-slate-500 font-medium mb-8">Your 4-year technical journey from beginner to industry-ready engineer. Focus on building these core skills step by step.</p>
+        <p class="text-slate-500 font-medium mb-8">Select a year to see what you need to focus on to become an industry-ready engineer.</p>
         
-        <div class="grid md:grid-cols-2 gap-8">
+        <!-- Interactive Tabs -->
+        <div class="flex flex-wrap gap-3 mb-8 border-b-2 border-slate-100 pb-4">
+          <button onclick="showYear('year1', this)" class="year-tab-btn bg-indigo-600 text-white px-6 py-2.5 rounded-full font-bold shadow-md transition-all transform hover:-translate-y-0.5">Year 1</button>
+          <button onclick="showYear('year2', this)" class="year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all">Year 2</button>
+          <button onclick="showYear('year3', this)" class="year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all">Year 3</button>
+          <button onclick="showYear('year4', this)" class="year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all">Year 4</button>
+        </div>
+
+        <div class="relative min-h-[300px]">
           
-          <!-- YEAR 1 -->
-          <div>
-            <h3 class="text-xl font-extrabold text-indigo-600 mb-4 border-b-2 border-indigo-100 pb-2">Year 1: The Foundation</h3>
-            <div class="space-y-4">
-              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                <div class="font-extrabold text-slate-800 mb-2">Semester 1</div>
-                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 font-medium">
-                  <li>C / C++ Programming Basics</li>
-                  <li>Terminal / Command Line Mastery</li>
-                  <li>Git & GitHub (Version Control)</li>
-                  <li>Basic HTML & CSS (Web structure)</li>
-                </ul>
-              </div>
-              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                <div class="font-extrabold text-slate-800 mb-2">Semester 2</div>
-                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 font-medium">
-                  <li>Data Structures Fundamentals (Arrays, Lists, Stacks, Queues)</li>
-                  <li>Python Scripting Basics</li>
-                  <li>Intro to JavaScript (DOM Manipulation)</li>
-                  <li>Basic SQL Queries</li>
-                </ul>
-              </div>
+          <!-- YEAR 1 CONTENT -->
+          <div id="year1" class="year-content active grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-100">
+            <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 shadow-sm">
+              <div class="font-extrabold text-indigo-800 mb-4 text-lg border-b-2 border-indigo-200 pb-2">Semester 1</div>
+              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
+                <li>C / C++ Programming Basics</li>
+                <li>Terminal / Command Line Mastery</li>
+                <li>Git & GitHub (Version Control)</li>
+                <li>Basic HTML & CSS (Web structure)</li>
+              </ul>
+            </div>
+            <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 shadow-sm">
+              <div class="font-extrabold text-indigo-800 mb-4 text-lg border-b-2 border-indigo-200 pb-2">Semester 2</div>
+              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
+                <li>Data Structures Fundamentals (Arrays, Lists, Stacks, Queues)</li>
+                <li>Python Scripting Basics</li>
+                <li>Intro to JavaScript (DOM Manipulation)</li>
+                <li>Basic SQL Queries</li>
+              </ul>
             </div>
           </div>
 
-          <!-- YEAR 2 -->
-          <div>
-            <h3 class="text-xl font-extrabold text-pink-600 mb-4 border-b-2 border-pink-100 pb-2">Year 2: Core Engineering</h3>
-            <div class="space-y-4">
-              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                <div class="font-extrabold text-slate-800 mb-2">Semester 3</div>
-                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 font-medium">
-                  <li>Object-Oriented Programming (Java / C++)</li>
-                  <li>Advanced Data Structures (Trees, Graphs, Hash Maps)</li>
-                  <li>Algorithms (Sorting, Searching, Recursion)</li>
-                  <li>Relational Databases (MySQL / PostgreSQL)</li>
-                </ul>
-              </div>
-              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                <div class="font-extrabold text-slate-800 mb-2">Semester 4</div>
-                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 font-medium">
-                  <li>Operating Systems Core Concepts</li>
-                  <li>Computer Networks & Protocols (TCP/IP, HTTP)</li>
-                  <li>Frontend Frameworks (React.js or Vue)</li>
-                  <li>API Integration (RESTful services)</li>
-                </ul>
-              </div>
+          <!-- YEAR 2 CONTENT -->
+          <div id="year2" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
+            <div class="bg-pink-50 p-6 rounded-2xl border border-pink-100 shadow-sm">
+              <div class="font-extrabold text-pink-800 mb-4 text-lg border-b-2 border-pink-200 pb-2">Semester 3</div>
+              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
+                <li>Object-Oriented Programming (Java / C++)</li>
+                <li>Advanced Data Structures (Trees, Graphs, Hash Maps)</li>
+                <li>Algorithms (Sorting, Searching, Recursion)</li>
+                <li>Relational Databases (MySQL / PostgreSQL)</li>
+              </ul>
+            </div>
+            <div class="bg-pink-50 p-6 rounded-2xl border border-pink-100 shadow-sm">
+              <div class="font-extrabold text-pink-800 mb-4 text-lg border-b-2 border-pink-200 pb-2">Semester 4</div>
+              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
+                <li>Operating Systems Core Concepts</li>
+                <li>Computer Networks & Protocols (TCP/IP, HTTP)</li>
+                <li>Frontend Frameworks (React.js or Vue)</li>
+                <li>API Integration (RESTful services)</li>
+              </ul>
             </div>
           </div>
 
-          <!-- YEAR 3 -->
-          <div>
-            <h3 class="text-xl font-extrabold text-purple-600 mb-4 border-b-2 border-purple-100 pb-2">Year 3: Specialization</h3>
-            <div class="space-y-4">
-              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                <div class="font-extrabold text-slate-800 mb-2">Semester 5</div>
-                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 font-medium">
-                  <li>Backend Development (Node.js / Django / Spring Boot)</li>
-                  <li>NoSQL Databases (MongoDB)</li>
-                  <li>Cloud Basics (AWS EC2, S3 / Google Cloud)</li>
-                  <li>Intro to Machine Learning (Scikit-learn, Pandas)</li>
-                </ul>
-              </div>
-              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                <div class="font-extrabold text-slate-800 mb-2">Semester 6</div>
-                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 font-medium">
-                  <li>DevOps Fundamentals (Docker, CI/CD Pipelines)</li>
-                  <li>Mobile App Development (Flutter or React Native)</li>
-                  <li>Cybersecurity & Cryptography Basics</li>
-                  <li>Software Testing (Unit & Integration tests)</li>
-                </ul>
-              </div>
+          <!-- YEAR 3 CONTENT -->
+          <div id="year3" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
+            <div class="bg-purple-50 p-6 rounded-2xl border border-purple-100 shadow-sm">
+              <div class="font-extrabold text-purple-800 mb-4 text-lg border-b-2 border-purple-200 pb-2">Semester 5</div>
+              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
+                <li>Backend Development (Node.js / Django / Spring Boot)</li>
+                <li>NoSQL Databases (MongoDB)</li>
+                <li>Cloud Basics (AWS EC2, S3 / Google Cloud)</li>
+                <li>Intro to Machine Learning (Scikit-learn, Pandas)</li>
+              </ul>
+            </div>
+            <div class="bg-purple-50 p-6 rounded-2xl border border-purple-100 shadow-sm">
+              <div class="font-extrabold text-purple-800 mb-4 text-lg border-b-2 border-purple-200 pb-2">Semester 6</div>
+              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
+                <li>DevOps Fundamentals (Docker, CI/CD Pipelines)</li>
+                <li>Mobile App Development (Flutter or React Native)</li>
+                <li>Cybersecurity & Cryptography Basics</li>
+                <li>Software Testing (Unit & Integration tests)</li>
+              </ul>
             </div>
           </div>
 
-          <!-- YEAR 4 -->
-          <div>
-            <h3 class="text-xl font-extrabold text-emerald-600 mb-4 border-b-2 border-emerald-100 pb-2">Year 4: Mastery & Industry</h3>
-            <div class="space-y-4">
-              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                <div class="font-extrabold text-slate-800 mb-2">Semester 7</div>
-                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 font-medium">
-                  <li>System Design (Scalability, Microservices, Caching)</li>
-                  <li>Advanced AI/ML / GenAI APIs or Blockchain</li>
-                  <li>Kubernetes & Container Orchestration</li>
-                  <li>Major Capstone Project Development</li>
-                </ul>
-              </div>
-              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                <div class="font-extrabold text-slate-800 mb-2">Semester 8</div>
-                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 font-medium">
-                  <li>Advanced Competitive Programming & DSA practice</li>
-                  <li>Open Source Contributions</li>
-                  <li>Technical Interview Prep (LeetCode / System Design)</li>
-                  <li>Final Capstone Deployment & Internship Focus</li>
-                </ul>
-              </div>
+          <!-- YEAR 4 CONTENT -->
+          <div id="year4" class="year-content hidden grid md:grid-cols-2 gap-6 absolute w-full top-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none">
+            <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 shadow-sm">
+              <div class="font-extrabold text-emerald-800 mb-4 text-lg border-b-2 border-emerald-200 pb-2">Semester 7</div>
+              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
+                <li>System Design (Scalability, Microservices, Caching)</li>
+                <li>Advanced AI/ML / GenAI APIs or Blockchain</li>
+                <li>Kubernetes & Container Orchestration</li>
+                <li>Major Capstone Project Development</li>
+              </ul>
+            </div>
+            <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 shadow-sm">
+              <div class="font-extrabold text-emerald-800 mb-4 text-lg border-b-2 border-emerald-200 pb-2">Semester 8</div>
+              <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 font-medium">
+                <li>Advanced Competitive Programming & DSA practice</li>
+                <li>Open Source Contributions</li>
+                <li>Technical Interview Prep (LeetCode / System Design)</li>
+                <li>Final Capstone Deployment & Internship Focus</li>
+              </ul>
             </div>
           </div>
 
@@ -269,63 +281,53 @@
   </main>
 
   <script>
-    // --- 1. CONFIGURATION KEYS ---
-    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-
-    // --- 2. SUPABASE AUTHENTICATION ---
-    let supabaseClient = null;
+    // --- 1. MOCK AUTHENTICATION ---
     let currentUser = null;
 
-    if (SUPABASE_URL !== 'YOUR_SUPABASE_URL' && window.supabase) {
-      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      checkUser();
-    }
-
-    function openAuthModal() {
+    function toggleAuth() {
       if (currentUser) {
-        supabaseClient.auth.signOut().then(() => location.reload());
+        currentUser = null;
+        document.getElementById('userInfo').textContent = 'Not signed in';
+        document.getElementById('authBtn').textContent = 'Sign In / Sign Up';
       } else {
+        document.getElementById('authEmail').value = '';
+        document.getElementById('authPassword').value = '';
+        document.getElementById('authError').classList.add('hidden');
         document.getElementById('authModal').classList.add('active');
       }
     }
+
     function closeAuthModal() {
       document.getElementById('authModal').classList.remove('active');
-      document.getElementById('authError').classList.add('hidden');
     }
 
-    async function checkUser() {
-      const { data } = await supabaseClient.auth.getSession();
-      if (data?.session) {
-        currentUser = data.session.user;
-        document.getElementById('userInfo').textContent = currentUser.email;
-        document.getElementById('authBtn').textContent = 'Sign Out';
+    function mockSignIn() {
+      const email = document.getElementById('authEmail').value;
+      const password = document.getElementById('authPassword').value;
+      if (!email || !password) {
+        document.getElementById('authError').textContent = 'Please enter both email and password.';
+        document.getElementById('authError').classList.remove('hidden');
+        return;
       }
+      currentUser = { email: email };
+      document.getElementById('userInfo').textContent = currentUser.email;
+      document.getElementById('authBtn').textContent = 'Sign Out';
+      closeAuthModal();
     }
 
-    async function signIn() {
-      if(!supabaseClient) return alert("Configure Supabase keys in index.html first.");
+    function mockSignUp() {
       const email = document.getElementById('authEmail').value;
       const password = document.getElementById('authPassword').value;
-      const errorDiv = document.getElementById('authError');
-      
-      const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
-      if (error) { errorDiv.textContent = error.message; errorDiv.classList.remove('hidden'); } 
-      else { location.reload(); }
+      if (!email || !password) {
+        document.getElementById('authError').textContent = 'Please enter both email and password.';
+        document.getElementById('authError').classList.remove('hidden');
+        return;
+      }
+      alert('Account successfully created! You are now signed in.');
+      mockSignIn();
     }
 
-    async function signUp() {
-      if(!supabaseClient) return alert("Configure Supabase keys in index.html first.");
-      const email = document.getElementById('authEmail').value;
-      const password = document.getElementById('authPassword').value;
-      const errorDiv = document.getElementById('authError');
-
-      const { error } = await supabaseClient.auth.signUp({ email, password });
-      if (error) { errorDiv.textContent = error.message; errorDiv.classList.remove('hidden'); } 
-      else { alert('Sign up successful! You can now sign in.'); }
-    }
-
-    // --- 3. NAVIGATION ---
+    // --- 2. NAVIGATION ---
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       const navs = ['dashboard', 'planner', 'tasks', 'roadmap'];
@@ -341,46 +343,135 @@
       document.getElementById('pageTitle').textContent = titles[pageId];
     }
 
-    // --- 4. TASKS & PLANNER ---
-    let tasks = []; let plans = [];
+    // --- 3. ROADMAP TABS ---
+    function showYear(yearId, btnElement) {
+      // Hide all year content
+      document.querySelectorAll('.year-content').forEach(el => {
+        el.classList.add('hidden', 'opacity-0', 'pointer-events-none');
+        el.classList.remove('active', 'opacity-100');
+      });
+      
+      // Reset all buttons to unselected state
+      document.querySelectorAll('.year-tab-btn').forEach(btn => {
+        btn.className = "year-tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-6 py-2.5 rounded-full font-bold transition-all";
+      });
+      
+      // Show selected year
+      const target = document.getElementById(yearId);
+      target.classList.remove('hidden', 'pointer-events-none');
+      
+      // Slight delay to allow display:block to apply before animating opacity
+      setTimeout(() => {
+        target.classList.add('active', 'opacity-100');
+      }, 10);
 
+      // Highlight selected button
+      btnElement.className = "year-tab-btn bg-indigo-600 text-white px-6 py-2.5 rounded-full font-bold shadow-md transition-all transform hover:-translate-y-0.5";
+    }
+
+    // --- 4. TASKS LOGIC (WITH DATE/TIME & COMPLETE BUTTON) ---
+    let tasks = []; 
+    
     function addTask() {
       const input = document.getElementById('taskInput');
+      const date = document.getElementById('taskDate');
+      const time = document.getElementById('taskTime');
+      
       if (!input.value.trim()) return;
-      tasks.push({ text: input.value.trim(), completed: false });
-      input.value = ''; renderTasks();
+      
+      tasks.push({ 
+        text: input.value.trim(), 
+        date: date.value || "No Date", 
+        time: time.value || "No Time",
+        completed: false 
+      });
+      
+      input.value = ''; date.value = ''; time.value = '';
+      renderTasks();
     }
-    function toggleTask(i) { tasks[i].completed = !tasks[i].completed; renderTasks(); }
+    
+    function markTaskComplete(i) { 
+      tasks[i].completed = !tasks[i].completed; 
+      renderTasks(); 
+    }
+    
     function renderTasks() {
       const list = document.getElementById('taskList');
       const dashList = document.getElementById('dashboardTasks');
       let html = '';
+      
       tasks.forEach((t, i) => {
-        html += `<div class="p-4 bg-white rounded-xl border border-slate-100 shadow-sm flex items-center gap-3 hover:shadow-md transition-all">
-          <input type="checkbox" class="w-5 h-5 text-pink-500 cursor-pointer" ${t.completed ? 'checked' : ''} onchange="toggleTask(${i})"> 
-          <span class="font-medium cursor-pointer ${t.completed ? 'line-through text-slate-400' : 'text-slate-700'}" onclick="toggleTask(${i})">${t.text}</span>
+        const dateTimeStr = (t.date !== "No Date" || t.time !== "No Time") ? `<div class="text-xs font-bold mt-1 ${t.completed ? 'text-slate-400' : 'text-pink-500'}">⏰ Deadline: ${t.date} ${t.time}</div>` : '';
+        
+        html += `
+        <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-all ${t.completed ? 'opacity-70 bg-slate-50' : ''}">
+          <div>
+            <span class="font-bold text-lg ${t.completed ? 'line-through text-slate-400' : 'text-slate-800'}">${t.text}</span>
+            ${dateTimeStr}
+          </div>
+          <button onclick="markTaskComplete(${i})" class="px-5 py-2 rounded-xl font-bold transition-all text-sm whitespace-nowrap ${t.completed ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-green-100 text-green-700 hover:bg-green-500 hover:text-white border border-green-200'}">
+            ${t.completed ? 'Undo' : '✓ Mark Complete'}
+          </button>
         </div>`;
       });
+      
       const empty = '<div class="text-slate-500 font-medium p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 text-center">No tasks yet! Add one above.</div>';
-      list.innerHTML = html || empty; dashList.innerHTML = html || empty;
+      list.innerHTML = html || empty; 
+      
+      // Simplify dashboard view
+      let dashHtml = '';
+      tasks.filter(t => !t.completed).slice(0,3).forEach(t => {
+        dashHtml += `<div class="p-3 bg-white rounded-lg border border-slate-100 shadow-sm mb-2 font-bold text-slate-700">${t.text}</div>`;
+      });
+      dashList.innerHTML = dashHtml || empty;
+
       document.getElementById('totalTasks').textContent = tasks.length;
       document.getElementById('completedTasks').textContent = tasks.filter(t=>t.completed).length;
       document.getElementById('pendingTasks').textContent = tasks.filter(t=>!t.completed).length;
     }
 
+    // --- 5. PLANNER LOGIC (WITH DATE/TIME) ---
+    let plans = [];
+
     function addPlan() {
       const input = document.getElementById('planTitle');
+      const date = document.getElementById('planDate');
+      const time = document.getElementById('planTime');
+      
       if (!input.value.trim()) return;
-      plans.push(input.value.trim());
-      input.value = ''; renderPlans();
+      
+      plans.push({
+        text: input.value.trim(),
+        date: date.value || "No Date", 
+        time: time.value || ""
+      });
+      
+      input.value = ''; date.value = ''; time.value = '';
+      renderPlans();
     }
+    
     function renderPlans() {
-      document.getElementById('plannerList').innerHTML = plans.map(p => 
-        `<div class="p-4 bg-indigo-50 rounded-xl font-bold text-indigo-900 border border-indigo-100 shadow-sm">🎯 ${p}</div>`
-      ).join('') || '<div class="text-slate-500 font-medium p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 text-center">No plans yet. Create a milestone above!</div>';
+      const list = document.getElementById('plannerList');
+      let html = '';
+      
+      plans.forEach(p => {
+        const dateTimeStr = (p.date !== "No Date" || p.time !== "") ? `<span class="bg-white/50 px-3 py-1 rounded-full text-xs font-bold text-indigo-600">📅 ${p.date} ${p.time}</span>` : '';
+        
+        html += `
+        <div class="p-5 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl border border-indigo-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3 font-bold text-indigo-900 text-lg">
+            <span class="text-2xl">🎯</span> ${p.text}
+          </div>
+          ${dateTimeStr}
+        </div>`;
+      });
+      
+      list.innerHTML = html || '<div class="text-slate-500 font-medium p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 text-center">No plans yet. Schedule a milestone above!</div>';
     }
 
-    renderTasks(); renderPlans();
+    // Initialize UI
+    renderTasks(); 
+    renderPlans();
   </script>
 </body>
 </html>

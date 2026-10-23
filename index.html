@@ -12,7 +12,7 @@
     <!-- PWA Manifest Link -->
     <link rel="manifest" href="manifest.json">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS Integration -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Premium Google Fonts -->
@@ -21,11 +21,9 @@
     <style>
         /* Global CSS Variables for Ultra-Vibrant Glassmorphism */
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.55);
-            --glass-border: rgba(255, 255, 255, 0.9);
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.95);
             --glass-shadow: 0 25px 60px rgba(79, 70, 229, 0.15);
-            --brand-primary: #4f46e5;
-            --brand-secondary: #ec4899;
         }
         
         body {
@@ -157,7 +155,7 @@
             } 
         }
         
-        /* Master Glass Card UI - Enhanced Colorful Borders */
+        /* Master Glass Card UI */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(40px);
@@ -176,7 +174,7 @@
         }
         
         .inner-glass {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border: 2px solid rgba(255, 255, 255, 1);
             box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.9), 0 10px 30px rgba(0,0,0,0.05);
             border-radius: 1.5rem;
@@ -190,9 +188,7 @@
         
         .interactive-card:hover {
             transform: translateY(-8px) scale(1.03);
-            background: rgba(255, 255, 255, 1);
-            box-shadow: 0 35px 70px rgba(236, 72, 153, 0.25);
-            border-color: rgba(236, 72, 153, 0.5);
+            box-shadow: 0 35px 70px rgba(236, 72, 153, 0.3);
         }
 
         /* Beautiful Gradient Text */
@@ -317,7 +313,7 @@
             scrollbar-width: none;
         }
 
-        /* Beautiful Gradient Buttons - Upgraded Glowing Animations */
+        /* Beautiful Gradient Buttons - Glowing Animations */
         .btn-primary {
             background: linear-gradient(135deg, #ff007f, #7928ca);
             color: white;
@@ -386,7 +382,7 @@
     </div>
 
     <!-- MOBILE HAMBURGER HEADER (Only visible on phones) -->
-    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
+    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/80 backdrop-blur-3xl">
         <div class="text-xl font-black flex items-center gap-3">
             <!-- LUXURY DIAMOND LOGO -->
             <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-7 h-7 drop-shadow-md filter hue-rotate-15">
@@ -404,8 +400,8 @@
     <!-- SLIDE-IN OVERLAY FOR MOBILE -->
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
-    <!-- PREMIUM SIDEBAR -->
-    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/70 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
+    <!-- PREMIUM SIDEBAR (Fixed on Desktop, Slide-in on Mobile) -->
+    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/80 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
         
         <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
 
@@ -494,7 +490,7 @@
         </header>
 
         <!-- ========================================== -->
-        <!-- DASHBOARD SECTION                          -->
+        <!-- DASHBOARD SECTION (Vibrant Gradients + SVGs)-->
         <!-- ========================================== -->
         <section id="dashboard" class="page active px-2">
             <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(236,72,153,0.3)] border-2 border-white/50 bg-slate-900 animate-float">
@@ -505,26 +501,43 @@
                 <p class="text-indigo-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
             </div>
 
-            <!-- Dashboard Stats Grid -->
+            <!-- Vibrant Dashboard Stats Grid with Background SVGs -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
-                    <p class="text-sm sm:text-base text-pink-600 font-black uppercase tracking-widest z-10">Total Tasks</p>
-                    <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10">0</h2>
+                
+                <!-- Total Tasks: Indigo/Blue Gradient -->
+                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-indigo-500 to-blue-600 text-white shadow-lg" onclick="showPage('tasks')">
+                    <!-- Faded SVG Background -->
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+                    
+                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Total Tasks</p>
+                    <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
-                    <p class="text-sm sm:text-base text-emerald-600 font-black uppercase tracking-widest z-10">Completed</p>
-                    <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-500 z-10">0</h2>
+                <!-- Completed Tasks: Emerald/Teal Gradient -->
+                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg" onclick="showPage('tasks')">
+                    <!-- Faded SVG Background -->
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    
+                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Completed</p>
+                    <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('portfolio')">
-                    <p class="text-sm sm:text-base text-purple-600 font-black uppercase tracking-widest z-10">Projects</p>
-                    <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-500 z-10">0</h2>
+                <!-- Projects Built: Purple/Pink Gradient -->
+                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg" onclick="showPage('portfolio')">
+                    <!-- Faded SVG Background -->
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+                    
+                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Projects</p>
+                    <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('jobs')">
-                    <p class="text-sm sm:text-base text-blue-600 font-black uppercase tracking-widest z-10">Job Apps</p>
-                    <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 text-blue-500 z-10">0</h2>
+                <!-- Job Apps: Orange/Red Gradient -->
+                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-orange-400 to-red-500 text-white shadow-lg" onclick="showPage('jobs')">
+                    <!-- Faded SVG Background -->
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
+                    
+                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Job Apps</p>
+                    <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
                 </div>
             </div>
             
@@ -545,6 +558,7 @@
                 <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-md border-2 border-white">
                     <p class="text-lg text-indigo-700 font-black uppercase tracking-widest z-10 mb-4 text-center">Task Completion</p>
                     <div class="flex flex-col items-center gap-4 z-10">
+                        <!-- ID explicitly set to update dynamically -->
                         <h2 id="taskProgress" class="text-6xl sm:text-7xl font-black text-indigo-600 drop-shadow-md">0%</h2>
                         <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white">
                             <div id="progressBar" class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_20px_rgba(236,72,153,0.8)]" style="width: 0%"></div>
@@ -555,22 +569,35 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- PLANNER SECTION                            -->
+        <!-- PLANNER SECTION (Visible Time UI Fix)      -->
         <!-- ========================================== -->
         <section id="planner" class="page px-2">
             <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
                 <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Schedule your major study blocks. Data is saved locally.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
-                    <input type="text" id="planTitle" placeholder="Milestone name..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base focus:border-indigo-500 outline-none transition-colors">
-                    
-                    <div class="flex gap-3 w-full lg:w-auto">
-                        <input type="date" id="planDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
-                        <input type="time" id="planTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
+                <div class="flex flex-col lg:flex-row gap-4 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-sm border-2 border-white items-center">
+                    <!-- Title Input -->
+                    <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm">
+                        <span class="text-xl">📝</span>
+                        <input type="text" id="planTitle" placeholder="Milestone name..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
                     
-                    <button onclick="addPlan()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
+                    <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                        <!-- FIXED: Date Input with Clear Icon -->
+                        <div class="flex-1 lg:flex-none flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm">
+                            <span class="text-xl">📅</span>
+                            <input type="date" id="planDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                        </div>
+                        
+                        <!-- FIXED: Time Input with Clear Icon to prevent 12 AM issue -->
+                        <div class="flex-1 lg:flex-none flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm">
+                            <span class="text-xl">⏰</span>
+                            <input type="time" id="planTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                        </div>
+                    </div>
+                    
+                    <button onclick="addPlan()" class="w-full lg:w-auto btn-primary px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
                         Add Plan
                     </button>
                 </div>
@@ -580,25 +607,39 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- TASKS SECTION                              -->
+        <!-- TASKS SECTION (Visible Time UI Fix)        -->
         <!-- ========================================== -->
         <section id="tasks" class="page px-2">
             <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <div class="flex justify-between items-end mb-3">
                     <h2 class="text-3xl sm:text-5xl font-black text-slate-800 tracking-tight">✅ Action Items</h2>
-                    <button onclick="clearCompletedTasks()" class="text-rose-500 font-black bg-rose-100 px-4 py-2 rounded-lg hover:bg-rose-200 transition-colors text-xs sm:text-sm shadow-sm uppercase tracking-wide">Clear Done</button>
+                    <button onclick="clearCompletedTasks()" class="text-rose-500 font-black bg-rose-100 px-4 py-2 rounded-lg hover:bg-rose-200 transition-colors text-xs sm:text-sm shadow-sm uppercase tracking-wide border border-rose-200">Clear Done</button>
                 </div>
                 <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Data is saved locally. Add your assignments below.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    <input type="text" id="taskInput" placeholder="Task description..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3.5 font-black text-slate-900 text-sm sm:text-base focus:border-indigo-500 outline-none transition-colors">
+                <div class="flex flex-col lg:flex-row gap-4 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
                     
-                    <div class="flex gap-3 w-full lg:w-auto">
-                        <input type="date" id="taskDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
-                        <input type="time" id="taskTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
+                    <!-- Title Input -->
+                    <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm">
+                        <span class="text-xl">✍️</span>
+                        <input type="text" id="taskInput" placeholder="Task description..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
                     
-                    <button onclick="addTask()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
+                    <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                        <!-- FIXED: Date Input with Clear Icon -->
+                        <div class="flex-1 lg:flex-none flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm">
+                            <span class="text-xl">📅</span>
+                            <input type="date" id="taskDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                        </div>
+                        
+                        <!-- FIXED: Time Input with Clear Icon -->
+                        <div class="flex-1 lg:flex-none flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm">
+                            <span class="text-xl">⏰</span>
+                            <input type="time" id="taskTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                        </div>
+                    </div>
+                    
+                    <button onclick="addTask()" class="w-full lg:w-auto btn-primary px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
                         Add Task
                     </button>
                 </div>
@@ -625,7 +666,7 @@
                         <!-- Custom Input Field -->
                         <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border-2 border-slate-200 shadow-inner">
                             <input type="number" id="customFocusTime" placeholder="Min" class="w-16 text-center font-black text-lg text-slate-800 bg-transparent outline-none">
-                            <button onclick="setCustomTimer()" class="text-indigo-600 font-black hover:text-white hover:bg-indigo-500 transition-colors text-sm bg-indigo-50 px-3 py-1.5 rounded-lg uppercase">Set</button>
+                            <button onclick="setCustomTimer()" class="text-indigo-600 font-black hover:text-white hover:bg-indigo-500 transition-colors text-sm bg-indigo-50 px-3 py-1.5 rounded-lg uppercase border border-indigo-100">Set</button>
                         </div>
                         
                         <button onclick="adjustTimer(5)" class="px-5 py-2.5 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm transform hover:-translate-y-1">+ 5 Min</button>
@@ -649,7 +690,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- SGPA CALCULATOR (UPDATED TO EXACTLY 2 SEMESTERS) -->
+        <!-- SGPA CALCULATOR (EXACTLY 2 SEMESTERS)      -->
         <!-- ========================================== -->
         <section id="cgpa" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
@@ -737,84 +778,84 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- RESOURCE VAULT SECTION                     -->
+        <!-- RESOURCE VAULT SECTION (PDF OPEN FIX)      -->
         <!-- ========================================== -->
         <section id="resources" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📚 Resources & Notes</h2>
-                <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">Create subject folders and upload your study materials.</p>
+                <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">Upload a PDF file to instantly view your study materials.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                     
-                    <!-- EXPLICITLY UNCOMPRESSED BOX 1 -->
+                    <!-- BOX 1 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-pink-100 text-pink-700 px-4 py-2 rounded-lg font-black hover:bg-pink-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-pink-200">
-                                <span>➕</span> Add File 
-                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <label class="cursor-pointer bg-pink-100 text-pink-700 px-4 py-3 rounded-xl font-black hover:bg-pink-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-pink-200 text-center w-full">
+                                <span>➕</span> Add PDF File 
+                                <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink1')">
                             </label>
-                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
+                            <a id="pdfLink1" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
                         </div>
                     </div>
                     
-                    <!-- EXPLICITLY UNCOMPRESSED BOX 2 -->
+                    <!-- BOX 2 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-blue-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-black hover:bg-blue-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-blue-200">
-                                <span>➕</span> Add File 
-                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <label class="cursor-pointer bg-blue-100 text-blue-700 px-4 py-3 rounded-xl font-black hover:bg-blue-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-blue-200 text-center w-full">
+                                <span>➕</span> Add PDF File 
+                                <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink2')">
                             </label>
-                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
+                            <a id="pdfLink2" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
                         </div>
                     </div>
 
-                    <!-- EXPLICITLY UNCOMPRESSED BOX 3 -->
+                    <!-- BOX 3 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-emerald-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-emerald-100 text-emerald-700 px-4 py-2 rounded-lg font-black hover:bg-emerald-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-emerald-200">
-                                <span>➕</span> Add File 
-                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <label class="cursor-pointer bg-emerald-100 text-emerald-700 px-4 py-3 rounded-xl font-black hover:bg-emerald-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-emerald-200 text-center w-full">
+                                <span>➕</span> Add PDF File 
+                                <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink3')">
                             </label>
-                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
+                            <a id="pdfLink3" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
                         </div>
                     </div>
 
-                    <!-- EXPLICITLY UNCOMPRESSED BOX 4 -->
+                    <!-- BOX 4 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-purple-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-purple-100 text-purple-700 px-4 py-2 rounded-lg font-black hover:bg-purple-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-purple-200">
-                                <span>➕</span> Add File 
-                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <label class="cursor-pointer bg-purple-100 text-purple-700 px-4 py-3 rounded-xl font-black hover:bg-purple-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-purple-200 text-center w-full">
+                                <span>➕</span> Add PDF File 
+                                <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink4')">
                             </label>
-                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
+                            <a id="pdfLink4" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
                         </div>
                     </div>
                     
-                    <!-- EXPLICITLY UNCOMPRESSED BOX 5 -->
+                    <!-- BOX 5 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-amber-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-amber-100 text-amber-700 px-4 py-2 rounded-lg font-black hover:bg-amber-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-amber-200">
-                                <span>➕</span> Add File 
-                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <label class="cursor-pointer bg-amber-100 text-amber-700 px-4 py-3 rounded-xl font-black hover:bg-amber-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-amber-200 text-center w-full">
+                                <span>➕</span> Add PDF File 
+                                <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink5')">
                             </label>
-                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
+                            <a id="pdfLink5" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
                         </div>
                     </div>
                     
-                    <!-- EXPLICITLY UNCOMPRESSED BOX 6 -->
+                    <!-- BOX 6 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-teal-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-teal-100 text-teal-700 px-4 py-2 rounded-lg font-black hover:bg-teal-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-teal-200">
-                                <span>➕</span> Add File 
-                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <label class="cursor-pointer bg-teal-100 text-teal-700 px-4 py-3 rounded-xl font-black hover:bg-teal-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-teal-200 text-center w-full">
+                                <span>➕</span> Add PDF File 
+                                <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink6')">
                             </label>
-                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
+                            <a id="pdfLink6" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
                         </div>
                     </div>
 
@@ -906,7 +947,7 @@
                     </div>
 
                     <!-- YEAR 2 -->
-                    <div id="year2" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
+                    <div id="year2" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
                         <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 3: Core CS</div>
                             <div class="space-y-4">
@@ -944,7 +985,7 @@
                     </div>
 
                     <!-- YEAR 3 -->
-                    <div id="year3" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
+                    <div id="year3" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
                         <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 5: Architecture</div>
                             <div class="space-y-4">
@@ -974,7 +1015,7 @@
                     </div>
 
                     <!-- YEAR 4 -->
-                    <div id="year4" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
+                    <div id="year4" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
                         <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 7: Scale & Polish</div>
                             <div class="space-y-4">
@@ -1162,6 +1203,19 @@
             }
         }
 
+        // --- NEW LOGIC: RESOURCE VAULT PDF OPENER ---
+        function handlePDFUpload(inputElement, linkId) {
+            if (inputElement.files && inputElement.files[0]) {
+                const file = inputElement.files[0];
+                const fileURL = URL.createObjectURL(file);
+                
+                const linkElement = document.getElementById(linkId);
+                linkElement.href = fileURL;
+                linkElement.classList.remove('hidden');
+                linkElement.classList.add('block');
+            }
+        }
+
         // --- CLEAR COMPLETED TASKS ---
         function clearCompletedTasks() {
             if(confirm("Are you sure you want to clear all completed tasks?")) {
@@ -1200,10 +1254,11 @@
         
         function renderProjects() {
             const list = document.getElementById('projList');
+            const dashCounter = document.getElementById('dashProjects');
             
             if (projects.length === 0) {
                 list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black md:col-span-2">No projects added yet. Start building!</div>';
-                document.getElementById('dashProjects').textContent = 0;
+                if(dashCounter) dashCounter.textContent = 0;
                 return;
             }
             
@@ -1221,7 +1276,7 @@
             });
             
             list.innerHTML = html;
-            document.getElementById('dashProjects').textContent = projects.length;
+            if(dashCounter) dashCounter.textContent = projects.length;
         }
 
         // --- JOB TRACKER MANAGER ---
@@ -1255,10 +1310,11 @@
         
         function renderJobs() {
             const list = document.getElementById('jobList');
+            const dashCounter = document.getElementById('dashJobs');
             
             if (jobs.length === 0) {
                 list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No applications tracked yet. Keep pushing!</div>';
-                document.getElementById('dashJobs').textContent = 0;
+                if(dashCounter) dashCounter.textContent = 0;
                 return;
             }
             
@@ -1288,7 +1344,7 @@
             });
             
             list.innerHTML = html;
-            document.getElementById('dashJobs').textContent = jobs.length;
+            if(dashCounter) dashCounter.textContent = jobs.length;
         }
 
         // --- TIMER LOGIC (WITH ADJUST BUTTONS AND CUSTOM INPUT) ---
@@ -1449,7 +1505,11 @@
                 jobs: 'Job Tracker', 
                 career: 'Interview Mastery'
             };
-            document.getElementById('pageTitle').textContent = titles[pageId];
+            
+            const titleElement = document.getElementById('pageTitle');
+            if (titleElement) {
+                titleElement.textContent = titles[pageId];
+            }
             
             // Auto-close sidebar on mobile after making a selection
             if(isSidebarOpen && window.innerWidth < 1024) {
@@ -1466,7 +1526,7 @@
             
             // Reset all year buttons
             document.querySelectorAll('.year-tab-btn').forEach(btn => {
-                btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-6 py-3 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase";
+                btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase";
             });
             
             // Show target year
@@ -1492,9 +1552,12 @@
                 }
             });
             
-            const percent = Math.round((completed / boxes.length) * 100); 
-            document.getElementById('interviewScore').textContent = percent + '%'; 
-            document.getElementById('interviewProgressBar').style.width = percent + '%';
+            const percent = boxes.length === 0 ? 0 : Math.round((completed / boxes.length) * 100); 
+            const scoreEl = document.getElementById('interviewScore');
+            const barEl = document.getElementById('interviewProgressBar');
+            
+            if(scoreEl) scoreEl.textContent = percent + '%'; 
+            if(barEl) barEl.style.width = percent + '%';
         }
         
         function updateRoadmapProgress() {
@@ -1507,9 +1570,12 @@
                 }
             });
             
-            const percent = Math.round((completed / boxes.length) * 100); 
-            document.getElementById('roadmapScore').textContent = percent + '%'; 
-            document.getElementById('roadmapProgressBar').style.width = percent + '%';
+            const percent = boxes.length === 0 ? 0 : Math.round((completed / boxes.length) * 100); 
+            const scoreEl = document.getElementById('roadmapScore');
+            const barEl = document.getElementById('roadmapProgressBar');
+            
+            if(scoreEl) scoreEl.textContent = percent + '%'; 
+            if(barEl) barEl.style.width = percent + '%';
         }
 
         // --- HELPER FUNCTIONS ---
@@ -1529,7 +1595,7 @@
                 h = parseInt(h); 
                 const ampm = h >= 12 ? 'PM' : 'AM'; 
                 h = h % 12 || 12; 
-                formattedTime = `${h}:${m} ${ampm}`; 
+                formattedTime = `${h}:${m.padStart(2, '0')} ${ampm}`; 
             }
             
             return { formattedDate, formattedTime };
@@ -1593,7 +1659,7 @@
             clearTimeout(holdTimer); 
         }
 
-        // --- TASK MANAGEMENT LOGIC ---
+        // --- TASK MANAGEMENT LOGIC (FIXED MATH & 0% BUG) ---
         function addTask() {
             const inputElement = document.getElementById('taskInput');
             const dateElement = document.getElementById('taskDate');
@@ -1665,27 +1731,44 @@
                 }
             });
             
-            if(html === '') {
-                list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
-            } else {
-                list.innerHTML = html;
+            // Inject Task HTML
+            if (list) {
+                if(html === '') {
+                    list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
+                } else {
+                    list.innerHTML = html;
+                }
             }
             
-            if(miniHtml === '') {
-                dashMiniList.innerHTML = '<div class="text-slate-400 font-bold text-sm text-center py-6 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>';
-            } else {
-                dashMiniList.innerHTML = miniHtml;
+            // Inject Dashboard Mini List HTML
+            if (dashMiniList) {
+                if(miniHtml === '') {
+                    dashMiniList.innerHTML = '<div class="text-slate-400 font-bold text-sm text-center py-6 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>';
+                } else {
+                    dashMiniList.innerHTML = miniHtml;
+                }
             }
             
-            // Update Dashboard Counters
+            // Safely Update Dashboard Counters & Progress Bar Math
             const completedCount = tasks.filter(t => t.completed).length;
-            document.getElementById('totalTasks').textContent = tasks.length; 
-            document.getElementById('completedTasks').textContent = completedCount; 
-            document.getElementById('pendingTasks').textContent = tasks.length - completedCount;
+            const totalCount = tasks.length;
             
-            const progressPercent = tasks.length === 0 ? 0 : Math.round((completedCount / tasks.length) * 100);
-            document.getElementById('taskProgress').textContent = progressPercent + '%'; 
-            document.getElementById('progressBar').style.width = progressPercent + '%';
+            const totalTasksEl = document.getElementById('totalTasks');
+            const completedTasksEl = document.getElementById('completedTasks');
+            const taskProgressEl = document.getElementById('taskProgress');
+            const progressBarEl = document.getElementById('progressBar');
+            
+            if(totalTasksEl) totalTasksEl.textContent = totalCount; 
+            if(completedTasksEl) completedTasksEl.textContent = completedCount; 
+            
+            // MATH FIX: Ensures 1 out of 1 tasks = 100%
+            let progressPercent = 0;
+            if (totalCount > 0) {
+                progressPercent = Math.round((completedCount / totalCount) * 100);
+            }
+            
+            if(taskProgressEl) taskProgressEl.textContent = progressPercent + '%'; 
+            if(progressBarEl) progressBarEl.style.width = progressPercent + '%';
         }
 
         // --- PLANNER MANAGEMENT LOGIC ---
@@ -1736,10 +1819,12 @@
                 </div>`;
             });
             
-            if(html === '') {
-                list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No plans yet. Schedule a milestone!</div>';
-            } else {
-                list.innerHTML = html;
+            if (list) {
+                if(html === '') {
+                    list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No plans yet. Schedule a milestone!</div>';
+                } else {
+                    list.innerHTML = html;
+                }
             }
         }
 
@@ -1821,7 +1906,10 @@
         
         function mockSignIn() { 
             const emailInput = document.getElementById('authEmail').value;
-            document.getElementById('userInfo').textContent = emailInput || 'Guest User'; 
+            const userEl = document.getElementById('userInfo');
+            if(userEl) {
+                userEl.textContent = emailInput || 'Guest User'; 
+            }
             closeAuthModal(); 
         }
         
@@ -1871,10 +1959,13 @@
         setInterval(checkNotifications, 10000); 
 
         // Initial Renders to Load Data from Local Storage
-        renderTasks(); 
-        renderPlans();
-        renderProjects();
-        renderJobs();
+        // Render calls placed safely at the end of script
+        document.addEventListener("DOMContentLoaded", () => {
+            renderTasks(); 
+            renderPlans();
+            renderProjects();
+            renderJobs();
+        });
 
     </script>
 </body>

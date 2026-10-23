@@ -9,7 +9,7 @@
     
     <title>StudyBuddy - Premium Academic Assistant</title>
     
-    <!-- PWA Manifest -->
+    <!-- PWA Manifest Link -->
     <link rel="manifest" href="manifest.json">
     
     <!-- Tailwind CSS -->
@@ -24,8 +24,6 @@
             --glass-bg: rgba(255, 255, 255, 0.45);
             --glass-border: rgba(255, 255, 255, 0.75);
             --glass-shadow: 0 20px 50px rgba(31, 38, 135, 0.1);
-            --brand-primary: #4f46e5;
-            --brand-secondary: #ec4899;
         }
         
         body {
@@ -36,7 +34,7 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* 100% Mobile Fix: Background completely fills screen, no hanging */
+        /* Fixed Background that will never hang or cut off on Mobile */
         .mesh-bg {
             position: fixed;
             top: 0;
@@ -108,7 +106,7 @@
             }
         }
 
-        /* Performance Optimizations for Mobile Phones */
+        /* Performance Optimizations for Mobile Phones to Stop Hanging */
         @media (max-width: 1024px) {
             .blob {
                 filter: blur(80px);
@@ -401,7 +399,7 @@
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
     <!-- PREMIUM SIDEBAR (Fixed on Desktop, Slide-in on Mobile) -->
-    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-none">
+    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-500 ease-in-out shadow-2xl lg:shadow-none overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-none">
         
         <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
 
@@ -1133,17 +1131,41 @@
     <!-- ========================================== -->
     <script>
         
-        // --- LOCAL STORAGE DATA MANAGEMENT ---
-        let tasks = JSON.parse(localStorage.getItem('studybuddy_tasks')) || []; 
-        let plans = JSON.parse(localStorage.getItem('studybuddy_plans')) || [];
-        let projects = JSON.parse(localStorage.getItem('studybuddy_projects')) || [];
-        let jobs = JSON.parse(localStorage.getItem('studybuddy_jobs')) || [];
+        // --- LOCAL STORAGE DATA MANAGEMENT (CRASH PROOF) ---
+        // I wrapped this in a try-catch so it NEVER crashes your app even if cache is corrupted.
+        const getSavedData = (key) => {
+            try {
+                const item = localStorage.getItem(key);
+                return item ? JSON.parse(item) : [];
+            } catch (error) {
+                console.error("Local storage error for", key, error);
+                return [];
+            }
+        };
+
+        let tasks = getSavedData('studybuddy_tasks');
+        let plans = getSavedData('studybuddy_plans');
+        let projects = getSavedData('studybuddy_projects');
+        let jobs = getSavedData('studybuddy_jobs');
         
         function saveData() {
-            localStorage.setItem('studybuddy_tasks', JSON.stringify(tasks));
-            localStorage.setItem('studybuddy_plans', JSON.stringify(plans));
-            localStorage.setItem('studybuddy_projects', JSON.stringify(projects));
-            localStorage.setItem('studybuddy_jobs', JSON.stringify(jobs));
+            try {
+                localStorage.setItem('studybuddy_tasks', JSON.stringify(tasks));
+                localStorage.setItem('studybuddy_plans', JSON.stringify(plans));
+                localStorage.setItem('studybuddy_projects', JSON.stringify(projects));
+                localStorage.setItem('studybuddy_jobs', JSON.stringify(jobs));
+            } catch (error) {
+                console.error("Could not save to local storage", error);
+            }
+        }
+
+        // --- CLEAR COMPLETED TASKS ---
+        function clearCompletedTasks() {
+            if(confirm("Are you sure you want to clear all completed tasks?")) {
+                tasks = tasks.filter(t => !t.completed);
+                saveData();
+                renderTasks();
+            }
         }
 
         // --- NEW LOGIC: PROJECT PORTFOLIO MANAGER ---
@@ -1266,13 +1288,303 @@
             document.getElementById('dashJobs').textContent = jobs.length;
         }
 
+        // --- TIMER LOGIC (WITH ADJUST BUTTONS AND CUSTOM INPUT) ---
+        let timerInterval;
+        let timeLeft = 25 * 60; 
+        let isTimerRunning = false;
+
+        function updateTimerDisplay() {
+            const display = document.getElementById('timeDisplay');
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function adjustTimer(mins) {
+            timeLeft += mins * 60;
+            if (timeLeft < 0) {
+                timeLeft = 0;
+            }
+            updateTimerDisplay();
+        }
+        
+        function setCustomTimer() {
+            const inputField = document.getElementById('customFocusTime');
+            const mins = inputField.value;
+            if (mins && mins > 0) {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+                
+                document.getElementById('startBtn').classList.remove('hidden');
+                document.getElementById('startBtn').textContent = "Start";
+                document.getElementById('pauseBtn').classList.add('hidden');
+                
+                timeLeft = parseInt(mins) * 60;
+                updateTimerDisplay();
+                inputField.value = '';
+            }
+        }
+
+        function startTimer() {
+            if (isTimerRunning || timeLeft <= 0) {
+                return;
+            }
+            isTimerRunning = true;
+            document.getElementById('startBtn').classList.add('hidden');
+            document.getElementById('pauseBtn').classList.remove('hidden');
+            
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                } else {
+                    clearInterval(timerInterval);
+                    isTimerRunning = false;
+                    document.getElementById('startBtn').classList.remove('hidden');
+                    document.getElementById('startBtn').textContent = "Restart";
+                    document.getElementById('pauseBtn').classList.add('hidden');
+                    sendNotification("Timer Complete!", "Your session is over. Take a well-deserved break!");
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            document.getElementById('startBtn').classList.remove('hidden');
+            document.getElementById('startBtn').textContent = "Resume";
+            document.getElementById('pauseBtn').classList.add('hidden');
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            document.getElementById('startBtn').classList.remove('hidden');
+            document.getElementById('startBtn').textContent = "Start";
+            document.getElementById('pauseBtn').classList.add('hidden');
+            setTimerMode(25);
+        }
+
+        function setTimerMode(minutes) {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            document.getElementById('startBtn').classList.remove('hidden');
+            document.getElementById('startBtn').textContent = "Start";
+            document.getElementById('pauseBtn').classList.add('hidden');
+            timeLeft = minutes * 60;
+            updateTimerDisplay();
+        }
+
+        // --- CGPA PREDICTOR LOGIC ---
+        function calculateCGPA() {
+            const inputs = document.querySelectorAll('.sgpa-input');
+            let total = 0; 
+            let count = 0;
+            
+            inputs.forEach(input => {
+                if(input.value) { 
+                    total += parseFloat(input.value); 
+                    count++; 
+                }
+            });
+            
+            const cgpa = count === 0 ? 0 : (total / count);
+            document.getElementById('cgpaResult').textContent = cgpa.toFixed(2);
+        }
+
+        // --- SIDEBAR MENU LOGIC (Slide on Mobile, Fixed on Desktop) ---
+        let isSidebarOpen = false;
+        
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            isSidebarOpen = !isSidebarOpen;
+            
+            if (isSidebarOpen) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.add('active');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.remove('active');
+            }
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            // Reset all nav buttons
+            const navs = ['dashboard', 'planner', 'tasks', 'timer', 'cgpa', 'roadmap', 'resources', 'portfolio', 'jobs', 'career'];
+            navs.forEach(id => {
+                const btn = document.getElementById('nav-' + id);
+                if(btn) {
+                    btn.classList.remove('sidebar-active');
+                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md";
+                }
+            });
+            
+            // Activate selected page and button
+            document.getElementById(pageId).classList.add('active');
+            const activeBtn = document.getElementById('nav-' + pageId);
+            if (activeBtn) {
+                activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base";
+            }
+            
+            // Update Header Title
+            const titles = { 
+                dashboard: 'Dashboard', 
+                planner: 'Study Planner', 
+                tasks: 'Action Tasks', 
+                timer: 'Focus Timer',
+                cgpa: 'CGPA Predictor', 
+                roadmap: 'B.Tech Roadmap', 
+                resources: 'Resource Vault', 
+                portfolio: 'Project Portfolio', 
+                jobs: 'Job Tracker', 
+                career: 'Interview Mastery'
+            };
+            document.getElementById('pageTitle').textContent = titles[pageId];
+            
+            // Auto-close sidebar on mobile after making a selection
+            if(isSidebarOpen && window.innerWidth < 1024) {
+                toggleSidebar();
+            }
+        }
+
+        function showYear(yearId, btnElement) {
+            // Hide all year content blocks
+            document.querySelectorAll('.year-content').forEach(el => {
+                el.classList.add('hidden', 'opacity-0', 'pointer-events-none');
+                el.classList.remove('active', 'opacity-100', 'grid');
+            });
+            
+            // Reset all year buttons
+            document.querySelectorAll('.year-tab-btn').forEach(btn => {
+                btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap";
+            });
+            
+            // Show target year
+            const target = document.getElementById(yearId);
+            target.classList.remove('hidden', 'pointer-events-none');
+            target.classList.add('grid');
+            setTimeout(() => { 
+                target.classList.add('active', 'opacity-100'); 
+            }, 10);
+            
+            // Style active button
+            btnElement.className = "year-tab-btn bg-slate-900 text-white px-6 py-3 rounded-xl font-black shadow-md transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1";
+        }
+
+        // --- PROGRESS CALCULATORS ---
+        function updateInterviewProgress() {
+            const boxes = document.querySelectorAll('.interview-check');
+            let completed = 0;
+            
+            boxes.forEach(b => { 
+                if(b.checked) {
+                    completed++; 
+                }
+            });
+            
+            const percent = Math.round((completed / boxes.length) * 100); 
+            document.getElementById('interviewScore').textContent = percent + '%'; 
+            document.getElementById('interviewProgressBar').style.width = percent + '%';
+        }
+        
+        function updateRoadmapProgress() {
+            const boxes = document.querySelectorAll('.btech-check'); 
+            let completed = 0; 
+            
+            boxes.forEach(b => { 
+                if(b.checked) {
+                    completed++; 
+                }
+            });
+            
+            const percent = Math.round((completed / boxes.length) * 100); 
+            document.getElementById('roadmapScore').textContent = percent + '%'; 
+            document.getElementById('roadmapProgressBar').style.width = percent + '%';
+        }
+
+        // --- HELPER FUNCTIONS ---
+        function formatDateTime(dateStr, timeStr) {
+            let formattedDate = `00/00/0000`;
+            let formattedTime = `12:00 AM`;
+            
+            if (dateStr && dateStr !== "") {
+                const parts = dateStr.split('-');
+                if(parts.length === 3) {
+                    formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                }
+            } 
+            
+            if (timeStr && timeStr !== "") { 
+                let [h, m] = timeStr.split(':'); 
+                h = parseInt(h); 
+                const ampm = h >= 12 ? 'PM' : 'AM'; 
+                h = h % 12 || 12; 
+                formattedTime = `${h}:${m} ${ampm}`; 
+            }
+            
+            return { formattedDate, formattedTime };
+        }
+
+        function sendNotification(title, body) {
+            try { 
+                const alertSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+                alertSound.play().catch(e => {
+                    console.log("Audio blocked by browser.");
+                }); 
+            } catch(e) {
+                console.log("Audio exception");
+            }
+            
+            if (Notification.permission === 'granted') {
+                new Notification(title, { 
+                    body: body, 
+                    icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' 
+                });
+            }
+        }
+
+        // --- HOLD TO DELETE LOGIC ---
+        let holdTimer;
+        
+        function startHold(type, index) {
+            holdTimer = setTimeout(() => {
+                if (type === 'task') {
+                    if(confirm('Delete this task?')) { 
+                        tasks.splice(index, 1); 
+                        saveData();
+                        renderTasks(); 
+                    }
+                }
+                else if (type === 'plan') {
+                    if(confirm('Delete this study plan?')) { 
+                        plans.splice(index, 1); 
+                        saveData();
+                        renderPlans(); 
+                    }
+                }
+            }, 1000); 
+        }
+        
+        function cancelHold() { 
+            clearTimeout(holdTimer); 
+        }
+
         // --- TASK MANAGEMENT LOGIC ---
         function addTask() {
             const inputElement = document.getElementById('taskInput');
             const dateElement = document.getElementById('taskDate');
             const timeElement = document.getElementById('taskTime');
             
-            if(!inputElement.value.trim()) return;
+            if(!inputElement.value.trim()) {
+                return;
+            }
             
             tasks.push({
                 text: inputElement.value.trim(), 
@@ -1352,6 +1664,7 @@
             const completedCount = tasks.filter(t => t.completed).length;
             document.getElementById('totalTasks').textContent = tasks.length; 
             document.getElementById('completedTasks').textContent = completedCount; 
+            document.getElementById('pendingTasks').textContent = tasks.length - completedCount;
             
             const progressPercent = tasks.length === 0 ? 0 : Math.round((completedCount / tasks.length) * 100);
             document.getElementById('taskProgress').textContent = progressPercent + '%'; 
@@ -1364,7 +1677,9 @@
             const dateElement = document.getElementById('planDate');
             const timeElement = document.getElementById('planTime');
             
-            if(!inputElement.value.trim()) return;
+            if(!inputElement.value.trim()) {
+                return;
+            }
             
             plans.push({
                 text: inputElement.value.trim(), 
@@ -1410,33 +1725,6 @@
                 list.innerHTML = html;
             }
         }
-
-        // --- HOLD TO DELETE LOGIC ---
-        let holdTimer;
-        
-        function startHold(type, index) {
-            holdTimer = setTimeout(() => {
-                if (type === 'task') {
-                    if(confirm('Delete this task?')) { 
-                        tasks.splice(index, 1); 
-                        saveData();
-                        renderTasks(); 
-                    }
-                }
-                else if (type === 'plan') {
-                    if(confirm('Delete this study plan?')) { 
-                        plans.splice(index, 1);
-                        saveData();
-                        renderPlans(); 
-                    }
-                }
-            }, 1000); 
-        }
-        
-        function cancelHold() { 
-            clearTimeout(holdTimer); 
-        }
-
 
         // --- PWA, SERVICE WORKER & NOTIFICATIONS LOGIC ---
         const manifestJSON = {

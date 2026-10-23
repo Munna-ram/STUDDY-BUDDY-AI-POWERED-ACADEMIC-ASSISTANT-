@@ -1,48 +1,34 @@
-# StudyBuddy — Version 3
+# 🎓 StudyBuddy - Premium Academic Command Center
 
-Includes:
-- Student sign-up/sign-in with Supabase Auth
-- Per-user cloud database for study plans and tasks
-- Row Level Security (RLS) policies
-- AI study assistant through a server-side Vercel function
-- Dashboard, progress tracker, and quiz
+**StudyBuddy** is a high-performance, single-page web application (SPA) and Progressive Web App (PWA) designed exclusively for B.Tech students. It serves as a comprehensive academic dashboard to track tasks, plan study milestones, calculate CGPA, manage job applications, and prepare for technical interviews.
 
-## Important architecture note
-GitHub stores the source code. Deploy this project to **Vercel** to run `/api/ask`; GitHub Pages cannot run this serverless API. Do not put Gemini API keys or Supabase service-role keys in `index.html`.
+## ✨ Key Features
+*   **Interactive Dashboard:** Real-time productivity metrics, upcoming task previews, and overall progress tracking.
+*   **Action Tasks & Study Planner:** Kanban-style task management and milestone scheduling with local storage persistence.
+*   **Custom Focus Timer:** Pomodoro-based study timer with quick-adjust buttons (+/- 5 min) and customizable intervals.
+*   **SGPA / CGPA Predictor:** Instant grade calculation based on semester performance.
+*   **Project Portfolio:** A dedicated space to track personal projects, tech stacks, and GitHub repositories.
+*   **Job & Internship Tracker:** Status-based application management (Applied, Interviewing, Offer Received, Rejected).
+*   **B.Tech Skills Roadmap:** A structured 4-year checklist covering C/C++, Data Structures, System Design, and DevOps.
+*   **Resource Vault:** 6 customizable subject folders with local file-attachment UI.
+*   **Interview Mastery Checklist:** A top 1% candidate tracker covering Technical Core, Communication, HR/Behavioral, and Personal Branding.
 
-## 1. Create Supabase project
-1. Create a project at https://supabase.com.
-2. Open SQL Editor and run all of `schema.sql`.
-3. Open Project Settings → API (or API Keys).
-4. Copy the Project URL and the publishable/anon key.
-5. In `index.html`, replace `YOUR_SUPABASE_URL` and `YOUR_SUPABASE_ANON_KEY`.
-   The browser key is intended to be public; Row Level Security protects the rows. Never use a service-role key in the browser.
+## 🛠️ Tech Stack
+*   **Frontend:** HTML5, CSS3, Vanilla JavaScript (ES6+)
+*   **Styling:** Tailwind CSS (via CDN)
+*   **UI/UX:** Custom Glassmorphism, CSS Keyframe Animations, Responsive Design
+*   **Data Persistence:** Browser LocalStorage API
+*   **Typography:** Google Fonts (Plus Jakarta Sans)
+*   **PWA Ready:** `manifest.json` and Service Worker (`sw.js`) integration for offline capabilities and mobile installation.
 
-## 2. Configure AI
-1. Create a Gemini API key from Google AI Studio: https://aistudio.google.com/apikey
-2. Import this GitHub repository into Vercel: https://vercel.com/new
-3. In Vercel Project Settings → Environment Variables, add:
-   - Name: `GEMINI_API_KEY`
-   - Value: your Gemini API key
-4. Redeploy after adding the environment variable.
+## 🚀 How to Run
+1. Clone this repository to your local machine.
+2. Ensure `index.html`, `manifest.json`, and `sw.js` are in the root directory.
+3. Open `index.html` in any modern web browser (Chrome, Safari, Edge).
+4. **Mobile Users:** Tap the "Menu" button and select "Install App" to add StudyBuddy to your home screen as a native application.
 
-The AI provider's availability, limits, and pricing depend on its current terms and account.
+## 📱 Mobile Responsiveness & Optimization
+StudyBuddy is engineered for seamless cross-device compatibility. It features an off-canvas slide-out sidebar for mobile displays, fluid grid layouts, and strict text-wrapping protocols to prevent screen overflow. The animated gradient background utilizes hardware-accelerated CSS to ensure 60fps performance without lagging mobile devices.
 
-## 3. Deploy
-1. Push these files to your GitHub repository (keep `index.html` at the repository root).
-2. Import the repository into Vercel and deploy. Vercel serves `index.html` and the `/api/ask` function.
-3. Open the deployed URL and create an account.
-4. If email confirmation is enabled, confirm your email. Configure Supabase Auth URL settings with your deployed site URL if required.
-
-## 4. Test
-- Sign up and sign in.
-- Add a study plan and a task; refresh and check that data remains.
-- Mark a task complete and check dashboard progress.
-- Ask a question in the AI assistant after setting `GEMINI_API_KEY`.
-
-## Troubleshooting
-- "Setup needed": Supabase URL/key in `index.html` have not been replaced.
-- Database error: run `schema.sql` in the correct Supabase project.
-- Sign-in/confirmation issue: check Supabase Auth provider and URL configuration.
-- AI not configured: add `GEMINI_API_KEY` in Vercel and redeploy.
-- Never commit secret keys to GitHub. If a secret was committed, revoke/rotate it immediately.
+## 💾 Data Privacy
+All tasks, plans, job applications, and portfolio data are saved entirely locally on the user's device using the `LocalStorage` API. No external databases are required, ensuring zero latency, maximum privacy, and complete offline availability.

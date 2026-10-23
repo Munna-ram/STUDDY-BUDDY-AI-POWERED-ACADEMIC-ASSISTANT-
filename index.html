@@ -12,18 +12,18 @@
     <!-- PWA Manifest Link -->
     <link rel="manifest" href="manifest.json">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS Integration -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Premium Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Global CSS Variables for Premium Glassmorphism */
+        /* Global CSS Variables for Ultra-Vibrant Glassmorphism */
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.40);
-            --glass-border: rgba(255, 255, 255, 0.65);
-            --glass-shadow: 0 12px 40px rgba(31, 38, 135, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.95);
+            --glass-shadow: 0 25px 60px rgba(79, 70, 229, 0.15);
         }
         
         body {
@@ -35,7 +35,6 @@
         }
         
         /* Fixed Background that will never hang or cut off on Mobile */
-        /* Reverted to the beautiful indigo/fuchsia/sky theme you requested */
         .mesh-bg {
             position: fixed;
             top: 0;
@@ -43,15 +42,16 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: #f1f5f9;
+            background: linear-gradient(135deg, #f0fdf4, #e0e7ff, #fae8ff);
             overflow: hidden;
         }
         
+        /* Animated Gradient Blobs */
         .blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(130px);
-            opacity: 0.85;
+            filter: blur(120px);
+            opacity: 0.9;
             animation: move 25s infinite alternate ease-in-out;
             will-change: transform;
         }
@@ -61,7 +61,7 @@
             left: -10%;
             width: 60vw;
             height: 60vw;
-            background: #818cf8; /* Indigo */
+            background: #f43f5e; /* Vibrant Rose */
             animation-delay: 0s;
         }
         
@@ -70,7 +70,7 @@
             right: -10%;
             width: 70vw;
             height: 70vw;
-            background: #c084fc; /* Fuchsia */
+            background: #3b82f6; /* Bright Blue */
             animation-delay: -5s;
             animation-direction: alternate-reverse;
         }
@@ -80,7 +80,7 @@
             left: 30%;
             width: 50vw;
             height: 50vw;
-            background: #38bdf8; /* Sky Blue */
+            background: #10b981; /* Emerald Green */
             animation-delay: -10s;
         }
         
@@ -89,25 +89,42 @@
             left: 10%;
             width: 45vw;
             height: 45vw;
-            background: #f472b6; /* Pink */
+            background: #d946ef; /* Fuchsia */
             animation-delay: -15s;
         }
 
+        /* Smooth Background Animation Keyframes */
         @keyframes move {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(8%, 12%) scale(1.15) rotate(15deg); }
-            100% { transform: translate(-8%, -8%) scale(0.9) rotate(-15deg); }
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            50% {
+                transform: translate(8%, 12%) scale(1.15) rotate(15deg);
+            }
+            100% {
+                transform: translate(-8%, -8%) scale(0.9) rotate(-15deg);
+            }
+        }
+
+        /* Continuous Floating Animation for Dashboard Elements (Restored) */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
         }
 
         /* Performance Optimizations for Mobile Phones */
         @media (max-width: 1024px) {
             .blob {
-                filter: blur(70px);
-                opacity: 0.6;
-                animation: none;
+                filter: blur(75px);
+                opacity: 0.8;
+                animation: none; 
             }
             .blob-4 {
-                display: none;
+                display: none; 
             }
         }
 
@@ -123,16 +140,24 @@
         }
         
         @keyframes slideUp { 
-            0% { opacity: 0; transform: translateY(30px); filter: blur(10px); } 
-            100% { opacity: 1; transform: translateY(0); filter: blur(0); } 
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.98);
+                filter: blur(10px);
+            } 
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            } 
         }
         
-        /* Master Glass Card UI */
+        /* Master Glass Card UI - Enhanced Colorful Borders */
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(35px);
-            -webkit-backdrop-filter: blur(35px);
-            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 2px solid var(--glass-border);
             border-radius: 2rem;
             box-shadow: var(--glass-shadow);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -140,15 +165,15 @@
         
         @media (max-width: 1024px) {
             .glass-card {
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
             }
         }
         
         .inner-glass {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(255, 255, 255, 1);
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.7), 0 8px 20px rgba(0,0,0,0.04);
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(255, 255, 255, 1);
+            box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.9), 0 10px 30px rgba(0,0,0,0.05);
             border-radius: 1.5rem;
         }
         
@@ -159,29 +184,31 @@
         }
         
         .interactive-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.2);
-            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 35px 70px rgba(236, 72, 153, 0.3);
         }
 
         /* Beautiful Gradient Text */
         .text-gradient { 
-            background: linear-gradient(135deg, #4f46e5, #d946ef, #0ea5e9); 
+            background: linear-gradient(135deg, #f43f5e, #8b5cf6, #0ea5e9); 
             background-size: 300% 300%;
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
             animation: gradientShift 6s ease infinite;
         }
         
-        @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
         
         /* Mobile Sidebar Overlay */
         #sidebarOverlay {
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(5px);
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(10px);
             z-index: 40;
             opacity: 0;
             pointer-events: none;
@@ -193,10 +220,11 @@
             pointer-events: auto;
         }
 
+        /* Modal popups */
         .modal-overlay {
             display: none;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(25px);
             z-index: 100;
         }
         
@@ -205,6 +233,7 @@
             animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
+        /* Input Resets */
         input[type="date"],
         input[type="time"],
         input[type="number"],
@@ -236,10 +265,10 @@
         }
         
         .roadmap-check:checked {
-            background-color: #4f46e5;
-            border-color: #4f46e5;
+            background-color: #8b5cf6;
+            border-color: #8b5cf6;
             transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
         }
         
         .roadmap-check:checked::after {
@@ -256,7 +285,7 @@
         .roadmap-check:checked + span {
             text-decoration: line-through;
             color: #94a3b8;
-            opacity: 0.6;
+            opacity: 0.5;
         }
         
         /* Strict Text Wrapping Fix */
@@ -279,11 +308,36 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* Beautiful Gradient Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #ff007f, #7928ca);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
+            border: 2px solid transparent;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 12px 30px rgba(255, 0, 127, 0.7), 0 0 20px rgba(121, 40, 202, 0.5);
+            transform: translateY(-3px) scale(1.02);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+        .btn-success:hover {
+            box-shadow: 0 12px 30px rgba(79, 172, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.5);
+            transform: translateY(-3px) scale(1.02);
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col lg:flex-row p-0 sm:p-4 lg:p-6 gap-0 lg:gap-6 relative">
 
-    <!-- BACKGROUND -->
+    <!-- VIBRANT MESH BACKGROUND -->
     <div class="mesh-bg">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -293,164 +347,189 @@
 
     <!-- AUTHENTICATION MODAL -->
     <div id="authModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
-        <div class="glass-card bg-white/95 p-12 w-full max-w-md relative shadow-2xl border-2 border-white">
+        <div class="glass-card bg-white/95 p-8 w-full max-w-md relative shadow-2xl border-2 border-white">
             <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
-            <h2 class="text-4xl font-black mb-8 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
-            <div class="space-y-6">
+            <h2 class="text-3xl font-black mb-6 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
+            <div class="space-y-4">
                 <div>
-                    <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Email Address</label>
-                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
+                    <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Email Address</label>
+                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors">
                 </div>
                 <div>
-                    <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Password</label>
-                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
+                    <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Password</label>
+                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors">
                 </div>
                 <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
-                <div class="flex gap-4 pt-4">
-                    <button onclick="mockSignIn()" class="flex-1 bg-slate-900 text-white py-4 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all transform hover:-translate-y-1 text-lg">Sign In</button>
-                    <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-md hover:shadow-lg text-lg">Create Account</button>
+                <div class="flex gap-4 pt-2">
+                    <button onclick="mockSignIn()" class="flex-1 btn-primary py-3 rounded-xl font-black text-base">Sign In</button>
+                    <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-3 rounded-xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-sm text-base">Sign Up</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- MOBILE HAMBURGER HEADER (Only visible on phones) -->
-    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-sm border border-white">
-        <div class="text-2xl font-black flex items-center gap-3">
-            <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-8 h-8 drop-shadow-md">
-            <span class="text-gradient">StudyBuddy</span>
+    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
+        <div class="text-xl font-black flex items-center gap-3">
+            <!-- LUXURY DIAMOND LOGO -->
+            <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-7 h-7 drop-shadow-md filter hue-rotate-15">
+            <span class="text-gradient tracking-tight">StudyBuddy</span>
         </div>
-        <button onclick="toggleSidebar()" class="px-4 py-2 bg-slate-100 rounded-xl text-slate-800 hover:bg-slate-200 focus:outline-none shadow-inner border border-white flex items-center gap-2">
-            <span class="font-black text-sm uppercase tracking-widest">Menu</span>
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        
+        <button onclick="toggleSidebar()" class="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl text-white shadow-lg flex items-center gap-2 transition-transform transform hover:scale-105 border border-white/50">
+            <span class="font-black text-xs uppercase tracking-widest">Menu</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
         </button>
     </div>
 
     <!-- SLIDE-IN OVERLAY FOR MOBILE -->
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
-    <!-- PREMIUM SIDEBAR (Fixed on Desktop, Swipe-in on Mobile) -->
-    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-8 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto shrink-0">
+    <!-- PREMIUM SIDEBAR (Fixed on Desktop, Slide-in on Mobile) -->
+    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/80 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
         
-        <button onclick="toggleSidebar()" class="lg:hidden absolute top-6 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black">&times;</button>
+        <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
 
         <div>
-            <div class="text-3xl font-black mb-10 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
-                <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-10 h-10 drop-shadow-md">
+            <!-- Desktop Logo -->
+            <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
+                <!-- LUXURY DIAMOND LOGO -->
+                <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-10 h-10 drop-shadow-md filter hue-rotate-15">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
             
-            <div class="text-2xl font-black mb-8 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-4">Main Menu</div>
+            <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
 
+            <!-- Navigation Links - Restored to dynamically set black active state -->
             <nav class="space-y-2">
-                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl bg-slate-900 text-white shadow-[0_8px_25px_rgba(0,0,0,0.3)] font-black transition-all text-lg transform hover:scale-105">
+                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-lg border border-slate-700 font-black transition-all text-base transform hover:scale-105">
                     <span>🏠</span> Dashboard
                 </button>
-                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>📅</span> Study Planner
                 </button>
-                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>✅</span> Action Tasks
                 </button>
-                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>⏱️</span> Focus Timer
                 </button>
-                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-                    <span>📊</span> SGPA Predictor
+                
+                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>📊</span> SGPA / CGPA
                 </button>
-                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-                    <span>🚀</span> Project Portfolio
+                
+                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>🚀</span> Projects Portfolio
                 </button>
-                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>🎯</span> Job Tracker
                 </button>
-                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+
+                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>🗺️</span> B.Tech Roadmap
                 </button>
-                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>📚</span> Resource Vault
                 </button>
-                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>💼</span> Interview Skills
                 </button>
             </nav>
             
             <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
-                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white py-4 rounded-2xl transition-all shadow-[0_5px_15px_rgba(16,185,129,0.4)] font-black transform hover:-translate-y-1 text-lg mb-4">
+                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-lg font-black text-base mb-3 border-2 border-white/50">
                     Install App 📲
                 </button>
             </div>
         </div>
         
         <div class="mt-2">
-            <div id="userInfo" class="text-base text-indigo-900 mb-4 truncate font-black bg-white/80 px-4 py-3 rounded-xl text-center shadow-sm border border-white">Not signed in</div>
-            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-2xl transition-all shadow-xl font-black transform hover:-translate-y-1 text-lg">Sign In / Sign Up</button>
+            <div id="userInfo" class="text-sm text-indigo-900 mb-3 truncate font-black bg-white/80 px-3 py-2 rounded-lg text-center shadow-sm border border-white">
+                Not signed in
+            </div>
+            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base transition-all transform hover:-translate-y-1 hover:shadow-lg border-2 border-slate-700">
+                Sign In / Sign Up
+            </button>
         </div>
     </aside>
 
     <!-- MAIN CONTENT AREA -->
     <main class="flex-1 overflow-y-auto overflow-x-hidden pr-2 sm:pr-4 lg:pr-2 pb-10 z-0 hide-scroll">
         
-        <!-- Global Header -->
-        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10 mt-6 lg:mt-2 px-3 lg:px-2">
-            <div>
-                <h1 id="pageTitle" class="text-5xl sm:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
-                <p class="text-slate-800 font-extrabold mt-3 text-xl bg-white/70 inline-block px-5 py-2 rounded-xl shadow-sm border border-white">Your premium academic command center</p>
+        <!-- Global Header with Floating Animation Restored -->
+        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-8 mt-6 lg:mt-2 px-3 lg:px-2">
+            <div class="animate-float">
+                <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
+                <p class="text-slate-800 font-extrabold mt-2 text-sm sm:text-base bg-white/80 inline-block px-4 py-1.5 rounded-lg shadow-sm border border-white">Your premium academic command center</p>
             </div>
-            <div class="text-base glass-card bg-white/95 px-6 py-4 font-black text-indigo-900 flex items-center gap-3 shadow-lg border-2 border-white transform hover:scale-105 transition-transform self-start sm:self-auto">
-                <span class="w-4 h-4 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
+            <div class="text-xs sm:text-sm glass-card bg-white/95 px-5 py-3 font-black text-indigo-900 flex items-center gap-2 shadow-md border-2 border-white self-start sm:self-auto transform hover:scale-105 transition-transform">
+                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
             </div>
         </header>
 
         <!-- ========================================== -->
-        <!-- DASHBOARD SECTION                          -->
+        <!-- DASHBOARD SECTION (Vibrant Gradients + SVGs)-->
         <!-- ========================================== -->
         <section id="dashboard" class="page active px-2">
-            <!-- Hero Banner -->
-            <div class="glass-card p-8 sm:p-12 text-white mb-12 relative overflow-hidden shadow-[0_20px_50px_rgba(79,70,229,0.4)] border-2 border-white/50 bg-slate-900">
-                <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-indigo-500 opacity-30 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-fuchsia-500 opacity-30 rounded-full blur-3xl"></div>
-                <h2 class="text-5xl sm:text-7xl font-black mb-6 relative z-10 drop-shadow-2xl tracking-tight leading-tight">Welcome to your future. ✨</h2>
-                <p class="text-indigo-100 text-xl sm:text-2xl max-w-3xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and crush your academic goals with absolute precision.</p>
+            <!-- Hero with floating animation -->
+            <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(79,70,229,0.3)] border-2 border-white/50 bg-slate-900 animate-float">
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-indigo-500 opacity-40 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-fuchsia-500 opacity-40 rounded-full blur-3xl"></div>
+                
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-4 relative z-10 drop-shadow-xl tracking-tight leading-tight">Welcome to your future. ✨</h2>
+                <p class="text-indigo-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
             </div>
 
-            <!-- RESTORED: White Glass Cards with SVG Watermarks -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
+            <!-- Vibrant Dashboard Stats Grid with Background SVGs Restored -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
                 
-                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
+                <!-- Total Tasks: Indigo/Blue Gradient -->
+                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-indigo-500 to-blue-600 text-white shadow-lg" onclick="showPage('tasks')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
                     
-                    <p class="text-base sm:text-lg text-indigo-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Total Tasks</p>
-                    <h2 id="totalTasks" class="text-6xl sm:text-7xl font-black mt-3 text-slate-900 drop-shadow-md tracking-tighter z-10">0</h2>
+                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Total Tasks</p>
+                    <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
+                <!-- Completed Tasks: Emerald/Teal Gradient -->
+                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg" onclick="showPage('tasks')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-emerald-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                     
-                    <p class="text-base sm:text-lg text-emerald-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Completed</p>
-                    <h2 id="completedTasks" class="text-6xl sm:text-7xl font-black mt-3 text-emerald-600 drop-shadow-md tracking-tighter z-10">0</h2>
+                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Completed</p>
+                    <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('portfolio')">
+                <!-- Projects Built: Purple/Pink Gradient -->
+                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg" onclick="showPage('portfolio')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-fuchsia-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
                     
-                    <p class="text-base sm:text-lg text-fuchsia-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Projects</p>
-                    <h2 id="dashProjects" class="text-6xl sm:text-7xl font-black mt-3 text-fuchsia-600 drop-shadow-md tracking-tighter z-10">0</h2>
+                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Projects</p>
+                    <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('jobs')">
+                <!-- Job Apps: Orange/Red Gradient -->
+                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-orange-400 to-red-500 text-white shadow-lg" onclick="showPage('jobs')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-rose-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
                     
-                    <p class="text-base sm:text-lg text-rose-600 font-black uppercase tracking-widest drop-shadow-sm z-10">Job Apps</p>
-                    <h2 id="dashJobs" class="text-6xl sm:text-7xl font-black mt-3 text-rose-600 drop-shadow-md tracking-tighter z-10">0</h2>
+                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Job Apps</p>
+                    <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
                 </div>
             </div>
             
-            <!-- Dashboard Progress Widget -->
+            <!-- Dashboard Progress Widget (FIXED ID AND MATH) -->
             <div class="glass-card inner-glass p-8 sm:p-10 flex flex-col justify-center relative overflow-hidden shadow-md">
                 <p class="text-lg sm:text-xl text-indigo-700 font-black uppercase tracking-widest z-10 mb-6 text-center">Overall Task Completion</p>
                 <div class="flex flex-col items-center gap-6 z-10">
@@ -466,7 +545,7 @@
         <!-- PLANNER SECTION (Fixed Layout Issue)       -->
         <!-- ========================================== -->
         <section id="planner" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Schedule your major study blocks. Data is saved locally.</p>
                 
@@ -507,7 +586,7 @@
         <!-- TASKS SECTION (Fixed Layout Issue)         -->
         <!-- ========================================== -->
         <section id="tasks" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
                 <div class="flex justify-between items-end mb-4">
                     <h2 class="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight">✅ Action Items</h2>
                     <button onclick="clearCompletedTasks()" class="text-rose-500 font-black bg-rose-100 px-4 py-2 rounded-lg hover:bg-rose-200 transition-colors text-xs sm:text-sm shadow-sm uppercase tracking-wide border border-rose-200">Clear Done</button>
@@ -595,6 +674,7 @@
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📊 SGPA Predictor</h2>
                 <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Calculate your final academic standing for your two semesters.</p>
                 
+                <!-- EXACTLY 2 SEMESTERS AS REQUESTED -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 text-left max-w-2xl mx-auto">
                     <div class="inner-glass p-8 rounded-3xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
                         <label class="block font-black text-pink-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 1 SGPA</label>
@@ -610,7 +690,7 @@
                     Calculate Result
                 </button>
 
-                <div class="inner-glass bg-gradient-to-br from-indigo-50 to-pink-50 border-2 border-white p-12 rounded-[3rem] shadow-xl max-w-md mx-auto transform hover:scale-105 transition-transform">
+                <div class="inner-glass bg-gradient-to-br from-indigo-50 to-pink-50 border-2 border-white p-10 rounded-[3rem] shadow-xl max-w-md mx-auto transform hover:scale-105 transition-transform">
                     <p class="text-sm font-black uppercase text-slate-500 tracking-widest mb-4">Final Result</p>
                     <h2 id="cgpaResult" class="text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 drop-shadow-sm">0.00</h2>
                     <p class="text-sm font-black uppercase text-indigo-400 tracking-widest mt-4">SGPA / CGPA</p>
@@ -680,7 +760,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     
-                    <!-- BOX 1 -->
+                    <!-- BOX 1 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -693,7 +773,7 @@
                         </div>
                     </div>
                     
-                    <!-- BOX 2 -->
+                    <!-- BOX 2 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-blue-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -705,7 +785,7 @@
                         </div>
                     </div>
 
-                    <!-- BOX 3 -->
+                    <!-- BOX 3 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-emerald-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -717,7 +797,7 @@
                         </div>
                     </div>
 
-                    <!-- BOX 4 -->
+                    <!-- BOX 4 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-purple-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -729,7 +809,7 @@
                         </div>
                     </div>
                     
-                    <!-- BOX 5 -->
+                    <!-- BOX 5 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-amber-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -741,7 +821,7 @@
                         </div>
                     </div>
                     
-                    <!-- BOX 6 -->
+                    <!-- BOX 6 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-teal-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -945,7 +1025,7 @@
         <!-- CAREER LAUNCHPAD & INTERVIEW SKILLS        -->
         <!-- ========================================== -->
         <section id="career" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white animate-float">
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
                     <div>
@@ -1373,7 +1453,7 @@
             navs.forEach(id => {
                 const btn = document.getElementById('nav-' + id);
                 if(btn) {
-                    btn.classList.remove('sidebar-active');
+                    // Removed gradient active class and restored original clean hover class
                     btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md";
                 }
             });
@@ -1382,7 +1462,8 @@
             document.getElementById(pageId).classList.add('active');
             const activeBtn = document.getElementById('nav-' + pageId);
             if (activeBtn) {
-                activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base";
+                // FIXED: Setting background strictly to black (slate-900) as requested
+                activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-lg border border-slate-700 font-black transition-all text-base transform hover:scale-105";
             }
             
             // Update Header Title
@@ -1497,7 +1578,7 @@
         // --- UPGRADED MOBILE NOTIFICATIONS WITH HARDWARE VIBRATION ---
         function sendNotification(title, body) {
             
-            // 1. Try to play audio (will silently fail if blocked by mobile browser policy)
+            // 1. Try to play audio
             try { 
                 const alertSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
                 alertSound.play().catch(e => {
@@ -1511,11 +1592,11 @@
                     body: body,
                     icon: 'https://cdn-icons-png.flaticon.com/512/751/751432.png',
                     vibrate: [200, 100, 200, 100, 200], // Forces strong mobile vibration
-                    requireInteraction: true, // Forces notification to stay until dismissed
+                    requireInteraction: true, 
                     badge: 'https://cdn-icons-png.flaticon.com/512/751/751432.png'
                 };
 
-                // Use ServiceWorker if available (best for mobile), otherwise fallback to standard Notification
+                // Use ServiceWorker if available
                 if ('serviceWorker' in navigator && navigator.serviceWorker.ready) {
                     navigator.serviceWorker.ready.then(function(registration) {
                         registration.showNotification(title, options);
@@ -1552,7 +1633,7 @@
             clearTimeout(holdTimer); 
         }
 
-        // --- TASK MANAGEMENT LOGIC (FIXED 0% BUG AND LAYOUT) ---
+        // --- TASK MANAGEMENT LOGIC (FIXED MATH & 0% BUG) ---
         function addTask() {
             const inputElement = document.getElementById('taskInput');
             const dateElement = document.getElementById('taskDate');
@@ -1642,21 +1723,21 @@
                 }
             }
             
-            // Safely Update Dashboard Counters & Progress Bar Math (FIXED)
+            // Safely Update Dashboard Counters & Progress Bar Math
             const completedCount = tasks.filter(t => t.completed).length;
             const totalCount = tasks.length;
             
             const totalTasksEl = document.getElementById('totalTasks');
             const completedTasksEl = document.getElementById('completedTasks');
             
-            // These are the IDs for the large progress bar in the dashboard
+            // ID fix for the dashboard progress bar
             const taskProgressMainEl = document.getElementById('taskProgressMain');
             const progressBarMainEl = document.getElementById('progressBarMain');
             
             if(totalTasksEl) totalTasksEl.textContent = totalCount; 
             if(completedTasksEl) completedTasksEl.textContent = completedCount; 
             
-            // MATH FIX: Calculates correct percentage 
+            // MATH FIX: Now updates perfectly
             let progressPercent = 0;
             if (totalCount > 0) {
                 progressPercent = Math.round((completedCount / totalCount) * 100);
@@ -1666,7 +1747,7 @@
             if(progressBarMainEl) progressBarMainEl.style.width = progressPercent + '%';
         }
 
-        // --- PLANNER MANAGEMENT LOGIC (FIXED LAYOUT) ---
+        // --- PLANNER MANAGEMENT LOGIC ---
         function addPlan() {
             const inputElement = document.getElementById('planTitle');
             const dateElement = document.getElementById('planDate');
@@ -1761,7 +1842,7 @@
         
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(e => {
-                console.log("Service Worker registration skipped or failed");
+                // Silently handle if SW fails in local testing
             });
         }
 
@@ -1855,6 +1936,13 @@
 
         // Initial Renders to Load Data from Local Storage
         document.addEventListener("DOMContentLoaded", () => {
+            
+            // Set the Dashboard as visually active on load (with the black button)
+            const activeBtn = document.getElementById('nav-dashboard');
+            if (activeBtn) {
+                activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-lg border border-slate-700 font-black transition-all text-base transform hover:scale-105";
+            }
+            
             renderTasks(); 
             renderPlans();
             renderProjects();

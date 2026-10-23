@@ -9,7 +9,7 @@
     
     <title>StudyBuddy - Premium Academic Assistant</title>
     
-    <!-- PWA Manifest -->
+    <!-- PWA Manifest Link -->
     <link rel="manifest" href="manifest.json">
     
     <!-- Tailwind CSS -->
@@ -95,7 +95,7 @@
             animation-delay: -15s;
         }
 
-        /* Smooth Animation Keyframes */
+        /* Smooth Background Animation Keyframes */
         @keyframes move {
             0% {
                 transform: translate(0, 0) scale(1) rotate(0deg);
@@ -108,6 +108,16 @@
             }
         }
 
+        /* Continuous Floating Animation for Dashboard Elements */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
         /* Performance Optimizations for Mobile Phones */
         @media (max-width: 1024px) {
             .blob {
@@ -117,6 +127,9 @@
             }
             .blob-4 {
                 display: none; 
+            }
+            .animate-float {
+                animation: none;
             }
         }
 
@@ -304,7 +317,7 @@
             scrollbar-width: none;
         }
 
-        /* Beautiful Gradient Buttons - Upgraded */
+        /* Beautiful Gradient Buttons - Upgraded Glowing Animations */
         .btn-primary {
             background: linear-gradient(135deg, #ff007f, #7928ca);
             color: white;
@@ -313,9 +326,9 @@
             border: 2px solid transparent;
         }
         .btn-primary:hover {
-            box-shadow: 0 12px 30px rgba(255, 0, 127, 0.6);
-            transform: translateY(-3px);
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 12px 30px rgba(255, 0, 127, 0.7), 0 0 20px rgba(121, 40, 202, 0.5);
+            transform: translateY(-3px) scale(1.02);
+            border: 2px solid rgba(255, 255, 255, 0.8);
         }
         
         .btn-success {
@@ -325,8 +338,8 @@
             box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
         }
         .btn-success:hover {
-            box-shadow: 0 12px 30px rgba(79, 172, 254, 0.6);
-            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(79, 172, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.5);
+            transform: translateY(-3px) scale(1.02);
         }
 
         /* Active Sidebar Item Styling - Colorful */
@@ -372,13 +385,12 @@
         </div>
     </div>
 
-    <!-- MOBILE HAMBURGER HEADER -->
+    <!-- MOBILE HAMBURGER HEADER (Only visible on phones) -->
     <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
-        <div class="text-xl font-black flex items-center gap-2">
-            <svg class="w-7 h-7 text-pink-500 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-            <span class="text-gradient">StudyBuddy</span>
+        <div class="text-xl font-black flex items-center gap-3">
+            <!-- LUXURY DIAMOND LOGO -->
+            <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-7 h-7 drop-shadow-md filter hue-rotate-15">
+            <span class="text-gradient tracking-tight">StudyBuddy</span>
         </div>
         
         <button onclick="toggleSidebar()" class="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl text-white shadow-lg flex items-center gap-2 transition-transform transform hover:scale-105 border border-white/50">
@@ -398,15 +410,16 @@
         <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
 
         <div>
-            <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-3 tracking-tighter cursor-default">
-                <svg class="w-9 h-9 text-pink-500 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
+            <!-- Desktop Logo -->
+            <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
+                <!-- LUXURY DIAMOND LOGO -->
+                <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-10 h-10 drop-shadow-md filter hue-rotate-15">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
             
             <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
 
+            <!-- Navigation Links -->
             <nav class="space-y-2">
                 <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base">
                     <span>🏠</span> Dashboard
@@ -471,7 +484,7 @@
         
         <!-- Global Header -->
         <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-8 mt-6 lg:mt-2 px-3 lg:px-2">
-            <div>
+            <div class="animate-float">
                 <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
                 <p class="text-slate-800 font-extrabold mt-2 text-sm sm:text-base bg-white/80 inline-block px-4 py-1.5 rounded-lg shadow-sm border border-white">Your premium academic command center</p>
             </div>
@@ -484,7 +497,7 @@
         <!-- DASHBOARD SECTION                          -->
         <!-- ========================================== -->
         <section id="dashboard" class="page active px-2">
-            <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(236,72,153,0.3)] border-2 border-white/50 bg-slate-900">
+            <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(236,72,153,0.3)] border-2 border-white/50 bg-slate-900 animate-float">
                 <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-pink-500 opacity-40 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-indigo-500 opacity-40 rounded-full blur-3xl"></div>
                 
@@ -545,16 +558,16 @@
         <!-- PLANNER SECTION                            -->
         <!-- ========================================== -->
         <section id="planner" class="page px-2">
-            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white">
-                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
+            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
+                <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
                 <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Schedule your major study blocks. Data is saved locally.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    <input type="text" id="planTitle" placeholder="Milestone name..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm sm:text-base focus:border-pink-500 outline-none transition-colors">
+                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
+                    <input type="text" id="planTitle" placeholder="Milestone name..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base focus:border-indigo-500 outline-none transition-colors">
                     
                     <div class="flex gap-3 w-full lg:w-auto">
-                        <input type="date" id="planDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-pink-500 outline-none transition-colors">
-                        <input type="time" id="planTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-pink-500 outline-none transition-colors">
+                        <input type="date" id="planDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
+                        <input type="time" id="planTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
                     </div>
                     
                     <button onclick="addPlan()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
@@ -570,19 +583,19 @@
         <!-- TASKS SECTION                              -->
         <!-- ========================================== -->
         <section id="tasks" class="page px-2">
-            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white">
+            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <div class="flex justify-between items-end mb-3">
                     <h2 class="text-3xl sm:text-5xl font-black text-slate-800 tracking-tight">✅ Action Items</h2>
                     <button onclick="clearCompletedTasks()" class="text-rose-500 font-black bg-rose-100 px-4 py-2 rounded-lg hover:bg-rose-200 transition-colors text-xs sm:text-sm shadow-sm uppercase tracking-wide">Clear Done</button>
                 </div>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Add assignments and deadlines. Hold tasks to delete.</p>
+                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Data is saved locally. Add your assignments below.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    <input type="text" id="taskInput" placeholder="Task description..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm sm:text-base focus:border-indigo-500 outline-none transition-colors">
+                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    <input type="text" id="taskInput" placeholder="Task description..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3.5 font-black text-slate-900 text-sm sm:text-base focus:border-indigo-500 outline-none transition-colors">
                     
                     <div class="flex gap-3 w-full lg:w-auto">
-                        <input type="date" id="taskDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
-                        <input type="time" id="taskTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
+                        <input type="date" id="taskDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
+                        <input type="time" id="taskTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
                     </div>
                     
                     <button onclick="addTask()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
@@ -598,7 +611,7 @@
         <!-- FOCUS TIMER SECTION                        -->
         <!-- ========================================== -->
         <section id="timer" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center">
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
                 <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">⏱️ Focus Timer</h2>
                 <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Set your study time and take planned breaks.</p>
                 
@@ -639,8 +652,8 @@
         <!-- SGPA CALCULATOR (UPDATED TO EXACTLY 2 SEMESTERS) -->
         <!-- ========================================== -->
         <section id="cgpa" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center">
-                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📊 SGPA / CGPA Predictor</h2>
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
+                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📊 SGPA Predictor</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">Calculate your final academic standing for your two semesters.</p>
                 
                 <!-- EXACTLY 2 SEMESTERS AS REQUESTED -->
@@ -727,7 +740,7 @@
         <!-- RESOURCE VAULT SECTION                     -->
         <!-- ========================================== -->
         <section id="resources" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📚 Resources & Notes</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">Create subject folders and upload your study materials.</p>
                 
@@ -813,7 +826,7 @@
         <!-- B.TECH TECH SKILLS ROADMAP SECTION         -->
         <!-- ========================================== -->
         <section id="roadmap" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white">
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-10 gap-6">
                     <div>
@@ -893,7 +906,7 @@
                     </div>
 
                     <!-- YEAR 2 -->
-                    <div id="year2" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
+                    <div id="year2" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
                         <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 3: Core CS</div>
                             <div class="space-y-4">
@@ -931,7 +944,7 @@
                     </div>
 
                     <!-- YEAR 3 -->
-                    <div id="year3" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
+                    <div id="year3" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
                         <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 5: Architecture</div>
                             <div class="space-y-4">
@@ -961,7 +974,7 @@
                     </div>
 
                     <!-- YEAR 4 -->
-                    <div id="year4" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
+                    <div id="year4" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
                         <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 7: Scale & Polish</div>
                             <div class="space-y-4">
@@ -997,17 +1010,18 @@
         <!-- CAREER LAUNCHPAD & INTERVIEW SKILLS        -->
         <!-- ========================================== -->
         <section id="career" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white">
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
                     <div>
+                        <!-- Font sizes reduced, force-wrap added to prevent cutoff -->
                         <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 tracking-tight force-wrap flex items-center gap-3">
                             <span class="text-4xl">🧠</span> Interview Mastery
                         </h2>
                         <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/80 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">Top 1% candidate checklist.</p>
                     </div>
                     
-                    <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-md border-2 border-white">
+                    <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-sm border border-white">
                         <div class="flex justify-between items-end mb-2">
                             <span class="text-sm font-black uppercase text-slate-600 tracking-widest">Score</span>
                             <span id="interviewScore" class="text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm">0%</span>
@@ -1258,7 +1272,7 @@
                 if(j.status === "Rejected") badgeClass = "bg-rose-100 text-rose-700 border-rose-200";
                 
                 html += `
-                    <div class="inner-glass p-5 sm:p-6 rounded-2xl bg-white/80 shadow-md border-2 border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-lg transition-shadow relative">
+                    <div class="inner-glass p-5 sm:p-6 rounded-2xl bg-white/80 shadow-sm border border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-lg transition-shadow relative">
                         <div class="flex-1 pr-6">
                             <h3 class="text-xl sm:text-2xl font-black text-slate-900 force-wrap">${j.company}</h3>
                             <p class="text-sm sm:text-base font-bold text-slate-500 force-wrap">${j.role || 'General Application'}</p>
@@ -1536,10 +1550,10 @@
             if (Notification.permission === 'granted') {
                 const options = {
                     body: body,
-                    icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png',
+                    icon: 'https://cdn-icons-png.flaticon.com/512/751/751432.png',
                     vibrate: [200, 100, 200, 100, 200], // Forces strong mobile vibration
                     requireInteraction: true, // Forces notification to stay until dismissed
-                    badge: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png'
+                    badge: 'https://cdn-icons-png.flaticon.com/512/751/751432.png'
                 };
 
                 // Use ServiceWorker if available (best for mobile), otherwise fallback to standard Notification
@@ -1738,7 +1752,7 @@
             "background_color": "#f1f5f9", 
             "theme_color": "#4f46e5",
             "icons": [{
-                "src": "https://cdn-icons-png.flaticon.com/512/3233/3233483.png", 
+                "src": "https://cdn-icons-png.flaticon.com/512/751/751432.png", 
                 "sizes": "512x512", 
                 "type": "image/png", 
                 "purpose": "any maskable"
@@ -1756,7 +1770,7 @@
                 const data = e.data ? e.data.json() : { title: 'StudyBuddy', body: 'Notification!' }; 
                 e.waitUntil(self.registration.showNotification(data.title, { 
                     body: data.body, 
-                    icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png',
+                    icon: 'https://cdn-icons-png.flaticon.com/512/751/751432.png',
                     vibrate: [200, 100, 200, 100, 200],
                     requireInteraction: true 
                 })); 

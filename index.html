@@ -6,24 +6,13 @@
   <meta name="theme-color" content="#4f46e5">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  
   <title>StudyBuddy - Premium Academic Assistant</title>
   
-  <!-- Web Manifest for PWA -->
   <link rel="manifest" href="manifest.json">
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
-    /* =========================================
-       CSS VARIABLES & GLOBAL SETTINGS
-       ========================================= */
     :root {
       --glass-bg: rgba(255, 255, 255, 0.40);
       --glass-border: rgba(255, 255, 255, 0.65);
@@ -38,9 +27,7 @@
       -webkit-tap-highlight-color: transparent;
     }
     
-    /* =========================================
-       BACKGROUND ANIMATION (MOBILE FIXED)
-       ========================================= */
+    /* Background Mesh Overlay */
     .mesh-bg {
       position: fixed; 
       top: 0; 
@@ -110,7 +97,7 @@
       }
     }
 
-    /* Mobile Performance Fixes to stop Hanging */
+    /* Mobile Performance Media Query */
     @media (max-width: 1024px) {
       .blob { 
         filter: blur(70px); 
@@ -122,9 +109,7 @@
       }
     }
 
-    /* =========================================
-       PAGE TRANSITIONS
-       ========================================= */
+    /* Page Routing Styles */
     .page { 
       display: none; 
       opacity: 0; 
@@ -148,9 +133,7 @@
       } 
     }
     
-    /* =========================================
-       GLASSMORPHISM UI STYLES
-       ========================================= */
+    /* Glassmorphism Classes */
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: blur(35px);
@@ -181,7 +164,7 @@
     }
     
     .interactive-card:hover {
-      transform: translateY(-5px) scale(1.02);
+      transform: translateY(-10px) scale(1.02);
       background: rgba(255, 255, 255, 0.95);
       box-shadow: 0 30px 60px rgba(99, 102, 241, 0.2);
       border-color: rgba(99, 102, 241, 0.4);
@@ -196,14 +179,12 @@
     }
     
     @keyframes gradientShift { 
-      0% { background-position: 0% 50%; } 
-      50% { background-position: 100% 50%; } 
-      100% { background-position: 0% 50%; } 
+      0% { background-position: 0% 50% } 
+      50% { background-position: 100% 50% } 
+      100% { background-position: 0% 50% } 
     }
     
-    /* =========================================
-       MODALS & OVERLAYS
-       ========================================= */
+    /* Overlay Styles */
     #sidebarOverlay {
       position: fixed; 
       inset: 0; 
@@ -224,7 +205,7 @@
       display: none; 
       background: rgba(15, 23, 42, 0.6); 
       backdrop-filter: blur(20px); 
-      z-index: 100; 
+      z-index: 100;
     }
     
     .modal-overlay.active { 
@@ -235,9 +216,11 @@
     input[type="date"], 
     input[type="time"], 
     input[type="number"], 
-    input[type="text"] { 
+    input[type="text"], 
+    select { 
       color: #0f172a; 
       background: transparent; 
+      cursor: pointer; 
       font-family: inherit; 
       outline: none; 
     }
@@ -247,13 +230,10 @@
       -webkit-user-select: none; 
     }
     
-    /* =========================================
-       CUSTOM CHECKBOXES
-       ========================================= */
     .roadmap-check {
       appearance: none; 
-      width: 1.5rem; 
-      height: 1.5rem;
+      width: 1.75rem; 
+      height: 1.75rem;
       border: 3px solid #cbd5e1; 
       border-radius: 0.5rem;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
@@ -267,14 +247,14 @@
       background-color: #4f46e5; 
       border-color: #4f46e5; 
       transform: scale(1.1); 
-      box-shadow: 0 0 15px rgba(79, 70, 229, 0.5); 
+      box-shadow: 0 0 25px rgba(79, 70, 229, 0.5); 
     }
     
     .roadmap-check:checked::after { 
       content: '✓'; 
       position: absolute; 
       color: white; 
-      font-size: 1rem; 
+      font-size: 1.1rem; 
       font-weight: 900; 
       top: 50%; 
       left: 50%; 
@@ -287,10 +267,10 @@
       opacity: 0.6;
     }
     
-    /* Strict Text Wrapping Fix */
     .force-wrap { 
-      word-break: break-word; 
-      overflow-wrap: break-word; 
+      overflow-wrap: break-word !important; 
+      word-wrap: break-word !important; 
+      word-break: break-word !important; 
       white-space: normal !important; 
       max-width: 100%; 
     }
@@ -299,7 +279,6 @@
       font-variant-numeric: tabular-nums; 
     }
     
-    /* Scrollbar hide for tabs */
     .hide-scroll::-webkit-scrollbar { 
       display: none; 
     }
@@ -310,75 +289,40 @@
     }
   </style>
 </head>
-
 <body class="min-h-screen flex flex-col lg:flex-row p-0 sm:p-4 lg:p-6 gap-0 lg:gap-6 relative">
 
-  <!-- BACKGROUND START -->
+  <!-- BACKGROUND -->
   <div class="mesh-bg">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
     <div class="blob blob-4"></div>
   </div>
-  <!-- BACKGROUND END -->
 
-  <!-- AUTHENTICATION MODAL START -->
+  <!-- AUTHENTICATION MODAL -->
   <div id="authModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
     <div class="glass-card bg-white/95 p-8 w-full max-w-md relative shadow-2xl border-2 border-white">
-      <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">
-        &times;
-      </button>
-      
-      <h2 class="text-3xl font-black mb-6 text-center tracking-tight">
-        Join <span class="text-gradient">StudyBuddy</span>
-      </h2>
-      
+      <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
+      <h2 class="text-3xl font-black mb-6 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
       <div class="space-y-4">
         <div>
-          <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">
-            Email
-          </label>
+          <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Email</label>
           <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-indigo-500 focus:bg-white font-bold text-base">
         </div>
-        
         <div>
-          <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">
-            Password
-          </label>
+          <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Password</label>
           <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-indigo-500 focus:bg-white font-bold text-base">
         </div>
-        
         <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
-        
         <div class="flex gap-4 pt-2">
-          <button onclick="mockSignIn()" class="flex-1 bg-slate-900 text-white py-3 rounded-xl font-black hover:shadow-lg transition-all text-base">
-            Sign In
-          </button>
-          <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-3 rounded-xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-sm text-base">
-            Sign Up
-          </button>
+          <button onclick="mockSignIn()" class="flex-1 bg-slate-900 text-white py-3 rounded-xl font-black hover:shadow-lg transition-all text-base">Sign In</button>
+          <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-3 rounded-xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-sm text-base">Sign Up</button>
         </div>
       </div>
     </div>
   </div>
-  <!-- AUTHENTICATION MODAL END -->
 
-  <!-- TASK MODAL START -->
-  <div id="taskModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
-    <div class="glass-card bg-white/95 p-8 w-full max-w-2xl relative shadow-2xl border-2 border-white">
-      <button onclick="closeTaskModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">
-        &times;
-      </button>
-      <h2 id="taskModalTitle" class="text-2xl font-black mb-6 text-slate-800 text-gradient tracking-tight">
-        Tasks Overview
-      </h2>
-      <div id="taskModalList" class="max-h-[60vh] overflow-y-auto space-y-3 pr-2 hide-scroll">
-      </div>
-    </div>
-  </div>
-  <!-- TASK MODAL END -->
-
-  <!-- MOBILE HAMBURGER HEADER START -->
+  <!-- MOBILE HAMBURGER HEADER -->
   <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-md">
     <div class="text-xl font-black flex items-center gap-2">
       <svg class="w-6 h-6 text-indigo-600 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
@@ -386,7 +330,6 @@
       </svg>
       <span class="text-gradient">StudyBuddy</span>
     </div>
-    
     <button onclick="toggleSidebar()" class="px-3 py-1.5 bg-slate-100 rounded-lg text-slate-800 hover:bg-slate-200 shadow-inner border border-white flex items-center gap-2">
       <span class="font-black text-xs uppercase tracking-widest">Menu</span>
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -394,66 +337,52 @@
       </svg>
     </button>
   </div>
-  <!-- MOBILE HAMBURGER HEADER END -->
 
   <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
-  <!-- SIDEBAR START -->
+  <!-- PREMIUM SIDEBAR -->
   <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0">
     
-    <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black">
-      &times;
-    </button>
+    <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black">&times;</button>
 
     <div>
       <div class="text-2xl font-black mb-8 hidden lg:flex items-center gap-3 tracking-tighter">
         <svg class="w-8 h-8 text-indigo-600 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
         </svg>
         <span class="text-gradient">StudyBuddy</span>
       </div>
       
-      <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">
-        Menu
-      </div>
+      <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Menu</div>
 
       <nav class="space-y-2">
         <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-md font-black transition-all text-base">
           <span>🏠</span> Dashboard
         </button>
-        
         <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
           <span>📅</span> Study Planner
         </button>
-        
         <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
           <span>✅</span> Action Tasks
         </button>
-        
         <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
           <span>⏱️</span> Focus Timer
         </button>
-        
         <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
           <span>📊</span> CGPA Predictor
         </button>
-        
         <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
           <span>🗺️</span> B.Tech Roadmap
         </button>
-        
         <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
           <span>📚</span> Resource Vault
         </button>
-        
         <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
           <span>🚀</span> Projects Portfolio
         </button>
-        
         <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
           <span>🎯</span> Job Tracker
         </button>
-        
         <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
           <span>💼</span> Interview Skills
         </button>
@@ -461,53 +390,35 @@
       
       <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
         <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 rounded-xl shadow-md font-black text-base mb-3">
-          Install App 📲
+            Install App 📲
         </button>
       </div>
     </div>
-    
     <div class="mt-2">
-      <div id="userInfo" class="text-sm text-indigo-900 mb-3 truncate font-black bg-white/80 px-3 py-2 rounded-lg text-center shadow-sm border border-white">
-        Not signed in
-      </div>
-      <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base">
-        Sign In / Sign Up
-      </button>
+      <div id="userInfo" class="text-sm text-indigo-900 mb-3 truncate font-black bg-white/80 px-3 py-2 rounded-lg text-center shadow-sm border border-white">Not signed in</div>
+      <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base">Sign In / Sign Up</button>
     </div>
   </aside>
-  <!-- SIDEBAR END -->
 
-  <!-- MAIN CONTENT START -->
+  <!-- MAIN CONTENT AREA -->
   <main class="flex-1 overflow-y-auto overflow-x-hidden pr-2 sm:pr-4 lg:pr-2 pb-10 z-0 hide-scroll">
-    
-    <!-- PAGE HEADER -->
     <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 mt-6 lg:mt-2 px-3 lg:px-2">
       <div>
-        <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter drop-shadow-md">
-          Dashboard
-        </h1>
-        <p class="text-slate-800 font-extrabold mt-2 text-sm sm:text-base bg-white/70 inline-block px-4 py-1.5 rounded-lg shadow-sm border border-white">
-          Your premium academic command center
-        </p>
+        <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
+        <p class="text-slate-800 font-extrabold mt-2 text-sm sm:text-base bg-white/70 inline-block px-4 py-1.5 rounded-lg shadow-sm border border-white">Your premium academic command center</p>
       </div>
       <div class="text-xs sm:text-sm glass-card bg-white/95 px-4 py-3 font-black text-indigo-900 flex items-center gap-2 shadow-sm border-2 border-white self-start sm:self-auto">
-        <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-sm"></span> 
-        Workspace Active
+        <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-sm"></span> Workspace Active
       </div>
     </header>
 
-    <!-- SECTION: DASHBOARD -->
+    <!-- DASHBOARD -->
     <section id="dashboard" class="page active px-2">
       <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-lg border-2 border-white/50 bg-slate-900">
         <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-indigo-500 opacity-30 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-fuchsia-500 opacity-30 rounded-full blur-3xl"></div>
-        
-        <h2 class="text-3xl sm:text-5xl md:text-6xl font-black mb-4 relative z-10 drop-shadow-lg tracking-tight leading-tight">
-          Welcome to your future. ✨
-        </h2>
-        <p class="text-indigo-100 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">
-          Organize your assignments, track milestones, and crush your academic goals with absolute precision.
-        </p>
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-black mb-4 relative z-10 drop-shadow-lg tracking-tight leading-tight">Welcome to your future. ✨</h2>
+        <p class="text-indigo-100 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and crush your academic goals with absolute precision.</p>
       </div>
 
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
@@ -515,17 +426,14 @@
           <p class="text-sm sm:text-base text-indigo-700 font-black uppercase tracking-widest z-10">Total Tasks</p>
           <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10">0</h2>
         </div>
-        
         <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group">
           <p class="text-sm sm:text-base text-emerald-700 font-black uppercase tracking-widest z-10">Completed</p>
           <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10">0</h2>
         </div>
-        
         <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group">
           <p class="text-sm sm:text-base text-rose-600 font-black uppercase tracking-widest z-10">Pending</p>
           <h2 id="pendingTasks" class="text-4xl sm:text-6xl font-black mt-2 text-rose-600 z-10">0</h2>
         </div>
-        
         <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center group relative overflow-hidden">
           <p class="text-sm sm:text-base text-fuchsia-700 font-black uppercase tracking-widest z-10">Progress</p>
           <div class="flex flex-col mt-2 z-10">
@@ -538,13 +446,11 @@
       </div>
     </section>
 
-    <!-- SECTION: PLANNER -->
+    <!-- PLANNER SECTION -->
     <section id="planner" class="page px-2">
       <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-lg border-2 border-white">
         <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
-        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">
-          Schedule your major study blocks. Hold items to delete.
-        </p>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Schedule your major study blocks. Hold items to delete.</p>
         
         <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
           <input type="text" id="planTitle" placeholder="Milestone name..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base">
@@ -552,22 +458,18 @@
             <input type="date" id="planDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm">
             <input type="time" id="planTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm">
           </div>
-          <button onclick="addPlan()" class="w-full lg:w-auto bg-slate-900 text-white px-6 py-3 rounded-xl font-black hover:bg-black transition-all text-sm sm:text-base">
-            Add
-          </button>
+          <button onclick="addPlan()" class="w-full lg:w-auto bg-slate-900 text-white px-6 py-3 rounded-xl font-black hover:bg-black transition-all text-sm sm:text-base">Add Plan</button>
         </div>
         
         <div id="plannerList" class="space-y-4"></div>
       </div>
     </section>
 
-    <!-- SECTION: TASKS -->
+    <!-- TASKS SECTION -->
     <section id="tasks" class="page px-2">
       <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-lg border-2 border-white">
         <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">✅ Action Items</h2>
-        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">
-          Add assignments and deadlines. Hold tasks to delete.
-        </p>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Add assignments and deadlines. Hold tasks to delete.</p>
         
         <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
           <input type="text" id="taskInput" placeholder="Task description..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base">
@@ -575,72 +477,48 @@
             <input type="date" id="taskDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm">
             <input type="time" id="taskTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm">
           </div>
-          <button onclick="addTask()" class="w-full lg:w-auto bg-slate-900 text-white px-6 py-3 rounded-xl font-black hover:bg-black transition-all text-sm sm:text-base">
-            Add Task
-          </button>
+          <button onclick="addTask()" class="w-full lg:w-auto bg-slate-900 text-white px-6 py-3 rounded-xl font-black hover:bg-black transition-all text-sm sm:text-base">Add Task</button>
         </div>
         
         <div id="taskList" class="space-y-4"></div>
       </div>
     </section>
 
-    <!-- SECTION: FOCUS TIMER -->
+    <!-- FULLY ADJUSTABLE FOCUS TIMER SECTION -->
     <section id="timer" class="page px-2">
       <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white text-center">
         <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">⏱️ Focus Timer</h2>
-        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">
-          Set your study time and take planned breaks.
-        </p>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Set your study time and take planned breaks.</p>
         
         <div class="inner-glass bg-white/80 p-8 sm:p-12 rounded-[2rem] shadow-sm border border-white mb-6">
-          <div id="timeDisplay" class="timer-display text-7xl sm:text-9xl font-black text-indigo-600 drop-shadow-md mb-6">
-            25:00
-          </div>
+          <div id="timeDisplay" class="timer-display text-7xl sm:text-9xl font-black text-indigo-600 drop-shadow-md mb-6">25:00</div>
           
-          <!-- ADJUSTABLE BUTTONS -->
+          <!-- ADJUSTABLE BUTTONS (NEW FIX) -->
           <div class="flex justify-center gap-4 mb-8">
-            <button onclick="adjustTimer(-5)" class="px-5 py-2 rounded-xl font-black bg-rose-100 text-rose-700 hover:bg-rose-200 transition-all shadow-sm">
-              - 5 Min
-            </button>
-            <button onclick="adjustTimer(5)" class="px-5 py-2 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm">
-              + 5 Min
-            </button>
+            <button onclick="adjustTimer(-5)" class="px-5 py-2 rounded-xl font-black bg-rose-100 text-rose-700 hover:bg-rose-200 transition-all shadow-sm">- 5 Min</button>
+            <button onclick="adjustTimer(5)" class="px-5 py-2 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm">+ 5 Min</button>
           </div>
 
           <div class="flex flex-wrap justify-center gap-3">
-            <button onclick="startTimer()" id="startBtn" class="bg-slate-900 text-white px-10 py-4 rounded-xl font-black hover:shadow-lg transition-all text-lg w-40">
-              Start
-            </button>
-            <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-amber-500 text-white px-10 py-4 rounded-xl font-black hover:shadow-lg transition-all text-lg w-40">
-              Pause
-            </button>
-            <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-300 px-10 py-4 rounded-xl font-black hover:bg-slate-50 transition-all text-lg w-40">
-              Reset
-            </button>
+            <button onclick="startTimer()" id="startBtn" class="bg-slate-900 text-white px-10 py-4 rounded-xl font-black hover:shadow-lg transition-all text-lg w-40">Start</button>
+            <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-amber-500 text-white px-10 py-4 rounded-xl font-black hover:shadow-lg transition-all text-lg w-40">Pause</button>
+            <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-300 px-10 py-4 rounded-xl font-black hover:bg-slate-50 transition-all text-lg w-40">Reset</button>
           </div>
         </div>
         
         <div class="flex flex-wrap justify-center gap-3">
-          <button onclick="setTimerMode(25)" class="px-6 py-3 rounded-xl font-black transition-all bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 text-sm shadow-sm">
-            25m Focus
-          </button>
-          <button onclick="setTimerMode(5)" class="px-6 py-3 rounded-xl font-black transition-all bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-sm shadow-sm">
-            5m Break
-          </button>
-          <button onclick="setTimerMode(10)" class="px-6 py-3 rounded-xl font-black transition-all bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 text-sm shadow-sm">
-            10m Break
-          </button>
+          <button onclick="setTimerMode(25)" class="px-6 py-3 rounded-xl font-black transition-all bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 text-sm shadow-sm">25m Focus</button>
+          <button onclick="setTimerMode(5)" class="px-6 py-3 rounded-xl font-black transition-all bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-sm shadow-sm">5m Break</button>
+          <button onclick="setTimerMode(10)" class="px-6 py-3 rounded-xl font-black transition-all bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 text-sm shadow-sm">10m Break</button>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: CGPA PREDICTOR -->
+    <!-- CGPA PREDICTOR SECTION -->
     <section id="cgpa" class="page px-2">
       <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white text-center">
         <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📊 CGPA Predictor</h2>
-        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">
-          Calculate overall CGPA by entering SGPA.
-        </p>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Calculate overall CGPA by entering SGPA.</p>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-left">
           <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white">
@@ -661,9 +539,7 @@
           </div>
         </div>
 
-        <button onclick="calculateCGPA()" class="bg-indigo-600 text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-indigo-700 transition-all mb-8 shadow-md">
-          Calculate Result
-        </button>
+        <button onclick="calculateCGPA()" class="bg-indigo-600 text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-indigo-700 transition-all mb-8 shadow-md">Calculate Result</button>
 
         <div class="inner-glass bg-indigo-50 border-2 border-indigo-200 p-8 rounded-[1.5rem] shadow-inner max-w-xs mx-auto">
           <p class="text-sm font-black uppercase text-indigo-700 tracking-widest mb-1">Final CGPA</p>
@@ -672,7 +548,7 @@
       </div>
     </section>
 
-    <!-- SECTION: B.TECH TECH SKILLS ROADMAP -->
+    <!-- B.TECH TECH SKILLS ROADMAP SECTION -->
     <section id="roadmap" class="page px-2">
       <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white">
         
@@ -681,9 +557,7 @@
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 flex items-center gap-3 tracking-tight force-wrap">
               B.Tech Skills Roadmap
             </h2>
-            <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/70 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">
-              Your 4-year path to Software Engineer.
-            </p>
+            <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/70 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">Your 4-year path to Software Engineer.</p>
           </div>
           
           <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-sm border border-white">
@@ -711,277 +585,258 @@
               <div class="font-black text-indigo-900 mb-5 text-xl border-b-2 border-indigo-200 pb-2">Semester 1: Foundation</div>
               <div class="space-y-4">
                 <label class="flex items-center gap-4 cursor-pointer group">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">C / C++ Programming Basics</span>
+                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">C / C++ Programming Basics</span>
                 </label>
                 <label class="flex items-center gap-4 cursor-pointer group">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Terminal & Linux Command Line</span>
+                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Terminal & Linux Command Line</span>
                 </label>
                 <label class="flex items-center gap-4 cursor-pointer group">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Git & GitHub (Version Control)</span>
+                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Git & GitHub (Version Control)</span>
                 </label>
                 <label class="flex items-center gap-4 cursor-pointer group">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Basic HTML5 & CSS3</span>
+                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Basic HTML5 & CSS3</span>
                 </label>
               </div>
             </div>
-            
             <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
               <div class="font-black text-indigo-900 mb-5 text-xl border-b-2 border-indigo-200 pb-2">Semester 2: Data & Logic</div>
               <div class="space-y-4">
                 <label class="flex items-center gap-4 cursor-pointer group">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Data Structures (Arrays, Lists)</span>
+                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Data Structures (Arrays, Lists)</span>
                 </label>
                 <label class="flex items-center gap-4 cursor-pointer group">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Python Scripting & Auto</span>
+                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Python Scripting & Auto</span>
                 </label>
                 <label class="flex items-center gap-4 cursor-pointer group">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Intro to JavaScript (DOM)</span>
+                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Intro to JavaScript (DOM)</span>
                 </label>
                 <label class="flex items-center gap-4 cursor-pointer group">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Relational Algebra & SQL</span>
+                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Relational Algebra & SQL</span>
                 </label>
               </div>
             </div>
           </div>
-
           <!-- YEAR 2 -->
           <div id="year2" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
             <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
-              <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 3: Core CS</div>
-              <div class="space-y-4">
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">OOP (Java/C++)</span>
-                </label>
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Advanced DSA (Trees, Graphs)</span>
-                </label>
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">DBMS Architecture</span>
-                </label>
-              </div>
+                <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 3: Core CS</div>
+                <div class="space-y-4">
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">OOP (Java/C++)</span>
+                    </label>
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Advanced DSA (Trees, Graphs)</span>
+                    </label>
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">DBMS Architecture</span>
+                    </label>
+                </div>
             </div>
             <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
-              <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 4: Systems</div>
-              <div class="space-y-4">
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Operating Systems</span>
-                </label>
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Computer Networks</span>
-                </label>
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Building REST APIs</span>
-                </label>
-              </div>
+                <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 4: Systems</div>
+                <div class="space-y-4">
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Operating Systems</span>
+                    </label>
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Computer Networks</span>
+                    </label>
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Building REST APIs</span>
+                    </label>
+                </div>
             </div>
           </div>
-
           <!-- YEAR 3 -->
           <div id="year3" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
             <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
-              <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 5: Architecture</div>
-              <div class="space-y-4">
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Backend Engineering (Node)</span>
-                </label>
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Cloud Platforms (AWS)</span>
-                </label>
-              </div>
+                <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 5: Architecture</div>
+                <div class="space-y-4">
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Backend Engineering (Node)</span>
+                    </label>
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Cloud Platforms (AWS)</span>
+                    </label>
+                </div>
             </div>
             <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
-              <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 6: Engineering</div>
-              <div class="space-y-4">
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">DevOps (Docker, CI/CD)</span>
-                </label>
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">App Security</span>
-                </label>
-              </div>
+                <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 6: Engineering</div>
+                <div class="space-y-4">
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">DevOps (Docker, CI/CD)</span>
+                    </label>
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">App Security</span>
+                    </label>
+                </div>
             </div>
           </div>
-
           <!-- YEAR 4 -->
           <div id="year4" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
             <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
-              <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 7: Scale</div>
-              <div class="space-y-4">
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">System Design</span>
-                </label>
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Kubernetes & Orchestration</span>
-                </label>
-              </div>
+                <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 7: Scale</div>
+                <div class="space-y-4">
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">System Design</span>
+                    </label>
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Kubernetes & Orchestration</span>
+                    </label>
+                </div>
             </div>
             <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
-              <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 8: Industry</div>
-              <div class="space-y-4">
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Elite DSA Problem Solving</span>
-                </label>
-                <label class="flex items-center gap-4 cursor-pointer">
-                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
-                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Mock Interviews</span>
-                </label>
-              </div>
+                <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 8: Industry</div>
+                <div class="space-y-4">
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Elite DSA Problem Solving</span>
+                    </label>
+                    <label class="flex items-center gap-4 cursor-pointer">
+                        <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Mock Interviews</span>
+                    </label>
+                </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: RESOURCES -->
+    <!-- RESOURCES SECTION -->
     <section id="resources" class="page px-2">
       <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-2 border-white">
         <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📚 Resources & Notes</h2>
-        <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">
-          Create subject folders and upload your study materials.
-        </p>
+        <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">Create subject folders and upload your study materials.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          
-          <!-- Subject Slot 1 -->
+          <!-- Card 1 -->
           <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
             <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
             <div class="flex items-center justify-between mt-auto pt-4">
               <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
-                ➕ Add File 
-                <input type="file" class="hidden">
+                ➕ Add File <input type="file" class="hidden" onchange="alert('File selected! (Mock action)')">
               </label>
               <span class="text-xs font-bold text-slate-400">0 files</span>
             </div>
           </div>
-          
-          <!-- Subject Slot 2 -->
+          <!-- Card 2 -->
           <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
             <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
             <div class="flex items-center justify-between mt-auto pt-4">
               <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
-                ➕ Add File 
-                <input type="file" class="hidden">
+                ➕ Add File <input type="file" class="hidden" onchange="alert('File selected! (Mock action)')">
               </label>
               <span class="text-xs font-bold text-slate-400">0 files</span>
             </div>
           </div>
-          
-          <!-- Subject Slot 3 -->
+          <!-- Card 3 -->
           <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
             <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
             <div class="flex items-center justify-between mt-auto pt-4">
               <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
-                ➕ Add File 
-                <input type="file" class="hidden">
+                ➕ Add File <input type="file" class="hidden" onchange="alert('File selected! (Mock action)')">
               </label>
               <span class="text-xs font-bold text-slate-400">0 files</span>
             </div>
           </div>
-          
-          <!-- Subject Slot 4 -->
+          <!-- Card 4 -->
           <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
             <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
             <div class="flex items-center justify-between mt-auto pt-4">
               <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
-                ➕ Add File 
-                <input type="file" class="hidden">
+                ➕ Add File <input type="file" class="hidden" onchange="alert('File selected! (Mock action)')">
               </label>
               <span class="text-xs font-bold text-slate-400">0 files</span>
             </div>
           </div>
-          
-          <!-- Subject Slot 5 -->
+          <!-- Card 5 -->
           <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
             <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
             <div class="flex items-center justify-between mt-auto pt-4">
               <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
-                ➕ Add File 
-                <input type="file" class="hidden">
+                ➕ Add File <input type="file" class="hidden" onchange="alert('File selected! (Mock action)')">
               </label>
               <span class="text-xs font-bold text-slate-400">0 files</span>
             </div>
           </div>
-          
-          <!-- Subject Slot 6 -->
+          <!-- Card 6 -->
           <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
             <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
             <div class="flex items-center justify-between mt-auto pt-4">
               <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
-                ➕ Add File 
-                <input type="file" class="hidden">
+                ➕ Add File <input type="file" class="hidden" onchange="alert('File selected! (Mock action)')">
               </label>
               <span class="text-xs font-bold text-slate-400">0 files</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- SECTION: PORTFOLIO -->
+    <!-- NEW SECTION: PORTFOLIO -->
     <section id="portfolio" class="page px-2">
       <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white">
         <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">🚀 Project Portfolio</h2>
         <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Track your personal projects and GitHub repos to show recruiters.</p>
         
         <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 rounded-2xl shadow-sm border border-white">
-          <input type="text" placeholder="Project Title" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm">
-          <input type="text" placeholder="Tech Stack (e.g., React, Node)" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm">
-          <button class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-black text-sm hover:bg-indigo-700">Add Project</button>
+          <input type="text" id="projectTitle" placeholder="Project Title" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm outline-none focus:border-indigo-400">
+          <input type="text" id="projectTech" placeholder="Tech Stack (e.g., React, Node)" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm outline-none focus:border-indigo-400">
+          <button onclick="addProject()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-black text-sm hover:bg-indigo-700 transition-all shadow-md">Add Project</button>
         </div>
         
-        <div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">
-          No projects added yet. Start building!
+        <div id="portfolioList" class="space-y-4">
+           <!-- Dynamic Projects Will Render Here -->
         </div>
       </div>
     </section>
 
-    <!-- SECTION: JOB TRACKER -->
+    <!-- NEW SECTION: JOB TRACKER -->
     <section id="jobs" class="page px-2">
       <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white">
         <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">🎯 Job Tracker</h2>
         <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Keep track of your internship and job applications.</p>
         
         <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 rounded-2xl shadow-sm border border-white">
-          <input type="text" placeholder="Company Name" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm">
-          <input type="text" placeholder="Role (e.g., SDE Intern)" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm">
-          <select class="bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm text-slate-700 outline-none">
-            <option>Applied</option>
-            <option>Interviewing</option>
-            <option>Offer Received</option>
-            <option>Rejected</option>
+          <input type="text" id="jobCompany" placeholder="Company Name" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm outline-none focus:border-indigo-400">
+          <input type="text" id="jobRole" placeholder="Role (e.g., SDE Intern)" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm outline-none focus:border-indigo-400">
+          <select id="jobStatus" class="bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm text-slate-700 outline-none focus:border-indigo-400">
+            <option value="Applied">Applied</option>
+            <option value="Interviewing">Interviewing</option>
+            <option value="Offer Received">Offer Received</option>
+            <option value="Rejected">Rejected</option>
           </select>
-          <button class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-black text-sm hover:bg-indigo-700">Save</button>
+          <button onclick="addJob()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-black text-sm hover:bg-indigo-700 transition-all shadow-md">Save Tracker</button>
         </div>
         
-        <div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">
-          No applications tracked yet.
+        <div id="jobsList" class="space-y-4">
+           <!-- Dynamic Jobs Will Render Here -->
         </div>
       </div>
     </section>
 
-    <!-- SECTION: CAREER LAUNCHPAD -->
+    <!-- CAREER LAUNCHPAD & INTERVIEW SKILLS -->
     <section id="career" class="page px-2">
       <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white">
         
@@ -990,9 +845,7 @@
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 tracking-tight force-wrap">
               Interview Mastery
             </h2>
-            <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/80 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">
-              Top 1% candidate checklist.
-            </p>
+            <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/80 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">Top 1% candidate checklist.</p>
           </div>
           
           <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-sm border border-white">
@@ -1009,9 +862,7 @@
         <div class="grid md:grid-cols-2 gap-6 relative z-10">
           <!-- Column 1: Core Technical -->
           <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-blue-500 border border-white">
-            <div class="flex items-center gap-3 font-black text-blue-900 mb-5 text-xl sm:text-2xl border-b-2 border-blue-200 pb-2">
-              Technical Core
-            </div>
+            <div class="flex items-center gap-3 font-black text-blue-900 mb-5 text-xl sm:text-2xl border-b-2 border-blue-200 pb-2">Technical Core</div>
             <div class="space-y-4">
               <label class="flex items-start sm:items-center gap-4 cursor-pointer">
                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
@@ -1034,9 +885,7 @@
 
           <!-- Column 2: Communication -->
           <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-amber-500 border border-white">
-            <div class="flex items-center gap-3 font-black text-amber-900 mb-5 text-xl sm:text-2xl border-b-2 border-amber-200 pb-2">
-              Communication
-            </div>
+            <div class="flex items-center gap-3 font-black text-amber-900 mb-5 text-xl sm:text-2xl border-b-2 border-amber-200 pb-2">Communication</div>
             <div class="space-y-4">
               <label class="flex items-start sm:items-center gap-4 cursor-pointer">
                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
@@ -1059,9 +908,7 @@
           
           <!-- Column 3: HR & Behavioral -->
           <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-rose-500 border border-white">
-            <div class="flex items-center gap-3 font-black text-rose-900 mb-5 text-xl sm:text-2xl border-b-2 border-rose-200 pb-2">
-              HR & Behavioral
-            </div>
+            <div class="flex items-center gap-3 font-black text-rose-900 mb-5 text-xl sm:text-2xl border-b-2 border-rose-200 pb-2">HR & Behavioral</div>
             <div class="space-y-4">
               <label class="flex items-start sm:items-center gap-4 cursor-pointer">
                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
@@ -1084,9 +931,7 @@
           
           <!-- Column 4: Brand -->
           <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-purple-500 border border-white">
-            <div class="flex items-center gap-3 font-black text-purple-900 mb-5 text-xl sm:text-2xl border-b-2 border-purple-200 pb-2">
-              Personal Brand
-            </div>
+            <div class="flex items-center gap-3 font-black text-purple-900 mb-5 text-xl sm:text-2xl border-b-2 border-purple-200 pb-2">Personal Brand</div>
             <div class="space-y-4">
               <label class="flex items-start sm:items-center gap-4 cursor-pointer">
                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
@@ -1111,96 +956,8 @@
     </section>
   </main>
 
-  <!-- ==========================================
-       JAVASCRIPT LOGIC
-       ========================================== -->
   <script>
-    /* -------------------------------------
-       TIMER LOGIC
-       ------------------------------------- */
-    let timerInterval;
-    let timeLeft = 25 * 60; 
-    let isTimerRunning = false;
-
-    function updateTimerDisplay() {
-      const display = document.getElementById('timeDisplay');
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      
-      const formattedMinutes = minutes.toString().padStart(2, '0');
-      const formattedSeconds = seconds.toString().padStart(2, '0');
-      
-      display.textContent = `${formattedMinutes}:${formattedSeconds}`;
-    }
-
-    function adjustTimer(mins) {
-      timeLeft += mins * 60;
-      if (timeLeft < 0) {
-        timeLeft = 0;
-      }
-      updateTimerDisplay();
-    }
-
-    function startTimer() {
-      if (isTimerRunning || timeLeft <= 0) {
-        return;
-      }
-      isTimerRunning = true;
-      
-      document.getElementById('startBtn').classList.add('hidden');
-      document.getElementById('pauseBtn').classList.remove('hidden');
-      
-      timerInterval = setInterval(() => {
-        if (timeLeft > 0) {
-          timeLeft--;
-          updateTimerDisplay();
-        } else {
-          clearInterval(timerInterval);
-          isTimerRunning = false;
-          
-          document.getElementById('startBtn').classList.remove('hidden');
-          document.getElementById('pauseBtn').classList.add('hidden');
-          
-          sendNotification("Timer Complete!", "Your session is over. Take a break!");
-        }
-      }, 1000);
-    }
-
-    function pauseTimer() {
-      clearInterval(timerInterval);
-      isTimerRunning = false;
-      
-      document.getElementById('startBtn').classList.remove('hidden');
-      document.getElementById('startBtn').textContent = "Resume";
-      document.getElementById('pauseBtn').classList.add('hidden');
-    }
-
-    function resetTimer() {
-      clearInterval(timerInterval);
-      isTimerRunning = false;
-      
-      document.getElementById('startBtn').classList.remove('hidden');
-      document.getElementById('startBtn').textContent = "Start";
-      document.getElementById('pauseBtn').classList.add('hidden');
-      
-      setTimerMode(25);
-    }
-
-    function setTimerMode(minutes) {
-      clearInterval(timerInterval);
-      isTimerRunning = false;
-      
-      document.getElementById('startBtn').classList.remove('hidden');
-      document.getElementById('startBtn').textContent = "Start";
-      document.getElementById('pauseBtn').classList.add('hidden');
-      
-      timeLeft = minutes * 60;
-      updateTimerDisplay();
-    }
-
-    /* -------------------------------------
-       CGPA PREDICTOR LOGIC
-       ------------------------------------- */
+    // --- CGPA PREDICTOR LOGIC ---
     function calculateCGPA() {
       const inputs = document.querySelectorAll('.sgpa-input');
       let total = 0; 
@@ -1217,15 +974,81 @@
       document.getElementById('cgpaResult').textContent = cgpa.toFixed(2);
     }
 
-    /* -------------------------------------
-       SIDEBAR MENU LOGIC
-       ------------------------------------- */
+    // --- TIMER LOGIC (WITH ADJUST BUTTONS FIX) ---
+    let timerInterval;
+    let timeLeft = 25 * 60; 
+    let isTimerRunning = false;
+
+    function updateTimerDisplay() {
+      const display = document.getElementById('timeDisplay');
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function adjustTimer(mins) {
+      timeLeft += mins * 60;
+      if (timeLeft < 0) {
+        timeLeft = 0;
+      }
+      updateTimerDisplay();
+    }
+
+    function startTimer() {
+      if (isTimerRunning || timeLeft <= 0) {
+        return;
+      }
+      isTimerRunning = true;
+      document.getElementById('startBtn').classList.add('hidden');
+      document.getElementById('pauseBtn').classList.remove('hidden');
+      
+      timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timerInterval);
+          isTimerRunning = false;
+          document.getElementById('startBtn').classList.remove('hidden');
+          document.getElementById('pauseBtn').classList.add('hidden');
+          sendNotification("Timer Complete!", "Your session is over. Take a break!");
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      document.getElementById('startBtn').classList.remove('hidden');
+      document.getElementById('startBtn').textContent = "Resume";
+      document.getElementById('pauseBtn').classList.add('hidden');
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      document.getElementById('startBtn').classList.remove('hidden');
+      document.getElementById('startBtn').textContent = "Start";
+      document.getElementById('pauseBtn').classList.add('hidden');
+      setTimerMode(25);
+    }
+
+    function setTimerMode(minutes) {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      document.getElementById('startBtn').classList.remove('hidden');
+      document.getElementById('startBtn').textContent = "Start";
+      document.getElementById('pauseBtn').classList.add('hidden');
+      timeLeft = minutes * 60;
+      updateTimerDisplay();
+    }
+
+    // --- SIDEBAR MENU LOGIC ---
     let isSidebarOpen = false;
     
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
       const overlay = document.getElementById('sidebarOverlay');
-      
       isSidebarOpen = !isSidebarOpen;
       
       if (isSidebarOpen) {
@@ -1238,39 +1061,28 @@
     }
 
     function showPage(pageId) {
-      const pages = document.querySelectorAll('.page');
-      
-      pages.forEach(p => {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => {
         p.classList.remove('active');
       });
       
-      const navs = [
-        'dashboard', 
-        'planner', 
-        'tasks', 
-        'timer', 
-        'cgpa', 
-        'roadmap', 
-        'resources', 
-        'portfolio', 
-        'jobs', 
-        'career'
-      ];
-      
+      // Reset all nav buttons
+      const navs = ['dashboard', 'planner', 'tasks', 'timer', 'cgpa', 'roadmap', 'resources', 'portfolio', 'jobs', 'career'];
       navs.forEach(id => {
         const btn = document.getElementById('nav-' + id);
-        if (btn) {
+        if(btn) {
           btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base";
         }
       });
       
+      // Activate selected page and nav button
       document.getElementById(pageId).classList.add('active');
-      
       const activeBtn = document.getElementById('nav-' + pageId);
       if (activeBtn) {
         activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-md font-black transition-all text-base";
       }
       
+      // Update Title
       const titles = { 
         dashboard: 'Dashboard', 
         planner: 'Study Planner', 
@@ -1283,26 +1095,22 @@
         jobs: 'Job Tracker', 
         career: 'Interview Mastery'
       };
-      
       document.getElementById('pageTitle').textContent = titles[pageId];
       
-      if (isSidebarOpen && window.innerWidth < 1024) {
+      // Close sidebar if on mobile
+      if(isSidebarOpen && window.innerWidth < 1024) {
         toggleSidebar();
       }
     }
 
-    /* -------------------------------------
-       ROADMAP TABS LOGIC
-       ------------------------------------- */
+    // Roadmap Tabs Logic
     function showYear(yearId, btnElement) {
-      const allYears = document.querySelectorAll('.year-content');
-      allYears.forEach(el => {
+      document.querySelectorAll('.year-content').forEach(el => {
         el.classList.add('hidden', 'opacity-0', 'pointer-events-none');
         el.classList.remove('active', 'opacity-100', 'grid');
       });
       
-      const allBtns = document.querySelectorAll('.year-tab-btn');
-      allBtns.forEach(btn => {
+      document.querySelectorAll('.year-tab-btn').forEach(btn => {
         btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap";
       });
       
@@ -1317,9 +1125,7 @@
       btnElement.className = "year-tab-btn bg-slate-900 text-white px-6 py-3 rounded-xl font-black shadow-md transition-all text-sm sm:text-base whitespace-nowrap";
     }
 
-    /* -------------------------------------
-       PWA & SERVICE WORKER
-       ------------------------------------- */
+    // --- PWA & SERVICE WORKER ---
     const manifestJSON = {
       "name": "StudyBuddy", 
       "short_name": "StudyBuddy", 
@@ -1327,34 +1133,20 @@
       "display": "standalone",
       "background_color": "#f1f5f9", 
       "theme_color": "#4f46e5",
-      "icons": [
-        {
-          "src": "https://cdn-icons-png.flaticon.com/512/3233/3233483.png", 
-          "sizes": "512x512", 
-          "type": "image/png", 
-          "purpose": "any maskable"
-        }
-      ]
+      "icons": [{
+        "src": "https://cdn-icons-png.flaticon.com/512/3233/3233483.png", 
+        "sizes": "512x512", 
+        "type": "image/png", 
+        "purpose": "any maskable"
+      }]
     };
-    
     const manifestBlob = new Blob([JSON.stringify(manifestJSON)], {type: 'application/json'});
-    
-    document.querySelector('head').insertAdjacentHTML(
-      'beforeend', 
-      `<link rel="manifest" href="${URL.createObjectURL(manifestBlob)}">`
-    );
+    document.querySelector('head').insertAdjacentHTML('beforeend', `<link rel="manifest" href="${URL.createObjectURL(manifestBlob)}">`);
     
     const swCode = `
-      self.addEventListener('install', (e) => {
-        self.skipWaiting();
-      }); 
-      
-      self.addEventListener('activate', (e) => {
-        e.waitUntil(clients.claim());
-      }); 
-      
+      self.addEventListener('install', (e) => self.skipWaiting()); 
+      self.addEventListener('activate', (e) => e.waitUntil(clients.claim())); 
       self.addEventListener('fetch', (e) => {}); 
-      
       self.addEventListener('push', (e) => { 
         const data = e.data ? e.data.json() : { title: 'StudyBuddy', body: 'Notification!' }; 
         e.waitUntil(self.registration.showNotification(data.title, { body: data.body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' })); 
@@ -1362,7 +1154,6 @@
     `;
     
     const swBlob = new Blob([swCode], {type: 'application/javascript'});
-    
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(e => {
         navigator.serviceWorker.register('sw.js').catch(console.error);
@@ -1370,16 +1161,13 @@
     }
 
     let deferredPrompt;
-    
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault(); 
       deferredPrompt = e; 
       const installBtn = document.getElementById('installAppBtn');
-      
       if(installBtn) {
         installBtn.classList.remove('hidden');
       }
-      
       installBtn?.addEventListener('click', () => { 
         installBtn.classList.add('hidden'); 
         deferredPrompt.prompt(); 
@@ -1391,13 +1179,11 @@
     
     document.addEventListener('click', () => { 
       if (Notification.permission === "default") {
-        Notification.requestPermission();
+        Notification.requestPermission(); 
       }
     }, { once: true });
 
-    /* -------------------------------------
-       MODALS & AUTH LOGIC
-       ------------------------------------- */
+    // Authentication Logic
     function toggleAuth() { 
       document.getElementById('authModal').classList.add('active'); 
     }
@@ -1417,6 +1203,7 @@
       mockSignIn(); 
     }
 
+    // Modal Logic for Tasks Dashboard
     function openTaskModal(filterType) { 
       document.getElementById('taskModal').classList.add('active'); 
     }
@@ -1425,119 +1212,105 @@
       document.getElementById('taskModal').classList.remove('active'); 
     }
 
-    /* -------------------------------------
-       PROGRESS BARS LOGIC
-       ------------------------------------- */
+    // Progress Bar Logics
     function updateInterviewProgress() {
       const boxes = document.querySelectorAll('.interview-check'); 
-      let c = 0; 
-      
+      let completed = 0; 
       boxes.forEach(b => { 
-        if(b.checked) {
-          c++; 
-        }
+        if(b.checked) completed++; 
       });
-      
-      const p = Math.round((c / boxes.length) * 100); 
-      document.getElementById('interviewScore').textContent = p + '%'; 
-      document.getElementById('interviewProgressBar').style.width = p + '%';
+      const percent = Math.round((completed / boxes.length) * 100); 
+      document.getElementById('interviewScore').textContent = percent + '%'; 
+      document.getElementById('interviewProgressBar').style.width = percent + '%';
     }
     
     function updateRoadmapProgress() {
       const boxes = document.querySelectorAll('.btech-check'); 
-      let c = 0; 
-      
+      let completed = 0; 
       boxes.forEach(b => { 
-        if(b.checked) {
-          c++; 
-        }
+        if(b.checked) completed++; 
       });
-      
-      const p = Math.round((c / boxes.length) * 100); 
-      document.getElementById('roadmapScore').textContent = p + '%'; 
-      document.getElementById('roadmapProgressBar').style.width = p + '%';
+      const percent = Math.round((completed / boxes.length) * 100); 
+      document.getElementById('roadmapScore').textContent = percent + '%'; 
+      document.getElementById('roadmapProgressBar').style.width = percent + '%';
     }
 
-    /* -------------------------------------
-       DATE/TIME & NOTIFICATIONS
-       ------------------------------------- */
-    function formatDateTime(d, t) {
-      let fd = d ? d.split('-').reverse().join('/') : `00/00/0000`;
+    // Date/Time Formatting
+    function formatDateTime(dateStr, timeStr) {
+      let fd = dateStr ? dateStr.split('-').reverse().join('/') : `00/00/0000`;
       let ft = `12:00 AM`;
-      
-      if (t) { 
-        let [h, m] = t.split(':'); 
+      if (timeStr) { 
+        let [h, m] = timeStr.split(':'); 
         h = parseInt(h); 
         const ampm = h >= 12 ? 'PM' : 'AM'; 
         h = h % 12 || 12; 
         ft = `${h}:${m} ${ampm}`; 
       }
-      
       return { fd, ft };
     }
 
+    // Notification Logic
     function sendNotification(title, body) {
       try { 
-        new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3').play().catch(e => {}); 
-      } catch(e){}
-      
+        new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3').play().catch(e=>{}); 
+      } catch(e) {}
       if (Notification.permission === 'granted') {
-        new Notification(title, { 
-          body: body, 
-          icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' 
-        });
+        new Notification(title, { body: body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' });
       }
     }
 
-    /* -------------------------------------
-       HOLD TO DELETE
-       ------------------------------------- */
+    // Delete Hold Handlers
     let holdTimer;
-    
     function startHold(type, index) {
       holdTimer = setTimeout(() => {
-        if (type === 'task') {
-          if (confirm('Delete this task?')) { 
-            tasks.splice(index, 1); 
-            renderTasks(); 
-          }
-        } else if (type === 'plan') {
-          if (confirm('Delete plan?')) { 
-            plans.splice(index, 1); 
-            renderPlans(); 
-          }
+        if (type === 'task' && confirm('Delete this task?')) { 
+          tasks.splice(index, 1); 
+          renderTasks(); 
+        }
+        else if (type === 'plan' && confirm('Delete plan?')) { 
+          plans.splice(index, 1); 
+          renderPlans(); 
+        }
+        else if (type === 'project' && confirm('Delete project?')) {
+          projects.splice(index, 1);
+          renderProjects();
+        }
+        else if (type === 'job' && confirm('Delete job tracker?')) {
+          jobs.splice(index, 1);
+          renderJobs();
         }
       }, 1000); 
     }
-    
     function cancelHold() { 
       clearTimeout(holdTimer); 
     }
 
-    /* -------------------------------------
-       TASKS LOGIC
-       ------------------------------------- */
+    // ==========================================
+    // DATA ARRAYS AND RENDER FUNCTIONS
+    // ==========================================
+
     let tasks = []; 
     let plans = [];
-    
+    let projects = [];
+    let jobs = [];
+
+    // --- Tasks Functionality ---
     function addTask() {
-      const i = document.getElementById('taskInput');
-      const d = document.getElementById('taskDate');
-      const t = document.getElementById('taskTime');
+      const input = document.getElementById('taskInput');
+      const date = document.getElementById('taskDate');
+      const time = document.getElementById('taskTime');
       
-      if(!i.value.trim()) {
-        return;
-      }
+      if(!input.value.trim()) return; 
       
       tasks.push({
-        text: i.value.trim(), 
-        date: d.value, 
-        time: t.value, 
+        text: input.value.trim(), 
+        date: date.value, 
+        time: time.value, 
         completed: false, 
         notified: false
       });
       
-      i.value = ''; 
+      input.value = ''; 
       renderTasks();
     }
     
@@ -1553,75 +1326,58 @@
       tasks.forEach((t, i) => {
         const { fd, ft } = formatDateTime(t.date, t.time);
         
-        let containerClass = t.completed ? 'opacity-60 bg-white/50' : 'bg-white/95';
-        let textClass = t.completed ? 'line-through text-slate-400' : 'text-slate-900';
-        let infoClass = t.completed ? 'text-slate-400' : 'text-pink-600';
-        let btnClass = t.completed ? 'bg-slate-200 text-slate-600' : 'bg-emerald-400 text-white';
-        let btnText = t.completed ? 'Undo' : '✓ Done';
-        
         html += `
-        <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border border-white ${containerClass}"
-             onmousedown="startHold('task', ${i})" 
-             onmouseup="cancelHold()" 
-             onmouseleave="cancelHold()" 
-             ontouchstart="startHold('task', ${i})" 
-             ontouchend="cancelHold()">
-             
+        <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border border-white ${t.completed ? 'opacity-60 bg-white/50' : 'bg-white/95'}"
+             onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
+             ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()">
+          
           <div class="flex-1 w-full min-w-0">
-            <div class="font-black text-xl sm:text-2xl force-wrap ${textClass}">
-              ${t.text}
-            </div>
-            <div class="text-xs sm:text-sm font-black mt-2 flex gap-3 ${infoClass}">
+            <div class="font-black text-xl sm:text-2xl force-wrap ${t.completed ? 'line-through text-slate-400' : 'text-slate-900'}">${t.text}</div>
+            <div class="text-xs sm:text-sm font-black mt-2 flex gap-3 ${t.completed ? 'text-slate-400' : 'text-pink-600'}">
               <span>📅 ${fd}</span>
               <span>⏰ ${ft}</span>
             </div>
           </div>
           
-          <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm ${btnClass}">
-            ${btnText}
+          <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm ${t.completed ? 'bg-slate-200 text-slate-600' : 'bg-emerald-400 text-white'}">
+            ${t.completed ? 'Undo' : '✓ Done'}
           </button>
-          
         </div>`;
       });
       
-      if (html === '') {
+      if (!html) {
         html = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
       }
       
       list.innerHTML = html;
       
-      const c = tasks.filter(t => t.completed).length;
-      
+      // Update Dashboard Counters
+      const completedTasks = tasks.filter(t => t.completed).length;
       document.getElementById('totalTasks').textContent = tasks.length; 
-      document.getElementById('completedTasks').textContent = c; 
-      document.getElementById('pendingTasks').textContent = tasks.length - c;
+      document.getElementById('completedTasks').textContent = completedTasks; 
+      document.getElementById('pendingTasks').textContent = tasks.length - completedTasks;
       
-      const p = tasks.length === 0 ? 0 : Math.round((c / tasks.length) * 100);
-      
-      document.getElementById('taskProgress').textContent = p + '%'; 
-      document.getElementById('progressBar').style.width = p + '%';
+      const progressPercent = tasks.length === 0 ? 0 : Math.round((completedTasks / tasks.length) * 100);
+      document.getElementById('taskProgress').textContent = progressPercent + '%'; 
+      document.getElementById('progressBar').style.width = progressPercent + '%';
     }
 
-    /* -------------------------------------
-       PLANNER LOGIC
-       ------------------------------------- */
+    // --- Planner Functionality ---
     function addPlan() {
-      const i = document.getElementById('planTitle');
-      const d = document.getElementById('planDate');
-      const t = document.getElementById('planTime');
+      const input = document.getElementById('planTitle');
+      const date = document.getElementById('planDate');
+      const time = document.getElementById('planTime');
       
-      if(!i.value.trim()) {
-        return;
-      }
+      if(!input.value.trim()) return; 
       
       plans.push({
-        text: i.value.trim(), 
-        date: d.value, 
-        time: t.value, 
+        text: input.value.trim(), 
+        date: date.value, 
+        time: time.value, 
         notified: false
       });
       
-      i.value = ''; 
+      input.value = ''; 
       renderPlans();
     }
     
@@ -1634,39 +1390,127 @@
         
         html += `
         <div class="no-select p-5 sm:p-6 bg-gradient-to-r from-indigo-50/95 to-blue-50/95 rounded-[1.5rem] shadow-sm flex flex-col sm:flex-row justify-between gap-4 border border-white"
-             onmousedown="startHold('plan', ${i})" 
-             onmouseup="cancelHold()" 
-             onmouseleave="cancelHold()" 
-             ontouchstart="startHold('plan', ${i})" 
-             ontouchend="cancelHold()">
-             
+             onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
+             ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()">
+          
           <div class="flex items-start gap-4 flex-1 w-full min-w-0">
             <div class="w-1.5 h-full min-h-[3rem] bg-indigo-500 rounded-full shrink-0 shadow-sm"></div>
-            <div class="force-wrap font-black text-slate-900 text-xl sm:text-2xl pt-1">
-              ${p.text}
-            </div>
+            <div class="force-wrap font-black text-slate-900 text-xl sm:text-2xl pt-1">${p.text}</div>
           </div>
           
           <div class="bg-white px-4 py-2 rounded-xl text-xs sm:text-sm font-black text-indigo-700 flex flex-col sm:items-end gap-1 shadow-sm border border-slate-100 shrink-0 min-w-max">
             <span>📅 ${fd}</span>
             <span>⏰ ${ft}</span>
           </div>
-          
         </div>`;
       });
       
-      if (html === '') {
-        html = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No plans yet. Schedule a milestone!</div>';
+      if (!html) {
+         html = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No plans yet. Schedule a milestone!</div>';
       }
       
       list.innerHTML = html;
     }
 
-    /* -------------------------------------
-       INITIALIZE
-       ------------------------------------- */
+    // --- Portfolio Projects Functionality ---
+    function addProject() {
+      const title = document.getElementById('projectTitle');
+      const tech = document.getElementById('projectTech');
+      
+      if(!title.value.trim()) return;
+      
+      projects.push({
+        title: title.value.trim(),
+        tech: tech.value.trim() || 'General'
+      });
+      
+      title.value = '';
+      tech.value = '';
+      renderProjects();
+    }
+
+    function renderProjects() {
+      const list = document.getElementById('portfolioList');
+      let html = '';
+
+      projects.forEach((p, i) => {
+        html += `
+        <div class="inner-glass p-5 rounded-2xl bg-white/95 border-2 border-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm"
+             onmousedown="startHold('project', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
+             ontouchstart="startHold('project', ${i})" ontouchend="cancelHold()">
+          <div>
+            <h3 class="font-black text-xl text-slate-900">${p.title}</h3>
+            <p class="font-bold text-sm text-indigo-600 bg-indigo-50 px-3 py-1 rounded-md inline-block mt-2">${p.tech}</p>
+          </div>
+          <button class="text-sm font-bold bg-slate-100 text-slate-500 px-4 py-2 rounded-lg hover:bg-rose-100 hover:text-rose-600 transition-colors" onclick="projects.splice(${i}, 1); renderProjects();">Delete</button>
+        </div>`;
+      });
+
+      if (!html) {
+        html = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No projects added yet. Start building!</div>';
+      }
+      
+      list.innerHTML = html;
+    }
+
+    // --- Jobs Tracker Functionality ---
+    function addJob() {
+      const company = document.getElementById('jobCompany');
+      const role = document.getElementById('jobRole');
+      const status = document.getElementById('jobStatus');
+      
+      if(!company.value.trim()) return;
+
+      jobs.push({
+        company: company.value.trim(),
+        role: role.value.trim() || 'Applicant',
+        status: status.value
+      });
+
+      company.value = '';
+      role.value = '';
+      renderJobs();
+    }
+
+    function renderJobs() {
+      const list = document.getElementById('jobsList');
+      let html = '';
+
+      jobs.forEach((j, i) => {
+        // Status color mapping
+        let statusColor = "bg-slate-100 text-slate-600";
+        if (j.status === "Interviewing") statusColor = "bg-amber-100 text-amber-700";
+        if (j.status === "Offer Received") statusColor = "bg-emerald-100 text-emerald-700";
+        if (j.status === "Rejected") statusColor = "bg-rose-100 text-rose-700";
+
+        html += `
+        <div class="inner-glass p-5 rounded-2xl bg-white/95 border-2 border-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm"
+             onmousedown="startHold('job', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
+             ontouchstart="startHold('job', ${i})" ontouchend="cancelHold()">
+          <div>
+            <h3 class="font-black text-xl text-slate-900">${j.company}</h3>
+            <p class="font-bold text-sm text-slate-500 mt-1">${j.role}</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="font-black text-xs px-3 py-1.5 rounded-lg ${statusColor}">${j.status}</span>
+            <button class="text-sm font-bold text-slate-400 hover:text-rose-600 transition-colors" onclick="jobs.splice(${i}, 1); renderJobs();">✖</button>
+          </div>
+        </div>`;
+      });
+
+      if (!html) {
+        html = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No applications tracked yet.</div>';
+      }
+      
+      list.innerHTML = html;
+    }
+
+    // Initialize all renders on load
     renderTasks(); 
     renderPlans();
+    renderProjects();
+    renderJobs();
+    
   </script>
 </body>
 </html>

@@ -353,7 +353,7 @@
             transform: scale(1.03);
         }
 
-        /* Custom Input Focus Glow (New Premium Detail) */
+        /* Custom Input Focus Glow (Premium Detail) */
         .focus-glow:focus-within {
             box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
             border-color: #4f46e5;
@@ -376,22 +376,22 @@
 
     <!-- AUTHENTICATION MODAL -->
     <div id="authModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
-        <div class="glass-card bg-white/95 p-8 w-full max-w-md relative shadow-2xl border-2 border-white">
+        <div class="glass-card bg-white/95 p-12 w-full max-w-md relative shadow-2xl border-2 border-white">
             <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
-            <h2 class="text-3xl font-black mb-6 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
-            <div class="space-y-4">
+            <h2 class="text-4xl font-black mb-8 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
+            <div class="space-y-6">
                 <div>
-                    <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Email Address</label>
-                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors focus-glow-pink">
+                    <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Email Address</label>
+                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-pink-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg focus-glow-pink">
                 </div>
                 <div>
-                    <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Password</label>
-                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors focus-glow-pink">
+                    <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Password</label>
+                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-pink-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg focus-glow-pink">
                 </div>
                 <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
-                <div class="flex gap-4 pt-2">
-                    <button onclick="mockSignIn()" class="flex-1 btn-primary py-3 rounded-xl font-black text-base">Sign In</button>
-                    <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-3 rounded-xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-sm text-base">Sign Up</button>
+                <div class="flex gap-4 pt-4">
+                    <button onclick="mockSignIn()" class="flex-1 btn-primary py-4 rounded-2xl font-black text-lg">Sign In</button>
+                    <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-md hover:shadow-lg text-lg">Create Account</button>
                 </div>
             </div>
         </div>
@@ -431,9 +431,9 @@
             
             <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
 
-            <!-- Navigation Links - Restored to dynamically set black active state -->
+            <!-- Navigation Links -->
             <nav class="space-y-2">
-                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base">
+                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base transform hover:scale-105">
                     <span>🏠</span> Dashboard
                 </button>
                 
@@ -475,7 +475,7 @@
             </nav>
             
             <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
-                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-lg font-black text-base mb-3 border-2 border-white/50">
+                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-md font-black text-base mb-3 border-2 border-white/50">
                     Install App 📲
                 </button>
             </div>
@@ -522,33 +522,25 @@
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
                 
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
-                    <!-- Colored Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
-                    
                     <p class="text-sm sm:text-base text-indigo-700 font-black uppercase tracking-widest z-10">Total Tasks</p>
                     <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10 drop-shadow-sm">0</h2>
                 </div>
                 
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
-                    <!-- Colored Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-emerald-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                    
                     <p class="text-sm sm:text-base text-emerald-700 font-black uppercase tracking-widest z-10">Completed</p>
                     <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10 drop-shadow-sm">0</h2>
                 </div>
                 
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('portfolio')">
-                    <!-- Colored Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-purple-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
-                    
-                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects</p>
+                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects Built</p>
                     <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-600 z-10 drop-shadow-sm">0</h2>
                 </div>
                 
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('jobs')">
-                    <!-- Colored Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-blue-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
-                    
                     <p class="text-sm sm:text-base text-blue-700 font-black uppercase tracking-widest z-10">Job Apps</p>
                     <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 text-blue-600 z-10 drop-shadow-sm">0</h2>
                 </div>
@@ -560,7 +552,7 @@
                 <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col relative overflow-hidden shadow-md border-2 border-white">
                     <div class="flex justify-between items-center mb-4">
                         <p class="text-lg text-slate-800 font-black tracking-tight z-10">Upcoming Tasks</p>
-                        <button onclick="showPage('tasks')" class="text-indigo-600 font-black text-sm hover:underline uppercase tracking-wide">View All</button>
+                        <button onclick="showPage('tasks')" class="text-pink-600 font-black text-sm hover:underline uppercase tracking-wide">View All</button>
                     </div>
                     <div id="dashMiniTasks" class="space-y-3 z-10 max-h-48 overflow-y-auto hide-scroll">
                         <!-- Populated by JS -->
@@ -569,11 +561,11 @@
 
                 <!-- Progress Section -->
                 <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-md border-2 border-white">
-                    <p class="text-lg text-fuchsia-700 font-black uppercase tracking-widest z-10 mb-4 text-center">Task Completion</p>
+                    <p class="text-lg text-indigo-700 font-black uppercase tracking-widest z-10 mb-4 text-center">Task Completion</p>
                     <div class="flex flex-col items-center gap-4 z-10">
-                        <h2 id="taskProgressMain" class="text-6xl sm:text-7xl font-black text-fuchsia-600 drop-shadow-md">0%</h2>
+                        <h2 id="taskProgressMain" class="text-6xl sm:text-7xl font-black text-indigo-600 drop-shadow-md">0%</h2>
                         <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white">
-                            <div id="progressBarMain" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_20px_rgba(217,70,239,0.8)]" style="width: 0%"></div>
+                            <div id="progressBarMain" class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_20px_rgba(236,72,153,0.8)]" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
@@ -588,31 +580,19 @@
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Schedule your major study blocks. Data is saved to the cloud.</p>
                 
-                <!-- 
-                  THE ULTIMATE LAYOUT FIX: Uses CSS Grid to force everything into a perfectly scaled, responsive layout. 
-                  This mathematically prevents the button from ever coming out of the white outline.
-                -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    
-                    <!-- Title Input (Takes up 5 columns on desktop) -->
                     <div class="md:col-span-5 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm focus-glow w-full">
                         <span class="text-xl">📝</span>
                         <input type="text" id="planTitle" placeholder="Milestone name..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
-                    
-                    <!-- Date Input (Takes up 3 columns on desktop) -->
                     <div class="md:col-span-3 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm focus-glow w-full">
                         <span class="text-xl">📅</span>
                         <input type="date" id="planDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
-                    
-                    <!-- Time Input (Takes up 2 columns on desktop) -->
                     <div class="md:col-span-2 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm focus-glow w-full">
                         <span class="text-xl">⏰</span>
                         <input type="time" id="planTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
-                    
-                    <!-- Submit Button (Takes up 2 columns on desktop) -->
                     <button onclick="addPlan()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">
                         Add Plan
                     </button>
@@ -633,28 +613,19 @@
                 </div>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Data is saved to the cloud. Add your assignments below.</p>
                 
-                <!-- Identical perfectly scaled Grid layout for tasks -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    
-                    <!-- Title Input -->
                     <div class="md:col-span-5 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm focus-glow-pink w-full">
                         <span class="text-xl">✍️</span>
                         <input type="text" id="taskInput" placeholder="Task description..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
-                    
-                    <!-- Date Input -->
                     <div class="md:col-span-3 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm focus-glow-pink w-full">
                         <span class="text-xl">📅</span>
                         <input type="date" id="taskDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
-                    
-                    <!-- Time Input -->
                     <div class="md:col-span-2 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm focus-glow-pink w-full">
                         <span class="text-xl">⏰</span>
                         <input type="time" id="taskTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
-                    
-                    <!-- Button -->
                     <button onclick="addTask()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">
                         Add Task
                     </button>
@@ -706,14 +677,13 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- SGPA CALCULATOR (EXACTLY 2 SEMESTERS)      -->
+        <!-- SGPA CALCULATOR                            -->
         <!-- ========================================== -->
         <section id="cgpa" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📊 SGPA Predictor</h2>
                 <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Calculate your final academic standing for your two semesters.</p>
                 
-                <!-- EXACTLY 2 SEMESTERS AS REQUESTED -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 text-left max-w-2xl mx-auto">
                     <div class="inner-glass p-8 rounded-3xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
                         <label class="block font-black text-pink-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 1 SGPA</label>
@@ -725,7 +695,7 @@
                     </div>
                 </div>
 
-                <button onclick="calculateCGPA()" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl mb-12 shadow-xl uppercase tracking-widest hover:bg-black transition-colors">
+                <button onclick="calculateCGPA()" class="bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-xl mb-12 shadow-xl uppercase tracking-widest hover:bg-black transition-colors">
                     Calculate Result
                 </button>
 
@@ -738,14 +708,13 @@
         </section>
         
         <!-- ========================================== -->
-        <!-- PROJECT PORTFOLIO SECTION (GRID FIX)       -->
+        <!-- PROJECT PORTFOLIO SECTION                  -->
         <!-- ========================================== -->
         <section id="portfolio" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">🚀 Project Portfolio</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Track your personal projects and GitHub repos to show recruiters.</p>
                 
-                <!-- Grid Fix to prevent buttons spilling -->
                 <div class="grid grid-cols-1 md:grid-cols-10 gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
                     <div class="md:col-span-4 w-full">
                         <input type="text" id="projTitle" placeholder="Project Title" class="w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors focus-glow">
@@ -763,7 +732,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- JOB TRACKER SECTION (GRID FIX)             -->
+        <!-- JOB TRACKER SECTION                        -->
         <!-- ========================================== -->
         <section id="jobs" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
@@ -773,7 +742,6 @@
                 </div>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl mt-2">Keep track of your internship and job applications.</p>
                 
-                <!-- Grid Fix to prevent buttons spilling -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
                     <div class="md:col-span-4 w-full">
                         <input type="text" id="jobCompany" placeholder="Company Name" class="w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors focus-glow">
@@ -888,7 +856,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- B.TECH TECH SKILLS ROADMAP SECTION         -->
+        <!-- B.TECH TECH SKILLS ROADMAP                 -->
         <!-- ========================================== -->
         <section id="roadmap" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white animate-float">
@@ -1202,21 +1170,21 @@
         // ==========================================
         // FIREBASE CLOUD STORAGE & EMAIL VERIFICATION SETUP
         // ==========================================
-        // To make real emails and cloud storage work, replace these with your Firebase Config keys!
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID"
+            apiKey: "AIzaSyCAJEfO4803FjASyp6ZQUWbArvMeaKSdZI",
+            authDomain: "study-buddy-1c988.firebaseapp.com",
+            projectId: "study-buddy-1c988",
+            storageBucket: "study-buddy-1c988.firebasestorage.app",
+            messagingSenderId: "63812500742",
+            appId: "1:63812500742:web:dae25df7148bdff7ee7287",
+            measurementId: "G-9SKKGP2R9L"
         };
 
         let auth, db;
         let isFirebaseReady = false;
         let currentUser = null;
 
-        // Initialize Firebase ONLY if keys are added
+        // Initialize Firebase
         try {
             if(firebaseConfig.apiKey !== "YOUR_API_KEY") {
                 firebase.initializeApp(firebaseConfig);
@@ -1237,7 +1205,7 @@
                 });
             }
         } catch (error) {
-            console.log("Firebase not configured. Running in Local Storage Mode.");
+            console.log("Firebase not configured properly. Running in Local Storage Mode.");
         }
 
         // --- LOCAL STORAGE DATA MANAGEMENT (CRASH PROOF FAILSAFE) ---
@@ -1440,7 +1408,7 @@
             if(dashCounter) dashCounter.textContent = jobs.length;
         }
 
-        // --- TIMER LOGIC (WITH ADJUST BUTTONS AND CUSTOM INPUT) ---
+        // --- TIMER LOGIC ---
         let timerInterval;
         let timeLeft = 25 * 60; 
         let isTimerRunning = false;
@@ -1527,7 +1495,7 @@
             updateTimerDisplay();
         }
 
-        // --- SGPA / CGPA PREDICTOR LOGIC (2 SEMESTERS) ---
+        // --- SGPA / CGPA PREDICTOR LOGIC ---
         function calculateCGPA() {
             const inputs = document.querySelectorAll('.sgpa-input');
             let total = 0; 
@@ -1544,7 +1512,7 @@
             document.getElementById('cgpaResult').textContent = cgpa.toFixed(2);
         }
 
-        // --- SIDEBAR MENU LOGIC (Slide on Mobile, Fixed on Desktop) ---
+        // --- SIDEBAR MENU LOGIC ---
         let isSidebarOpen = false;
         
         function toggleSidebar() {
@@ -1574,7 +1542,7 @@
                 const btn = document.getElementById('nav-' + id);
                 if(btn) {
                     btn.classList.remove('sidebar-active');
-                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md";
+                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md";
                 }
             });
             
@@ -1611,18 +1579,15 @@
         }
 
         function showYear(yearId, btnElement) {
-            // Hide all year content blocks
             document.querySelectorAll('.year-content').forEach(el => {
                 el.classList.add('hidden', 'opacity-0', 'pointer-events-none');
                 el.classList.remove('active', 'opacity-100', 'grid');
             });
             
-            // Reset all year buttons
             document.querySelectorAll('.year-tab-btn').forEach(btn => {
                 btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase";
             });
             
-            // Show target year
             const target = document.getElementById(yearId);
             target.classList.remove('hidden', 'pointer-events-none');
             target.classList.add('grid');
@@ -1630,7 +1595,6 @@
                 target.classList.add('active', 'opacity-100'); 
             }, 10);
             
-            // Style active button
             btnElement.className = "year-tab-btn btn-primary px-8 py-3.5 rounded-xl font-black shadow-lg transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase";
         }
 
@@ -1696,8 +1660,6 @@
 
         // --- UPGRADED MOBILE NOTIFICATIONS WITH HARDWARE VIBRATION ---
         function sendNotification(title, body) {
-            
-            // 1. Try to play audio (will silently fail if blocked by mobile browser policy)
             try { 
                 const alertSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
                 alertSound.play().catch(e => {
@@ -1705,17 +1667,15 @@
                 }); 
             } catch(e) {}
             
-            // 2. Trigger native mobile notification in system tray
             if (Notification.permission === 'granted') {
                 const options = {
                     body: body,
                     icon: 'https://cdn-icons-png.flaticon.com/512/6104/6104033.png',
-                    vibrate: [200, 100, 200, 100, 200], // Forces strong mobile vibration
-                    requireInteraction: true, // Forces notification to stay until dismissed
+                    vibrate: [200, 100, 200, 100, 200], 
+                    requireInteraction: true, 
                     badge: 'https://cdn-icons-png.flaticon.com/512/6104/6104033.png'
                 };
 
-                // Use ServiceWorker if available (best for mobile), otherwise fallback to standard Notification
                 if ('serviceWorker' in navigator && navigator.serviceWorker.ready) {
                     navigator.serviceWorker.ready.then(function(registration) {
                         registration.showNotification(title, options);
@@ -1752,7 +1712,7 @@
             clearTimeout(holdTimer); 
         }
 
-        // --- TASK MANAGEMENT LOGIC (FIXED MATH & 0% BUG) ---
+        // --- TASK MANAGEMENT LOGIC ---
         function addTask() {
             const inputElement = document.getElementById('taskInput');
             const dateElement = document.getElementById('taskDate');
@@ -1812,7 +1772,7 @@
                     </button>
                 </div>`;
                 
-                // Dashboard Mini List HTML (Only showing max 3 pending tasks)
+                // Dashboard Mini List HTML
                 if (!t.completed && pendingCount < 3) {
                     miniHtml += `
                         <div class="bg-white/80 p-4 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm">
@@ -1842,21 +1802,18 @@
                 }
             }
             
-            // Safely Update Dashboard Counters & Progress Bar Math (FIXED)
+            // Safely Update Dashboard Counters & Progress Bar Math
             const completedCount = tasks.filter(t => t.completed).length;
             const totalCount = tasks.length;
             
             const totalTasksEl = document.getElementById('totalTasks');
             const completedTasksEl = document.getElementById('completedTasks');
-            
-            // These are the IDs for the large progress bar in the dashboard
             const taskProgressMainEl = document.getElementById('taskProgressMain');
             const progressBarMainEl = document.getElementById('progressBarMain');
             
             if(totalTasksEl) totalTasksEl.textContent = totalCount; 
             if(completedTasksEl) completedTasksEl.textContent = completedCount; 
             
-            // MATH FIX: Calculates correct percentage 
             let progressPercent = 0;
             if (totalCount > 0) {
                 progressPercent = Math.round((completedCount / totalCount) * 100);
@@ -1866,7 +1823,7 @@
             if(progressBarMainEl) progressBarMainEl.style.width = progressPercent + '%';
         }
 
-        // --- PLANNER MANAGEMENT LOGIC (FIXED LAYOUT) ---
+        // --- PLANNER MANAGEMENT LOGIC ---
         function addPlan() {
             const inputElement = document.getElementById('planTitle');
             const dateElement = document.getElementById('planDate');
@@ -1990,9 +1947,23 @@
             }
         }, { once: true });
 
-        // --- AUTHENTICATION MOCKS ---
+        // --- AUTHENTICATION LOGIC (DUAL-MODE WITH FIREBASE) ---
         function toggleAuth() { 
-            document.getElementById('authModal').classList.add('active'); 
+            if (currentUser || document.getElementById('authBtn').textContent === 'Sign Out') {
+                if (isFirebaseReady) auth.signOut();
+                currentUser = null;
+                document.getElementById('userInfo').textContent = 'Not signed in'; 
+                document.getElementById('authBtn').textContent = 'Sign In / Sign Up';
+                
+                // Clear user data from screen on logout
+                tasks = []; plans = []; projects = []; jobs = [];
+                renderTasks(); renderPlans(); renderProjects(); renderJobs();
+            } else {
+                document.getElementById('authError').classList.add('hidden');
+                document.getElementById('authEmail').value = '';
+                document.getElementById('authPassword').value = '';
+                document.getElementById('authModal').classList.add('active'); 
+            }
         }
         
         function closeAuthModal() { 
@@ -2106,10 +2077,7 @@
         setInterval(checkNotifications, 10000); 
 
         // Initial Renders to Load Data from Local Storage
-        // Render calls placed safely at the end of script
         document.addEventListener("DOMContentLoaded", () => {
-            
-            // Set the Dashboard as visually active on load
             const activeBtn = document.getElementById('nav-dashboard');
             if (activeBtn) {
                 activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base transform hover:scale-105";

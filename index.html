@@ -6,13 +6,24 @@
   <meta name="theme-color" content="#4f46e5">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
   <title>StudyBuddy - Premium Academic Assistant</title>
   
+  <!-- Web Manifest for PWA -->
   <link rel="manifest" href="manifest.json">
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
+    /* =========================================
+       CSS VARIABLES & GLOBAL SETTINGS
+       ========================================= */
     :root {
       --glass-bg: rgba(255, 255, 255, 0.40);
       --glass-border: rgba(255, 255, 255, 0.65);
@@ -27,41 +38,119 @@
       -webkit-tap-highlight-color: transparent;
     }
     
-    /* 100% Fix for Mobile Background to prevent cutting off */
+    /* =========================================
+       BACKGROUND ANIMATION (MOBILE FIXED)
+       ========================================= */
     .mesh-bg {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1; background: #f1f5f9; overflow: hidden;
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      z-index: -1; 
+      background: #f1f5f9; 
+      overflow: hidden;
     }
     
     .blob {
-      position: absolute; border-radius: 50%; filter: blur(130px);
-      opacity: 0.85; animation: move 25s infinite alternate ease-in-out;
+      position: absolute; 
+      border-radius: 50%; 
+      filter: blur(130px);
+      opacity: 0.85; 
+      animation: move 25s infinite alternate ease-in-out;
       will-change: transform;
     }
-    .blob-1 { top: -20%; left: -10%; width: 60vw; height: 60vw; background: #818cf8; animation-delay: 0s; }
-    .blob-2 { bottom: -20%; right: -10%; width: 70vw; height: 70vw; background: #c084fc; animation-delay: -5s; animation-direction: alternate-reverse; }
-    .blob-3 { top: 20%; left: 30%; width: 50vw; height: 50vw; background: #38bdf8; animation-delay: -10s; }
-    .blob-4 { bottom: 10%; left: 10%; width: 45vw; height: 45vw; background: #f472b6; animation-delay: -15s; }
-
-    @keyframes move {
-      0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-      50% { transform: translate(8%, 12%) scale(1.15) rotate(15deg); }
-      100% { transform: translate(-8%, -8%) scale(0.9) rotate(-15deg); }
-    }
-
-    /* Prevent Mobile Hanging */
-    @media (max-width: 1024px) {
-      .blob { filter: blur(70px); opacity: 0.6; animation: none; }
-      .blob-4 { display: none; }
-    }
-
-    .page { display: none; opacity: 0; }
-    .page.active { display: block; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    @keyframes slideUp { 
-      0% { opacity: 0; transform: translateY(30px); filter: blur(10px); } 
-      100% { opacity: 1; transform: translateY(0); filter: blur(0); } 
+    
+    .blob-1 { 
+      top: -20%; 
+      left: -10%; 
+      width: 60vw; 
+      height: 60vw; 
+      background: #818cf8; 
+      animation-delay: 0s; 
     }
     
+    .blob-2 { 
+      bottom: -20%; 
+      right: -10%; 
+      width: 70vw; 
+      height: 70vw; 
+      background: #c084fc; 
+      animation-delay: -5s; 
+      animation-direction: alternate-reverse; 
+    }
+    
+    .blob-3 { 
+      top: 20%; 
+      left: 30%; 
+      width: 50vw; 
+      height: 50vw; 
+      background: #38bdf8; 
+      animation-delay: -10s; 
+    }
+    
+    .blob-4 { 
+      bottom: 10%; 
+      left: 10%; 
+      width: 45vw; 
+      height: 45vw; 
+      background: #f472b6; 
+      animation-delay: -15s; 
+    }
+
+    @keyframes move {
+      0% { 
+        transform: translate(0, 0) scale(1) rotate(0deg); 
+      }
+      50% { 
+        transform: translate(8%, 12%) scale(1.15) rotate(15deg); 
+      }
+      100% { 
+        transform: translate(-8%, -8%) scale(0.9) rotate(-15deg); 
+      }
+    }
+
+    /* Mobile Performance Fixes to stop Hanging */
+    @media (max-width: 1024px) {
+      .blob { 
+        filter: blur(70px); 
+        opacity: 0.6; 
+        animation: none; 
+      }
+      .blob-4 { 
+        display: none; 
+      }
+    }
+
+    /* =========================================
+       PAGE TRANSITIONS
+       ========================================= */
+    .page { 
+      display: none; 
+      opacity: 0; 
+    }
+    
+    .page.active { 
+      display: block; 
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+    }
+    
+    @keyframes slideUp { 
+      0% { 
+        opacity: 0; 
+        transform: translateY(30px); 
+        filter: blur(10px); 
+      } 
+      100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+        filter: blur(0); 
+      } 
+    }
+    
+    /* =========================================
+       GLASSMORPHISM UI STYLES
+       ========================================= */
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: blur(35px);
@@ -71,8 +160,12 @@
       box-shadow: var(--glass-shadow);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    
     @media (max-width: 1024px) {
-      .glass-card { backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
+      .glass-card { 
+        backdrop-filter: blur(15px); 
+        -webkit-backdrop-filter: blur(15px); 
+      }
     }
     
     .inner-glass {
@@ -82,9 +175,13 @@
       border-radius: 1.5rem;
     }
     
-    .interactive-card { cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .interactive-card { 
+      cursor: pointer; 
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+    }
+    
     .interactive-card:hover {
-      transform: translateY(-10px) scale(1.02);
+      transform: translateY(-5px) scale(1.02);
       background: rgba(255, 255, 255, 0.95);
       box-shadow: 0 30px 60px rgba(99, 102, 241, 0.2);
       border-color: rgba(99, 102, 241, 0.4);
@@ -97,465 +194,658 @@
       -webkit-text-fill-color: transparent; 
       animation: gradientShift 6s ease infinite;
     }
-    @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     
-    /* MOBILE SIDEBAR OVERLAY */
+    @keyframes gradientShift { 
+      0% { background-position: 0% 50%; } 
+      50% { background-position: 100% 50%; } 
+      100% { background-position: 0% 50%; } 
+    }
+    
+    /* =========================================
+       MODALS & OVERLAYS
+       ========================================= */
     #sidebarOverlay {
-      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(5px);
-      z-index: 40; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+      position: fixed; 
+      inset: 0; 
+      background: rgba(15, 23, 42, 0.6); 
+      backdrop-filter: blur(5px);
+      z-index: 40; 
+      opacity: 0; 
+      pointer-events: none; 
+      transition: opacity 0.4s ease;
     }
-    #sidebarOverlay.active { opacity: 1; pointer-events: auto; }
-
-    .modal-overlay { display: none; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px); }
-    .modal-overlay.active { display: flex; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; z-index: 100;}
-
-    input[type="date"], input[type="time"], input[type="number"] { color: #0f172a; background: transparent; cursor: pointer; font-family: inherit; outline: none; }
-    .no-select { user-select: none; -webkit-user-select: none; }
     
+    #sidebarOverlay.active { 
+      opacity: 1; 
+      pointer-events: auto; 
+    }
+
+    .modal-overlay { 
+      display: none; 
+      background: rgba(15, 23, 42, 0.6); 
+      backdrop-filter: blur(20px); 
+      z-index: 100; 
+    }
+    
+    .modal-overlay.active { 
+      display: flex; 
+      animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    input[type="date"], 
+    input[type="time"], 
+    input[type="number"], 
+    input[type="text"] { 
+      color: #0f172a; 
+      background: transparent; 
+      font-family: inherit; 
+      outline: none; 
+    }
+    
+    .no-select { 
+      user-select: none; 
+      -webkit-user-select: none; 
+    }
+    
+    /* =========================================
+       CUSTOM CHECKBOXES
+       ========================================= */
     .roadmap-check {
-      appearance: none; width: 1.75rem; height: 1.75rem;
-      border: 3px solid #cbd5e1; border-radius: 0.5rem;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative;
-      background: rgba(255,255,255,0.9); flex-shrink: 0;
+      appearance: none; 
+      width: 1.5rem; 
+      height: 1.5rem;
+      border: 3px solid #cbd5e1; 
+      border-radius: 0.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+      cursor: pointer; 
+      position: relative;
+      background: rgba(255,255,255,0.9); 
+      flex-shrink: 0;
     }
-    .roadmap-check:checked { background-color: #4f46e5; border-color: #4f46e5; transform: scale(1.1); box-shadow: 0 0 25px rgba(79, 70, 229, 0.5); }
-    .roadmap-check:checked::after { content: '✓'; position: absolute; color: white; font-size: 1.1rem; font-weight: 900; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-    .roadmap-check:checked + span { text-decoration: line-through; color: #94a3b8; opacity: 0.6;}
     
-    .force-wrap { overflow-wrap: break-word !important; word-wrap: break-word !important; word-break: break-word !important; white-space: normal !important; max-width: 100%; }
-    .timer-display { font-variant-numeric: tabular-nums; }
+    .roadmap-check:checked { 
+      background-color: #4f46e5; 
+      border-color: #4f46e5; 
+      transform: scale(1.1); 
+      box-shadow: 0 0 15px rgba(79, 70, 229, 0.5); 
+    }
+    
+    .roadmap-check:checked::after { 
+      content: '✓'; 
+      position: absolute; 
+      color: white; 
+      font-size: 1rem; 
+      font-weight: 900; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+    }
+    
+    .roadmap-check:checked + span { 
+      text-decoration: line-through; 
+      color: #94a3b8; 
+      opacity: 0.6;
+    }
+    
+    /* Strict Text Wrapping Fix */
+    .force-wrap { 
+      word-break: break-word; 
+      overflow-wrap: break-word; 
+      white-space: normal !important; 
+      max-width: 100%; 
+    }
+    
+    .timer-display { 
+      font-variant-numeric: tabular-nums; 
+    }
+    
+    /* Scrollbar hide for tabs */
+    .hide-scroll::-webkit-scrollbar { 
+      display: none; 
+    }
+    
+    .hide-scroll { 
+      -ms-overflow-style: none; 
+      scrollbar-width: none; 
+    }
   </style>
 </head>
+
 <body class="min-h-screen flex flex-col lg:flex-row p-0 sm:p-4 lg:p-6 gap-0 lg:gap-6 relative">
 
-  <!-- VIBRANT MESH BACKGROUND -->
+  <!-- BACKGROUND START -->
   <div class="mesh-bg">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
     <div class="blob blob-4"></div>
   </div>
+  <!-- BACKGROUND END -->
 
-  <!-- AUTHENTICATION MODAL -->
+  <!-- AUTHENTICATION MODAL START -->
   <div id="authModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
-    <div class="glass-card bg-white/95 p-12 w-full max-w-md relative shadow-2xl border-2 border-white">
-      <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
-      <h2 class="text-4xl font-black mb-8 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
-      <div class="space-y-6">
+    <div class="glass-card bg-white/95 p-8 w-full max-w-md relative shadow-2xl border-2 border-white">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">
+        &times;
+      </button>
+      
+      <h2 class="text-3xl font-black mb-6 text-center tracking-tight">
+        Join <span class="text-gradient">StudyBuddy</span>
+      </h2>
+      
+      <div class="space-y-4">
         <div>
-          <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Email Address</label>
-          <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
+          <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">
+            Email
+          </label>
+          <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-indigo-500 focus:bg-white font-bold text-base">
         </div>
+        
         <div>
-          <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Password</label>
-          <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
+          <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">
+            Password
+          </label>
+          <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-indigo-500 focus:bg-white font-bold text-base">
         </div>
+        
         <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
-        <div class="flex gap-4 pt-4">
-          <button onclick="mockSignIn()" class="flex-1 bg-slate-900 text-white py-4 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all transform hover:-translate-y-1 text-lg">Sign In</button>
-          <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-md hover:shadow-lg text-lg">Create Account</button>
+        
+        <div class="flex gap-4 pt-2">
+          <button onclick="mockSignIn()" class="flex-1 bg-slate-900 text-white py-3 rounded-xl font-black hover:shadow-lg transition-all text-base">
+            Sign In
+          </button>
+          <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-3 rounded-xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-sm text-base">
+            Sign Up
+          </button>
         </div>
       </div>
     </div>
   </div>
+  <!-- AUTHENTICATION MODAL END -->
 
-  <!-- TASK MODAL -->
+  <!-- TASK MODAL START -->
   <div id="taskModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
-    <div class="glass-card bg-white/95 p-10 w-full max-w-2xl relative shadow-2xl border-2 border-white">
-      <button onclick="closeTaskModal()" class="absolute top-5 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
-      <h2 id="taskModalTitle" class="text-4xl font-black mb-8 text-slate-800 text-gradient tracking-tight">Tasks Overview</h2>
-      <div id="taskModalList" class="max-h-[60vh] overflow-y-auto space-y-4 pr-3"></div>
+    <div class="glass-card bg-white/95 p-8 w-full max-w-2xl relative shadow-2xl border-2 border-white">
+      <button onclick="closeTaskModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">
+        &times;
+      </button>
+      <h2 id="taskModalTitle" class="text-2xl font-black mb-6 text-slate-800 text-gradient tracking-tight">
+        Tasks Overview
+      </h2>
+      <div id="taskModalList" class="max-h-[60vh] overflow-y-auto space-y-3 pr-2 hide-scroll">
+      </div>
     </div>
   </div>
+  <!-- TASK MODAL END -->
 
-  <!-- MOBILE HAMBURGER HEADER (Only visible on phones) -->
-  <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30">
-    <div class="text-2xl font-black flex items-center gap-3">
-      <svg class="w-8 h-8 text-indigo-600 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
+  <!-- MOBILE HAMBURGER HEADER START -->
+  <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-md">
+    <div class="text-xl font-black flex items-center gap-2">
+      <svg class="w-6 h-6 text-indigo-600 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
       </svg>
       <span class="text-gradient">StudyBuddy</span>
     </div>
-    <!-- MENU BUTTON WITH TEXT -->
-    <button onclick="toggleSidebar()" class="px-4 py-2 bg-slate-100 rounded-xl text-slate-800 hover:bg-slate-200 focus:outline-none shadow-inner border border-white flex items-center gap-2">
-      <span class="font-black text-sm uppercase tracking-widest">Menu</span>
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    
+    <button onclick="toggleSidebar()" class="px-3 py-1.5 bg-slate-100 rounded-lg text-slate-800 hover:bg-slate-200 shadow-inner border border-white flex items-center gap-2">
+      <span class="font-black text-xs uppercase tracking-widest">Menu</span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
     </button>
   </div>
+  <!-- MOBILE HAMBURGER HEADER END -->
 
-  <!-- SLIDE-IN OVERLAY FOR MOBILE -->
   <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
-  <!-- PREMIUM SIDEBAR (Fixed on Desktop, Swipe-in on Mobile) -->
-  <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-8 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto shrink-0">
+  <!-- SIDEBAR START -->
+  <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0">
     
-    <button onclick="toggleSidebar()" class="lg:hidden absolute top-6 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black">&times;</button>
+    <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black">
+      &times;
+    </button>
 
     <div>
-      <div class="text-3xl font-black mb-10 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
-        <svg class="w-10 h-10 text-indigo-600 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
+      <div class="text-2xl font-black mb-8 hidden lg:flex items-center gap-3 tracking-tighter">
+        <svg class="w-8 h-8 text-indigo-600 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
         </svg>
         <span class="text-gradient">StudyBuddy</span>
       </div>
       
-      <div class="text-2xl font-black mb-8 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-4">Menu</div>
+      <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">
+        Menu
+      </div>
 
-      <nav class="space-y-3">
-        <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl bg-slate-900 text-white shadow-[0_8px_25px_rgba(0,0,0,0.3)] font-black transition-all text-lg transform hover:scale-105">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-          Dashboard
+      <nav class="space-y-2">
+        <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-md font-black transition-all text-base">
+          <span>🏠</span> Dashboard
         </button>
-        <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          Study Planner
+        
+        <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
+          <span>📅</span> Study Planner
         </button>
-        <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-          Action Tasks
+        
+        <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
+          <span>✅</span> Action Tasks
         </button>
-        <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          Focus Timer
+        
+        <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
+          <span>⏱️</span> Focus Timer
         </button>
-        <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-          CGPA Predictor
+        
+        <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
+          <span>📊</span> CGPA Predictor
         </button>
-        <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
-          B.Tech Roadmap
+        
+        <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
+          <span>🗺️</span> B.Tech Roadmap
         </button>
-        <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
-          Resource Vault
+        
+        <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
+          <span>📚</span> Resource Vault
         </button>
-        <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-          Interview Mastery
+        
+        <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
+          <span>🚀</span> Projects Portfolio
+        </button>
+        
+        <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
+          <span>🎯</span> Job Tracker
+        </button>
+        
+        <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base">
+          <span>💼</span> Interview Skills
         </button>
       </nav>
       
-      <!-- INSTALL APP BUTTON -->
       <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
-        <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white py-4 rounded-2xl transition-all shadow-[0_5px_15px_rgba(16,185,129,0.4)] font-black transform hover:-translate-y-1 text-lg mb-4">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-          Install App
+        <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 rounded-xl shadow-md font-black text-base mb-3">
+          Install App 📲
         </button>
       </div>
     </div>
+    
     <div class="mt-2">
-      <div id="userInfo" class="text-base text-indigo-900 mb-4 truncate font-black bg-white/80 px-4 py-3 rounded-xl text-center shadow-sm border border-white">Not signed in</div>
-      <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-2xl transition-all shadow-xl font-black transform hover:-translate-y-1 text-lg">Sign In / Sign Up</button>
+      <div id="userInfo" class="text-sm text-indigo-900 mb-3 truncate font-black bg-white/80 px-3 py-2 rounded-lg text-center shadow-sm border border-white">
+        Not signed in
+      </div>
+      <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base">
+        Sign In / Sign Up
+      </button>
     </div>
   </aside>
+  <!-- SIDEBAR END -->
 
-  <!-- MAIN CONTENT AREA -->
-  <main class="flex-1 overflow-y-auto overflow-x-hidden pr-2 sm:pr-4 lg:pr-2 pb-10 z-0">
-    <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10 mt-6 lg:mt-2 px-3 lg:px-2">
+  <!-- MAIN CONTENT START -->
+  <main class="flex-1 overflow-y-auto overflow-x-hidden pr-2 sm:pr-4 lg:pr-2 pb-10 z-0 hide-scroll">
+    
+    <!-- PAGE HEADER -->
+    <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 mt-6 lg:mt-2 px-3 lg:px-2">
       <div>
-        <h1 id="pageTitle" class="text-5xl sm:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
-        <p class="text-slate-800 font-extrabold mt-3 text-xl bg-white/70 inline-block px-5 py-2 rounded-xl shadow-sm border border-white">Your premium academic command center</p>
+        <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter drop-shadow-md">
+          Dashboard
+        </h1>
+        <p class="text-slate-800 font-extrabold mt-2 text-sm sm:text-base bg-white/70 inline-block px-4 py-1.5 rounded-lg shadow-sm border border-white">
+          Your premium academic command center
+        </p>
       </div>
-      <div class="text-base glass-card bg-white/95 px-6 py-4 font-black text-indigo-900 flex items-center gap-3 shadow-lg border-2 border-white transform hover:scale-105 transition-transform self-start sm:self-auto">
-        <span class="w-4 h-4 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
+      <div class="text-xs sm:text-sm glass-card bg-white/95 px-4 py-3 font-black text-indigo-900 flex items-center gap-2 shadow-sm border-2 border-white self-start sm:self-auto">
+        <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-sm"></span> 
+        Workspace Active
       </div>
     </header>
 
-    <!-- DASHBOARD -->
-    <section id="dashboard" class="page active px-3 lg:px-2">
-      <div class="glass-card p-8 sm:p-12 text-white mb-12 relative overflow-hidden shadow-[0_20px_50px_rgba(79,70,229,0.4)] border-2 border-white/50 bg-slate-900">
-        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-indigo-500 opacity-30 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-fuchsia-500 opacity-30 rounded-full blur-3xl"></div>
-        <h2 class="text-5xl sm:text-7xl font-black mb-6 relative z-10 drop-shadow-2xl tracking-tight">Welcome to your future. ✨</h2>
-        <p class="text-indigo-100 text-xl sm:text-2xl max-w-3xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and crush your academic goals with absolute precision.</p>
+    <!-- SECTION: DASHBOARD -->
+    <section id="dashboard" class="page active px-2">
+      <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-lg border-2 border-white/50 bg-slate-900">
+        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-indigo-500 opacity-30 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-fuchsia-500 opacity-30 rounded-full blur-3xl"></div>
+        
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-black mb-4 relative z-10 drop-shadow-lg tracking-tight leading-tight">
+          Welcome to your future. ✨
+        </h2>
+        <p class="text-indigo-100 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">
+          Organize your assignments, track milestones, and crush your academic goals with absolute precision.
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
+        <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group">
+          <p class="text-sm sm:text-base text-indigo-700 font-black uppercase tracking-widest z-10">Total Tasks</p>
+          <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10">0</h2>
+        </div>
         
-        <div class="glass-card inner-glass interactive-card p-8 flex flex-col justify-center relative overflow-hidden group" onclick="openTaskModal('all')">
-          <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
-          <p class="text-lg text-indigo-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Total Tasks</p>
-          <h2 id="totalTasks" class="text-7xl font-black mt-3 text-slate-900 drop-shadow-md tracking-tighter z-10">0</h2>
-          <div class="mt-6 text-sm font-black text-indigo-700 bg-indigo-100 border border-indigo-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors z-10">View details 👉</div>
+        <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group">
+          <p class="text-sm sm:text-base text-emerald-700 font-black uppercase tracking-widest z-10">Completed</p>
+          <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10">0</h2>
         </div>
-
-        <div class="glass-card inner-glass interactive-card p-8 flex flex-col justify-center relative overflow-hidden group" onclick="openTaskModal('completed')">
-          <svg class="absolute -right-4 -top-4 w-48 h-48 text-emerald-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          <p class="text-lg text-emerald-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Completed</p>
-          <h2 id="completedTasks" class="text-7xl font-black mt-3 text-emerald-600 drop-shadow-md tracking-tighter z-10">0</h2>
-          <div class="mt-6 text-sm font-black text-emerald-700 bg-emerald-100 border border-emerald-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-emerald-500 group-hover:text-white transition-colors z-10">View details 👉</div>
+        
+        <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group">
+          <p class="text-sm sm:text-base text-rose-600 font-black uppercase tracking-widest z-10">Pending</p>
+          <h2 id="pendingTasks" class="text-4xl sm:text-6xl font-black mt-2 text-rose-600 z-10">0</h2>
         </div>
-
-        <div class="glass-card inner-glass interactive-card p-8 flex flex-col justify-center relative overflow-hidden group" onclick="openTaskModal('pending')">
-          <svg class="absolute -right-4 -top-4 w-48 h-48 text-rose-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
-          <p class="text-lg text-rose-600 font-black uppercase tracking-widest drop-shadow-sm z-10">Pending</p>
-          <h2 id="pendingTasks" class="text-7xl font-black mt-3 text-rose-600 drop-shadow-md tracking-tighter z-10">0</h2>
-          <div class="mt-6 text-sm font-black text-rose-700 bg-rose-100 border border-rose-200 px-5 py-2.5 rounded-full w-max shadow-sm group-hover:bg-rose-500 group-hover:text-white transition-colors z-10">View details 👉</div>
-        </div>
-
-        <div class="glass-card inner-glass interactive-card p-8 flex flex-col justify-center group relative overflow-hidden" onclick="openTaskModal('all')">
-          <svg class="absolute -right-4 -top-4 w-48 h-48 text-fuchsia-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
-          <p class="text-lg text-fuchsia-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Productivity</p>
-          <div class="flex flex-col mt-4 z-10">
-            <h2 id="taskProgress" class="text-7xl font-black text-fuchsia-600 drop-shadow-md tracking-tighter">0%</h2>
-            <div class="w-full bg-slate-200/80 rounded-full h-5 mt-6 overflow-hidden shadow-inner border border-white">
-              <div id="progressBar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_15px_rgba(217,70,239,0.8)]" style="width: 0%"></div>
+        
+        <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center group relative overflow-hidden">
+          <p class="text-sm sm:text-base text-fuchsia-700 font-black uppercase tracking-widest z-10">Progress</p>
+          <div class="flex flex-col mt-2 z-10">
+            <h2 id="taskProgress" class="text-4xl sm:text-6xl font-black text-fuchsia-600">0%</h2>
+            <div class="w-full bg-slate-200/80 rounded-full h-3 mt-3 overflow-hidden shadow-inner border border-white">
+              <div id="progressBar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-700 ease-out" style="width: 0%"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- NEW FEATURE: ADJUSTABLE FOCUS TIMER -->
-    <section id="timer" class="page px-3 lg:px-2">
-      <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white text-center">
-        <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">⏱️ Focus Timer</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Set your custom study time and take planned breaks.</p>
+    <!-- SECTION: PLANNER -->
+    <section id="planner" class="page px-2">
+      <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-lg border-2 border-white">
+        <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">
+          Schedule your major study blocks. Hold items to delete.
+        </p>
         
-        <div class="inner-glass bg-white/80 p-12 sm:p-16 rounded-[2rem] shadow-lg border-2 border-white mb-10">
-          <div id="timeDisplay" class="timer-display text-8xl sm:text-9xl font-black text-indigo-600 drop-shadow-md mb-10">25:00</div>
-          
-          <!-- ADJUSTABLE INPUT AREA -->
-          <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10 bg-slate-100 p-4 rounded-2xl w-max mx-auto shadow-inner border border-slate-200">
-            <label class="font-bold text-slate-700">Custom Minutes:</label>
-            <input type="number" id="customFocusTime" placeholder="e.g. 45" class="w-24 px-4 py-3 rounded-xl border-2 border-slate-300 text-center font-black text-xl bg-white shadow-sm focus:border-indigo-500 outline-none">
-            <button onclick="setCustomTimer()" class="px-6 py-3 rounded-xl font-black bg-indigo-600 text-white hover:bg-indigo-700 transition-all text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1">Set Time</button>
+        <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
+          <input type="text" id="planTitle" placeholder="Milestone name..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base">
+          <div class="flex gap-3 w-full lg:w-auto">
+            <input type="date" id="planDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm">
+            <input type="time" id="planTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm">
           </div>
-
-          <!-- CONTROLS -->
-          <div class="flex flex-wrap justify-center gap-4">
-            <button onclick="startTimer()" id="startBtn" class="bg-slate-900 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all text-xl transform hover:-translate-y-1">Start Timer</button>
-            <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-amber-500 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(245,158,11,0.4)] transition-all text-xl transform hover:-translate-y-1">Pause</button>
-            <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-300 px-12 py-5 rounded-2xl font-black hover:bg-slate-50 transition-all text-xl shadow-sm">Reset</button>
-          </div>
+          <button onclick="addPlan()" class="w-full lg:w-auto bg-slate-900 text-white px-6 py-3 rounded-xl font-black hover:bg-black transition-all text-sm sm:text-base">
+            Add
+          </button>
         </div>
         
-        <!-- QUICK BUTTONS -->
-        <div class="flex flex-wrap justify-center gap-4">
-          <button onclick="setTimerMode(25)" class="px-8 py-4 rounded-xl font-black transition-all bg-indigo-100 text-indigo-700 hover:bg-indigo-200 border border-indigo-200 shadow-sm hover:shadow-md transform hover:-translate-y-1">25m Focus</button>
-          <button onclick="setTimerMode(5)" class="px-8 py-4 rounded-xl font-black transition-all bg-emerald-100 text-emerald-700 hover:bg-emerald-200 border border-emerald-200 shadow-sm hover:shadow-md transform hover:-translate-y-1">5m Break</button>
-          <button onclick="setTimerMode(10)" class="px-8 py-4 rounded-xl font-black transition-all bg-teal-100 text-teal-700 hover:bg-teal-200 border border-teal-200 shadow-sm hover:shadow-md transform hover:-translate-y-1">10m Break</button>
-        </div>
+        <div id="plannerList" class="space-y-4"></div>
       </div>
     </section>
 
-    <!-- NEW FEATURE: CGPA PREDICTOR -->
-    <section id="cgpa" class="page px-3 lg:px-2">
-      <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white text-center">
-        <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">📊 CGPA Predictor</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Calculate your overall CGPA by entering your SGPA for each semester.</p>
+    <!-- SECTION: TASKS -->
+    <section id="tasks" class="page px-2">
+      <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-lg border-2 border-white">
+        <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">✅ Action Items</h2>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">
+          Add assignments and deadlines. Hold tasks to delete.
+        </p>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 text-left">
-          <div class="inner-glass p-6 rounded-2xl bg-white/80 shadow-sm border-2 border-white">
-            <label class="block font-black text-slate-700 mb-2 uppercase tracking-wider text-sm">Sem 1 SGPA</label>
-            <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-xl p-4 font-black text-xl focus:border-indigo-500 outline-none">
+        <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
+          <input type="text" id="taskInput" placeholder="Task description..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base">
+          <div class="flex gap-3 w-full lg:w-auto">
+            <input type="date" id="taskDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm">
+            <input type="time" id="taskTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm">
           </div>
-          <div class="inner-glass p-6 rounded-2xl bg-white/80 shadow-sm border-2 border-white">
-            <label class="block font-black text-slate-700 mb-2 uppercase tracking-wider text-sm">Sem 2 SGPA</label>
-            <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-xl p-4 font-black text-xl focus:border-indigo-500 outline-none">
-          </div>
-          <div class="inner-glass p-6 rounded-2xl bg-white/80 shadow-sm border-2 border-white">
-            <label class="block font-black text-slate-700 mb-2 uppercase tracking-wider text-sm">Sem 3 SGPA</label>
-            <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-xl p-4 font-black text-xl focus:border-indigo-500 outline-none">
-          </div>
-          <div class="inner-glass p-6 rounded-2xl bg-white/80 shadow-sm border-2 border-white">
-            <label class="block font-black text-slate-700 mb-2 uppercase tracking-wider text-sm">Sem 4 SGPA</label>
-            <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-xl p-4 font-black text-xl focus:border-indigo-500 outline-none">
-          </div>
+          <button onclick="addTask()" class="w-full lg:w-auto bg-slate-900 text-white px-6 py-3 rounded-xl font-black hover:bg-black transition-all text-sm sm:text-base">
+            Add Task
+          </button>
         </div>
-
-        <button onclick="calculateCGPA()" class="bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 transition-all mb-10 shadow-lg transform hover:-translate-y-1">Calculate Final CGPA</button>
-
-        <div class="inner-glass bg-indigo-50 border-2 border-indigo-200 p-10 rounded-[2rem] shadow-inner max-w-sm mx-auto">
-          <p class="text-xl font-black uppercase text-indigo-700 tracking-widest mb-2">Overall CGPA</p>
-          <h2 id="cgpaResult" class="text-7xl font-black text-slate-900 drop-shadow-sm">0.00</h2>
-        </div>
+        
+        <div id="taskList" class="space-y-4"></div>
       </div>
     </section>
 
-    <!-- NEW FEATURE: RESOURCE VAULT -->
-    <section id="resources" class="page px-3 lg:px-2">
-      <div class="glass-card p-10 max-w-[1500px] mx-auto shadow-2xl border-2 border-white">
-        <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">📚 Resource Vault</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Essential tools, cheat sheets, and links for B.Tech students.</p>
+    <!-- SECTION: FOCUS TIMER -->
+    <section id="timer" class="page px-2">
+      <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white text-center">
+        <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">⏱️ Focus Timer</h2>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">
+          Set your study time and take planned breaks.
+        </p>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="inner-glass p-10 rounded-[2rem] bg-gradient-to-br from-white to-blue-50 border-2 border-white hover:shadow-2xl transition-all cursor-pointer transform hover:-translate-y-2 group">
-            <div class="text-6xl mb-6 group-hover:scale-110 transition-transform origin-left">💻</div>
-            <h3 class="text-3xl font-black text-slate-900 mb-4">DSA Mastery</h3>
-            <p class="text-slate-600 font-bold text-lg leading-relaxed">Top 150 LeetCode patterns, blind 75 list, and algorithmic time complexities cheat sheet.</p>
-            <div class="mt-6 text-sm font-black text-blue-700 bg-blue-100 px-4 py-2 rounded-full w-max">Access Resource</div>
+        <div class="inner-glass bg-white/80 p-8 sm:p-12 rounded-[2rem] shadow-sm border border-white mb-6">
+          <div id="timeDisplay" class="timer-display text-7xl sm:text-9xl font-black text-indigo-600 drop-shadow-md mb-6">
+            25:00
           </div>
           
-          <div class="inner-glass p-10 rounded-[2rem] bg-gradient-to-br from-white to-emerald-50 border-2 border-white hover:shadow-2xl transition-all cursor-pointer transform hover:-translate-y-2 group">
-            <div class="text-6xl mb-6 group-hover:scale-110 transition-transform origin-left">🌐</div>
-            <h3 class="text-3xl font-black text-slate-900 mb-4">Web Dev Toolkit</h3>
-            <p class="text-slate-600 font-bold text-lg leading-relaxed">React documentation, Tailwind CSS guides, and REST API best practices.</p>
-            <div class="mt-6 text-sm font-black text-emerald-700 bg-emerald-100 px-4 py-2 rounded-full w-max">Access Resource</div>
+          <!-- ADJUSTABLE BUTTONS -->
+          <div class="flex justify-center gap-4 mb-8">
+            <button onclick="adjustTimer(-5)" class="px-5 py-2 rounded-xl font-black bg-rose-100 text-rose-700 hover:bg-rose-200 transition-all shadow-sm">
+              - 5 Min
+            </button>
+            <button onclick="adjustTimer(5)" class="px-5 py-2 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm">
+              + 5 Min
+            </button>
           </div>
-          
-          <div class="inner-glass p-10 rounded-[2rem] bg-gradient-to-br from-white to-purple-50 border-2 border-white hover:shadow-2xl transition-all cursor-pointer transform hover:-translate-y-2 group">
-            <div class="text-6xl mb-6 group-hover:scale-110 transition-transform origin-left">⚙️</div>
-            <h3 class="text-3xl font-black text-slate-900 mb-4">Core CS Subjects</h3>
-            <p class="text-slate-600 font-bold text-lg leading-relaxed">Quick revision notes for Operating Systems, DBMS, and Computer Networks.</p>
-            <div class="mt-6 text-sm font-black text-purple-700 bg-purple-100 px-4 py-2 rounded-full w-max">Access Resource</div>
+
+          <div class="flex flex-wrap justify-center gap-3">
+            <button onclick="startTimer()" id="startBtn" class="bg-slate-900 text-white px-10 py-4 rounded-xl font-black hover:shadow-lg transition-all text-lg w-40">
+              Start
+            </button>
+            <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-amber-500 text-white px-10 py-4 rounded-xl font-black hover:shadow-lg transition-all text-lg w-40">
+              Pause
+            </button>
+            <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-300 px-10 py-4 rounded-xl font-black hover:bg-slate-50 transition-all text-lg w-40">
+              Reset
+            </button>
           </div>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-3">
+          <button onclick="setTimerMode(25)" class="px-6 py-3 rounded-xl font-black transition-all bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 text-sm shadow-sm">
+            25m Focus
+          </button>
+          <button onclick="setTimerMode(5)" class="px-6 py-3 rounded-xl font-black transition-all bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-sm shadow-sm">
+            5m Break
+          </button>
+          <button onclick="setTimerMode(10)" class="px-6 py-3 rounded-xl font-black transition-all bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 text-sm shadow-sm">
+            10m Break
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- PLANNER (RESTORED FULL FORMATTING) -->
-    <section id="planner" class="page px-3 lg:px-2">
-      <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
-        <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Schedule your major study blocks. <span class="text-indigo-800 bg-indigo-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-indigo-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press an item to delete it. Notifications active! 🔔</span></p>
+    <!-- SECTION: CGPA PREDICTOR -->
+    <section id="cgpa" class="page px-2">
+      <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white text-center">
+        <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📊 CGPA Predictor</h2>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">
+          Calculate overall CGPA by entering SGPA.
+        </p>
         
-        <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/80 p-8 rounded-[2rem] shadow-lg border-2 border-white items-center">
-          <input type="text" id="planTitle" placeholder="What's your next big milestone?" class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 shadow-inner transition-all text-xl">
-          <div class="flex flex-col sm:flex-row gap-5 shrink-0 w-full lg:w-auto">
-            <input type="date" id="planDate" class="flex-1 sm:flex-none w-full sm:w-auto bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 shadow-inner transition-all text-lg">
-            <input type="time" id="planTime" value="00:00" class="flex-1 sm:flex-none w-full sm:w-auto bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 shadow-inner transition-all text-lg">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-left">
+          <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white">
+            <label class="block font-black text-slate-700 mb-2 text-xs uppercase">Sem 1 SGPA</label>
+            <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500">
           </div>
-          <button onclick="addPlan()" class="w-full lg:w-auto bg-slate-900 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all text-xl transform hover:-translate-y-1">Schedule</button>
+          <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white">
+            <label class="block font-black text-slate-700 mb-2 text-xs uppercase">Sem 2 SGPA</label>
+            <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500">
+          </div>
+          <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white">
+            <label class="block font-black text-slate-700 mb-2 text-xs uppercase">Sem 3 SGPA</label>
+            <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500">
+          </div>
+          <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white">
+            <label class="block font-black text-slate-700 mb-2 text-xs uppercase">Sem 4 SGPA</label>
+            <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500">
+          </div>
         </div>
-        <div id="plannerList" class="space-y-6"></div>
+
+        <button onclick="calculateCGPA()" class="bg-indigo-600 text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-indigo-700 transition-all mb-8 shadow-md">
+          Calculate Result
+        </button>
+
+        <div class="inner-glass bg-indigo-50 border-2 border-indigo-200 p-8 rounded-[1.5rem] shadow-inner max-w-xs mx-auto">
+          <p class="text-sm font-black uppercase text-indigo-700 tracking-widest mb-1">Final CGPA</p>
+          <h2 id="cgpaResult" class="text-6xl font-black text-slate-900">0.00</h2>
+        </div>
       </div>
     </section>
 
-    <!-- TASKS (RESTORED FULL FORMATTING) -->
-    <section id="tasks" class="page px-3 lg:px-2">
-      <div class="glass-card p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
-        <h2 class="text-5xl font-black mb-4 text-slate-800 tracking-tight">✅ Action Items</h2>
-        <p class="text-slate-700 font-extrabold mb-10 text-xl">Add assignments and deadlines. <span class="text-pink-800 bg-pink-100/90 px-4 py-1.5 rounded-xl shadow-sm border border-pink-300 inline-block mt-2 sm:mt-0">💡 Pro tip: Long-press a task to delete it. Notifications active! 🔔</span></p>
+    <!-- SECTION: B.TECH TECH SKILLS ROADMAP -->
+    <section id="roadmap" class="page px-2">
+      <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white">
         
-        <div class="flex flex-col lg:flex-row gap-5 mb-12 inner-glass bg-white/80 p-8 rounded-[2rem] shadow-lg border-2 border-white items-center">
-          <input type="text" id="taskInput" placeholder="What needs to be done?" class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-pink-400 focus:border-pink-500 shadow-inner transition-all text-xl">
-          <div class="flex flex-col sm:flex-row gap-5 shrink-0 w-full lg:w-auto">
-            <input type="date" id="taskDate" class="flex-1 sm:flex-none w-full sm:w-auto bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-pink-400 focus:border-pink-500 shadow-inner transition-all text-lg">
-            <input type="time" id="taskTime" value="00:00" class="flex-1 sm:flex-none w-full sm:w-auto bg-white border-2 border-slate-300 rounded-2xl p-5 font-black text-slate-900 outline-none focus:ring-4 focus:ring-pink-400 focus:border-pink-500 shadow-inner transition-all text-lg">
-          </div>
-          <button onclick="addTask()" class="w-full lg:w-auto bg-slate-900 text-white px-12 py-5 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all text-xl transform hover:-translate-y-1">Add Task</button>
-        </div>
-        <div id="taskList" class="space-y-6"></div>
-      </div>
-    </section>
-
-    <!-- B.TECH TECH SKILLS ROADMAP (RESTORED FULL DETAIL) -->
-    <section id="roadmap" class="page px-3 lg:px-2">
-      <div class="glass-card p-10 max-w-[1500px] mx-auto shadow-2xl border-t-[12px] border-t-indigo-600 border border-white">
-        
-        <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-14 gap-8">
+        <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-10 gap-6">
           <div>
-            <h2 class="text-5xl font-black text-slate-800 flex items-center gap-5 tracking-tight">
-              <span class="p-4 bg-indigo-100 text-indigo-700 rounded-3xl shadow-inner border border-indigo-300">🗺️</span> B.Tech Skills Roadmap
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 flex items-center gap-3 tracking-tight force-wrap">
+              B.Tech Skills Roadmap
             </h2>
-            <p class="text-slate-800 font-extrabold mt-6 text-xl bg-white/70 inline-block px-6 py-3 rounded-xl shadow-sm border border-white">Your 4-year structured path to becoming a highly sought-after Software Engineer.</p>
+            <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/70 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">
+              Your 4-year path to Software Engineer.
+            </p>
           </div>
           
-          <div class="inner-glass bg-white/95 p-8 rounded-[2rem] w-full md:w-96 shadow-xl border-2 border-white transform hover:scale-105 transition-transform">
-            <div class="flex justify-between items-end mb-4">
-              <span class="text-xl font-black uppercase text-slate-600 tracking-widest">Completion</span>
-              <span id="roadmapScore" class="text-6xl font-black text-indigo-600 drop-shadow-md">0%</span>
+          <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-sm border border-white">
+            <div class="flex justify-between items-end mb-2">
+              <span class="text-sm font-black uppercase text-slate-600 tracking-widest">Completion</span>
+              <span id="roadmapScore" class="text-4xl sm:text-5xl font-black text-indigo-600 drop-shadow-sm">0%</span>
             </div>
-            <div class="w-full bg-slate-200/80 rounded-full h-6 overflow-hidden shadow-inner border border-white/50">
-              <div id="roadmapProgressBar" class="bg-gradient-to-r from-indigo-400 via-blue-500 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-[0_0_20px_rgba(79,70,229,0.9)]" style="width: 0%"></div>
+            <div class="w-full bg-slate-200/80 rounded-full h-4 overflow-hidden shadow-inner border border-white/50">
+              <div id="roadmapProgressBar" class="bg-gradient-to-r from-indigo-400 to-cyan-500 h-full rounded-full transition-all duration-700" style="width: 0%"></div>
             </div>
           </div>
         </div>
         
-        <div class="flex flex-wrap gap-4 mb-12 border-b-4 border-white/80 pb-8">
-          <button onclick="showYear('year1', this)" class="year-tab-btn bg-slate-900 text-white px-10 py-4 rounded-2xl font-black shadow-xl transition-all transform hover:-translate-y-1 text-xl border-2 border-slate-700">Year 1</button>
-          <button onclick="showYear('year2', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-xl shadow-md hover:shadow-lg">Year 2</button>
-          <button onclick="showYear('year3', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-xl shadow-md hover:shadow-lg">Year 3</button>
-          <button onclick="showYear('year4', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-xl shadow-md hover:shadow-lg">Year 4</button>
+        <div class="flex gap-2 sm:gap-4 mb-8 overflow-x-auto pb-4 hide-scroll border-b-2 border-slate-200">
+          <button onclick="showYear('year1', this)" class="year-tab-btn bg-slate-900 text-white px-6 py-3 rounded-xl font-black shadow-md transition-all text-sm sm:text-base whitespace-nowrap">Year 1</button>
+          <button onclick="showYear('year2', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap">Year 2</button>
+          <button onclick="showYear('year3', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap">Year 3</button>
+          <button onclick="showYear('year4', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap">Year 4</button>
         </div>
 
         <div>
           <!-- YEAR 1 -->
-          <div id="year1" class="year-content active grid md:grid-cols-2 gap-10 transition-opacity duration-300 opacity-100">
-            <div class="inner-glass p-10 rounded-[2rem] bg-white/80 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
-              <div class="font-black text-indigo-900 mb-8 text-3xl border-b-4 border-indigo-200/50 pb-4">Semester 1: The Foundation</div>
-              <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check"><span class="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors force-wrap w-full">C / C++ Programming Basics</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check"><span class="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors force-wrap w-full">Terminal & Linux Command Line</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check"><span class="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors force-wrap w-full">Git & GitHub (Version Control)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check"><span class="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors force-wrap w-full">Basic HTML5 & CSS3</span></label>
+          <div id="year1" class="year-content active grid md:grid-cols-2 gap-6 transition-opacity duration-300">
+            <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
+              <div class="font-black text-indigo-900 mb-5 text-xl border-b-2 border-indigo-200 pb-2">Semester 1: Foundation</div>
+              <div class="space-y-4">
+                <label class="flex items-center gap-4 cursor-pointer group">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">C / C++ Programming Basics</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer group">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Terminal & Linux Command Line</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer group">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Git & GitHub (Version Control)</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer group">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Basic HTML5 & CSS3</span>
+                </label>
               </div>
             </div>
-            <div class="inner-glass p-10 rounded-[2rem] bg-white/80 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
-              <div class="font-black text-indigo-900 mb-8 text-3xl border-b-4 border-indigo-200/50 pb-4">Semester 2: Data & Logic</div>
-              <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check"><span class="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors force-wrap w-full">Data Structures (Arrays, Lists, Stacks)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check"><span class="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors force-wrap w-full">Python Scripting & Automation</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check"><span class="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors force-wrap w-full">Intro to JavaScript (DOM)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check"><span class="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors force-wrap w-full">Relational Algebra & SQL Basics</span></label>
+            
+            <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
+              <div class="font-black text-indigo-900 mb-5 text-xl border-b-2 border-indigo-200 pb-2">Semester 2: Data & Logic</div>
+              <div class="space-y-4">
+                <label class="flex items-center gap-4 cursor-pointer group">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Data Structures (Arrays, Lists)</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer group">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Python Scripting & Auto</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer group">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Intro to JavaScript (DOM)</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer group">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Relational Algebra & SQL</span>
+                </label>
               </div>
             </div>
           </div>
 
           <!-- YEAR 2 -->
-          <div id="year2" class="year-content hidden md:grid-cols-2 gap-10 transition-opacity duration-300 opacity-0 pointer-events-none">
-            <div class="inner-glass p-10 rounded-[2rem] bg-white/80 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
-              <div class="font-black text-pink-900 mb-8 text-3xl border-b-4 border-pink-200/50 pb-4">Semester 3: Core CS</div>
-              <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-800 group-hover:text-pink-700 transition-colors force-wrap w-full">Object-Oriented Programming (Java/C++)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-800 group-hover:text-pink-700 transition-colors force-wrap w-full">Advanced DSA (Trees, Graphs, Hash Maps)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-800 group-hover:text-pink-700 transition-colors force-wrap w-full">Algorithm Design (Sorting, DP, Recursion)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-800 group-hover:text-pink-700 transition-colors force-wrap w-full">DBMS Architecture & Normalization</span></label>
+          <div id="year2" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
+            <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
+              <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 3: Core CS</div>
+              <div class="space-y-4">
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">OOP (Java/C++)</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Advanced DSA (Trees, Graphs)</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">DBMS Architecture</span>
+                </label>
               </div>
             </div>
-            <div class="inner-glass p-10 rounded-[2rem] bg-white/80 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
-              <div class="font-black text-pink-900 mb-8 text-3xl border-b-4 border-pink-200/50 pb-4">Semester 4: Systems</div>
-              <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-800 group-hover:text-pink-700 transition-colors force-wrap w-full">Operating Systems (Threads, Memory)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-800 group-hover:text-pink-700 transition-colors force-wrap w-full">Computer Networks (TCP/IP, HTTP)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-800 group-hover:text-pink-700 transition-colors force-wrap w-full">Frontend Frameworks (React.js)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 focus:ring-pink-500 text-pink-600"><span class="text-xl font-bold text-slate-800 group-hover:text-pink-700 transition-colors force-wrap w-full">Building RESTful APIs</span></label>
+            <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
+              <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 4: Systems</div>
+              <div class="space-y-4">
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Operating Systems</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Computer Networks</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Building REST APIs</span>
+                </label>
               </div>
             </div>
           </div>
 
           <!-- YEAR 3 -->
-          <div id="year3" class="year-content hidden md:grid-cols-2 gap-10 transition-opacity duration-300 opacity-0 pointer-events-none">
-            <div class="inner-glass p-10 rounded-[2rem] bg-white/80 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
-              <div class="font-black text-purple-900 mb-8 text-3xl border-b-4 border-purple-200/50 pb-4">Semester 5: Architecture</div>
-              <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-800 group-hover:text-purple-700 transition-colors force-wrap w-full">Backend Engineering (Node.js/Spring)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-800 group-hover:text-purple-700 transition-colors force-wrap w-full">NoSQL Databases (MongoDB/Redis)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-800 group-hover:text-purple-700 transition-colors force-wrap w-full">Cloud Platforms (AWS Core Services)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-800 group-hover:text-purple-700 transition-colors force-wrap w-full">Machine Learning Fundamentals</span></label>
+          <div id="year3" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
+            <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
+              <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 5: Architecture</div>
+              <div class="space-y-4">
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Backend Engineering (Node)</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Cloud Platforms (AWS)</span>
+                </label>
               </div>
             </div>
-            <div class="inner-glass p-10 rounded-[2rem] bg-white/80 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
-              <div class="font-black text-purple-900 mb-8 text-3xl border-b-4 border-purple-200/50 pb-4">Semester 6: Engineering</div>
-              <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-800 group-hover:text-purple-700 transition-colors force-wrap w-full">DevOps Culture (Docker, CI/CD)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-800 group-hover:text-purple-700 transition-colors force-wrap w-full">Cross-platform Mobile (React Native)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-800 group-hover:text-purple-700 transition-colors force-wrap w-full">App Security & Cryptography</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-xl font-bold text-slate-800 group-hover:text-purple-700 transition-colors force-wrap w-full">TDD (Unit & Integration Testing)</span></label>
+            <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
+              <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 6: Engineering</div>
+              <div class="space-y-4">
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">DevOps (Docker, CI/CD)</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">App Security</span>
+                </label>
               </div>
             </div>
           </div>
 
           <!-- YEAR 4 -->
-          <div id="year4" class="year-content hidden md:grid-cols-2 gap-10 transition-opacity duration-300 opacity-0 pointer-events-none">
-            <div class="inner-glass p-10 rounded-[2rem] bg-white/80 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
-              <div class="font-black text-teal-900 mb-8 text-3xl border-b-4 border-teal-200/50 pb-4">Semester 7: Scale & Polish</div>
-              <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors force-wrap w-full">System Design (Microservices, Scalability)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors force-wrap w-full">Advanced Tech (GenAI / Web3)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors force-wrap w-full">Kubernetes & Orchestration</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors force-wrap w-full">Major Capstone Product Launch</span></label>
+          <div id="year4" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
+            <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
+              <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 7: Scale</div>
+              <div class="space-y-4">
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">System Design</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Kubernetes & Orchestration</span>
+                </label>
               </div>
             </div>
-            <div class="inner-glass p-10 rounded-[2rem] bg-white/80 shadow-lg border-2 border-white hover:shadow-xl transition-shadow">
-              <div class="font-black text-teal-900 mb-8 text-3xl border-b-4 border-teal-200/50 pb-4">Semester 8: Industry Ready</div>
-              <div class="space-y-6">
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors force-wrap w-full">Elite DSA Problem Solving for Interviews</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors force-wrap w-full">Significant Open Source Contributions</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors force-wrap w-full">Mock Interviews (Peers & Platforms)</span></label>
-                <label class="flex items-center gap-5 cursor-pointer group"><input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 focus:ring-teal-500 text-teal-600"><span class="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors force-wrap w-full">Internship Conversion & Networking</span></label>
+            <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white">
+              <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 8: Industry</div>
+              <div class="space-y-4">
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Elite DSA Problem Solving</span>
+                </label>
+                <label class="flex items-center gap-4 cursor-pointer">
+                  <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check">
+                  <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Mock Interviews</span>
+                </label>
               </div>
             </div>
           </div>
@@ -563,123 +853,300 @@
       </div>
     </section>
 
-    <!-- CAREER LAUNCHPAD & INTERVIEW SKILLS (RESTORED FULL DETAIL) -->
-    <section id="career" class="page px-3 lg:px-2">
-      <div class="glass-card p-10 max-w-[1500px] mx-auto shadow-2xl border-t-[12px] border-t-emerald-500 border border-white">
+    <!-- SECTION: RESOURCES -->
+    <section id="resources" class="page px-2">
+      <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-2 border-white">
+        <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📚 Resources & Notes</h2>
+        <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">
+          Create subject folders and upload your study materials.
+        </p>
         
-        <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-14 gap-8">
-          <div>
-            <h2 class="text-5xl sm:text-6xl font-black text-slate-800 flex items-center gap-5 tracking-tighter drop-shadow-md">
-              <span class="p-4 bg-emerald-100 text-emerald-700 rounded-3xl shadow-inner border border-emerald-300">💼</span> Ultimate Interview Mastery
-            </h2>
-            <p class="text-slate-800 font-extrabold mt-6 text-2xl bg-white/80 inline-block px-6 py-3 rounded-xl shadow-sm border border-white">Check these off to prove to recruiters you are the top 1% candidate.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          
+          <!-- Subject Slot 1 -->
+          <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
+            <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
+            <div class="flex items-center justify-between mt-auto pt-4">
+              <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
+                ➕ Add File 
+                <input type="file" class="hidden">
+              </label>
+              <span class="text-xs font-bold text-slate-400">0 files</span>
+            </div>
           </div>
           
-          <div class="inner-glass bg-white/95 p-8 rounded-[2rem] w-full md:w-[28rem] shadow-2xl border-2 border-white transform hover:scale-105 transition-transform">
-            <div class="flex justify-between items-end mb-4">
-              <span class="text-xl font-black uppercase text-slate-600 tracking-widest">Readiness Score</span>
-              <span id="interviewScore" class="text-6xl font-black text-emerald-600 drop-shadow-md">0%</span>
+          <!-- Subject Slot 2 -->
+          <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
+            <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
+            <div class="flex items-center justify-between mt-auto pt-4">
+              <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
+                ➕ Add File 
+                <input type="file" class="hidden">
+              </label>
+              <span class="text-xs font-bold text-slate-400">0 files</span>
             </div>
-            <div class="w-full bg-slate-200/80 rounded-full h-6 overflow-hidden shadow-inner border border-white/50">
-              <div id="interviewProgressBar" class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-[0_0_20px_rgba(52,211,153,0.9)]" style="width: 0%"></div>
+          </div>
+          
+          <!-- Subject Slot 3 -->
+          <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
+            <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
+            <div class="flex items-center justify-between mt-auto pt-4">
+              <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
+                ➕ Add File 
+                <input type="file" class="hidden">
+              </label>
+              <span class="text-xs font-bold text-slate-400">0 files</span>
+            </div>
+          </div>
+          
+          <!-- Subject Slot 4 -->
+          <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
+            <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
+            <div class="flex items-center justify-between mt-auto pt-4">
+              <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
+                ➕ Add File 
+                <input type="file" class="hidden">
+              </label>
+              <span class="text-xs font-bold text-slate-400">0 files</span>
+            </div>
+          </div>
+          
+          <!-- Subject Slot 5 -->
+          <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
+            <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
+            <div class="flex items-center justify-between mt-auto pt-4">
+              <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
+                ➕ Add File 
+                <input type="file" class="hidden">
+              </label>
+              <span class="text-xs font-bold text-slate-400">0 files</span>
+            </div>
+          </div>
+          
+          <!-- Subject Slot 6 -->
+          <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col">
+            <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-400 outline-none text-slate-800 py-1">
+            <div class="flex items-center justify-between mt-auto pt-4">
+              <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm">
+                ➕ Add File 
+                <input type="file" class="hidden">
+              </label>
+              <span class="text-xs font-bold text-slate-400">0 files</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PORTFOLIO -->
+    <section id="portfolio" class="page px-2">
+      <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white">
+        <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">🚀 Project Portfolio</h2>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Track your personal projects and GitHub repos to show recruiters.</p>
+        
+        <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 rounded-2xl shadow-sm border border-white">
+          <input type="text" placeholder="Project Title" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm">
+          <input type="text" placeholder="Tech Stack (e.g., React, Node)" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm">
+          <button class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-black text-sm hover:bg-indigo-700">Add Project</button>
+        </div>
+        
+        <div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">
+          No projects added yet. Start building!
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: JOB TRACKER -->
+    <section id="jobs" class="page px-2">
+      <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white">
+        <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">🎯 Job Tracker</h2>
+        <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Keep track of your internship and job applications.</p>
+        
+        <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 rounded-2xl shadow-sm border border-white">
+          <input type="text" placeholder="Company Name" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm">
+          <input type="text" placeholder="Role (e.g., SDE Intern)" class="flex-1 bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm">
+          <select class="bg-white border-2 border-slate-200 rounded-xl p-3 font-black text-sm text-slate-700 outline-none">
+            <option>Applied</option>
+            <option>Interviewing</option>
+            <option>Offer Received</option>
+            <option>Rejected</option>
+          </select>
+          <button class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-black text-sm hover:bg-indigo-700">Save</button>
+        </div>
+        
+        <div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">
+          No applications tracked yet.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CAREER LAUNCHPAD -->
+    <section id="career" class="page px-2">
+      <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white">
+        
+        <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+          <div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 tracking-tight force-wrap">
+              Interview Mastery
+            </h2>
+            <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/80 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">
+              Top 1% candidate checklist.
+            </p>
+          </div>
+          
+          <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-sm border border-white">
+            <div class="flex justify-between items-end mb-2">
+              <span class="text-sm font-black uppercase text-slate-600 tracking-widest">Score</span>
+              <span id="interviewScore" class="text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm">0%</span>
+            </div>
+            <div class="w-full bg-slate-200/80 rounded-full h-4 overflow-hidden shadow-inner border border-white/50">
+              <div id="interviewProgressBar" class="bg-gradient-to-r from-emerald-400 to-cyan-500 h-full rounded-full transition-all duration-700" style="width: 0%"></div>
             </div>
           </div>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-10 relative z-10">
-          
+        <div class="grid md:grid-cols-2 gap-6 relative z-10">
           <!-- Column 1: Core Technical -->
-          <div class="inner-glass bg-white/80 p-10 rounded-[2rem] border-t-[10px] border-t-blue-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
-            <div class="flex items-center gap-4 font-black text-blue-900 mb-8 text-4xl border-b-4 border-blue-200 pb-4">
-              <span class="text-6xl drop-shadow-md">🧠</span> Technical Core
+          <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-blue-500 border border-white">
+            <div class="flex items-center gap-3 font-black text-blue-900 mb-5 text-xl sm:text-2xl border-b-2 border-blue-200 pb-2">
+              Technical Core
             </div>
-            <div class="space-y-6">
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-blue-700 force-wrap w-full">Solved 150+ LeetCode (Easy/Med)</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-blue-700 force-wrap w-full">Mastered 1 Primary Language</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-blue-700 force-wrap w-full">System Design (HLD & LLD Basics)</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-blue-700 force-wrap w-full">Clean Code & SOLID Principles</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-blue-400 focus:ring-blue-500 text-blue-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-blue-700 force-wrap w-full">Debugging & Testing Skills</span></label>
+            <div class="space-y-4">
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Solved 150+ LeetCode (Easy/Med)</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Mastered 1 Primary Language</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">System Design (HLD & LLD)</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Clean Code & SOLID</span>
+              </label>
             </div>
           </div>
 
           <!-- Column 2: Communication -->
-          <div class="inner-glass bg-white/80 p-10 rounded-[2rem] border-t-[10px] border-t-amber-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
-            <div class="flex items-center gap-4 font-black text-amber-900 mb-8 text-4xl border-b-4 border-amber-200 pb-4">
-              <span class="text-6xl drop-shadow-md">🗣️</span> Communication
+          <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-amber-500 border border-white">
+            <div class="flex items-center gap-3 font-black text-amber-900 mb-5 text-xl sm:text-2xl border-b-2 border-amber-200 pb-2">
+              Communication
             </div>
-            <div class="space-y-6">
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-amber-700 force-wrap w-full">"Thinking Aloud" while coding</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-amber-700 force-wrap w-full">Clear & Confident Articulation</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-amber-700 force-wrap w-full">Active Listening to Interviewer</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-amber-700 force-wrap w-full">Explaining complex logic simply</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-amber-400 focus:ring-amber-500 text-amber-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-amber-700 force-wrap w-full">Asking intelligent questions at end</span></label>
+            <div class="space-y-4">
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">"Thinking Aloud" while coding</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Clear Articulation</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Active Listening</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Explaining complex logic simply</span>
+              </label>
             </div>
           </div>
-
+          
           <!-- Column 3: HR & Behavioral -->
-          <div class="inner-glass bg-white/80 p-10 rounded-[2rem] border-t-[10px] border-t-rose-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
-            <div class="flex items-center gap-4 font-black text-rose-900 mb-8 text-4xl border-b-4 border-rose-200 pb-4">
-              <span class="text-6xl drop-shadow-md">🤝</span> HR & Behavioral
+          <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-rose-500 border border-white">
+            <div class="flex items-center gap-3 font-black text-rose-900 mb-5 text-xl sm:text-2xl border-b-2 border-rose-200 pb-2">
+              HR & Behavioral
             </div>
-            <div class="space-y-6">
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-rose-700 force-wrap w-full">Mastered STAR Storytelling Method</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-rose-700 force-wrap w-full">Handled "Conflict Resolution" Qs</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-rose-700 force-wrap w-full">Company & Culture Research</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-rose-700 force-wrap w-full">Teamwork & Leadership Examples</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-rose-400 focus:ring-rose-500 text-rose-500"><span class="text-2xl font-bold text-slate-800 group-hover:text-rose-700 force-wrap w-full">Salary Negotiation Basics</span></label>
-            </div>
-          </div>
-
-          <!-- Column 4: Personal Branding -->
-          <div class="inner-glass bg-white/80 p-10 rounded-[2rem] border-t-[10px] border-t-purple-500 hover:shadow-2xl transition-all duration-300 border-x-2 border-b-2 border-white">
-            <div class="flex items-center gap-4 font-black text-purple-900 mb-8 text-4xl border-b-4 border-purple-200 pb-4">
-              <span class="text-6xl drop-shadow-md">🚀</span> Personal Brand
-            </div>
-            <div class="space-y-6">
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-purple-700 force-wrap w-full">1-Page ATS-Optimized Resume</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-purple-700 force-wrap w-full">Active GitHub (Green Squares)</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-purple-700 force-wrap w-full">Optimized LinkedIn Profile</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-purple-700 force-wrap w-full">2 Live Deployed Full-stack Projects</span></label>
-              <label class="flex items-center gap-4 cursor-pointer group"><input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check border-purple-400 focus:ring-purple-500 text-purple-600"><span class="text-2xl font-bold text-slate-800 group-hover:text-purple-700 force-wrap w-full">Personal Portfolio Website Built</span></label>
+            <div class="space-y-4">
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">STAR Storytelling Method</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Conflict Resolution Qs</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Company Research</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Teamwork Examples</span>
+              </label>
             </div>
           </div>
-
+          
+          <!-- Column 4: Brand -->
+          <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-purple-500 border border-white">
+            <div class="flex items-center gap-3 font-black text-purple-900 mb-5 text-xl sm:text-2xl border-b-2 border-purple-200 pb-2">
+              Personal Brand
+            </div>
+            <div class="space-y-4">
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">ATS-Optimized Resume</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Active GitHub (Green)</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Optimized LinkedIn</span>
+              </label>
+              <label class="flex items-start sm:items-center gap-4 cursor-pointer">
+                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
+                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5">Live Deployed Projects</span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ==========================================
+       JAVASCRIPT LOGIC
+       ========================================== -->
   <script>
-    // --- CGPA PREDICTOR LOGIC ---
-    function calculateCGPA() {
-      const inputs = document.querySelectorAll('.sgpa-input');
-      let total = 0;
-      let count = 0;
-      inputs.forEach(input => {
-        if(input.value) {
-          total += parseFloat(input.value);
-          count++;
-        }
-      });
-      const cgpa = count === 0 ? 0 : (total / count);
-      document.getElementById('cgpaResult').textContent = cgpa.toFixed(2);
-    }
-
-    // --- CUSTOM FOCUS TIMER LOGIC ---
+    /* -------------------------------------
+       TIMER LOGIC
+       ------------------------------------- */
     let timerInterval;
-    let timeLeft = 25 * 60; // default 25 mins
+    let timeLeft = 25 * 60; 
     let isTimerRunning = false;
 
     function updateTimerDisplay() {
       const display = document.getElementById('timeDisplay');
       const minutes = Math.floor(timeLeft / 60);
       const seconds = timeLeft % 60;
-      display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      
+      const formattedMinutes = minutes.toString().padStart(2, '0');
+      const formattedSeconds = seconds.toString().padStart(2, '0');
+      
+      display.textContent = `${formattedMinutes}:${formattedSeconds}`;
+    }
+
+    function adjustTimer(mins) {
+      timeLeft += mins * 60;
+      if (timeLeft < 0) {
+        timeLeft = 0;
+      }
+      updateTimerDisplay();
     }
 
     function startTimer() {
-      if (isTimerRunning) return;
+      if (isTimerRunning || timeLeft <= 0) {
+        return;
+      }
       isTimerRunning = true;
+      
       document.getElementById('startBtn').classList.add('hidden');
       document.getElementById('pauseBtn').classList.remove('hidden');
       
@@ -690,9 +1157,11 @@
         } else {
           clearInterval(timerInterval);
           isTimerRunning = false;
+          
           document.getElementById('startBtn').classList.remove('hidden');
           document.getElementById('pauseBtn').classList.add('hidden');
-          sendNotification("Timer Complete!", "Your focus session is over. Take a break!");
+          
+          sendNotification("Timer Complete!", "Your session is over. Take a break!");
         }
       }, 1000);
     }
@@ -700,6 +1169,7 @@
     function pauseTimer() {
       clearInterval(timerInterval);
       isTimerRunning = false;
+      
       document.getElementById('startBtn').classList.remove('hidden');
       document.getElementById('startBtn').textContent = "Resume";
       document.getElementById('pauseBtn').classList.add('hidden');
@@ -708,37 +1178,56 @@
     function resetTimer() {
       clearInterval(timerInterval);
       isTimerRunning = false;
+      
       document.getElementById('startBtn').classList.remove('hidden');
-      document.getElementById('startBtn').textContent = "Start Timer";
+      document.getElementById('startBtn').textContent = "Start";
       document.getElementById('pauseBtn').classList.add('hidden');
+      
       setTimerMode(25);
     }
 
     function setTimerMode(minutes) {
       clearInterval(timerInterval);
       isTimerRunning = false;
+      
       document.getElementById('startBtn').classList.remove('hidden');
-      document.getElementById('startBtn').textContent = "Start Timer";
+      document.getElementById('startBtn').textContent = "Start";
       document.getElementById('pauseBtn').classList.add('hidden');
+      
       timeLeft = minutes * 60;
       updateTimerDisplay();
     }
 
-    function setCustomTimer() {
-      const mins = document.getElementById('customFocusTime').value;
-      if (mins && mins > 0) {
-        setTimerMode(parseInt(mins));
-        document.getElementById('customFocusTime').value = '';
-      }
+    /* -------------------------------------
+       CGPA PREDICTOR LOGIC
+       ------------------------------------- */
+    function calculateCGPA() {
+      const inputs = document.querySelectorAll('.sgpa-input');
+      let total = 0; 
+      let count = 0;
+      
+      inputs.forEach(input => {
+        if(input.value) { 
+          total += parseFloat(input.value); 
+          count++; 
+        }
+      });
+      
+      const cgpa = count === 0 ? 0 : (total / count);
+      document.getElementById('cgpaResult').textContent = cgpa.toFixed(2);
     }
 
-    // --- SIDEBAR MENU LOGIC ---
+    /* -------------------------------------
+       SIDEBAR MENU LOGIC
+       ------------------------------------- */
     let isSidebarOpen = false;
     
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
       const overlay = document.getElementById('sidebarOverlay');
+      
       isSidebarOpen = !isSidebarOpen;
+      
       if (isSidebarOpen) {
         sidebar.classList.remove('-translate-x-full');
         overlay.classList.add('active');
@@ -748,305 +1237,307 @@
       }
     }
 
-    // --- PWA & SERVICE WORKER INJECTION ---
-    const manifestJSON = {
-      "name": "StudyBuddy",
-      "short_name": "StudyBuddy",
-      "start_url": ".",
-      "display": "standalone",
-      "background_color": "#f1f5f9",
-      "theme_color": "#4f46e5",
-      "icons": [{
-        "src": "https://cdn-icons-png.flaticon.com/512/3233/3233483.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any maskable"
-      }]
-    };
-    const manifestBlob = new Blob([JSON.stringify(manifestJSON)], {type: 'application/json'});
-    document.querySelector('head').insertAdjacentHTML('beforeend', `<link rel="manifest" href="${URL.createObjectURL(manifestBlob)}">`);
-
-    const swCode = `
-      self.addEventListener('install', (e) => self.skipWaiting());
-      self.addEventListener('activate', (e) => e.waitUntil(clients.claim()));
-      self.addEventListener('fetch', (e) => {}); 
-      self.addEventListener('push', (e) => {
-        const data = e.data ? e.data.json() : { title: 'StudyBuddy', body: 'You have a notification!' };
-        e.waitUntil(self.registration.showNotification(data.title, { body: data.body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' }));
-      });
-    `;
-    const swBlob = new Blob([swCode], {type: 'application/javascript'});
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(e => {
-          navigator.serviceWorker.register('sw.js').catch(console.error);
-      });
-    }
-
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      const installBtn = document.getElementById('installAppBtn');
-      if(installBtn) installBtn.classList.remove('hidden');
-      installBtn?.addEventListener('click', () => {
-        installBtn.classList.add('hidden');
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => { deferredPrompt = null; });
-      });
-    });
-
-    document.addEventListener('click', () => {
-      if (Notification.permission === "default") Notification.requestPermission();
-    }, { once: true });
-
-    let currentUser = null;
-
-    function toggleAuth() {
-      if (currentUser) {
-        currentUser = null;
-        document.getElementById('userInfo').textContent = 'Not signed in';
-        document.getElementById('authBtn').textContent = 'Sign In / Sign Up';
-      } else {
-        document.getElementById('authEmail').value = '';
-        document.getElementById('authPassword').value = '';
-        document.getElementById('authError').classList.add('hidden');
-        document.getElementById('authModal').classList.add('active');
-      }
-    }
-
-    function closeAuthModal() {
-      document.getElementById('authModal').classList.remove('active');
-    }
-
-    function mockSignIn() {
-      const email = document.getElementById('authEmail').value;
-      const password = document.getElementById('authPassword').value;
-      if (!email || !password) {
-        document.getElementById('authError').textContent = 'Please enter both email and password.';
-        document.getElementById('authError').classList.remove('hidden');
-        return;
-      }
-      currentUser = { email: email };
-      document.getElementById('userInfo').textContent = currentUser.email;
-      document.getElementById('authBtn').textContent = 'Sign Out';
-      closeAuthModal();
-    }
-
-    function mockSignUp() {
-      const email = document.getElementById('authEmail').value;
-      const password = document.getElementById('authPassword').value;
-      if (!email || !password) {
-        document.getElementById('authError').textContent = 'Please enter both email and password.';
-        document.getElementById('authError').classList.remove('hidden');
-        return;
-      }
-      alert('Account successfully created! You are now signed in.');
-      mockSignIn();
-    }
-
     function showPage(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      const navs = ['dashboard', 'planner', 'tasks', 'timer', 'cgpa', 'roadmap', 'resources', 'career'];
+      const pages = document.querySelectorAll('.page');
+      
+      pages.forEach(p => {
+        p.classList.remove('active');
+      });
+      
+      const navs = [
+        'dashboard', 
+        'planner', 
+        'tasks', 
+        'timer', 
+        'cgpa', 
+        'roadmap', 
+        'resources', 
+        'portfolio', 
+        'jobs', 
+        'career'
+      ];
+      
       navs.forEach(id => {
         const btn = document.getElementById('nav-' + id);
-        if(btn) btn.className = "w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-slate-100 lg:hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg";
+        if (btn) {
+          btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base";
+        }
       });
+      
       document.getElementById(pageId).classList.add('active');
+      
       const activeBtn = document.getElementById('nav-' + pageId);
-      if (activeBtn) activeBtn.className = "w-full flex items-center gap-4 px-6 py-4 rounded-2xl bg-slate-900 text-white shadow-[0_8px_25px_rgba(0,0,0,0.3)] font-black transition-all text-lg transform hover:scale-105";
+      if (activeBtn) {
+        activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-md font-black transition-all text-base";
+      }
       
       const titles = { 
         dashboard: 'Dashboard', 
         planner: 'Study Planner', 
-        tasks: 'Action Tasks',
+        tasks: 'Action Tasks', 
         timer: 'Focus Timer',
-        cgpa: 'CGPA Predictor',
-        roadmap: 'B.Tech Skills Roadmap',
-        resources: 'Resource Vault',
+        cgpa: 'CGPA Predictor', 
+        roadmap: 'B.Tech Roadmap', 
+        resources: 'Resource Vault', 
+        portfolio: 'Project Portfolio', 
+        jobs: 'Job Tracker', 
         career: 'Interview Mastery'
       };
+      
       document.getElementById('pageTitle').textContent = titles[pageId];
-
-      // Auto close sidebar on mobile after clicking a link
-      if(isSidebarOpen && window.innerWidth < 1024) toggleSidebar();
+      
+      if (isSidebarOpen && window.innerWidth < 1024) {
+        toggleSidebar();
+      }
     }
 
+    /* -------------------------------------
+       ROADMAP TABS LOGIC
+       ------------------------------------- */
     function showYear(yearId, btnElement) {
-      document.querySelectorAll('.year-content').forEach(el => {
+      const allYears = document.querySelectorAll('.year-content');
+      allYears.forEach(el => {
         el.classList.add('hidden', 'opacity-0', 'pointer-events-none');
-        el.classList.remove('active', 'opacity-100');
+        el.classList.remove('active', 'opacity-100', 'grid');
       });
-      document.querySelectorAll('.year-tab-btn').forEach(btn => {
-        btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-black transition-all border-2 border-slate-200 text-lg sm:text-xl shadow-md hover:shadow-lg";
+      
+      const allBtns = document.querySelectorAll('.year-tab-btn');
+      allBtns.forEach(btn => {
+        btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap";
       });
       
       const target = document.getElementById(yearId);
       target.classList.remove('hidden', 'pointer-events-none');
-      setTimeout(() => { target.classList.add('active', 'opacity-100'); }, 10);
-      btnElement.className = "year-tab-btn bg-slate-900 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-black shadow-xl transition-all transform hover:-translate-y-1 text-lg sm:text-xl border-2 border-slate-700";
+      target.classList.add('grid');
+      
+      setTimeout(() => { 
+        target.classList.add('active', 'opacity-100'); 
+      }, 10);
+      
+      btnElement.className = "year-tab-btn bg-slate-900 text-white px-6 py-3 rounded-xl font-black shadow-md transition-all text-sm sm:text-base whitespace-nowrap";
     }
 
-    function openTaskModal(filterType) {
-      const modal = document.getElementById('taskModal');
-      const title = document.getElementById('taskModalTitle');
-      const listContainer = document.getElementById('taskModalList');
+    /* -------------------------------------
+       PWA & SERVICE WORKER
+       ------------------------------------- */
+    const manifestJSON = {
+      "name": "StudyBuddy", 
+      "short_name": "StudyBuddy", 
+      "start_url": ".", 
+      "display": "standalone",
+      "background_color": "#f1f5f9", 
+      "theme_color": "#4f46e5",
+      "icons": [
+        {
+          "src": "https://cdn-icons-png.flaticon.com/512/3233/3233483.png", 
+          "sizes": "512x512", 
+          "type": "image/png", 
+          "purpose": "any maskable"
+        }
+      ]
+    };
+    
+    const manifestBlob = new Blob([JSON.stringify(manifestJSON)], {type: 'application/json'});
+    
+    document.querySelector('head').insertAdjacentHTML(
+      'beforeend', 
+      `<link rel="manifest" href="${URL.createObjectURL(manifestBlob)}">`
+    );
+    
+    const swCode = `
+      self.addEventListener('install', (e) => {
+        self.skipWaiting();
+      }); 
       
-      let filteredTasks = [];
-      if (filterType === 'all') {
-        title.textContent = 'All Tasks & Productivity';
-        filteredTasks = tasks;
-      } else if (filterType === 'completed') {
-        title.textContent = 'Completed Tasks';
-        filteredTasks = tasks.filter(t => t.completed);
-      } else if (filterType === 'pending') {
-        title.textContent = 'Pending Tasks';
-        filteredTasks = tasks.filter(t => !t.completed);
-      }
-
-      let html = '';
-      filteredTasks.forEach(t => {
-        html += `
-          <div class="p-6 bg-white/90 rounded-2xl border-2 border-white shadow-sm flex items-center gap-5">
-            <div class="w-6 h-6 shrink-0 rounded-full shadow-sm ${t.completed ? 'bg-emerald-500' : 'bg-orange-500'}"></div>
-            <div class="font-extrabold text-2xl force-wrap w-full ${t.completed ? 'line-through text-slate-400' : 'text-slate-900'}">${t.text}</div>
-          </div>
-        `;
+      self.addEventListener('activate', (e) => {
+        e.waitUntil(clients.claim());
+      }); 
+      
+      self.addEventListener('fetch', (e) => {}); 
+      
+      self.addEventListener('push', (e) => { 
+        const data = e.data ? e.data.json() : { title: 'StudyBuddy', body: 'Notification!' }; 
+        e.waitUntil(self.registration.showNotification(data.title, { body: data.body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' })); 
       });
+    `;
+    
+    const swBlob = new Blob([swCode], {type: 'application/javascript'});
+    
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(e => {
+        navigator.serviceWorker.register('sw.js').catch(console.error);
+      });
+    }
 
-      if (filteredTasks.length === 0) {
-        html = '<div class="text-center text-slate-500 font-black py-10 text-2xl bg-white/60 rounded-3xl border-2 border-white border-dashed">No tasks found in this category.</div>';
+    let deferredPrompt;
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault(); 
+      deferredPrompt = e; 
+      const installBtn = document.getElementById('installAppBtn');
+      
+      if(installBtn) {
+        installBtn.classList.remove('hidden');
       }
       
-      listContainer.innerHTML = html;
-      modal.classList.add('active');
+      installBtn?.addEventListener('click', () => { 
+        installBtn.classList.add('hidden'); 
+        deferredPrompt.prompt(); 
+        deferredPrompt.userChoice.then(() => { 
+          deferredPrompt = null; 
+        }); 
+      });
+    });
+    
+    document.addEventListener('click', () => { 
+      if (Notification.permission === "default") {
+        Notification.requestPermission();
+      }
+    }, { once: true });
+
+    /* -------------------------------------
+       MODALS & AUTH LOGIC
+       ------------------------------------- */
+    function toggleAuth() { 
+      document.getElementById('authModal').classList.add('active'); 
+    }
+    
+    function closeAuthModal() { 
+      document.getElementById('authModal').classList.remove('active'); 
+    }
+    
+    function mockSignIn() { 
+      const email = document.getElementById('authEmail').value;
+      document.getElementById('userInfo').textContent = email || 'User'; 
+      closeAuthModal(); 
+    }
+    
+    function mockSignUp() { 
+      alert('Account created!'); 
+      mockSignIn(); 
     }
 
-    function closeTaskModal() {
-      document.getElementById('taskModal').classList.remove('active');
+    function openTaskModal(filterType) { 
+      document.getElementById('taskModal').classList.add('active'); 
+    }
+    
+    function closeTaskModal() { 
+      document.getElementById('taskModal').classList.remove('active'); 
     }
 
+    /* -------------------------------------
+       PROGRESS BARS LOGIC
+       ------------------------------------- */
     function updateInterviewProgress() {
-      const checkboxes = document.querySelectorAll('.interview-check');
-      const total = checkboxes.length;
-      let completed = 0;
-      checkboxes.forEach(box => { if(box.checked) completed++; });
-      const percent = Math.round((completed / total) * 100);
-      document.getElementById('interviewScore').textContent = percent + '%';
-      document.getElementById('interviewProgressBar').style.width = percent + '%';
+      const boxes = document.querySelectorAll('.interview-check'); 
+      let c = 0; 
+      
+      boxes.forEach(b => { 
+        if(b.checked) {
+          c++; 
+        }
+      });
+      
+      const p = Math.round((c / boxes.length) * 100); 
+      document.getElementById('interviewScore').textContent = p + '%'; 
+      document.getElementById('interviewProgressBar').style.width = p + '%';
     }
-
+    
     function updateRoadmapProgress() {
-      const checkboxes = document.querySelectorAll('.btech-check');
-      const total = checkboxes.length;
-      let completed = 0;
-      checkboxes.forEach(box => { if(box.checked) completed++; });
-      const percent = Math.round((completed / total) * 100);
-      document.getElementById('roadmapScore').textContent = percent + '%';
-      document.getElementById('roadmapProgressBar').style.width = percent + '%';
+      const boxes = document.querySelectorAll('.btech-check'); 
+      let c = 0; 
+      
+      boxes.forEach(b => { 
+        if(b.checked) {
+          c++; 
+        }
+      });
+      
+      const p = Math.round((c / boxes.length) * 100); 
+      document.getElementById('roadmapScore').textContent = p + '%'; 
+      document.getElementById('roadmapProgressBar').style.width = p + '%';
     }
 
-    function formatDateTime(dateStr, timeStr) {
-      let formattedDate = "";
-      let formattedTime = "";
+    /* -------------------------------------
+       DATE/TIME & NOTIFICATIONS
+       ------------------------------------- */
+    function formatDateTime(d, t) {
+      let fd = d ? d.split('-').reverse().join('/') : `00/00/0000`;
+      let ft = `12:00 AM`;
       
-      if (dateStr && dateStr !== "No Date" && dateStr !== "") {
-        const [yyyy, mm, dd] = dateStr.split('-');
-        formattedDate = `${dd}/${mm}/${yyyy}`;
-      } else {
-        formattedDate = `00/00/0000`; 
+      if (t) { 
+        let [h, m] = t.split(':'); 
+        h = parseInt(h); 
+        const ampm = h >= 12 ? 'PM' : 'AM'; 
+        h = h % 12 || 12; 
+        ft = `${h}:${m} ${ampm}`; 
       }
       
-      if (timeStr && timeStr !== "No Time" && timeStr !== "") {
-        let [hour, minute] = timeStr.split(':');
-        hour = parseInt(hour, 10);
-        const ampm = hour >= 12 ? 'PM' : 'AM';
-        hour = hour % 12;
-        hour = hour ? hour : 12; 
-        formattedTime = `${hour}:${minute} ${ampm}`;
-      } else {
-        formattedTime = `12:00 AM`; 
-      }
-      
-      return { formattedDate, formattedTime };
+      return { fd, ft };
     }
 
     function sendNotification(title, body) {
-      try {
-        const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-        audio.play().catch(e => console.log('Audio blocked', e));
-      } catch(e) {}
+      try { 
+        new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3').play().catch(e => {}); 
+      } catch(e){}
       
       if (Notification.permission === 'granted') {
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.ready.then(function(registration) {
-            registration.showNotification(title, {
-              body: body,
-              icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png',
-              vibrate: [200, 100, 200]
-            });
-          });
-        } else {
-          new Notification(title, { body: body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' });
-        }
+        new Notification(title, { 
+          body: body, 
+          icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' 
+        });
       }
     }
 
-    function checkNotifications() {
-      const now = new Date();
-      tasks.forEach(t => {
-        if (!t.completed && !t.notified && t.date !== "No Date" && t.date !== "") {
-          const taskTime = (t.time && t.time !== "No Time") ? t.time : '00:00';
-          const taskDateTime = new Date(`${t.date}T${taskTime}`);
-          if (now >= taskDateTime) {
-            sendNotification("Task Due: " + t.text, "It is time to complete your action task!");
-            t.notified = true;
-          }
-        }
-      });
-      plans.forEach(p => {
-        if (!p.notified && p.date !== "No Date" && p.date !== "") {
-          const planTime = (p.time && p.time !== "No Time") ? p.time : '00:00';
-          const planDateTime = new Date(`${p.date}T${planTime}`);
-          if (now >= planDateTime) {
-            sendNotification("Milestone Reached!", p.text);
-            p.notified = true;
-          }
-        }
-      });
-    }
-
-    setInterval(checkNotifications, 10000); 
-
+    /* -------------------------------------
+       HOLD TO DELETE
+       ------------------------------------- */
     let holdTimer;
+    
     function startHold(type, index) {
       holdTimer = setTimeout(() => {
         if (type === 'task') {
-          if (confirm('Delete this task?')) { tasks.splice(index, 1); renderTasks(); }
+          if (confirm('Delete this task?')) { 
+            tasks.splice(index, 1); 
+            renderTasks(); 
+          }
         } else if (type === 'plan') {
-          if (confirm('Delete this study plan?')) { plans.splice(index, 1); renderPlans(); }
+          if (confirm('Delete plan?')) { 
+            plans.splice(index, 1); 
+            renderPlans(); 
+          }
         }
       }, 1000); 
     }
-    function cancelHold() { clearTimeout(holdTimer); }
+    
+    function cancelHold() { 
+      clearTimeout(holdTimer); 
+    }
 
+    /* -------------------------------------
+       TASKS LOGIC
+       ------------------------------------- */
     let tasks = []; 
+    let plans = [];
+    
     function addTask() {
-      if (Notification.permission === "default") Notification.requestPermission();
-
-      const input = document.getElementById('taskInput');
-      const date = document.getElementById('taskDate');
-      const time = document.getElementById('taskTime');
+      const i = document.getElementById('taskInput');
+      const d = document.getElementById('taskDate');
+      const t = document.getElementById('taskTime');
       
-      if (!input.value.trim()) return;
-      tasks.push({ 
-        text: input.value.trim(), 
-        date: date.value, 
-        time: time.value,
-        completed: false,
+      if(!i.value.trim()) {
+        return;
+      }
+      
+      tasks.push({
+        text: i.value.trim(), 
+        date: d.value, 
+        time: t.value, 
+        completed: false, 
         notified: false
       });
       
-      input.value = ''; date.value = ''; time.value = '00:00';
+      i.value = ''; 
       renderTasks();
     }
     
@@ -1055,107 +1546,125 @@
       renderTasks(); 
     }
     
-    // FULLY RESTORED TASK LIST FORMATTING WITH DATES
     function renderTasks() {
-      const list = document.getElementById('taskList');
+      const list = document.getElementById('taskList'); 
       let html = '';
       
       tasks.forEach((t, i) => {
-        const { formattedDate, formattedTime } = formatDateTime(t.date, t.time);
+        const { fd, ft } = formatDateTime(t.date, t.time);
         
-        let dateHtml = `<div>📅 Date: ${formattedDate}</div>`;
-        let timeHtml = `<div>⏰ Time: ${formattedTime}</div>`;
+        let containerClass = t.completed ? 'opacity-60 bg-white/50' : 'bg-white/95';
+        let textClass = t.completed ? 'line-through text-slate-400' : 'text-slate-900';
+        let infoClass = t.completed ? 'text-slate-400' : 'text-pink-600';
+        let btnClass = t.completed ? 'bg-slate-200 text-slate-600' : 'bg-emerald-400 text-white';
+        let btnText = t.completed ? 'Undo' : '✓ Done';
         
-        const detailsContainer = `
-          <div class="text-sm sm:text-lg font-black mt-4 flex flex-col sm:flex-row gap-4 ${t.completed ? 'text-slate-400' : 'text-pink-600'}">
-            ${dateHtml}
-            ${timeHtml}
-          </div>`;
-
         html += `
-        <div class="no-select inner-glass p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all border-2 border-white ${t.completed ? 'opacity-60 bg-white/50' : 'bg-white/95 cursor-pointer'}"
-             onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
-             ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()" ontouchmove="cancelHold()">
-          <div class="flex-1 w-full min-w-0 pr-0 sm:pr-4">
-            <div class="font-black text-2xl sm:text-4xl leading-snug force-wrap w-full ${t.completed ? 'line-through text-slate-400' : 'text-slate-900'}">${t.text}</div>
-            ${detailsContainer}
+        <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border border-white ${containerClass}"
+             onmousedown="startHold('task', ${i})" 
+             onmouseup="cancelHold()" 
+             onmouseleave="cancelHold()" 
+             ontouchstart="startHold('task', ${i})" 
+             ontouchend="cancelHold()">
+             
+          <div class="flex-1 w-full min-w-0">
+            <div class="font-black text-xl sm:text-2xl force-wrap ${textClass}">
+              ${t.text}
+            </div>
+            <div class="text-xs sm:text-sm font-black mt-2 flex gap-3 ${infoClass}">
+              <span>📅 ${fd}</span>
+              <span>⏰ ${ft}</span>
+            </div>
           </div>
-          <div class="shrink-0 flex items-center mt-4 sm:mt-0">
-            <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-black transition-all text-lg sm:text-xl whitespace-nowrap shadow-md hover:shadow-xl transform hover:-translate-y-1 ${t.completed ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-gradient-to-r from-emerald-400 to-green-500 text-white border-2 border-green-300'}">
-              ${t.completed ? 'Undo' : '✓ Done'}
-            </button>
-          </div>
+          
+          <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm ${btnClass}">
+            ${btnText}
+          </button>
+          
         </div>`;
       });
       
-      const empty = '<div class="text-slate-500 font-black p-10 inner-glass rounded-[2rem] text-center text-xl sm:text-2xl border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
-      list.innerHTML = html || empty; 
+      if (html === '') {
+        html = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
+      }
       
-      const total = tasks.length;
-      const completed = tasks.filter(t => t.completed).length;
-      const pending = total - completed;
-      const progressPercent = total === 0 ? 0 : Math.round((completed / total) * 100);
-
-      document.getElementById('totalTasks').textContent = total;
-      document.getElementById('completedTasks').textContent = completed;
-      document.getElementById('pendingTasks').textContent = pending;
+      list.innerHTML = html;
       
-      document.getElementById('taskProgress').textContent = progressPercent + '%';
-      document.getElementById('progressBar').style.width = progressPercent + '%';
+      const c = tasks.filter(t => t.completed).length;
+      
+      document.getElementById('totalTasks').textContent = tasks.length; 
+      document.getElementById('completedTasks').textContent = c; 
+      document.getElementById('pendingTasks').textContent = tasks.length - c;
+      
+      const p = tasks.length === 0 ? 0 : Math.round((c / tasks.length) * 100);
+      
+      document.getElementById('taskProgress').textContent = p + '%'; 
+      document.getElementById('progressBar').style.width = p + '%';
     }
 
-    let plans = [];
+    /* -------------------------------------
+       PLANNER LOGIC
+       ------------------------------------- */
     function addPlan() {
-      if (Notification.permission === "default") Notification.requestPermission();
-
-      const input = document.getElementById('planTitle');
-      const date = document.getElementById('planDate');
-      const time = document.getElementById('planTime');
+      const i = document.getElementById('planTitle');
+      const d = document.getElementById('planDate');
+      const t = document.getElementById('planTime');
       
-      if (!input.value.trim()) return;
+      if(!i.value.trim()) {
+        return;
+      }
+      
       plans.push({
-        text: input.value.trim(),
-        date: date.value, 
-        time: time.value,
+        text: i.value.trim(), 
+        date: d.value, 
+        time: t.value, 
         notified: false
       });
       
-      input.value = ''; date.value = ''; time.value = '00:00';
+      i.value = ''; 
       renderPlans();
     }
     
-    // FULLY RESTORED PLANNER LIST FORMATTING WITH DATES
     function renderPlans() {
-      const list = document.getElementById('plannerList');
+      const list = document.getElementById('plannerList'); 
       let html = '';
       
       plans.forEach((p, i) => {
-        const { formattedDate, formattedTime } = formatDateTime(p.date, p.time);
-        
-        let dateHtml = `<div>📅 Date: ${formattedDate}</div>`;
-        let timeHtml = `<div>⏰ Time: ${formattedTime}</div>`;
-
-        const detailsContainer = `
-          <div class="bg-white/95 px-5 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-base sm:text-lg font-black text-indigo-700 flex flex-col sm:items-end gap-1.5 shadow-sm border-2 border-white shrink-0 mt-4 sm:mt-0 min-w-max">
-            ${dateHtml}
-            ${timeHtml}
-          </div>`;
+        const { fd, ft } = formatDateTime(p.date, p.time);
         
         html += `
-        <div class="no-select cursor-pointer p-6 sm:p-8 bg-gradient-to-r from-indigo-50/95 to-blue-50/95 rounded-[1.5rem] sm:rounded-[2rem] border-2 border-white shadow-lg flex flex-col sm:flex-row justify-between gap-6 hover:shadow-2xl transition-all"
-             onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
-             ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()" ontouchmove="cancelHold()">
-          <div class="flex items-start gap-4 sm:gap-6 font-black text-slate-900 text-2xl sm:text-4xl flex-1 w-full min-w-0 pr-0 sm:pr-4">
-            <div class="w-2 sm:w-2.5 h-full min-h-[3rem] sm:min-h-[4rem] bg-indigo-500 rounded-full shrink-0 shadow-[0_0_15px_rgba(99,102,241,0.6)]"></div>
-            <div class="force-wrap w-full mt-1 sm:mt-2 leading-snug">${p.text}</div>
+        <div class="no-select p-5 sm:p-6 bg-gradient-to-r from-indigo-50/95 to-blue-50/95 rounded-[1.5rem] shadow-sm flex flex-col sm:flex-row justify-between gap-4 border border-white"
+             onmousedown="startHold('plan', ${i})" 
+             onmouseup="cancelHold()" 
+             onmouseleave="cancelHold()" 
+             ontouchstart="startHold('plan', ${i})" 
+             ontouchend="cancelHold()">
+             
+          <div class="flex items-start gap-4 flex-1 w-full min-w-0">
+            <div class="w-1.5 h-full min-h-[3rem] bg-indigo-500 rounded-full shrink-0 shadow-sm"></div>
+            <div class="force-wrap font-black text-slate-900 text-xl sm:text-2xl pt-1">
+              ${p.text}
+            </div>
           </div>
-          ${detailsContainer}
+          
+          <div class="bg-white px-4 py-2 rounded-xl text-xs sm:text-sm font-black text-indigo-700 flex flex-col sm:items-end gap-1 shadow-sm border border-slate-100 shrink-0 min-w-max">
+            <span>📅 ${fd}</span>
+            <span>⏰ ${ft}</span>
+          </div>
+          
         </div>`;
       });
       
-      list.innerHTML = html || '<div class="text-slate-500 font-black p-10 inner-glass rounded-[2rem] text-center text-xl sm:text-2xl border-2 border-white border-dashed bg-white/60">No plans yet. Schedule a milestone above!</div>';
+      if (html === '') {
+        html = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No plans yet. Schedule a milestone!</div>';
+      }
+      
+      list.innerHTML = html;
     }
 
+    /* -------------------------------------
+       INITIALIZE
+       ------------------------------------- */
     renderTasks(); 
     renderPlans();
   </script>

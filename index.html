@@ -9,7 +9,7 @@
     
     <title>StudyBuddy - Premium Academic Assistant</title>
     
-    <!-- PWA Manifest Link -->
+    <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
     
     <!-- Tailwind CSS -->
@@ -19,11 +19,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Global CSS Variables for Premium Glassmorphism */
+        /* Global CSS Variables for Ultra-Vibrant Glassmorphism */
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.75);
-            --glass-shadow: 0 20px 50px rgba(31, 38, 135, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.9);
+            --glass-shadow: 0 25px 60px rgba(79, 70, 229, 0.15);
+            --brand-primary: #4f46e5;
+            --brand-secondary: #ec4899;
         }
         
         body {
@@ -34,7 +36,7 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* Fixed Background that will never hang or cut off on Mobile */
+        /* 100% Mobile Fix: Background completely fills screen, no hanging */
         .mesh-bg {
             position: fixed;
             top: 0;
@@ -42,7 +44,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            background: linear-gradient(135deg, #f0fdf4, #e0e7ff, #fae8ff);
             overflow: hidden;
         }
         
@@ -50,8 +52,8 @@
         .blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.85;
+            filter: blur(120px);
+            opacity: 0.9;
             animation: move 25s infinite alternate ease-in-out;
             will-change: transform;
         }
@@ -61,7 +63,7 @@
             left: -10%;
             width: 60vw;
             height: 60vw;
-            background: #818cf8;
+            background: #f43f5e; /* Vibrant Rose */
             animation-delay: 0s;
         }
         
@@ -70,7 +72,7 @@
             right: -10%;
             width: 70vw;
             height: 70vw;
-            background: #c084fc;
+            background: #3b82f6; /* Bright Blue */
             animation-delay: -5s;
             animation-direction: alternate-reverse;
         }
@@ -80,7 +82,7 @@
             left: 30%;
             width: 50vw;
             height: 50vw;
-            background: #38bdf8;
+            background: #10b981; /* Emerald Green */
             animation-delay: -10s;
         }
         
@@ -89,7 +91,7 @@
             left: 10%;
             width: 45vw;
             height: 45vw;
-            background: #f472b6;
+            background: #d946ef; /* Fuchsia */
             animation-delay: -15s;
         }
 
@@ -106,11 +108,11 @@
             }
         }
 
-        /* Performance Optimizations for Mobile Phones to Stop Hanging */
+        /* Performance Optimizations for Mobile Phones */
         @media (max-width: 1024px) {
             .blob {
-                filter: blur(80px);
-                opacity: 0.7;
+                filter: blur(75px);
+                opacity: 0.8;
                 animation: none; 
             }
             .blob-4 {
@@ -132,22 +134,22 @@
         @keyframes slideUp { 
             0% {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(40px) scale(0.98);
                 filter: blur(10px);
             } 
             100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
                 filter: blur(0);
             } 
         }
         
-        /* Master Glass Card UI */
+        /* Master Glass Card UI - Enhanced Colorful Borders */
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(35px);
-            -webkit-backdrop-filter: blur(35px);
-            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 2px solid var(--glass-border);
             border-radius: 2rem;
             box-shadow: var(--glass-shadow);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -155,15 +157,15 @@
         
         @media (max-width: 1024px) {
             .glass-card {
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
             }
         }
         
         .inner-glass {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(255, 255, 255, 1);
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.7), 0 8px 20px rgba(0,0,0,0.04);
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 1);
+            box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.9), 0 10px 30px rgba(0,0,0,0.05);
             border-radius: 1.5rem;
         }
         
@@ -174,15 +176,15 @@
         }
         
         .interactive-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.25);
-            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-8px) scale(1.03);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 35px 70px rgba(236, 72, 153, 0.25);
+            border-color: rgba(236, 72, 153, 0.5);
         }
 
         /* Beautiful Gradient Text */
         .text-gradient { 
-            background: linear-gradient(135deg, #4f46e5, #d946ef, #0ea5e9); 
+            background: linear-gradient(135deg, #f43f5e, #8b5cf6, #0ea5e9); 
             background-size: 300% 300%;
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
@@ -199,8 +201,8 @@
         #sidebarOverlay {
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(8px);
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(10px);
             z-index: 40;
             opacity: 0;
             pointer-events: none;
@@ -215,8 +217,8 @@
         /* Modal popups */
         .modal-overlay {
             display: none;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(25px);
             z-index: 100;
         }
         
@@ -257,10 +259,10 @@
         }
         
         .roadmap-check:checked {
-            background-color: #4f46e5;
-            border-color: #4f46e5;
+            background-color: #8b5cf6;
+            border-color: #8b5cf6;
             transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(79, 70, 229, 0.6);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
         }
         
         .roadmap-check:checked::after {
@@ -280,7 +282,7 @@
             opacity: 0.5;
         }
         
-        /* Strict Text Wrapping Fix to Prevent Box Cut-Offs on Mobile */
+        /* Strict Text Wrapping Fix */
         .force-wrap {
             word-break: break-word;
             overflow-wrap: break-word;
@@ -302,46 +304,38 @@
             scrollbar-width: none;
         }
 
-        /* Beautiful Gradient Buttons */
+        /* Beautiful Gradient Buttons - Upgraded */
         .btn-primary {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            background: linear-gradient(135deg, #ff007f, #7928ca);
             color: white;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
+            border: 2px solid transparent;
         }
         .btn-primary:hover {
-            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.5);
-            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(255, 0, 127, 0.6);
+            transform: translateY(-3px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
         
         .btn-success {
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
             color: white;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
         }
         .btn-success:hover {
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.5);
-            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(79, 172, 254, 0.6);
+            transform: translateY(-3px);
         }
 
-        .btn-danger {
-            background: linear-gradient(135deg, #f43f5e, #e11d48);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        .btn-danger:hover {
-            box-shadow: 0 10px 25px rgba(244, 63, 94, 0.5);
-            transform: translateY(-2px);
-        }
-
-        /* Active Sidebar Item Styling */
+        /* Active Sidebar Item Styling - Colorful */
         .sidebar-active {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
+            background: linear-gradient(135deg, #0f172a, #334155);
             color: white !important;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
-            border-left: 4px solid #818cf8;
-            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4);
+            border-left: 5px solid #ff007f;
+            transform: scale(1.03);
         }
     </style>
 </head>
@@ -363,11 +357,11 @@
             <div class="space-y-4">
                 <div>
                     <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Email Address</label>
-                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-indigo-500 focus:bg-white font-bold text-base transition-colors">
+                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors">
                 </div>
                 <div>
                     <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Password</label>
-                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-indigo-500 focus:bg-white font-bold text-base transition-colors">
+                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors">
                 </div>
                 <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
                 <div class="flex gap-4 pt-2">
@@ -378,19 +372,19 @@
         </div>
     </div>
 
-    <!-- MOBILE HAMBURGER HEADER (Only visible on phones) -->
-    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-md">
+    <!-- MOBILE HAMBURGER HEADER -->
+    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
         <div class="text-xl font-black flex items-center gap-2">
-            <svg class="w-6 h-6 text-indigo-600 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-7 h-7 text-pink-500 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
             <span class="text-gradient">StudyBuddy</span>
         </div>
         
-        <button onclick="toggleSidebar()" class="px-4 py-2 bg-slate-100 rounded-xl text-slate-800 hover:bg-slate-200 shadow-inner border border-white flex items-center gap-2 transition-colors">
+        <button onclick="toggleSidebar()" class="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl text-white shadow-lg flex items-center gap-2 transition-transform transform hover:scale-105 border border-white/50">
             <span class="font-black text-xs uppercase tracking-widest">Menu</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
         </button>
     </div>
@@ -398,15 +392,14 @@
     <!-- SLIDE-IN OVERLAY FOR MOBILE -->
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
-    <!-- PREMIUM SIDEBAR (Fixed on Desktop, Slide-in on Mobile) -->
-    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-500 ease-in-out shadow-2xl lg:shadow-none overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-none">
+    <!-- PREMIUM SIDEBAR -->
+    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/70 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
         
         <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
 
         <div>
-            <!-- Desktop Logo -->
-            <div class="text-2xl font-black mb-8 hidden lg:flex items-center gap-3 tracking-tighter cursor-default">
-                <svg class="w-8 h-8 text-indigo-600 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
+            <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-3 tracking-tighter cursor-default">
+                <svg class="w-9 h-9 text-pink-500 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
                 <span class="text-gradient">StudyBuddy</span>
@@ -414,51 +407,50 @@
             
             <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
 
-            <!-- Navigation Links -->
             <nav class="space-y-2">
                 <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base">
                     <span>🏠</span> Dashboard
                 </button>
                 
-                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
                     <span>📅</span> Study Planner
                 </button>
                 
-                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
                     <span>✅</span> Action Tasks
                 </button>
                 
-                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
                     <span>⏱️</span> Focus Timer
                 </button>
                 
-                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
-                    <span>📊</span> CGPA Predictor
+                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
+                    <span>📊</span> SGPA / CGPA
                 </button>
                 
-                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
                     <span>🚀</span> Projects Portfolio
                 </button>
                 
-                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
                     <span>🎯</span> Job Tracker
                 </button>
 
-                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
                     <span>🗺️</span> B.Tech Roadmap
                 </button>
                 
-                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
                     <span>📚</span> Resource Vault
                 </button>
                 
-                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
                     <span>💼</span> Interview Skills
                 </button>
             </nav>
             
             <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
-                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-md font-black text-base mb-3">
+                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-lg font-black text-base mb-3 border-2 border-white/50">
                     Install App 📲
                 </button>
             </div>
@@ -468,7 +460,7 @@
             <div id="userInfo" class="text-sm text-indigo-900 mb-3 truncate font-black bg-white/80 px-3 py-2 rounded-lg text-center shadow-sm border border-white">
                 Not signed in
             </div>
-            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base transition-all transform hover:-translate-y-1 hover:shadow-lg">
+            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base transition-all transform hover:-translate-y-1 hover:shadow-lg border-2 border-slate-700">
                 Sign In / Sign Up
             </button>
         </div>
@@ -480,11 +472,11 @@
         <!-- Global Header -->
         <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-8 mt-6 lg:mt-2 px-3 lg:px-2">
             <div>
-                <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
+                <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
                 <p class="text-slate-800 font-extrabold mt-2 text-sm sm:text-base bg-white/80 inline-block px-4 py-1.5 rounded-lg shadow-sm border border-white">Your premium academic command center</p>
             </div>
-            <div class="text-xs sm:text-sm glass-card bg-white/95 px-4 py-3 font-black text-indigo-900 flex items-center gap-2 shadow-md border-2 border-white self-start sm:self-auto transform hover:scale-105 transition-transform">
-                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></span> Workspace Active
+            <div class="text-xs sm:text-sm glass-card bg-white/95 px-5 py-3 font-black text-indigo-900 flex items-center gap-2 shadow-md border-2 border-white self-start sm:self-auto transform hover:scale-105 transition-transform">
+                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
             </div>
         </header>
 
@@ -492,44 +484,44 @@
         <!-- DASHBOARD SECTION                          -->
         <!-- ========================================== -->
         <section id="dashboard" class="page active px-2">
-            <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(79,70,229,0.3)] border-2 border-white/50 bg-slate-900">
-                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-indigo-500 opacity-40 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-fuchsia-500 opacity-40 rounded-full blur-3xl"></div>
+            <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(236,72,153,0.3)] border-2 border-white/50 bg-slate-900">
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-pink-500 opacity-40 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-indigo-500 opacity-40 rounded-full blur-3xl"></div>
                 
                 <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-4 relative z-10 drop-shadow-xl tracking-tight leading-tight">Welcome to your future. ✨</h2>
-                <p class="text-indigo-100 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
+                <p class="text-indigo-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
             </div>
 
             <!-- Dashboard Stats Grid -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
-                    <p class="text-sm sm:text-base text-indigo-700 font-black uppercase tracking-widest z-10">Total Tasks</p>
+                    <p class="text-sm sm:text-base text-pink-600 font-black uppercase tracking-widest z-10">Total Tasks</p>
                     <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10">0</h2>
                 </div>
                 
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
-                    <p class="text-sm sm:text-base text-emerald-700 font-black uppercase tracking-widest z-10">Completed</p>
-                    <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10">0</h2>
+                    <p class="text-sm sm:text-base text-emerald-600 font-black uppercase tracking-widest z-10">Completed</p>
+                    <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-500 z-10">0</h2>
                 </div>
                 
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('portfolio')">
-                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects</p>
-                    <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-600 z-10">0</h2>
+                    <p class="text-sm sm:text-base text-purple-600 font-black uppercase tracking-widest z-10">Projects</p>
+                    <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-500 z-10">0</h2>
                 </div>
                 
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('jobs')">
-                    <p class="text-sm sm:text-base text-blue-700 font-black uppercase tracking-widest z-10">Job Apps</p>
-                    <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 text-blue-600 z-10">0</h2>
+                    <p class="text-sm sm:text-base text-blue-600 font-black uppercase tracking-widest z-10">Job Apps</p>
+                    <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 text-blue-500 z-10">0</h2>
                 </div>
             </div>
             
             <!-- Dashboard Mini-Widgets -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Mini Task List -->
-                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col relative overflow-hidden shadow-sm">
+                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col relative overflow-hidden shadow-md border-2 border-white">
                     <div class="flex justify-between items-center mb-4">
                         <p class="text-lg text-slate-800 font-black tracking-tight z-10">Upcoming Tasks</p>
-                        <button onclick="showPage('tasks')" class="text-indigo-600 font-bold text-sm hover:underline">View All</button>
+                        <button onclick="showPage('tasks')" class="text-pink-600 font-black text-sm hover:underline uppercase tracking-wide">View All</button>
                     </div>
                     <div id="dashMiniTasks" class="space-y-3 z-10 max-h-48 overflow-y-auto hide-scroll">
                         <!-- Populated by JS -->
@@ -537,12 +529,12 @@
                 </div>
 
                 <!-- Progress Section -->
-                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-sm">
-                    <p class="text-lg text-fuchsia-700 font-black uppercase tracking-widest z-10 mb-4 text-center">Task Completion</p>
+                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-md border-2 border-white">
+                    <p class="text-lg text-indigo-700 font-black uppercase tracking-widest z-10 mb-4 text-center">Task Completion</p>
                     <div class="flex flex-col items-center gap-4 z-10">
-                        <h2 id="taskProgress" class="text-6xl sm:text-7xl font-black text-fuchsia-600">0%</h2>
+                        <h2 id="taskProgress" class="text-6xl sm:text-7xl font-black text-indigo-600 drop-shadow-md">0%</h2>
                         <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white">
-                            <div id="progressBar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_15px_rgba(217,70,239,0.8)]" style="width: 0%"></div>
+                            <div id="progressBar" class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_20px_rgba(236,72,153,0.8)]" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
@@ -553,19 +545,19 @@
         <!-- PLANNER SECTION                            -->
         <!-- ========================================== -->
         <section id="planner" class="page px-2">
-            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-lg border-2 border-white">
-                <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
+            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white">
+                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
                 <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Schedule your major study blocks. Data is saved locally.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
-                    <input type="text" id="planTitle" placeholder="Milestone name..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base focus:border-indigo-500 outline-none transition-colors">
+                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    <input type="text" id="planTitle" placeholder="Milestone name..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm sm:text-base focus:border-pink-500 outline-none transition-colors">
                     
                     <div class="flex gap-3 w-full lg:w-auto">
-                        <input type="date" id="planDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
-                        <input type="time" id="planTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
+                        <input type="date" id="planDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-pink-500 outline-none transition-colors">
+                        <input type="time" id="planTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-pink-500 outline-none transition-colors">
                     </div>
                     
-                    <button onclick="addPlan()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base">
+                    <button onclick="addPlan()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
                         Add Plan
                     </button>
                 </div>
@@ -578,22 +570,22 @@
         <!-- TASKS SECTION                              -->
         <!-- ========================================== -->
         <section id="tasks" class="page px-2">
-            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-lg border-2 border-white">
+            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white">
                 <div class="flex justify-between items-end mb-3">
-                    <h2 class="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight">✅ Action Items</h2>
-                    <button onclick="clearCompletedTasks()" class="text-rose-500 font-bold hover:underline text-sm sm:text-base">Clear Completed</button>
+                    <h2 class="text-3xl sm:text-5xl font-black text-slate-800 tracking-tight">✅ Action Items</h2>
+                    <button onclick="clearCompletedTasks()" class="text-rose-500 font-black bg-rose-100 px-4 py-2 rounded-lg hover:bg-rose-200 transition-colors text-xs sm:text-sm shadow-sm uppercase tracking-wide">Clear Done</button>
                 </div>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Data is saved locally. Add your assignments below.</p>
+                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Add assignments and deadlines. Hold tasks to delete.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
-                    <input type="text" id="taskInput" placeholder="Task description..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base focus:border-pink-500 outline-none transition-colors">
+                <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    <input type="text" id="taskInput" placeholder="Task description..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm sm:text-base focus:border-indigo-500 outline-none transition-colors">
                     
                     <div class="flex gap-3 w-full lg:w-auto">
-                        <input type="date" id="taskDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm focus:border-pink-500 outline-none transition-colors">
-                        <input type="time" id="taskTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm focus:border-pink-500 outline-none transition-colors">
+                        <input type="date" id="taskDate" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
+                        <input type="time" id="taskTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-slate-900 text-sm focus:border-indigo-500 outline-none transition-colors">
                     </div>
                     
-                    <button onclick="addTask()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base">
+                    <button onclick="addTask()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
                         Add Task
                     </button>
                 </div>
@@ -606,77 +598,71 @@
         <!-- FOCUS TIMER SECTION                        -->
         <!-- ========================================== -->
         <section id="timer" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white text-center">
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center">
                 <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">⏱️ Focus Timer</h2>
                 <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Set your study time and take planned breaks.</p>
                 
-                <div class="inner-glass bg-white/80 p-8 sm:p-12 rounded-[2rem] shadow-sm border border-white mb-6">
-                    <div id="timeDisplay" class="timer-display text-7xl sm:text-9xl font-black text-indigo-600 drop-shadow-md mb-6">25:00</div>
+                <div class="inner-glass bg-white/90 p-8 sm:p-12 rounded-[2rem] shadow-lg border-2 border-white mb-6">
+                    <div id="timeDisplay" class="timer-display text-7xl sm:text-[10rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 drop-shadow-md mb-6 leading-none py-2">25:00</div>
                     
                     <!-- ADJUSTABLE TIMER CONTROLS -->
                     <div class="flex justify-center items-center gap-4 mb-8">
-                        <button onclick="adjustTimer(-5)" class="px-5 py-2 rounded-xl font-black bg-rose-100 text-rose-700 hover:bg-rose-200 transition-all shadow-sm transform hover:-translate-y-1">- 5 Min</button>
+                        <button onclick="adjustTimer(-5)" class="px-5 py-2.5 rounded-xl font-black bg-rose-100 text-rose-700 hover:bg-rose-200 transition-all shadow-sm transform hover:-translate-y-1">- 5 Min</button>
                         
                         <!-- Custom Input Field -->
-                        <div class="flex items-center gap-2 bg-white px-3 py-1 rounded-xl border-2 border-slate-200 shadow-inner">
+                        <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border-2 border-slate-200 shadow-inner">
                             <input type="number" id="customFocusTime" placeholder="Min" class="w-16 text-center font-black text-lg text-slate-800 bg-transparent outline-none">
-                            <button onclick="setCustomTimer()" class="text-indigo-600 font-black hover:text-indigo-800 text-sm bg-indigo-50 px-3 py-1 rounded-lg">Set</button>
+                            <button onclick="setCustomTimer()" class="text-indigo-600 font-black hover:text-white hover:bg-indigo-500 transition-colors text-sm bg-indigo-50 px-3 py-1.5 rounded-lg uppercase">Set</button>
                         </div>
                         
-                        <button onclick="adjustTimer(5)" class="px-5 py-2 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm transform hover:-translate-y-1">+ 5 Min</button>
+                        <button onclick="adjustTimer(5)" class="px-5 py-2.5 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm transform hover:-translate-y-1">+ 5 Min</button>
                     </div>
 
                     <!-- PLAYBACK CONTROLS -->
                     <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="startTimer()" id="startBtn" class="btn-primary px-10 py-4 rounded-xl font-black text-lg w-40">Start</button>
-                        <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-amber-500 text-white px-10 py-4 rounded-xl font-black hover:shadow-lg transition-all text-lg w-40 transform hover:-translate-y-1">Pause</button>
-                        <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-300 px-10 py-4 rounded-xl font-black hover:bg-slate-50 transition-all text-lg w-40 shadow-sm hover:shadow-md">Reset</button>
+                        <button onclick="startTimer()" id="startBtn" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl w-48 uppercase tracking-widest shadow-xl">Start</button>
+                        <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-gradient-to-r from-amber-400 to-orange-500 text-white px-12 py-5 rounded-2xl font-black hover:shadow-lg transition-all text-xl w-48 uppercase tracking-widest transform hover:-translate-y-1 shadow-xl border border-white/50">Pause</button>
+                        <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-200 px-12 py-5 rounded-2xl font-black hover:bg-slate-50 transition-all text-xl w-48 uppercase tracking-widest shadow-md hover:shadow-lg">Reset</button>
                     </div>
                 </div>
                 
                 <!-- QUICK PRESETS -->
-                <div class="flex flex-wrap justify-center gap-3">
-                    <button onclick="setTimerMode(25)" class="px-6 py-3 rounded-xl font-black transition-all bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 text-sm shadow-sm transform hover:-translate-y-1">25m Focus</button>
-                    <button onclick="setTimerMode(5)" class="px-6 py-3 rounded-xl font-black transition-all bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-sm shadow-sm transform hover:-translate-y-1">5m Break</button>
-                    <button onclick="setTimerMode(10)" class="px-6 py-3 rounded-xl font-black transition-all bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 text-sm shadow-sm transform hover:-translate-y-1">10m Break</button>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="setTimerMode(25)" class="px-6 py-3 rounded-xl font-black transition-all bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 text-sm sm:text-base shadow-sm transform hover:-translate-y-1">25m Focus</button>
+                    <button onclick="setTimerMode(5)" class="px-6 py-3 rounded-xl font-black transition-all bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-sm sm:text-base shadow-sm transform hover:-translate-y-1">5m Break</button>
+                    <button onclick="setTimerMode(10)" class="px-6 py-3 rounded-xl font-black transition-all bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 text-sm sm:text-base shadow-sm transform hover:-translate-y-1">10m Break</button>
                 </div>
             </div>
         </section>
 
         <!-- ========================================== -->
-        <!-- CGPA PREDICTOR SECTION                     -->
+        <!-- SGPA CALCULATOR (UPDATED TO EXACTLY 2 SEMESTERS) -->
         <!-- ========================================== -->
         <section id="cgpa" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white text-center">
-                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📊 CGPA Predictor</h2>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Calculate overall CGPA by entering SGPA for your semesters.</p>
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center">
+                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📊 SGPA / CGPA Predictor</h2>
+                <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">Calculate your final academic standing for your two semesters.</p>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-left">
-                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white transform hover:scale-105 transition-transform">
-                        <label class="block font-black text-slate-700 mb-2 text-xs uppercase tracking-widest">Sem 1 SGPA</label>
-                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500 transition-colors">
+                <!-- EXACTLY 2 SEMESTERS AS REQUESTED -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 text-left max-w-2xl mx-auto">
+                    <div class="inner-glass p-6 rounded-2xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
+                        <label class="block font-black text-pink-600 mb-3 text-sm uppercase tracking-widest">Semester 1 SGPA</label>
+                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-4 font-black text-2xl text-slate-800 outline-none focus:border-pink-500 transition-colors shadow-inner text-center">
                     </div>
-                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white transform hover:scale-105 transition-transform">
-                        <label class="block font-black text-slate-700 mb-2 text-xs uppercase tracking-widest">Sem 2 SGPA</label>
-                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500 transition-colors">
-                    </div>
-                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white transform hover:scale-105 transition-transform">
-                        <label class="block font-black text-slate-700 mb-2 text-xs uppercase tracking-widest">Sem 3 SGPA</label>
-                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500 transition-colors">
-                    </div>
-                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white transform hover:scale-105 transition-transform">
-                        <label class="block font-black text-slate-700 mb-2 text-xs uppercase tracking-widest">Sem 4 SGPA</label>
-                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500 transition-colors">
+                    <div class="inner-glass p-6 rounded-2xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
+                        <label class="block font-black text-indigo-600 mb-3 text-sm uppercase tracking-widest">Semester 2 SGPA</label>
+                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-4 font-black text-2xl text-slate-800 outline-none focus:border-indigo-500 transition-colors shadow-inner text-center">
                     </div>
                 </div>
 
-                <button onclick="calculateCGPA()" class="btn-primary px-10 py-4 rounded-xl font-black text-lg mb-8">
+                <button onclick="calculateCGPA()" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl mb-10 shadow-xl uppercase tracking-widest">
                     Calculate Result
                 </button>
 
-                <div class="inner-glass bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200 p-8 rounded-[1.5rem] shadow-md max-w-xs mx-auto transform hover:scale-105 transition-transform">
-                    <p class="text-sm font-black uppercase text-indigo-700 tracking-widest mb-1">Final CGPA</p>
-                    <h2 id="cgpaResult" class="text-6xl font-black text-slate-900 drop-shadow-sm">0.00</h2>
+                <div class="inner-glass bg-gradient-to-br from-indigo-50 to-pink-50 border-2 border-white p-10 rounded-[2rem] shadow-xl max-w-sm mx-auto transform hover:scale-105 transition-transform">
+                    <p class="text-sm font-black uppercase text-slate-500 tracking-widest mb-2">Final Result</p>
+                    <h2 id="cgpaResult" class="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 drop-shadow-sm">0.00</h2>
+                    <p class="text-xs font-black uppercase text-indigo-400 tracking-widest mt-2">SGPA / CGPA</p>
                 </div>
             </div>
         </section>
@@ -685,19 +671,19 @@
         <!-- PROJECT PORTFOLIO SECTION (LOCAL STORAGE)  -->
         <!-- ========================================== -->
         <section id="portfolio" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white">
                 <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">🚀 Project Portfolio</h2>
                 <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Track your personal projects and GitHub repos to show recruiters.</p>
                 
                 <!-- Project Input Form -->
-                <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 rounded-2xl shadow-sm border border-white items-center">
-                    <input type="text" id="projTitle" placeholder="Project Title" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-indigo-500 transition-colors">
-                    <input type="text" id="projStack" placeholder="Tech Stack (e.g., React, Node)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-indigo-500 transition-colors">
-                    <button onclick="addProject()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm transition-all">Add Project</button>
+                <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    <input type="text" id="projTitle" placeholder="Project Title" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
+                    <input type="text" id="projStack" placeholder="Tech Stack (e.g., React, Node)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
+                    <button onclick="addProject()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">Add Project</button>
                 </div>
                 
                 <!-- Project List -->
-                <div id="projList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div id="projList" class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <!-- Populated by JS -->
                 </div>
             </div>
@@ -707,27 +693,27 @@
         <!-- JOB TRACKER SECTION (LOCAL STORAGE)        -->
         <!-- ========================================== -->
         <section id="jobs" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="text-2xl sm:text-4xl bg-gradient-to-br from-red-100 to-rose-50 rounded-full p-2 w-12 h-12 flex items-center justify-center shadow-inner border border-red-200">🎯</div>
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white">
+                <div class="flex items-center gap-4 mb-3">
+                    <div class="text-2xl sm:text-4xl bg-gradient-to-br from-red-100 to-rose-50 rounded-full p-2 w-14 h-14 flex items-center justify-center shadow-md border-2 border-red-200">🎯</div>
                     <h2 class="text-3xl sm:text-5xl font-black text-slate-800 tracking-tight">Job Tracker</h2>
                 </div>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Keep track of your internship and job applications.</p>
+                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base mt-2">Keep track of your internship and job applications.</p>
                 
                 <!-- Job Input Form -->
-                <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 rounded-2xl shadow-sm border border-white items-center">
-                    <input type="text" id="jobCompany" placeholder="Company Name" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-indigo-500 transition-colors">
+                <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    <input type="text" id="jobCompany" placeholder="Company Name" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
                     
-                    <input type="text" id="jobRole" placeholder="Role (e.g., SDE Intern)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-indigo-500 transition-colors">
+                    <input type="text" id="jobRole" placeholder="Role (e.g., SDE Intern)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
                     
-                    <select id="jobStatus" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm text-slate-700 outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                    <select id="jobStatus" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base text-slate-700 outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                         <option value="Applied">Applied</option>
                         <option value="Interviewing">Interviewing</option>
                         <option value="Offer Received">Offer Received</option>
                         <option value="Rejected">Rejected</option>
                     </select>
                     
-                    <button onclick="addJob()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm transition-all">Save Job</button>
+                    <button onclick="addJob()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">Save App</button>
                 </div>
                 
                 <!-- Job List -->
@@ -741,81 +727,81 @@
         <!-- RESOURCE VAULT SECTION                     -->
         <!-- ========================================== -->
         <section id="resources" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white">
                 <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📚 Resources & Notes</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">Create subject folders and upload your study materials.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                     
-                    <!-- Box 1 -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                    <!-- EXPLICITLY UNCOMPRESSED BOX 1 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                            <label class="cursor-pointer bg-pink-100 text-pink-700 px-4 py-2 rounded-lg font-black hover:bg-pink-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-pink-200">
                                 <span>➕</span> Add File 
                                 <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
                             </label>
-                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
                         </div>
                     </div>
                     
-                    <!-- Box 2 -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                    <!-- EXPLICITLY UNCOMPRESSED BOX 2 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-blue-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                            <label class="cursor-pointer bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-black hover:bg-blue-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-blue-200">
                                 <span>➕</span> Add File 
                                 <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
                             </label>
-                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
                         </div>
                     </div>
 
-                    <!-- Box 3 -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                    <!-- EXPLICITLY UNCOMPRESSED BOX 3 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-emerald-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                            <label class="cursor-pointer bg-emerald-100 text-emerald-700 px-4 py-2 rounded-lg font-black hover:bg-emerald-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-emerald-200">
                                 <span>➕</span> Add File 
                                 <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
                             </label>
-                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
                         </div>
                     </div>
 
-                    <!-- Box 4 -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                    <!-- EXPLICITLY UNCOMPRESSED BOX 4 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-purple-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                            <label class="cursor-pointer bg-purple-100 text-purple-700 px-4 py-2 rounded-lg font-black hover:bg-purple-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-purple-200">
                                 <span>➕</span> Add File 
                                 <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
                             </label>
-                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
                         </div>
                     </div>
                     
-                    <!-- Box 5 -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                    <!-- EXPLICITLY UNCOMPRESSED BOX 5 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-amber-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                            <label class="cursor-pointer bg-amber-100 text-amber-700 px-4 py-2 rounded-lg font-black hover:bg-amber-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-amber-200">
                                 <span>➕</span> Add File 
                                 <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
                             </label>
-                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
                         </div>
                     </div>
                     
-                    <!-- Box 6 -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                    <!-- EXPLICITLY UNCOMPRESSED BOX 6 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-teal-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex items-center justify-between mt-auto pt-4">
-                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                            <label class="cursor-pointer bg-teal-100 text-teal-700 px-4 py-2 rounded-lg font-black hover:bg-teal-200 transition-all text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 border border-teal-200">
                                 <span>➕</span> Add File 
                                 <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
                             </label>
-                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                            <span class="text-xs font-black text-slate-400 transition-colors uppercase tracking-widest">0 files</span>
                         </div>
                     </div>
 
@@ -827,7 +813,7 @@
         <!-- B.TECH TECH SKILLS ROADMAP SECTION         -->
         <!-- ========================================== -->
         <section id="roadmap" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white">
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-10 gap-6">
                     <div>
@@ -837,164 +823,168 @@
                         <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/70 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">Your 4-year path to Software Engineer.</p>
                     </div>
                     
-                    <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-sm border border-white">
+                    <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-md border-2 border-white">
                         <div class="flex justify-between items-end mb-2">
                             <span class="text-sm font-black uppercase text-slate-600 tracking-widest">Completion</span>
                             <span id="roadmapScore" class="text-4xl sm:text-5xl font-black text-indigo-600 drop-shadow-sm">0%</span>
                         </div>
                         <div class="w-full bg-slate-200/80 rounded-full h-4 overflow-hidden shadow-inner border border-white/50">
-                            <div id="roadmapProgressBar" class="bg-gradient-to-r from-indigo-400 to-cyan-500 h-full rounded-full transition-all duration-700" style="width: 0%"></div>
+                            <div id="roadmapProgressBar" class="bg-gradient-to-r from-indigo-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-md" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="flex gap-2 sm:gap-4 mb-8 overflow-x-auto pb-4 hide-scroll border-b-2 border-slate-200">
-                    <button onclick="showYear('year1', this)" class="year-tab-btn bg-slate-900 text-white px-6 py-3 rounded-xl font-black shadow-md transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1">Year 1</button>
-                    <button onclick="showYear('year2', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap">Year 2</button>
-                    <button onclick="showYear('year3', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap">Year 3</button>
-                    <button onclick="showYear('year4', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap">Year 4</button>
+                <!-- STYLED SCROLLABLE TABS -->
+                <div class="flex gap-2 sm:gap-4 mb-8 overflow-x-auto pb-4 hide-scroll border-b-4 border-slate-200/50">
+                    <button onclick="showYear('year1', this)" class="year-tab-btn btn-primary px-8 py-3.5 rounded-xl font-black shadow-lg transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase">Year 1</button>
+                    
+                    <button onclick="showYear('year2', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase">Year 2</button>
+                    
+                    <button onclick="showYear('year3', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase">Year 3</button>
+                    
+                    <button onclick="showYear('year4', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase">Year 4</button>
                 </div>
 
                 <div>
                     <!-- YEAR 1 -->
                     <div id="year1" class="year-content active grid md:grid-cols-2 gap-6 transition-opacity duration-300">
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
+                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-indigo-900 mb-5 text-xl border-b-2 border-indigo-200 pb-2">Semester 1: Foundation</div>
                             <div class="space-y-4">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">C / C++ Programming Basics</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">C / C++ Programming Basics</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Terminal & Linux Command Line</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Terminal & Linux Command Line</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Git & GitHub (Version Control)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Git & GitHub (Version Control)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Basic HTML5 & CSS3</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Basic HTML5 & CSS3</span>
                                 </label>
                             </div>
                         </div>
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
+                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-indigo-900 mb-5 text-xl border-b-2 border-indigo-200 pb-2">Semester 2: Data & Logic</div>
                             <div class="space-y-4">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Data Structures (Arrays, Lists, Stacks)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Data Structures (Arrays, Lists)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Python Scripting & Automation</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Python Scripting & Automation</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Intro to JavaScript (DOM)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Intro to JavaScript (DOM)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Relational Algebra & SQL Basics</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Relational Algebra & SQL</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <!-- YEAR 2 -->
-                    <div id="year2" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
+                    <div id="year2" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
+                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 3: Core CS</div>
                             <div class="space-y-4">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Object-Oriented Programming (Java/C++)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Object-Oriented Programming (Java/C++)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Advanced DSA (Trees, Graphs)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Advanced DSA (Trees, Graphs)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">DBMS Architecture & Normalization</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">DBMS Architecture & Normalization</span>
                                 </label>
                             </div>
                         </div>
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
+                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 4: Systems</div>
                             <div class="space-y-4">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Operating Systems (Threads, Memory)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Operating Systems (Threads, Memory)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Computer Networks (TCP/IP, HTTP)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Computer Networks (TCP/IP, HTTP)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Building REST APIs</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Building REST APIs</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <!-- YEAR 3 -->
-                    <div id="year3" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
+                    <div id="year3" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
+                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 5: Architecture</div>
                             <div class="space-y-4">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Backend Engineering (Node.js/Spring)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">Backend Engineering (Node.js/Spring)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Cloud Platforms (AWS Core Services)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">Cloud Platforms (AWS Core Services)</span>
                                 </label>
                             </div>
                         </div>
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
+                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 6: Engineering</div>
                             <div class="space-y-4">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">DevOps Culture (Docker, CI/CD)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">DevOps Culture (Docker, CI/CD)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">App Security & Cryptography</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">App Security & Cryptography</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <!-- YEAR 4 -->
-                    <div id="year4" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
+                    <div id="year4" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
+                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 7: Scale & Polish</div>
                             <div class="space-y-4">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">System Design (Microservices)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">System Design (Microservices)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Kubernetes & Orchestration</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Kubernetes & Orchestration</span>
                                 </label>
                             </div>
                         </div>
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
+                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 8: Industry Ready</div>
                             <div class="space-y-4">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Elite DSA Problem Solving</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Elite DSA Problem Solving</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Mock Interviews (Peers)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Mock Interviews (Peers)</span>
                                 </label>
                             </div>
                         </div>
@@ -1007,7 +997,7 @@
         <!-- CAREER LAUNCHPAD & INTERVIEW SKILLS        -->
         <!-- ========================================== -->
         <section id="career" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white">
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
                     <div>
@@ -1017,13 +1007,13 @@
                         <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/80 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">Top 1% candidate checklist.</p>
                     </div>
                     
-                    <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-sm border border-white">
+                    <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-md border-2 border-white">
                         <div class="flex justify-between items-end mb-2">
                             <span class="text-sm font-black uppercase text-slate-600 tracking-widest">Score</span>
                             <span id="interviewScore" class="text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm">0%</span>
                         </div>
                         <div class="w-full bg-slate-200/80 rounded-full h-4 overflow-hidden shadow-inner border border-white/50">
-                            <div id="interviewProgressBar" class="bg-gradient-to-r from-emerald-400 to-cyan-500 h-full rounded-full transition-all duration-700" style="width: 0%"></div>
+                            <div id="interviewProgressBar" class="bg-gradient-to-r from-emerald-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-sm" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
@@ -1031,7 +1021,7 @@
                 <div class="grid md:grid-cols-2 gap-6 relative z-10">
                     
                     <!-- Column 1: Core Technical -->
-                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-blue-500 border border-white hover:shadow-md transition-all">
+                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-blue-500 border-2 border-white hover:shadow-lg transition-all">
                         <div class="flex items-center gap-3 font-black text-blue-900 mb-5 text-xl sm:text-2xl border-b-2 border-blue-200 pb-2">Technical Core</div>
                         <div class="space-y-4">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
@@ -1054,7 +1044,7 @@
                     </div>
 
                     <!-- Column 2: Communication -->
-                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-amber-500 border border-white hover:shadow-md transition-all">
+                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-amber-500 border-2 border-white hover:shadow-lg transition-all">
                         <div class="flex items-center gap-3 font-black text-amber-900 mb-5 text-xl sm:text-2xl border-b-2 border-amber-200 pb-2">Communication</div>
                         <div class="space-y-4">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
@@ -1077,7 +1067,7 @@
                     </div>
                     
                     <!-- Column 3: HR & Behavioral -->
-                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-rose-500 border border-white hover:shadow-md transition-all">
+                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-rose-500 border-2 border-white hover:shadow-lg transition-all">
                         <div class="flex items-center gap-3 font-black text-rose-900 mb-5 text-xl sm:text-2xl border-b-2 border-rose-200 pb-2">HR & Behavioral</div>
                         <div class="space-y-4">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
@@ -1100,7 +1090,7 @@
                     </div>
                     
                     <!-- Column 4: Brand -->
-                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-purple-500 border border-white hover:shadow-md transition-all">
+                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-purple-500 border-2 border-white hover:shadow-lg transition-all">
                         <div class="flex items-center gap-3 font-black text-purple-900 mb-5 text-xl sm:text-2xl border-b-2 border-purple-200 pb-2">Personal Brand</div>
                         <div class="space-y-4">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
@@ -1127,12 +1117,11 @@
     </main>
 
     <!-- ========================================== -->
-    <!-- JAVASCRIPT LOGIC                           -->
+    <!-- JAVASCRIPT LOGIC - STRICTLY FAILSAFE       -->
     <!-- ========================================== -->
     <script>
         
-        // --- LOCAL STORAGE DATA MANAGEMENT (CRASH PROOF) ---
-        // I wrapped this in a try-catch so it NEVER crashes your app even if cache is corrupted.
+        // --- LOCAL STORAGE DATA MANAGEMENT (CRASH PROOF FAILSAFE) ---
         const getSavedData = (key) => {
             try {
                 const item = localStorage.getItem(key);
@@ -1168,7 +1157,7 @@
             }
         }
 
-        // --- NEW LOGIC: PROJECT PORTFOLIO MANAGER ---
+        // --- PROJECT PORTFOLIO MANAGER ---
         function addProject() {
             const titleInput = document.getElementById('projTitle');
             const stackInput = document.getElementById('projStack');
@@ -1207,7 +1196,7 @@
             let html = '';
             projects.forEach((p, index) => {
                 html += `
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border-2 border-white shadow-sm flex flex-col justify-between transform hover:-translate-y-1 transition-transform relative">
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border-2 border-white shadow-md flex flex-col justify-between transform hover:-translate-y-1 transition-transform relative">
                         <button onclick="deleteProject(${index})" class="absolute top-4 right-4 text-slate-300 hover:text-rose-500 font-black text-2xl transition-colors">&times;</button>
                         <div>
                             <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-2 force-wrap pr-6">${p.title}</h3>
@@ -1221,7 +1210,7 @@
             document.getElementById('dashProjects').textContent = projects.length;
         }
 
-        // --- NEW LOGIC: JOB TRACKER MANAGER ---
+        // --- JOB TRACKER MANAGER ---
         function addJob() {
             const companyInput = document.getElementById('jobCompany');
             const roleInput = document.getElementById('jobRole');
@@ -1269,7 +1258,7 @@
                 if(j.status === "Rejected") badgeClass = "bg-rose-100 text-rose-700 border-rose-200";
                 
                 html += `
-                    <div class="inner-glass p-5 sm:p-6 rounded-2xl bg-white/80 shadow-sm border border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-md transition-shadow relative">
+                    <div class="inner-glass p-5 sm:p-6 rounded-2xl bg-white/80 shadow-md border-2 border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-lg transition-shadow relative">
                         <div class="flex-1 pr-6">
                             <h3 class="text-xl sm:text-2xl font-black text-slate-900 force-wrap">${j.company}</h3>
                             <p class="text-sm sm:text-base font-bold text-slate-500 force-wrap">${j.role || 'General Application'}</p>
@@ -1375,7 +1364,7 @@
             updateTimerDisplay();
         }
 
-        // --- CGPA PREDICTOR LOGIC ---
+        // --- SGPA / CGPA PREDICTOR LOGIC (2 SEMESTERS) ---
         function calculateCGPA() {
             const inputs = document.querySelectorAll('.sgpa-input');
             let total = 0; 
@@ -1422,7 +1411,7 @@
                 const btn = document.getElementById('nav-' + id);
                 if(btn) {
                     btn.classList.remove('sidebar-active');
-                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md";
+                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md";
                 }
             });
             
@@ -1439,7 +1428,7 @@
                 planner: 'Study Planner', 
                 tasks: 'Action Tasks', 
                 timer: 'Focus Timer',
-                cgpa: 'CGPA Predictor', 
+                cgpa: 'SGPA Predictor', 
                 roadmap: 'B.Tech Roadmap', 
                 resources: 'Resource Vault', 
                 portfolio: 'Project Portfolio', 
@@ -1463,7 +1452,7 @@
             
             // Reset all year buttons
             document.querySelectorAll('.year-tab-btn').forEach(btn => {
-                btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap";
+                btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-6 py-3 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase";
             });
             
             // Show target year
@@ -1475,7 +1464,7 @@
             }, 10);
             
             // Style active button
-            btnElement.className = "year-tab-btn bg-slate-900 text-white px-6 py-3 rounded-xl font-black shadow-md transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1";
+            btnElement.className = "year-tab-btn btn-primary px-8 py-3.5 rounded-xl font-black shadow-lg transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase";
         }
 
         // --- PROGRESS CALCULATORS ---
@@ -1532,21 +1521,35 @@
             return { formattedDate, formattedTime };
         }
 
+        // --- UPGRADED MOBILE NOTIFICATIONS WITH HARDWARE VIBRATION ---
         function sendNotification(title, body) {
+            
+            // 1. Try to play audio (will silently fail if blocked by mobile browser policy)
             try { 
                 const alertSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
                 alertSound.play().catch(e => {
-                    console.log("Audio blocked by browser.");
+                    console.log("Audio blocked by mobile browser auto-play policy.");
                 }); 
-            } catch(e) {
-                console.log("Audio exception");
-            }
+            } catch(e) {}
             
+            // 2. Trigger native mobile notification in system tray
             if (Notification.permission === 'granted') {
-                new Notification(title, { 
-                    body: body, 
-                    icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' 
-                });
+                const options = {
+                    body: body,
+                    icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png',
+                    vibrate: [200, 100, 200, 100, 200], // Forces strong mobile vibration
+                    requireInteraction: true, // Forces notification to stay until dismissed
+                    badge: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png'
+                };
+
+                // Use ServiceWorker if available (best for mobile), otherwise fallback to standard Notification
+                if ('serviceWorker' in navigator && navigator.serviceWorker.ready) {
+                    navigator.serviceWorker.ready.then(function(registration) {
+                        registration.showNotification(title, options);
+                    });
+                } else {
+                    new Notification(title, options);
+                }
             }
         }
 
@@ -1617,7 +1620,7 @@
                 
                 // Main List HTML
                 html += `
-                <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border border-white hover:shadow-lg transition-all ${t.completed ? 'opacity-60 bg-white/50' : 'bg-white/95'}"
+                <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all ${t.completed ? 'opacity-60 bg-white/50' : 'bg-white/90'}"
                      onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
                      ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()">
                     
@@ -1631,7 +1634,7 @@
                         </div>
                     </div>
                     
-                    <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm transform hover:-translate-y-1 transition-all ${t.completed ? 'bg-slate-200 text-slate-600' : 'btn-success'}">
+                    <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm transform hover:-translate-y-1 transition-all border border-white/50 ${t.completed ? 'bg-slate-200 text-slate-600' : 'btn-success'}">
                         ${t.completed ? 'Undo' : '✓ Done'}
                     </button>
                 </div>`;
@@ -1639,7 +1642,7 @@
                 // Dashboard Mini List HTML (Only showing max 3 pending tasks)
                 if (!t.completed && pendingCount < 3) {
                     miniHtml += `
-                        <div class="bg-white/80 p-3 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm">
+                        <div class="bg-white/80 p-4 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm">
                             <span class="font-bold text-slate-800 truncate text-sm flex-1 pr-2">${t.text}</span>
                             <div class="w-3 h-3 rounded-full bg-pink-500 shadow-sm shrink-0"></div>
                         </div>
@@ -1655,7 +1658,7 @@
             }
             
             if(miniHtml === '') {
-                dashMiniList.innerHTML = '<div class="text-slate-400 font-bold text-sm text-center py-4 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>';
+                dashMiniList.innerHTML = '<div class="text-slate-400 font-bold text-sm text-center py-6 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>';
             } else {
                 dashMiniList.innerHTML = miniHtml;
             }
@@ -1701,7 +1704,7 @@
                 const { formattedDate, formattedTime } = formatDateTime(p.date, p.time);
                 
                 html += `
-                <div class="no-select p-5 sm:p-6 bg-gradient-to-r from-indigo-50/95 to-blue-50/95 rounded-[1.5rem] shadow-sm flex flex-col sm:flex-row justify-between gap-4 border border-white hover:shadow-md transition-all"
+                <div class="no-select p-5 sm:p-6 bg-gradient-to-r from-indigo-50/95 to-blue-50/95 rounded-[1.5rem] shadow-md flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all"
                      onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
                      ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()">
                      
@@ -1751,7 +1754,12 @@
             self.addEventListener('fetch', (e) => {}); 
             self.addEventListener('push', (e) => { 
                 const data = e.data ? e.data.json() : { title: 'StudyBuddy', body: 'Notification!' }; 
-                e.waitUntil(self.registration.showNotification(data.title, { body: data.body, icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' })); 
+                e.waitUntil(self.registration.showNotification(data.title, { 
+                    body: data.body, 
+                    icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png',
+                    vibrate: [200, 100, 200, 100, 200],
+                    requireInteraction: true 
+                })); 
             });
         `;
         

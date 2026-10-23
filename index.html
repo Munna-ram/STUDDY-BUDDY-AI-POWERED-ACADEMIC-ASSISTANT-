@@ -18,6 +18,11 @@
     <!-- Premium Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Firebase SDK (For Real Cloud Storage and Email Verification) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+
     <style>
         /* Global CSS Variables for Ultra-Vibrant Glassmorphism */
         :root {
@@ -303,6 +308,7 @@
             font-variant-numeric: tabular-nums;
         }
         
+        /* Scrollbar hide for tabs and lists */
         .hide-scroll::-webkit-scrollbar {
             display: none;
         }
@@ -312,7 +318,7 @@
             scrollbar-width: none;
         }
 
-        /* Beautiful Gradient Buttons */
+        /* Beautiful Gradient Buttons - Glowing Animations */
         .btn-primary {
             background: linear-gradient(135deg, #ff007f, #7928ca);
             color: white;
@@ -335,6 +341,15 @@
         .btn-success:hover {
             box-shadow: 0 12px 30px rgba(79, 172, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.5);
             transform: translateY(-3px) scale(1.02);
+        }
+
+        /* Active Sidebar Item Styling - Colorful */
+        .sidebar-active {
+            background: linear-gradient(135deg, #0f172a, #334155);
+            color: white !important;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4);
+            border-left: 5px solid #ff007f;
+            transform: scale(1.03);
         }
     </style>
 </head>
@@ -372,92 +387,110 @@
     </div>
 
     <!-- MOBILE HAMBURGER HEADER (Only visible on phones) -->
-    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-sm border border-white">
-        <div class="text-2xl font-black flex items-center gap-3">
-            <!-- LUXURY PREMIUM ICON -->
-            <img src="https://cdn-icons-png.flaticon.com/512/6104/6104033.png" alt="Logo" class="w-8 h-8 drop-shadow-lg transform hover:scale-110 transition-transform">
-            <span class="text-gradient">StudyBuddy</span>
+    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
+        <div class="text-xl font-black flex items-center gap-3">
+            <!-- LUXURY DIAMOND LOGO -->
+            <img src="https://cdn-icons-png.flaticon.com/512/6104/6104033.png" alt="Logo" class="w-8 h-8 drop-shadow-md">
+            <span class="text-gradient tracking-tight">StudyBuddy</span>
         </div>
-        <button onclick="toggleSidebar()" class="px-4 py-2 bg-slate-100 rounded-xl text-slate-800 hover:bg-slate-200 focus:outline-none shadow-inner border border-white flex items-center gap-2">
-            <span class="font-black text-sm uppercase tracking-widest">Menu</span>
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        
+        <button onclick="toggleSidebar()" class="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl text-white shadow-lg flex items-center gap-2 transition-transform transform hover:scale-105 border border-white/50">
+            <span class="font-black text-xs uppercase tracking-widest">Menu</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
         </button>
     </div>
 
     <!-- SLIDE-IN OVERLAY FOR MOBILE -->
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
-    <!-- PREMIUM SIDEBAR (Fixed on Desktop, Swipe-in on Mobile) -->
-    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-8 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto shrink-0">
+    <!-- PREMIUM SIDEBAR -->
+    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/80 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
         
-        <button onclick="toggleSidebar()" class="lg:hidden absolute top-6 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black">&times;</button>
+        <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
 
         <div>
-            <div class="text-3xl font-black mb-10 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
-                <!-- LUXURY PREMIUM ICON -->
+            <!-- Desktop Logo -->
+            <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
+                <!-- LUXURY DIAMOND LOGO -->
                 <img src="https://cdn-icons-png.flaticon.com/512/6104/6104033.png" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
             
-            <div class="text-2xl font-black mb-8 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-4">Main Menu</div>
+            <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
 
+            <!-- Navigation Links - Restored to dynamically set black active state -->
             <nav class="space-y-2">
-                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl bg-slate-900 text-white shadow-[0_8px_25px_rgba(0,0,0,0.3)] font-black transition-all text-lg transform hover:scale-105 border border-slate-700 sidebar-active">
+                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-lg border border-slate-700 font-black transition-all text-base transform hover:scale-105 sidebar-active">
                     <span>🏠</span> Dashboard
                 </button>
-                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>📅</span> Study Planner
                 </button>
-                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>✅</span> Action Tasks
                 </button>
-                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>⏱️</span> Focus Timer
                 </button>
-                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>📊</span> SGPA Predictor
                 </button>
-                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
-                    <span>🚀</span> Project Portfolio
+                
+                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>🚀</span> Projects Portfolio
                 </button>
-                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>🎯</span> Job Tracker
                 </button>
-                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+
+                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>🗺️</span> B.Tech Roadmap
                 </button>
-                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>📚</span> Resource Vault
                 </button>
-                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                
+                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>💼</span> Interview Skills
                 </button>
             </nav>
             
             <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
-                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white py-4 rounded-2xl transition-all shadow-[0_5px_15px_rgba(16,185,129,0.4)] font-black transform hover:-translate-y-1 text-lg mb-4 border-2 border-emerald-400">
+                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-md font-black text-base mb-3">
                     Install App 📲
                 </button>
             </div>
         </div>
         
         <div class="mt-2">
-            <div id="userInfo" class="text-base text-indigo-900 mb-4 truncate font-black bg-white/80 px-4 py-3 rounded-xl text-center shadow-sm border border-white">Not signed in</div>
-            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-2xl transition-all shadow-xl font-black transform hover:-translate-y-1 text-lg border border-slate-700">Sign In / Sign Up</button>
+            <div id="userInfo" class="text-sm text-indigo-900 mb-3 truncate font-black bg-white/80 px-3 py-2 rounded-lg text-center shadow-sm border border-white">
+                Not signed in
+            </div>
+            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base transition-all transform hover:-translate-y-1 hover:shadow-lg border-2 border-slate-700">
+                Sign In / Sign Up
+            </button>
         </div>
     </aside>
 
     <!-- MAIN CONTENT AREA -->
     <main class="flex-1 overflow-y-auto overflow-x-hidden pr-2 sm:pr-4 lg:pr-2 pb-10 z-0 hide-scroll">
         
-        <!-- Global Header -->
-        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10 mt-6 lg:mt-2 px-3 lg:px-2">
+        <!-- Global Header with Floating Animation Restored -->
+        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-8 mt-6 lg:mt-2 px-3 lg:px-2">
             <div class="animate-float">
-                <h1 id="pageTitle" class="text-5xl sm:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
-                <p class="text-slate-800 font-extrabold mt-3 text-xl bg-white/70 inline-block px-5 py-2 rounded-xl shadow-sm border border-white">Your premium academic command center</p>
+                <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
+                <p class="text-slate-800 font-extrabold mt-2 text-sm sm:text-base bg-white/80 inline-block px-4 py-1.5 rounded-lg shadow-sm border border-white">Your premium academic command center</p>
             </div>
-            <div class="text-base glass-card bg-white/95 px-6 py-4 font-black text-indigo-900 flex items-center gap-3 shadow-lg border-2 border-white transform hover:scale-105 transition-transform self-start sm:self-auto">
-                <span class="w-4 h-4 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
+            <div class="text-xs sm:text-sm glass-card bg-white/95 px-5 py-3 font-black text-indigo-900 flex items-center gap-2 shadow-md border-2 border-white self-start sm:self-auto transform hover:scale-105 transition-transform">
+                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
             </div>
         </header>
 
@@ -465,89 +498,96 @@
         <!-- DASHBOARD SECTION                          -->
         <!-- ========================================== -->
         <section id="dashboard" class="page active px-2">
-            <!-- Hero Banner -->
-            <div class="glass-card p-8 sm:p-12 text-white mb-12 relative overflow-hidden shadow-[0_20px_50px_rgba(79,70,229,0.4)] border-2 border-white/50 bg-slate-900 animate-float">
-                <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-indigo-500 opacity-30 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-fuchsia-500 opacity-30 rounded-full blur-3xl"></div>
-                <h2 class="text-5xl sm:text-7xl font-black mb-6 relative z-10 drop-shadow-2xl tracking-tight leading-tight">Welcome to your future. ✨</h2>
-                <p class="text-indigo-100 text-xl sm:text-2xl max-w-3xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and crush your academic goals with absolute precision.</p>
+            <!-- Hero with floating animation -->
+            <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(79,70,229,0.3)] border-2 border-white/50 bg-slate-900 animate-float">
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-indigo-500 opacity-40 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-fuchsia-500 opacity-40 rounded-full blur-3xl"></div>
+                
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-4 relative z-10 drop-shadow-xl tracking-tight leading-tight">Welcome to your future. ✨</h2>
+                <p class="text-indigo-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
             </div>
 
-            <!-- RESTORED: White Glass Cards with SVG Watermarks -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
+            <!-- Dashboard Stats Grid (RESTORED FADED SVG WATERMARKS) -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
                 
-                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md" onclick="showPage('tasks')">
                     <!-- Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
                     
-                    <p class="text-base sm:text-lg text-indigo-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Total Tasks</p>
-                    <h2 id="totalTasks" class="text-6xl sm:text-7xl font-black mt-3 text-slate-900 drop-shadow-md tracking-tighter z-10">0</h2>
+                    <p class="text-sm sm:text-base text-indigo-700 font-black uppercase tracking-widest z-10">Total Tasks</p>
+                    <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md" onclick="showPage('tasks')">
                     <!-- Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-emerald-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                     
-                    <p class="text-base sm:text-lg text-emerald-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Completed</p>
-                    <h2 id="completedTasks" class="text-6xl sm:text-7xl font-black mt-3 text-emerald-600 drop-shadow-md tracking-tighter z-10">0</h2>
+                    <p class="text-sm sm:text-base text-emerald-700 font-black uppercase tracking-widest z-10">Completed</p>
+                    <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('portfolio')">
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md" onclick="showPage('portfolio')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-fuchsia-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-purple-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
                     
-                    <p class="text-base sm:text-lg text-fuchsia-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Projects</p>
-                    <h2 id="dashProjects" class="text-6xl sm:text-7xl font-black mt-3 text-fuchsia-600 drop-shadow-md tracking-tighter z-10">0</h2>
+                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects Built</p>
+                    <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-600 z-10">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('jobs')">
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md" onclick="showPage('jobs')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-rose-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-blue-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
                     
-                    <p class="text-base sm:text-lg text-rose-600 font-black uppercase tracking-widest drop-shadow-sm z-10">Job Apps</p>
-                    <h2 id="dashJobs" class="text-6xl sm:text-7xl font-black mt-3 text-rose-600 drop-shadow-md tracking-tighter z-10">0</h2>
+                    <p class="text-sm sm:text-base text-blue-700 font-black uppercase tracking-widest z-10">Job Apps</p>
+                    <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 text-blue-600 z-10">0</h2>
                 </div>
             </div>
             
-            <!-- Dashboard Progress Widget (FIXED ID AND MATH) -->
-            <div class="glass-card inner-glass p-8 sm:p-10 flex flex-col justify-center relative overflow-hidden shadow-md">
-                <p class="text-lg sm:text-xl text-indigo-700 font-black uppercase tracking-widest z-10 mb-6 text-center">Overall Task Completion</p>
-                <div class="flex flex-col items-center gap-6 z-10">
-                    <h2 id="taskProgressMain" class="text-7xl sm:text-8xl font-black text-indigo-600 drop-shadow-md">0%</h2>
-                    <div class="w-full max-w-4xl bg-slate-200/80 rounded-full h-6 overflow-hidden shadow-inner border border-white">
-                        <div id="progressBarMain" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_25px_rgba(217,70,239,0.9)]" style="width: 0%"></div>
+            <!-- Dashboard Mini-Widgets -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Mini Task List -->
+                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col relative overflow-hidden shadow-md border-2 border-white">
+                    <div class="flex justify-between items-center mb-4">
+                        <p class="text-lg text-slate-800 font-black tracking-tight z-10">Upcoming Tasks</p>
+                        <button onclick="showPage('tasks')" class="text-indigo-600 font-black text-sm hover:underline uppercase tracking-wide">View All</button>
+                    </div>
+                    <div id="dashMiniTasks" class="space-y-3 z-10 max-h-48 overflow-y-auto hide-scroll">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-md border-2 border-white">
+                    <p class="text-lg text-fuchsia-700 font-black uppercase tracking-widest z-10 mb-4 text-center">Task Completion</p>
+                    <div class="flex flex-col items-center gap-4 z-10">
+                        <h2 id="taskProgressMain" class="text-6xl sm:text-7xl font-black text-fuchsia-600 drop-shadow-md">0%</h2>
+                        <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white">
+                            <div id="progressBarMain" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_20px_rgba(217,70,239,0.8)]" style="width: 0%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ========================================== -->
-        <!-- PLANNER SECTION (Fixed Layout Issue)       -->
+        <!-- PLANNER SECTION                            -->
         <!-- ========================================== -->
         <section id="planner" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
-                <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Schedule your major study blocks. Data is saved locally.</p>
+                <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Schedule your major study blocks. Data is saved to the cloud.</p>
                 
-                <!-- 
-                  FIX: Replaced flex with strict width controls to ensure 
-                  time/date do not squash next to the text input. 
-                -->
                 <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center w-full">
-                    
-                    <!-- Title Input -->
                     <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-indigo-500 transition-colors shadow-sm">
                         <span class="text-xl">📝</span>
                         <input type="text" id="planTitle" placeholder="Milestone name..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
                     
-                    <!-- Date Input (Fixed Width on Desktop) -->
                     <div class="w-full lg:w-48 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-indigo-500 transition-colors shadow-sm shrink-0">
                         <span class="text-xl">📅</span>
                         <input type="date" id="planDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
                     </div>
                     
-                    <!-- Time Input (Fixed Width on Desktop) -->
                     <div class="w-full lg:w-40 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-indigo-500 transition-colors shadow-sm shrink-0">
                         <span class="text-xl">⏰</span>
                         <input type="time" id="planTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
@@ -563,7 +603,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- TASKS SECTION (Fixed Layout Issue)         -->
+        <!-- TASKS SECTION                              -->
         <!-- ========================================== -->
         <section id="tasks" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
@@ -571,26 +611,19 @@
                     <h2 class="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight">✅ Action Items</h2>
                     <button onclick="clearCompletedTasks()" class="text-rose-500 font-black bg-rose-100 px-4 py-2 rounded-lg hover:bg-rose-200 transition-colors text-xs sm:text-sm shadow-sm uppercase tracking-wide border border-rose-200">Clear Done</button>
                 </div>
-                <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Data is saved locally. Add your assignments below.</p>
+                <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Data is saved to the cloud. Add your assignments below.</p>
                 
-                <!-- 
-                  FIX: Strict width controls to ensure time/date do not squash 
-                -->
                 <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center w-full">
-                    
-                    <!-- Title Input -->
                     <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-pink-500 transition-colors shadow-sm">
                         <span class="text-xl">✍️</span>
                         <input type="text" id="taskInput" placeholder="Task description..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
                     
-                    <!-- Date Input (Fixed Width on Desktop) -->
                     <div class="w-full lg:w-48 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-pink-500 transition-colors shadow-sm shrink-0">
                         <span class="text-xl">📅</span>
                         <input type="date" id="taskDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
                     </div>
                     
-                    <!-- Time Input (Fixed Width on Desktop) -->
                     <div class="w-full lg:w-40 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-pink-500 transition-colors shadow-sm shrink-0">
                         <span class="text-xl">⏰</span>
                         <input type="time" id="taskTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
@@ -609,7 +642,7 @@
         <!-- FOCUS TIMER SECTION                        -->
         <!-- ========================================== -->
         <section id="timer" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center">
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">⏱️ Focus Timer</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Set your study time and take planned breaks.</p>
                 
@@ -623,7 +656,7 @@
                         <!-- Custom Input Field -->
                         <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border-2 border-slate-200 shadow-inner w-full sm:w-auto justify-between">
                             <input type="number" id="customFocusTime" placeholder="Min" class="w-16 text-center font-black text-lg text-slate-800 bg-transparent outline-none">
-                            <button onclick="setCustomTimer()" class="text-indigo-600 font-black hover:text-white hover:bg-indigo-500 transition-colors text-sm bg-indigo-50 px-4 py-2 rounded-lg uppercase">Set</button>
+                            <button onclick="setCustomTimer()" class="text-indigo-600 font-black hover:text-white hover:bg-indigo-500 transition-colors text-sm bg-indigo-50 px-4 py-2 rounded-lg uppercase border border-indigo-100">Set</button>
                         </div>
                         
                         <button onclick="adjustTimer(5)" class="px-5 py-2.5 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm transform hover:-translate-y-1 w-full sm:w-auto">+ 5 Min</button>
@@ -631,7 +664,7 @@
 
                     <!-- PLAYBACK CONTROLS -->
                     <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="startTimer()" id="startBtn" class="bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-xl w-48 uppercase tracking-widest shadow-xl hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] transition-all">Start</button>
+                        <button onclick="startTimer()" id="startBtn" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl w-48 uppercase tracking-widest shadow-xl hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] transition-all">Start</button>
                         <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-gradient-to-r from-amber-400 to-orange-500 text-white px-12 py-5 rounded-2xl font-black hover:shadow-lg transition-all text-xl w-48 uppercase tracking-widest transform hover:-translate-y-1 shadow-xl border border-white/50">Pause</button>
                         <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-200 px-12 py-5 rounded-2xl font-black hover:bg-slate-50 transition-all text-xl w-48 uppercase tracking-widest shadow-md hover:shadow-lg">Reset</button>
                     </div>
@@ -647,14 +680,13 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- SGPA CALCULATOR (EXACTLY 2 SEMESTERS)      -->
+        <!-- SGPA CALCULATOR                            -->
         <!-- ========================================== -->
         <section id="cgpa" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📊 SGPA Predictor</h2>
                 <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Calculate your final academic standing for your two semesters.</p>
                 
-                <!-- EXACTLY 2 SEMESTERS AS REQUESTED -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 text-left max-w-2xl mx-auto">
                     <div class="inner-glass p-8 rounded-3xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
                         <label class="block font-black text-pink-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 1 SGPA</label>
@@ -679,21 +711,19 @@
         </section>
         
         <!-- ========================================== -->
-        <!-- PROJECT PORTFOLIO SECTION (LOCAL STORAGE)  -->
+        <!-- PROJECT PORTFOLIO SECTION                  -->
         <!-- ========================================== -->
         <section id="portfolio" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">🚀 Project Portfolio</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Track your personal projects and GitHub repos to show recruiters.</p>
                 
-                <!-- Project Input Form -->
                 <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
                     <input type="text" id="projTitle" placeholder="Project Title" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
                     <input type="text" id="projStack" placeholder="Tech Stack (e.g., React, Node)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
                     <button onclick="addProject()" class="w-full lg:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all shrink-0">Add Project</button>
                 </div>
                 
-                <!-- Project List -->
                 <div id="projList" class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <!-- Populated by JS -->
                 </div>
@@ -701,17 +731,16 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- JOB TRACKER SECTION (LOCAL STORAGE)        -->
+        <!-- JOB TRACKER SECTION                        -->
         <!-- ========================================== -->
         <section id="jobs" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <div class="flex items-center gap-4 mb-4">
                     <div class="text-3xl sm:text-5xl bg-gradient-to-br from-red-100 to-rose-50 rounded-full p-3 w-16 h-16 flex items-center justify-center shadow-md border-2 border-red-200">🎯</div>
                     <h2 class="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight">Job Tracker</h2>
                 </div>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl mt-2">Keep track of your internship and job applications.</p>
                 
-                <!-- Job Input Form -->
                 <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
                     <input type="text" id="jobCompany" placeholder="Company Name" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
                     
@@ -727,7 +756,6 @@
                     <button onclick="addJob()" class="w-full lg:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all shrink-0">Save App</button>
                 </div>
                 
-                <!-- Job List -->
                 <div id="jobList" class="space-y-4">
                     <!-- Populated by JS -->
                 </div>
@@ -735,16 +763,15 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- RESOURCE VAULT SECTION (PDF OPEN FIX)      -->
+        <!-- RESOURCE VAULT SECTION                     -->
         <!-- ========================================== -->
         <section id="resources" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📚 Resources & Notes</h2>
                 <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Upload a PDF file to instantly view your study materials.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     
-                    <!-- BOX 1 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -752,12 +779,10 @@
                                 <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink1')">
                             </label>
-                            <!-- THIS IS THE BUTTON THAT APPEARS WHEN A PDF IS UPLOADED -->
                             <a id="pdfLink1" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
                     
-                    <!-- BOX 2 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-blue-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -769,7 +794,6 @@
                         </div>
                     </div>
 
-                    <!-- BOX 3 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-emerald-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -781,7 +805,6 @@
                         </div>
                     </div>
 
-                    <!-- BOX 4 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-purple-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -793,7 +816,6 @@
                         </div>
                     </div>
                     
-                    <!-- BOX 5 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-amber-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -805,7 +827,6 @@
                         </div>
                     </div>
                     
-                    <!-- BOX 6 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-teal-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -822,10 +843,10 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- B.TECH TECH SKILLS ROADMAP SECTION         -->
+        <!-- B.TECH TECH SKILLS ROADMAP                 -->
         <!-- ========================================== -->
         <section id="roadmap" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white animate-float">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white animate-float">
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-10 gap-6">
                     <div>
@@ -848,7 +869,7 @@
                 
                 <!-- STYLED SCROLLABLE TABS -->
                 <div class="flex gap-3 sm:gap-6 mb-10 overflow-x-auto pb-4 hide-scroll border-b-4 border-slate-200/50">
-                    <button onclick="showYear('year1', this)" class="year-tab-btn bg-slate-900 text-white px-10 py-4 rounded-2xl font-black shadow-lg transition-all text-sm sm:text-lg whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase">Year 1</button>
+                    <button onclick="showYear('year1', this)" class="year-tab-btn btn-primary px-10 py-4 rounded-2xl font-black shadow-lg transition-all text-sm sm:text-lg whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase">Year 1</button>
                     
                     <button onclick="showYear('year2', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-sm sm:text-lg shadow-sm whitespace-nowrap tracking-widest uppercase">Year 2</button>
                     
@@ -1133,6 +1154,47 @@
     <!-- ========================================== -->
     <script>
         
+        // ==========================================
+        // FIREBASE CLOUD STORAGE & EMAIL VERIFICATION SETUP
+        // ==========================================
+        // To make real emails and cloud storage work, replace these with your Firebase Config keys!
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        let auth, db;
+        let isFirebaseReady = false;
+        let currentUser = null;
+
+        // Initialize Firebase ONLY if keys are added
+        try {
+            if(firebaseConfig.apiKey !== "YOUR_API_KEY") {
+                firebase.initializeApp(firebaseConfig);
+                auth = firebase.auth();
+                db = firebase.firestore();
+                isFirebaseReady = true;
+                
+                // Listen for Real Cloud Logins
+                auth.onAuthStateChanged((user) => {
+                    if (user && user.emailVerified) {
+                        currentUser = user;
+                        document.getElementById('userInfo').textContent = user.email;
+                        document.getElementById('authBtn').textContent = 'Sign Out';
+                        loadCloudData();
+                    } else if (user && !user.emailVerified) {
+                        auth.signOut();
+                    }
+                });
+            }
+        } catch (error) {
+            console.log("Firebase not configured. Running in Local Storage Mode.");
+        }
+
         // --- LOCAL STORAGE DATA MANAGEMENT (CRASH PROOF FAILSAFE) ---
         const getSavedData = (key) => {
             try {
@@ -1156,7 +1218,36 @@
                 localStorage.setItem('studybuddy_projects', JSON.stringify(projects));
                 localStorage.setItem('studybuddy_jobs', JSON.stringify(jobs));
             } catch (error) {
-                console.error("Could not save to local storage", error);
+                console.error("Local storage error", error);
+            }
+
+            // Save to Real Cloud if logged in
+            if (isFirebaseReady && currentUser) {
+                db.collection('users').doc(currentUser.uid).set({
+                    tasks: tasks,
+                    plans: plans,
+                    projects: projects,
+                    jobs: jobs
+                }).catch(e => console.error("Cloud save error:", e));
+            }
+        }
+
+        function loadCloudData() {
+            if(isFirebaseReady && currentUser) {
+                db.collection('users').doc(currentUser.uid).get().then((doc) => {
+                    if (doc.exists) {
+                        const data = doc.data();
+                        tasks = data.tasks || [];
+                        plans = data.plans || [];
+                        projects = data.projects || [];
+                        jobs = data.jobs || [];
+                    } else {
+                        tasks = []; plans = []; projects = []; jobs = [];
+                    }
+                    renderTasks(); renderPlans(); renderProjects(); renderJobs();
+                }).catch(error => {
+                    console.log("Error fetching cloud data:", error);
+                });
             }
         }
 
@@ -1304,7 +1395,7 @@
             if(dashCounter) dashCounter.textContent = jobs.length;
         }
 
-        // --- TIMER LOGIC (WITH ADJUST BUTTONS AND CUSTOM INPUT) ---
+        // --- TIMER LOGIC ---
         let timerInterval;
         let timeLeft = 25 * 60; 
         let isTimerRunning = false;
@@ -1391,7 +1482,7 @@
             updateTimerDisplay();
         }
 
-        // --- SGPA / CGPA PREDICTOR LOGIC (2 SEMESTERS) ---
+        // --- SGPA / CGPA PREDICTOR LOGIC ---
         function calculateCGPA() {
             const inputs = document.querySelectorAll('.sgpa-input');
             let total = 0; 
@@ -1408,7 +1499,7 @@
             document.getElementById('cgpaResult').textContent = cgpa.toFixed(2);
         }
 
-        // --- SIDEBAR MENU LOGIC (Slide on Mobile, Fixed on Desktop) ---
+        // --- SIDEBAR MENU LOGIC ---
         let isSidebarOpen = false;
         
         function toggleSidebar() {
@@ -1475,18 +1566,15 @@
         }
 
         function showYear(yearId, btnElement) {
-            // Hide all year content blocks
             document.querySelectorAll('.year-content').forEach(el => {
                 el.classList.add('hidden', 'opacity-0', 'pointer-events-none');
                 el.classList.remove('active', 'opacity-100', 'grid');
             });
             
-            // Reset all year buttons
             document.querySelectorAll('.year-tab-btn').forEach(btn => {
                 btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase";
             });
             
-            // Show target year
             const target = document.getElementById(yearId);
             target.classList.remove('hidden', 'pointer-events-none');
             target.classList.add('grid');
@@ -1494,7 +1582,6 @@
                 target.classList.add('active', 'opacity-100'); 
             }, 10);
             
-            // Style active button
             btnElement.className = "year-tab-btn btn-primary px-8 py-3.5 rounded-xl font-black shadow-lg transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase";
         }
 
@@ -1560,8 +1647,6 @@
 
         // --- UPGRADED MOBILE NOTIFICATIONS WITH HARDWARE VIBRATION ---
         function sendNotification(title, body) {
-            
-            // 1. Try to play audio
             try { 
                 const alertSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
                 alertSound.play().catch(e => {
@@ -1569,17 +1654,15 @@
                 }); 
             } catch(e) {}
             
-            // 2. Trigger native mobile notification in system tray
             if (Notification.permission === 'granted') {
                 const options = {
                     body: body,
                     icon: 'https://cdn-icons-png.flaticon.com/512/6104/6104033.png',
-                    vibrate: [200, 100, 200, 100, 200], // Forces strong mobile vibration
+                    vibrate: [200, 100, 200, 100, 200], 
                     requireInteraction: true, 
                     badge: 'https://cdn-icons-png.flaticon.com/512/6104/6104033.png'
                 };
 
-                // Use ServiceWorker if available
                 if ('serviceWorker' in navigator && navigator.serviceWorker.ready) {
                     navigator.serviceWorker.ready.then(function(registration) {
                         registration.showNotification(title, options);
@@ -1825,7 +1908,7 @@
         
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(e => {
-                console.log("Service Worker registration skipped or failed");
+                // Silently handle if SW fails in local testing
             });
         }
 
@@ -1854,27 +1937,93 @@
             }
         }, { once: true });
 
-        // --- AUTHENTICATION MOCKS ---
+        // --- AUTHENTICATION LOGIC (DUAL-MODE WITH FIREBASE) ---
         function toggleAuth() { 
-            document.getElementById('authModal').classList.add('active'); 
+            if (currentUser || document.getElementById('authBtn').textContent === 'Sign Out') {
+                if (isFirebaseReady) auth.signOut();
+                currentUser = null;
+                document.getElementById('userInfo').textContent = 'Not signed in'; 
+                document.getElementById('authBtn').textContent = 'Sign In / Sign Up';
+                
+                // Clear user data from screen on logout
+                tasks = []; plans = []; projects = []; jobs = [];
+                renderTasks(); renderPlans(); renderProjects(); renderJobs();
+            } else {
+                document.getElementById('authError').classList.add('hidden');
+                document.getElementById('authEmail').value = '';
+                document.getElementById('authPassword').value = '';
+                document.getElementById('authModal').classList.add('active'); 
+            }
         }
         
         function closeAuthModal() { 
             document.getElementById('authModal').classList.remove('active'); 
         }
         
-        function mockSignIn() { 
-            const emailInput = document.getElementById('authEmail').value;
-            const userEl = document.getElementById('userInfo');
-            if(userEl) {
-                userEl.textContent = emailInput || 'Guest User'; 
+        async function mockSignIn() { 
+            const emailInput = document.getElementById('authEmail').value.trim();
+            const passwordInput = document.getElementById('authPassword').value;
+            const errorEl = document.getElementById('authError');
+
+            if (!emailInput || !passwordInput) {
+                errorEl.textContent = 'Please enter both email and password.';
+                errorEl.classList.remove('hidden');
+                return;
             }
-            closeAuthModal(); 
+
+            if (isFirebaseReady) {
+                try {
+                    const userCredential = await auth.signInWithEmailAndPassword(emailInput, passwordInput);
+                    if (!userCredential.user.emailVerified) {
+                        alert('Access Denied. Please open your mail app and verify your email address first.');
+                        auth.signOut();
+                        return;
+                    }
+                    currentUser = userCredential.user;
+                    document.getElementById('userInfo').textContent = currentUser.email; 
+                    document.getElementById('authBtn').textContent = 'Sign Out';
+                    closeAuthModal();
+                    loadCloudData(); // Pull data from Cloud
+                } catch (error) {
+                    errorEl.textContent = error.message;
+                    errorEl.classList.remove('hidden');
+                }
+            } else {
+                // Fallback Demo Mode
+                currentUser = { email: emailInput };
+                document.getElementById('userInfo').textContent = emailInput || 'Guest User'; 
+                document.getElementById('authBtn').textContent = 'Sign Out';
+                closeAuthModal(); 
+            }
         }
         
-        function mockSignUp() { 
-            alert('Account successfully created!'); 
-            mockSignIn(); 
+        async function mockSignUp() { 
+            const emailInput = document.getElementById('authEmail').value.trim();
+            const passwordInput = document.getElementById('authPassword').value;
+            const errorEl = document.getElementById('authError');
+
+            if (!emailInput || !passwordInput) {
+                errorEl.textContent = 'Please enter both email and password.';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            if (isFirebaseReady) {
+                try {
+                    const userCredential = await auth.createUserWithEmailAndPassword(emailInput, passwordInput);
+                    await userCredential.user.sendEmailVerification();
+                    alert('Account created! A confirmation email has been sent to ' + emailInput + '. Please open your mail app to verify before logging in.');
+                    auth.signOut();
+                    closeAuthModal();
+                } catch(error) {
+                    errorEl.textContent = error.message;
+                    errorEl.classList.remove('hidden');
+                }
+            } else {
+                // Fallback Demo Mode
+                alert('DEMO MODE: Verification email sent to ' + emailInput + '. (Please open your Mail app to verify).');
+                mockSignIn(); 
+            }
         }
 
         // --- TASK MODAL LAUNCHERS ---
@@ -1920,6 +2069,13 @@
         // Initial Renders to Load Data from Local Storage
         // Render calls placed safely at the end of script
         document.addEventListener("DOMContentLoaded", () => {
+            
+            // Set the Dashboard as visually active on load
+            const activeBtn = document.getElementById('nav-dashboard');
+            if (activeBtn) {
+                activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base transform hover:scale-105";
+            }
+            
             renderTasks(); 
             renderPlans();
             renderProjects();

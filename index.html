@@ -118,6 +118,9 @@
     .roadmap-check:checked + span { text-decoration: line-through; color: #94a3b8; opacity: 0.6;}
     
     .force-wrap { overflow-wrap: break-word !important; word-wrap: break-word !important; word-break: break-word !important; white-space: normal !important; max-width: 100%; }
+    
+    /* Timer specific styling */
+    .timer-display { font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col lg:flex-row p-0 sm:p-4 lg:p-6 gap-0 sm:gap-6 relative">
@@ -167,7 +170,6 @@
     <div class="text-2xl font-black flex items-center gap-3">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-indigo-600">
         <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002c-.874.494-1.926.494-2.8 0a50.005 50.005 0 00-9.905-3.914.75.75 0 01-.23-1.337A60.65 60.65 0 0111.7 2.805z" />
-        <path d="M13.06 15.473a4.825 4.825 0 01-2.12 0 49.856 49.856 0 00-8.91-2.483.75.75 0 00-.91.562 50.155 50.155 0 004.902 21.054c.227.53.791.863 1.378.863h5.2c.587 0 1.151-.333 1.378-.863a50.155 50.155 0 004.902-21.054.75.75 0 00-.91-.562 49.856 49.856 0 00-8.91 2.483z" />
       </svg>
       <span class="text-gradient">StudyBuddy</span>
     </div>
@@ -178,11 +180,11 @@
     </button>
   </div>
 
-  <!-- SLIDE-IN OVERLAY -->
+  <!-- SLIDE-IN OVERLAY FOR MOBILE -->
   <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
   <!-- SIDEBAR (Fixed on Desktop, Slide-over on Mobile) -->
-  <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-8 z-50 fixed lg:static top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto lg:overflow-visible">
+  <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-8 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto lg:overflow-visible shrink-0">
     
     <button onclick="toggleSidebar()" class="lg:hidden absolute top-6 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black">&times;</button>
 
@@ -208,6 +210,11 @@
         <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-slate-100 lg:hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
           Action Tasks
+        </button>
+        <!-- NEW SECTION ADDED TO MENU -->
+        <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-slate-100 lg:hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Focus Timer
         </button>
         <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-slate-100 lg:hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
@@ -284,6 +291,28 @@
       </div>
     </section>
 
+    <!-- NEW SECTION: FOCUS TIMER -->
+    <section id="timer" class="page px-1 sm:px-2">
+      <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white text-center">
+        <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">⏱️ Focus Timer</h2>
+        <p class="text-slate-700 font-extrabold mb-8 sm:mb-10 text-lg sm:text-xl">Boost your productivity using the Pomodoro technique.</p>
+        
+        <div class="inner-glass bg-white/80 p-8 sm:p-16 rounded-[1.5rem] sm:rounded-[2rem] shadow-lg border-2 border-white mb-8">
+          <div id="timeDisplay" class="timer-display text-8xl sm:text-9xl font-black text-indigo-600 drop-shadow-md mb-8">25:00</div>
+          <div class="flex flex-wrap justify-center gap-4">
+            <button onclick="startTimer()" id="startBtn" class="bg-slate-900 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-2xl font-black hover:shadow-xl transition-all text-lg sm:text-xl transform hover:-translate-y-1">Start Focus</button>
+            <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-amber-500 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-2xl font-black hover:shadow-xl transition-all text-lg sm:text-xl transform hover:-translate-y-1">Pause</button>
+            <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-300 px-8 sm:px-12 py-4 sm:py-5 rounded-2xl font-black hover:bg-slate-50 transition-all text-lg sm:text-xl">Reset</button>
+          </div>
+        </div>
+        
+        <div class="flex justify-center gap-4">
+          <button onclick="setTimerMode(25)" class="px-6 py-3 rounded-xl font-black transition-all bg-indigo-100 text-indigo-700 hover:bg-indigo-200">25m Focus</button>
+          <button onclick="setTimerMode(5)" class="px-6 py-3 rounded-xl font-black transition-all bg-emerald-100 text-emerald-700 hover:bg-emerald-200">5m Break</button>
+        </div>
+      </div>
+    </section>
+
     <!-- PLANNER -->
     <section id="planner" class="page px-1 sm:px-2">
       <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-2xl border-2 border-white">
@@ -350,7 +379,6 @@
           <button onclick="showYear('year4', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-black text-lg sm:text-xl border-2 border-slate-200 shadow-md">Year 4</button>
         </div>
 
-        <!-- FIXED THE ABSOLUTE POSITIONING TO STOP CUT OFF ON MOBILE -->
         <div>
           <!-- YEAR 1 -->
           <div id="year1" class="year-content grid md:grid-cols-2 gap-6 sm:gap-10 transition-opacity duration-300">
@@ -530,6 +558,65 @@
   </main>
 
   <script>
+    // --- FOCUS TIMER LOGIC ---
+    let timerInterval;
+    let timeLeft = 25 * 60; // default 25 mins
+    let isTimerRunning = false;
+
+    function updateTimerDisplay() {
+      const display = document.getElementById('timeDisplay');
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      if (isTimerRunning) return;
+      isTimerRunning = true;
+      document.getElementById('startBtn').classList.add('hidden');
+      document.getElementById('pauseBtn').classList.remove('hidden');
+      
+      timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timerInterval);
+          isTimerRunning = false;
+          document.getElementById('startBtn').classList.remove('hidden');
+          document.getElementById('pauseBtn').classList.add('hidden');
+          sendNotification("Timer Complete!", "Your focus session is over. Take a break!");
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      document.getElementById('startBtn').classList.remove('hidden');
+      document.getElementById('startBtn').textContent = "Resume";
+      document.getElementById('pauseBtn').classList.add('hidden');
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      document.getElementById('startBtn').classList.remove('hidden');
+      document.getElementById('startBtn').textContent = "Start Focus";
+      document.getElementById('pauseBtn').classList.add('hidden');
+      setTimerMode(25);
+    }
+
+    function setTimerMode(minutes) {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      document.getElementById('startBtn').classList.remove('hidden');
+      document.getElementById('startBtn').textContent = "Start";
+      document.getElementById('pauseBtn').classList.add('hidden');
+      timeLeft = minutes * 60;
+      updateTimerDisplay();
+    }
+
     // --- SIDEBAR MENU LOGIC (Button Only - Swipe Removed) ---
     let isSidebarOpen = false;
     
@@ -644,7 +731,7 @@
 
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      const navs = ['dashboard', 'planner', 'tasks', 'roadmap', 'career'];
+      const navs = ['dashboard', 'planner', 'tasks', 'timer', 'roadmap', 'career'];
       navs.forEach(id => {
         const btn = document.getElementById('nav-' + id);
         if(btn) btn.className = "w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-slate-100 lg:hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg";
@@ -656,7 +743,8 @@
       const titles = { 
         dashboard: 'Dashboard', 
         planner: 'Study Planner', 
-        tasks: 'Action Tasks', 
+        tasks: 'Action Tasks',
+        timer: 'Focus Timer',
         roadmap: 'B.Tech Skills Roadmap',
         career: 'Interview Mastery'
       };

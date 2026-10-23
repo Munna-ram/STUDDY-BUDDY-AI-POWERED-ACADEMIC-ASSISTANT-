@@ -12,18 +12,18 @@
     <!-- PWA Manifest Link -->
     <link rel="manifest" href="manifest.json">
     
-    <!-- Tailwind CSS Integration -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Premium Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Global CSS Variables for Ultra-Vibrant Glassmorphism */
+        /* Global CSS Variables for Premium Glassmorphism */
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.95);
-            --glass-shadow: 0 25px 60px rgba(79, 70, 229, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.40);
+            --glass-border: rgba(255, 255, 255, 0.65);
+            --glass-shadow: 0 12px 40px rgba(31, 38, 135, 0.08);
         }
         
         body {
@@ -34,7 +34,8 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* 100% Mobile Fix: Background completely fills screen, no hanging */
+        /* Fixed Background that will never hang or cut off on Mobile */
+        /* Reverted to the beautiful indigo/fuchsia/sky theme you requested */
         .mesh-bg {
             position: fixed;
             top: 0;
@@ -42,16 +43,15 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(135deg, #f0fdf4, #e0e7ff, #fae8ff);
+            background: #f1f5f9;
             overflow: hidden;
         }
         
-        /* Animated Gradient Blobs */
         .blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.9;
+            filter: blur(130px);
+            opacity: 0.85;
             animation: move 25s infinite alternate ease-in-out;
             will-change: transform;
         }
@@ -61,7 +61,7 @@
             left: -10%;
             width: 60vw;
             height: 60vw;
-            background: #f43f5e; /* Vibrant Rose */
+            background: #818cf8; /* Indigo */
             animation-delay: 0s;
         }
         
@@ -70,7 +70,7 @@
             right: -10%;
             width: 70vw;
             height: 70vw;
-            background: #3b82f6; /* Bright Blue */
+            background: #c084fc; /* Fuchsia */
             animation-delay: -5s;
             animation-direction: alternate-reverse;
         }
@@ -80,7 +80,7 @@
             left: 30%;
             width: 50vw;
             height: 50vw;
-            background: #10b981; /* Emerald Green */
+            background: #38bdf8; /* Sky Blue */
             animation-delay: -10s;
         }
         
@@ -89,45 +89,25 @@
             left: 10%;
             width: 45vw;
             height: 45vw;
-            background: #d946ef; /* Fuchsia */
+            background: #f472b6; /* Pink */
             animation-delay: -15s;
         }
 
-        /* Smooth Background Animation Keyframes */
         @keyframes move {
-            0% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-            50% {
-                transform: translate(8%, 12%) scale(1.15) rotate(15deg);
-            }
-            100% {
-                transform: translate(-8%, -8%) scale(0.9) rotate(-15deg);
-            }
-        }
-
-        /* Continuous Floating Animation for Dashboard Elements */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(8%, 12%) scale(1.15) rotate(15deg); }
+            100% { transform: translate(-8%, -8%) scale(0.9) rotate(-15deg); }
         }
 
         /* Performance Optimizations for Mobile Phones */
         @media (max-width: 1024px) {
             .blob {
-                filter: blur(75px);
-                opacity: 0.8;
-                animation: none; 
+                filter: blur(70px);
+                opacity: 0.6;
+                animation: none;
             }
             .blob-4 {
-                display: none; 
-            }
-            .animate-float {
-                animation: none;
+                display: none;
             }
         }
 
@@ -143,24 +123,16 @@
         }
         
         @keyframes slideUp { 
-            0% {
-                opacity: 0;
-                transform: translateY(40px) scale(0.98);
-                filter: blur(10px);
-            } 
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-                filter: blur(0);
-            } 
+            0% { opacity: 0; transform: translateY(30px); filter: blur(10px); } 
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); } 
         }
         
         /* Master Glass Card UI */
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            border: 1px solid var(--glass-border);
             border-radius: 2rem;
             box-shadow: var(--glass-shadow);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -168,15 +140,15 @@
         
         @media (max-width: 1024px) {
             .glass-card {
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
             }
         }
         
         .inner-glass {
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid rgba(255, 255, 255, 1);
-            box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.9), 0 10px 30px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 1);
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.7), 0 8px 20px rgba(0,0,0,0.04);
             border-radius: 1.5rem;
         }
         
@@ -187,31 +159,29 @@
         }
         
         .interactive-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 35px 70px rgba(236, 72, 153, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.4);
         }
 
         /* Beautiful Gradient Text */
         .text-gradient { 
-            background: linear-gradient(135deg, #f43f5e, #8b5cf6, #0ea5e9); 
+            background: linear-gradient(135deg, #4f46e5, #d946ef, #0ea5e9); 
             background-size: 300% 300%;
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
             animation: gradientShift 6s ease infinite;
         }
         
-        @keyframes gradientShift {
-            0% { background-position: 0% 50% }
-            50% { background-position: 100% 50% }
-            100% { background-position: 0% 50% }
-        }
+        @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
         
         /* Mobile Sidebar Overlay */
         #sidebarOverlay {
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(5px);
             z-index: 40;
             opacity: 0;
             pointer-events: none;
@@ -223,11 +193,10 @@
             pointer-events: auto;
         }
 
-        /* Modal popups */
         .modal-overlay {
             display: none;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(25px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
             z-index: 100;
         }
         
@@ -236,7 +205,6 @@
             animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Input Resets */
         input[type="date"],
         input[type="time"],
         input[type="number"],
@@ -268,10 +236,10 @@
         }
         
         .roadmap-check:checked {
-            background-color: #8b5cf6;
-            border-color: #8b5cf6;
+            background-color: #4f46e5;
+            border-color: #4f46e5;
             transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
+            box-shadow: 0 0 25px rgba(79, 70, 229, 0.5);
         }
         
         .roadmap-check:checked::after {
@@ -288,7 +256,7 @@
         .roadmap-check:checked + span {
             text-decoration: line-through;
             color: #94a3b8;
-            opacity: 0.5;
+            opacity: 0.6;
         }
         
         /* Strict Text Wrapping Fix */
@@ -303,7 +271,6 @@
             font-variant-numeric: tabular-nums;
         }
         
-        /* Scrollbar hide for tabs and lists */
         .hide-scroll::-webkit-scrollbar {
             display: none;
         }
@@ -312,45 +279,11 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-
-        /* Beautiful Gradient Buttons - Glowing Animations */
-        .btn-primary {
-            background: linear-gradient(135deg, #ff007f, #7928ca);
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
-            border: 2px solid transparent;
-        }
-        .btn-primary:hover {
-            box-shadow: 0 12px 30px rgba(255, 0, 127, 0.7), 0 0 20px rgba(121, 40, 202, 0.5);
-            transform: translateY(-3px) scale(1.02);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-        }
-        
-        .btn-success {
-            background: linear-gradient(135deg, #00f2fe, #4facfe);
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
-        }
-        .btn-success:hover {
-            box-shadow: 0 12px 30px rgba(79, 172, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.5);
-            transform: translateY(-3px) scale(1.02);
-        }
-
-        /* Active Sidebar Item Styling - Colorful */
-        .sidebar-active {
-            background: linear-gradient(135deg, #0f172a, #334155);
-            color: white !important;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4);
-            border-left: 5px solid #ff007f;
-            transform: scale(1.03);
-        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col lg:flex-row p-0 sm:p-4 lg:p-6 gap-0 lg:gap-6 relative">
 
-    <!-- VIBRANT MESH BACKGROUND -->
+    <!-- BACKGROUND -->
     <div class="mesh-bg">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -360,118 +293,98 @@
 
     <!-- AUTHENTICATION MODAL -->
     <div id="authModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
-        <div class="glass-card bg-white/95 p-8 w-full max-w-md relative shadow-2xl border-2 border-white">
+        <div class="glass-card bg-white/95 p-12 w-full max-w-md relative shadow-2xl border-2 border-white">
             <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
-            <h2 class="text-3xl font-black mb-6 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
-            <div class="space-y-4">
+            <h2 class="text-4xl font-black mb-8 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
+            <div class="space-y-6">
                 <div>
-                    <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Email Address</label>
-                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors">
+                    <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Email Address</label>
+                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
                 </div>
                 <div>
-                    <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Password</label>
-                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors">
+                    <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Password</label>
+                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
                 </div>
                 <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
-                <div class="flex gap-4 pt-2">
-                    <button onclick="mockSignIn()" class="flex-1 btn-primary py-3 rounded-xl font-black text-base">Sign In</button>
-                    <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-3 rounded-xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-sm text-base">Sign Up</button>
+                <div class="flex gap-4 pt-4">
+                    <button onclick="mockSignIn()" class="flex-1 bg-slate-900 text-white py-4 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all transform hover:-translate-y-1 text-lg">Sign In</button>
+                    <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-md hover:shadow-lg text-lg">Create Account</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- MOBILE HAMBURGER HEADER (Only visible on phones) -->
-    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/80 backdrop-blur-3xl">
-        <div class="text-xl font-black flex items-center gap-3">
-            <!-- LUXURY DIAMOND LOGO -->
-            <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-7 h-7 drop-shadow-md filter hue-rotate-15">
-            <span class="text-gradient tracking-tight">StudyBuddy</span>
+    <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-sm border border-white">
+        <div class="text-2xl font-black flex items-center gap-3">
+            <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-8 h-8 drop-shadow-md">
+            <span class="text-gradient">StudyBuddy</span>
         </div>
-        
-        <button onclick="toggleSidebar()" class="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl text-white shadow-lg flex items-center gap-2 transition-transform transform hover:scale-105 border border-white/50">
-            <span class="font-black text-xs uppercase tracking-widest">Menu</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
+        <button onclick="toggleSidebar()" class="px-4 py-2 bg-slate-100 rounded-xl text-slate-800 hover:bg-slate-200 focus:outline-none shadow-inner border border-white flex items-center gap-2">
+            <span class="font-black text-sm uppercase tracking-widest">Menu</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
     </div>
 
     <!-- SLIDE-IN OVERLAY FOR MOBILE -->
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
-    <!-- PREMIUM SIDEBAR (Fixed on Desktop, Slide-in on Mobile) -->
-    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/80 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
+    <!-- PREMIUM SIDEBAR (Fixed on Desktop, Swipe-in on Mobile) -->
+    <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-transparent flex flex-col justify-between p-8 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto shrink-0">
         
-        <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
+        <button onclick="toggleSidebar()" class="lg:hidden absolute top-6 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black">&times;</button>
 
         <div>
-            <!-- Desktop Logo -->
-            <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
-                <!-- LUXURY DIAMOND LOGO -->
-                <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-10 h-10 drop-shadow-md filter hue-rotate-15">
+            <div class="text-3xl font-black mb-10 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
+                <img src="https://cdn-icons-png.flaticon.com/512/751/751432.png" alt="Logo" class="w-10 h-10 drop-shadow-md">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
             
-            <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
+            <div class="text-2xl font-black mb-8 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-4">Main Menu</div>
 
-            <!-- Navigation Links -->
             <nav class="space-y-2">
-                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base">
+                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl bg-slate-900 text-white shadow-[0_8px_25px_rgba(0,0,0,0.3)] font-black transition-all text-lg transform hover:scale-105">
                     <span>🏠</span> Dashboard
                 </button>
-                
-                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
                     <span>📅</span> Study Planner
                 </button>
-                
-                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
                     <span>✅</span> Action Tasks
                 </button>
-                
-                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
                     <span>⏱️</span> Focus Timer
                 </button>
-                
-                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
-                    <span>📊</span> SGPA / CGPA
+                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                    <span>📊</span> SGPA Predictor
                 </button>
-                
-                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
-                    <span>🚀</span> Projects Portfolio
+                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
+                    <span>🚀</span> Project Portfolio
                 </button>
-                
-                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
                     <span>🎯</span> Job Tracker
                 </button>
-
-                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
                     <span>🗺️</span> B.Tech Roadmap
                 </button>
-                
-                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
                     <span>📚</span> Resource Vault
                 </button>
-                
-                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md">
+                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-lg hover:shadow-md">
                     <span>💼</span> Interview Skills
                 </button>
             </nav>
             
             <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
-                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-lg font-black text-base mb-3 border-2 border-white/50">
+                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white py-4 rounded-2xl transition-all shadow-[0_5px_15px_rgba(16,185,129,0.4)] font-black transform hover:-translate-y-1 text-lg mb-4">
                     Install App 📲
                 </button>
             </div>
         </div>
         
         <div class="mt-2">
-            <div id="userInfo" class="text-sm text-indigo-900 mb-3 truncate font-black bg-white/80 px-3 py-2 rounded-lg text-center shadow-sm border border-white">
-                Not signed in
-            </div>
-            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base transition-all transform hover:-translate-y-1 hover:shadow-lg border-2 border-slate-700">
-                Sign In / Sign Up
-            </button>
+            <div id="userInfo" class="text-base text-indigo-900 mb-4 truncate font-black bg-white/80 px-4 py-3 rounded-xl text-center shadow-sm border border-white">Not signed in</div>
+            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-2xl transition-all shadow-xl font-black transform hover:-translate-y-1 text-lg">Sign In / Sign Up</button>
         </div>
     </aside>
 
@@ -479,126 +392,110 @@
     <main class="flex-1 overflow-y-auto overflow-x-hidden pr-2 sm:pr-4 lg:pr-2 pb-10 z-0 hide-scroll">
         
         <!-- Global Header -->
-        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-8 mt-6 lg:mt-2 px-3 lg:px-2">
-            <div class="animate-float">
-                <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
-                <p class="text-slate-800 font-extrabold mt-2 text-sm sm:text-base bg-white/80 inline-block px-4 py-1.5 rounded-lg shadow-sm border border-white">Your premium academic command center</p>
+        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10 mt-6 lg:mt-2 px-3 lg:px-2">
+            <div>
+                <h1 id="pageTitle" class="text-5xl sm:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
+                <p class="text-slate-800 font-extrabold mt-3 text-xl bg-white/70 inline-block px-5 py-2 rounded-xl shadow-sm border border-white">Your premium academic command center</p>
             </div>
-            <div class="text-xs sm:text-sm glass-card bg-white/95 px-5 py-3 font-black text-indigo-900 flex items-center gap-2 shadow-md border-2 border-white self-start sm:self-auto transform hover:scale-105 transition-transform">
-                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
+            <div class="text-base glass-card bg-white/95 px-6 py-4 font-black text-indigo-900 flex items-center gap-3 shadow-lg border-2 border-white transform hover:scale-105 transition-transform self-start sm:self-auto">
+                <span class="w-4 h-4 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
             </div>
         </header>
 
         <!-- ========================================== -->
-        <!-- DASHBOARD SECTION (Vibrant Gradients + SVGs)-->
+        <!-- DASHBOARD SECTION                          -->
         <!-- ========================================== -->
         <section id="dashboard" class="page active px-2">
-            <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(236,72,153,0.3)] border-2 border-white/50 bg-slate-900 animate-float">
-                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-pink-500 opacity-40 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-indigo-500 opacity-40 rounded-full blur-3xl"></div>
-                
-                <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-4 relative z-10 drop-shadow-xl tracking-tight leading-tight">Welcome to your future. ✨</h2>
-                <p class="text-indigo-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
+            <!-- Hero Banner -->
+            <div class="glass-card p-8 sm:p-12 text-white mb-12 relative overflow-hidden shadow-[0_20px_50px_rgba(79,70,229,0.4)] border-2 border-white/50 bg-slate-900">
+                <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-indigo-500 opacity-30 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-fuchsia-500 opacity-30 rounded-full blur-3xl"></div>
+                <h2 class="text-5xl sm:text-7xl font-black mb-6 relative z-10 drop-shadow-2xl tracking-tight leading-tight">Welcome to your future. ✨</h2>
+                <p class="text-indigo-100 text-xl sm:text-2xl max-w-3xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and crush your academic goals with absolute precision.</p>
             </div>
 
-            <!-- Vibrant Dashboard Stats Grid with Background SVGs -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+            <!-- RESTORED: White Glass Cards with SVG Watermarks -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
                 
-                <!-- Total Tasks: Indigo/Blue Gradient -->
-                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-indigo-500 to-blue-600 text-white shadow-lg" onclick="showPage('tasks')">
+                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
                     
-                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Total Tasks</p>
-                    <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
+                    <p class="text-base sm:text-lg text-indigo-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Total Tasks</p>
+                    <h2 id="totalTasks" class="text-6xl sm:text-7xl font-black mt-3 text-slate-900 drop-shadow-md tracking-tighter z-10">0</h2>
                 </div>
                 
-                <!-- Completed Tasks: Emerald/Teal Gradient -->
-                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg" onclick="showPage('tasks')">
+                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-emerald-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                     
-                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Completed</p>
-                    <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
+                    <p class="text-base sm:text-lg text-emerald-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Completed</p>
+                    <h2 id="completedTasks" class="text-6xl sm:text-7xl font-black mt-3 text-emerald-600 drop-shadow-md tracking-tighter z-10">0</h2>
                 </div>
                 
-                <!-- Projects Built: Purple/Pink Gradient -->
-                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg" onclick="showPage('portfolio')">
+                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('portfolio')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-fuchsia-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
                     
-                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Projects</p>
-                    <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
+                    <p class="text-base sm:text-lg text-fuchsia-700 font-black uppercase tracking-widest drop-shadow-sm z-10">Projects</p>
+                    <h2 id="dashProjects" class="text-6xl sm:text-7xl font-black mt-3 text-fuchsia-600 drop-shadow-md tracking-tighter z-10">0</h2>
                 </div>
                 
-                <!-- Job Apps: Orange/Red Gradient -->
-                <div class="rounded-3xl p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group interactive-card border-2 border-white/50 bg-gradient-to-br from-orange-400 to-red-500 text-white shadow-lg" onclick="showPage('jobs')">
+                <div class="glass-card inner-glass interactive-card p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('jobs')">
                     <!-- Faded SVG Background -->
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-white opacity-[0.15] group-hover:scale-125 group-hover:opacity-[0.25] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-rose-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
                     
-                    <p class="text-sm sm:text-base font-black uppercase tracking-widest z-10 opacity-90">Job Apps</p>
-                    <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 z-10 drop-shadow-md">0</h2>
+                    <p class="text-base sm:text-lg text-rose-600 font-black uppercase tracking-widest drop-shadow-sm z-10">Job Apps</p>
+                    <h2 id="dashJobs" class="text-6xl sm:text-7xl font-black mt-3 text-rose-600 drop-shadow-md tracking-tighter z-10">0</h2>
                 </div>
             </div>
             
-            <!-- Dashboard Mini-Widgets -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Mini Task List -->
-                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col relative overflow-hidden shadow-md border-2 border-white">
-                    <div class="flex justify-between items-center mb-4">
-                        <p class="text-lg text-slate-800 font-black tracking-tight z-10">Upcoming Tasks</p>
-                        <button onclick="showPage('tasks')" class="text-pink-600 font-black text-sm hover:underline uppercase tracking-wide">View All</button>
-                    </div>
-                    <div id="dashMiniTasks" class="space-y-3 z-10 max-h-48 overflow-y-auto hide-scroll">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
-
-                <!-- Progress Section -->
-                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-md border-2 border-white">
-                    <p class="text-lg text-indigo-700 font-black uppercase tracking-widest z-10 mb-4 text-center">Task Completion</p>
-                    <div class="flex flex-col items-center gap-4 z-10">
-                        <!-- ID explicitly set to update dynamically -->
-                        <h2 id="taskProgress" class="text-6xl sm:text-7xl font-black text-indigo-600 drop-shadow-md">0%</h2>
-                        <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white">
-                            <div id="progressBar" class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_20px_rgba(236,72,153,0.8)]" style="width: 0%"></div>
-                        </div>
+            <!-- Dashboard Progress Widget -->
+            <div class="glass-card inner-glass p-8 sm:p-10 flex flex-col justify-center relative overflow-hidden shadow-md">
+                <p class="text-lg sm:text-xl text-indigo-700 font-black uppercase tracking-widest z-10 mb-6 text-center">Overall Task Completion</p>
+                <div class="flex flex-col items-center gap-6 z-10">
+                    <h2 id="taskProgressMain" class="text-7xl sm:text-8xl font-black text-indigo-600 drop-shadow-md">0%</h2>
+                    <div class="w-full max-w-4xl bg-slate-200/80 rounded-full h-6 overflow-hidden shadow-inner border border-white">
+                        <div id="progressBarMain" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_25px_rgba(217,70,239,0.9)]" style="width: 0%"></div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ========================================== -->
-        <!-- PLANNER SECTION (Visible Time UI Fix)      -->
+        <!-- PLANNER SECTION (Fixed Layout Issue)       -->
         <!-- ========================================== -->
         <section id="planner" class="page px-2">
-            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
-                <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Schedule your major study blocks. Data is saved locally.</p>
+            <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white">
+                <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
+                <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Schedule your major study blocks. Data is saved locally.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-4 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-sm border-2 border-white items-center">
+                <!-- 
+                  FIX: Replaced flex with strict width controls to ensure 
+                  time/date do not squash next to the text input. 
+                -->
+                <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center w-full">
+                    
                     <!-- Title Input -->
-                    <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm">
+                    <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-indigo-500 transition-colors shadow-sm">
                         <span class="text-xl">📝</span>
                         <input type="text" id="planTitle" placeholder="Milestone name..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                        <!-- FIXED: Date Input with Clear Icon -->
-                        <div class="flex-1 lg:flex-none flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm">
-                            <span class="text-xl">📅</span>
-                            <input type="date" id="planDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
-                        </div>
-                        
-                        <!-- FIXED: Time Input with Clear Icon to prevent 12 AM issue -->
-                        <div class="flex-1 lg:flex-none flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm">
-                            <span class="text-xl">⏰</span>
-                            <input type="time" id="planTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
-                        </div>
+                    <!-- Date Input (Fixed Width on Desktop) -->
+                    <div class="w-full lg:w-48 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-indigo-500 transition-colors shadow-sm shrink-0">
+                        <span class="text-xl">📅</span>
+                        <input type="date" id="planDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
                     </div>
                     
-                    <button onclick="addPlan()" class="w-full lg:w-auto btn-primary px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
-                        Add Plan
+                    <!-- Time Input (Fixed Width on Desktop) -->
+                    <div class="w-full lg:w-40 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-indigo-500 transition-colors shadow-sm shrink-0">
+                        <span class="text-xl">⏰</span>
+                        <input type="time" id="planTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                    </div>
+                    
+                    <button onclick="addPlan()" class="w-full lg:w-32 bg-slate-900 text-white px-4 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all shrink-0">
+                        Add
                     </button>
                 </div>
                 
@@ -607,39 +504,40 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- TASKS SECTION (Visible Time UI Fix)        -->
+        <!-- TASKS SECTION (Fixed Layout Issue)         -->
         <!-- ========================================== -->
         <section id="tasks" class="page px-2">
-            <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
-                <div class="flex justify-between items-end mb-3">
-                    <h2 class="text-3xl sm:text-5xl font-black text-slate-800 tracking-tight">✅ Action Items</h2>
+            <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white">
+                <div class="flex justify-between items-end mb-4">
+                    <h2 class="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight">✅ Action Items</h2>
                     <button onclick="clearCompletedTasks()" class="text-rose-500 font-black bg-rose-100 px-4 py-2 rounded-lg hover:bg-rose-200 transition-colors text-xs sm:text-sm shadow-sm uppercase tracking-wide border border-rose-200">Clear Done</button>
                 </div>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Data is saved locally. Add your assignments below.</p>
+                <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Data is saved locally. Add your assignments below.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-4 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                <!-- 
+                  FIX: Strict width controls to ensure time/date do not squash 
+                -->
+                <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center w-full">
                     
                     <!-- Title Input -->
-                    <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm">
+                    <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-pink-500 transition-colors shadow-sm">
                         <span class="text-xl">✍️</span>
                         <input type="text" id="taskInput" placeholder="Task description..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                        <!-- FIXED: Date Input with Clear Icon -->
-                        <div class="flex-1 lg:flex-none flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm">
-                            <span class="text-xl">📅</span>
-                            <input type="date" id="taskDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
-                        </div>
-                        
-                        <!-- FIXED: Time Input with Clear Icon -->
-                        <div class="flex-1 lg:flex-none flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm">
-                            <span class="text-xl">⏰</span>
-                            <input type="time" id="taskTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
-                        </div>
+                    <!-- Date Input (Fixed Width on Desktop) -->
+                    <div class="w-full lg:w-48 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-pink-500 transition-colors shadow-sm shrink-0">
+                        <span class="text-xl">📅</span>
+                        <input type="date" id="taskDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
                     </div>
                     
-                    <button onclick="addTask()" class="w-full lg:w-auto btn-primary px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">
+                    <!-- Time Input (Fixed Width on Desktop) -->
+                    <div class="w-full lg:w-40 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-pink-500 transition-colors shadow-sm shrink-0">
+                        <span class="text-xl">⏰</span>
+                        <input type="time" id="taskTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                    </div>
+                    
+                    <button onclick="addTask()" class="w-full lg:w-32 bg-slate-900 text-white px-4 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all shrink-0">
                         Add Task
                     </button>
                 </div>
@@ -652,29 +550,29 @@
         <!-- FOCUS TIMER SECTION                        -->
         <!-- ========================================== -->
         <section id="timer" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
-                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">⏱️ Focus Timer</h2>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Set your study time and take planned breaks.</p>
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center">
+                <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">⏱️ Focus Timer</h2>
+                <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Set your study time and take planned breaks.</p>
                 
-                <div class="inner-glass bg-white/90 p-8 sm:p-12 rounded-[2rem] shadow-lg border-2 border-white mb-6">
-                    <div id="timeDisplay" class="timer-display text-7xl sm:text-[10rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 drop-shadow-md mb-6 leading-none py-2">25:00</div>
+                <div class="inner-glass bg-white/90 p-8 sm:p-12 rounded-[2rem] shadow-lg border-2 border-white mb-8">
+                    <div id="timeDisplay" class="timer-display text-[5rem] sm:text-[10rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 drop-shadow-md mb-6 leading-none py-2">25:00</div>
                     
                     <!-- ADJUSTABLE TIMER CONTROLS -->
-                    <div class="flex justify-center items-center gap-4 mb-8">
-                        <button onclick="adjustTimer(-5)" class="px-5 py-2.5 rounded-xl font-black bg-rose-100 text-rose-700 hover:bg-rose-200 transition-all shadow-sm transform hover:-translate-y-1">- 5 Min</button>
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+                        <button onclick="adjustTimer(-5)" class="px-5 py-2.5 rounded-xl font-black bg-rose-100 text-rose-700 hover:bg-rose-200 transition-all shadow-sm transform hover:-translate-y-1 w-full sm:w-auto">- 5 Min</button>
                         
                         <!-- Custom Input Field -->
-                        <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border-2 border-slate-200 shadow-inner">
+                        <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border-2 border-slate-200 shadow-inner w-full sm:w-auto justify-between">
                             <input type="number" id="customFocusTime" placeholder="Min" class="w-16 text-center font-black text-lg text-slate-800 bg-transparent outline-none">
-                            <button onclick="setCustomTimer()" class="text-indigo-600 font-black hover:text-white hover:bg-indigo-500 transition-colors text-sm bg-indigo-50 px-3 py-1.5 rounded-lg uppercase border border-indigo-100">Set</button>
+                            <button onclick="setCustomTimer()" class="text-indigo-600 font-black hover:text-white hover:bg-indigo-500 transition-colors text-sm bg-indigo-50 px-4 py-2 rounded-lg uppercase">Set</button>
                         </div>
                         
-                        <button onclick="adjustTimer(5)" class="px-5 py-2.5 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm transform hover:-translate-y-1">+ 5 Min</button>
+                        <button onclick="adjustTimer(5)" class="px-5 py-2.5 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm transform hover:-translate-y-1 w-full sm:w-auto">+ 5 Min</button>
                     </div>
 
                     <!-- PLAYBACK CONTROLS -->
                     <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="startTimer()" id="startBtn" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl w-48 uppercase tracking-widest shadow-xl">Start</button>
+                        <button onclick="startTimer()" id="startBtn" class="bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-xl w-48 uppercase tracking-widest shadow-xl hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] transition-all">Start</button>
                         <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-gradient-to-r from-amber-400 to-orange-500 text-white px-12 py-5 rounded-2xl font-black hover:shadow-lg transition-all text-xl w-48 uppercase tracking-widest transform hover:-translate-y-1 shadow-xl border border-white/50">Pause</button>
                         <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-200 px-12 py-5 rounded-2xl font-black hover:bg-slate-50 transition-all text-xl w-48 uppercase tracking-widest shadow-md hover:shadow-lg">Reset</button>
                     </div>
@@ -693,30 +591,29 @@
         <!-- SGPA CALCULATOR (EXACTLY 2 SEMESTERS)      -->
         <!-- ========================================== -->
         <section id="cgpa" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
-                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📊 SGPA Predictor</h2>
-                <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">Calculate your final academic standing for your two semesters.</p>
+            <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center">
+                <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📊 SGPA Predictor</h2>
+                <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Calculate your final academic standing for your two semesters.</p>
                 
-                <!-- EXACTLY 2 SEMESTERS AS REQUESTED -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 text-left max-w-2xl mx-auto">
-                    <div class="inner-glass p-6 rounded-2xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
-                        <label class="block font-black text-pink-600 mb-3 text-sm uppercase tracking-widest">Semester 1 SGPA</label>
-                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-4 font-black text-2xl text-slate-800 outline-none focus:border-pink-500 transition-colors shadow-inner text-center">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 text-left max-w-2xl mx-auto">
+                    <div class="inner-glass p-8 rounded-3xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
+                        <label class="block font-black text-pink-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 1 SGPA</label>
+                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-5 font-black text-3xl text-slate-800 outline-none focus:border-pink-500 transition-colors shadow-inner text-center">
                     </div>
-                    <div class="inner-glass p-6 rounded-2xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
-                        <label class="block font-black text-indigo-600 mb-3 text-sm uppercase tracking-widest">Semester 2 SGPA</label>
-                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-4 font-black text-2xl text-slate-800 outline-none focus:border-indigo-500 transition-colors shadow-inner text-center">
+                    <div class="inner-glass p-8 rounded-3xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
+                        <label class="block font-black text-indigo-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 2 SGPA</label>
+                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-5 font-black text-3xl text-slate-800 outline-none focus:border-indigo-500 transition-colors shadow-inner text-center">
                     </div>
                 </div>
 
-                <button onclick="calculateCGPA()" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl mb-10 shadow-xl uppercase tracking-widest">
+                <button onclick="calculateCGPA()" class="bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-xl mb-12 shadow-xl uppercase tracking-widest hover:bg-black transition-colors">
                     Calculate Result
                 </button>
 
-                <div class="inner-glass bg-gradient-to-br from-indigo-50 to-pink-50 border-2 border-white p-10 rounded-[2rem] shadow-xl max-w-sm mx-auto transform hover:scale-105 transition-transform">
-                    <p class="text-sm font-black uppercase text-slate-500 tracking-widest mb-2">Final Result</p>
-                    <h2 id="cgpaResult" class="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 drop-shadow-sm">0.00</h2>
-                    <p class="text-xs font-black uppercase text-indigo-400 tracking-widest mt-2">SGPA / CGPA</p>
+                <div class="inner-glass bg-gradient-to-br from-indigo-50 to-pink-50 border-2 border-white p-12 rounded-[3rem] shadow-xl max-w-md mx-auto transform hover:scale-105 transition-transform">
+                    <p class="text-sm font-black uppercase text-slate-500 tracking-widest mb-4">Final Result</p>
+                    <h2 id="cgpaResult" class="text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 drop-shadow-sm">0.00</h2>
+                    <p class="text-sm font-black uppercase text-indigo-400 tracking-widest mt-4">SGPA / CGPA</p>
                 </div>
             </div>
         </section>
@@ -726,17 +623,15 @@
         <!-- ========================================== -->
         <section id="portfolio" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white">
-                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">🚀 Project Portfolio</h2>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Track your personal projects and GitHub repos to show recruiters.</p>
+                <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">🚀 Project Portfolio</h2>
+                <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Track your personal projects and GitHub repos to show recruiters.</p>
                 
-                <!-- Project Input Form -->
-                <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    <input type="text" id="projTitle" placeholder="Project Title" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
-                    <input type="text" id="projStack" placeholder="Tech Stack (e.g., React, Node)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
-                    <button onclick="addProject()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">Add Project</button>
+                <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    <input type="text" id="projTitle" placeholder="Project Title" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
+                    <input type="text" id="projStack" placeholder="Tech Stack (e.g., React, Node)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
+                    <button onclick="addProject()" class="w-full lg:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all shrink-0">Add Project</button>
                 </div>
                 
-                <!-- Project List -->
                 <div id="projList" class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <!-- Populated by JS -->
                 </div>
@@ -748,29 +643,27 @@
         <!-- ========================================== -->
         <section id="jobs" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white">
-                <div class="flex items-center gap-4 mb-3">
-                    <div class="text-2xl sm:text-4xl bg-gradient-to-br from-red-100 to-rose-50 rounded-full p-2 w-14 h-14 flex items-center justify-center shadow-md border-2 border-red-200">🎯</div>
-                    <h2 class="text-3xl sm:text-5xl font-black text-slate-800 tracking-tight">Job Tracker</h2>
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="text-3xl sm:text-5xl bg-gradient-to-br from-red-100 to-rose-50 rounded-full p-3 w-16 h-16 flex items-center justify-center shadow-md border-2 border-red-200">🎯</div>
+                    <h2 class="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight">Job Tracker</h2>
                 </div>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base mt-2">Keep track of your internship and job applications.</p>
+                <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl mt-2">Keep track of your internship and job applications.</p>
                 
-                <!-- Job Input Form -->
-                <div class="flex flex-col lg:flex-row gap-3 mb-8 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    <input type="text" id="jobCompany" placeholder="Company Name" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
+                <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    <input type="text" id="jobCompany" placeholder="Company Name" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
                     
-                    <input type="text" id="jobRole" placeholder="Role (e.g., SDE Intern)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
+                    <input type="text" id="jobRole" placeholder="Role (e.g., SDE Intern)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
                     
-                    <select id="jobStatus" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm sm:text-base text-slate-700 outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                    <select id="jobStatus" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base text-slate-700 outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                         <option value="Applied">Applied</option>
                         <option value="Interviewing">Interviewing</option>
                         <option value="Offer Received">Offer Received</option>
                         <option value="Rejected">Rejected</option>
                     </select>
                     
-                    <button onclick="addJob()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide">Save App</button>
+                    <button onclick="addJob()" class="w-full lg:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all shrink-0">Save App</button>
                 </div>
                 
-                <!-- Job List -->
                 <div id="jobList" class="space-y-4">
                     <!-- Populated by JS -->
                 </div>
@@ -781,81 +674,82 @@
         <!-- RESOURCE VAULT SECTION (PDF OPEN FIX)      -->
         <!-- ========================================== -->
         <section id="resources" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white animate-float">
-                <h2 class="text-3xl sm:text-5xl font-black mb-3 text-slate-800 tracking-tight">📚 Resources & Notes</h2>
-                <p class="text-slate-700 font-extrabold mb-8 text-sm sm:text-base">Upload a PDF file to instantly view your study materials.</p>
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white">
+                <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📚 Resources & Notes</h2>
+                <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Upload a PDF file to instantly view your study materials.</p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     
-                    <!-- BOX 1 WITH WORKING PDF HANDLER -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex flex-col gap-3 mt-auto pt-4">
-                            <label class="cursor-pointer bg-pink-100 text-pink-700 px-4 py-3 rounded-xl font-black hover:bg-pink-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-pink-200 text-center w-full">
-                                <span>➕</span> Add PDF File 
+                    <!-- BOX 1 -->
+                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex flex-col gap-4 mt-auto pt-6">
+                            <label class="cursor-pointer bg-pink-100 text-pink-700 px-4 py-4 rounded-xl font-black hover:bg-pink-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-pink-200 text-center w-full">
+                                <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink1')">
                             </label>
-                            <a id="pdfLink1" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
+                            <!-- THIS IS THE BUTTON THAT APPEARS WHEN A PDF IS UPLOADED -->
+                            <a id="pdfLink1" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
                     
-                    <!-- BOX 2 WITH WORKING PDF HANDLER -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-blue-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex flex-col gap-3 mt-auto pt-4">
-                            <label class="cursor-pointer bg-blue-100 text-blue-700 px-4 py-3 rounded-xl font-black hover:bg-blue-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-blue-200 text-center w-full">
-                                <span>➕</span> Add PDF File 
+                    <!-- BOX 2 -->
+                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-blue-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex flex-col gap-4 mt-auto pt-6">
+                            <label class="cursor-pointer bg-blue-100 text-blue-700 px-4 py-4 rounded-xl font-black hover:bg-blue-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-blue-200 text-center w-full">
+                                <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink2')">
                             </label>
-                            <a id="pdfLink2" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
+                            <a id="pdfLink2" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
 
-                    <!-- BOX 3 WITH WORKING PDF HANDLER -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-emerald-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex flex-col gap-3 mt-auto pt-4">
-                            <label class="cursor-pointer bg-emerald-100 text-emerald-700 px-4 py-3 rounded-xl font-black hover:bg-emerald-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-emerald-200 text-center w-full">
-                                <span>➕</span> Add PDF File 
+                    <!-- BOX 3 -->
+                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-emerald-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex flex-col gap-4 mt-auto pt-6">
+                            <label class="cursor-pointer bg-emerald-100 text-emerald-700 px-4 py-4 rounded-xl font-black hover:bg-emerald-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-emerald-200 text-center w-full">
+                                <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink3')">
                             </label>
-                            <a id="pdfLink3" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
+                            <a id="pdfLink3" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
 
-                    <!-- BOX 4 WITH WORKING PDF HANDLER -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-purple-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex flex-col gap-3 mt-auto pt-4">
-                            <label class="cursor-pointer bg-purple-100 text-purple-700 px-4 py-3 rounded-xl font-black hover:bg-purple-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-purple-200 text-center w-full">
-                                <span>➕</span> Add PDF File 
+                    <!-- BOX 4 -->
+                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-purple-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex flex-col gap-4 mt-auto pt-6">
+                            <label class="cursor-pointer bg-purple-100 text-purple-700 px-4 py-4 rounded-xl font-black hover:bg-purple-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-purple-200 text-center w-full">
+                                <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink4')">
                             </label>
-                            <a id="pdfLink4" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
+                            <a id="pdfLink4" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
                     
-                    <!-- BOX 5 WITH WORKING PDF HANDLER -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-amber-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex flex-col gap-3 mt-auto pt-4">
-                            <label class="cursor-pointer bg-amber-100 text-amber-700 px-4 py-3 rounded-xl font-black hover:bg-amber-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-amber-200 text-center w-full">
-                                <span>➕</span> Add PDF File 
+                    <!-- BOX 5 -->
+                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-amber-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex flex-col gap-4 mt-auto pt-6">
+                            <label class="cursor-pointer bg-amber-100 text-amber-700 px-4 py-4 rounded-xl font-black hover:bg-amber-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-amber-200 text-center w-full">
+                                <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink5')">
                             </label>
-                            <a id="pdfLink5" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
+                            <a id="pdfLink5" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
                     
-                    <!-- BOX 6 WITH WORKING PDF HANDLER -->
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-teal-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
-                        <div class="flex flex-col gap-3 mt-auto pt-4">
-                            <label class="cursor-pointer bg-teal-100 text-teal-700 px-4 py-3 rounded-xl font-black hover:bg-teal-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 border border-teal-200 text-center w-full">
-                                <span>➕</span> Add PDF File 
+                    <!-- BOX 6 -->
+                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-teal-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex flex-col gap-4 mt-auto pt-6">
+                            <label class="cursor-pointer bg-teal-100 text-teal-700 px-4 py-4 rounded-xl font-black hover:bg-teal-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-teal-200 text-center w-full">
+                                <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink6')">
                             </label>
-                            <a id="pdfLink6" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-3 rounded-xl text-center uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF</a>
+                            <a id="pdfLink6" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
 
@@ -871,174 +765,174 @@
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-10 gap-6">
                     <div>
-                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 flex items-center gap-3 tracking-tight force-wrap">
+                        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-800 flex items-center gap-3 tracking-tight force-wrap">
                             B.Tech Skills Roadmap
                         </h2>
-                        <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/70 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">Your 4-year path to Software Engineer.</p>
+                        <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-lg bg-white/70 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">Your 4-year path to Software Engineer.</p>
                     </div>
                     
-                    <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-md border-2 border-white">
-                        <div class="flex justify-between items-end mb-2">
+                    <div class="inner-glass bg-white/95 p-6 rounded-3xl w-full md:w-80 shadow-md border-2 border-white">
+                        <div class="flex justify-between items-end mb-3">
                             <span class="text-sm font-black uppercase text-slate-600 tracking-widest">Completion</span>
-                            <span id="roadmapScore" class="text-4xl sm:text-5xl font-black text-indigo-600 drop-shadow-sm">0%</span>
+                            <span id="roadmapScore" class="text-5xl sm:text-6xl font-black text-indigo-600 drop-shadow-sm">0%</span>
                         </div>
-                        <div class="w-full bg-slate-200/80 rounded-full h-4 overflow-hidden shadow-inner border border-white/50">
+                        <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white/50">
                             <div id="roadmapProgressBar" class="bg-gradient-to-r from-indigo-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-md" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- STYLED SCROLLABLE TABS -->
-                <div class="flex gap-2 sm:gap-4 mb-8 overflow-x-auto pb-4 hide-scroll border-b-4 border-slate-200/50">
-                    <button onclick="showYear('year1', this)" class="year-tab-btn btn-primary px-8 py-3.5 rounded-xl font-black shadow-lg transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase">Year 1</button>
+                <div class="flex gap-3 sm:gap-6 mb-10 overflow-x-auto pb-4 hide-scroll border-b-4 border-slate-200/50">
+                    <button onclick="showYear('year1', this)" class="year-tab-btn bg-slate-900 text-white px-10 py-4 rounded-2xl font-black shadow-lg transition-all text-sm sm:text-lg whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase">Year 1</button>
                     
-                    <button onclick="showYear('year2', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase">Year 2</button>
+                    <button onclick="showYear('year2', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-sm sm:text-lg shadow-sm whitespace-nowrap tracking-widest uppercase">Year 2</button>
                     
-                    <button onclick="showYear('year3', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase">Year 3</button>
+                    <button onclick="showYear('year3', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-sm sm:text-lg shadow-sm whitespace-nowrap tracking-widest uppercase">Year 3</button>
                     
-                    <button onclick="showYear('year4', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase">Year 4</button>
+                    <button onclick="showYear('year4', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-sm sm:text-lg shadow-sm whitespace-nowrap tracking-widest uppercase">Year 4</button>
                 </div>
 
                 <div>
                     <!-- YEAR 1 -->
-                    <div id="year1" class="year-content active grid md:grid-cols-2 gap-6 transition-opacity duration-300">
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-indigo-900 mb-5 text-xl border-b-2 border-indigo-200 pb-2">Semester 1: Foundation</div>
-                            <div class="space-y-4">
+                    <div id="year1" class="year-content active grid md:grid-cols-2 gap-8 transition-opacity duration-300">
+                        <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
+                            <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 1: Foundation</div>
+                            <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">C / C++ Programming Basics</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">C / C++ Programming Basics</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Terminal & Linux Command Line</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Terminal & Linux Command Line</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Git & GitHub (Version Control)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Git & GitHub (Version Control)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Basic HTML5 & CSS3</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Basic HTML5 & CSS3</span>
                                 </label>
                             </div>
                         </div>
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-indigo-900 mb-5 text-xl border-b-2 border-indigo-200 pb-2">Semester 2: Data & Logic</div>
-                            <div class="space-y-4">
+                        <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
+                            <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 2: Data & Logic</div>
+                            <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Data Structures (Arrays, Lists)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Data Structures (Arrays, Lists)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Python Scripting & Automation</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Python Scripting & Automation</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Intro to JavaScript (DOM)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Intro to JavaScript (DOM)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Relational Algebra & SQL</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Relational Algebra & SQL</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <!-- YEAR 2 -->
-                    <div id="year2" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 3: Core CS</div>
-                            <div class="space-y-4">
+                    <div id="year2" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
+                        <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
+                            <div class="font-black text-pink-900 mb-6 text-2xl border-b-4 border-pink-200 pb-3">Semester 3: Core CS</div>
+                            <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Object-Oriented Programming (Java/C++)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Object-Oriented Programming (Java/C++)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Advanced DSA (Trees, Graphs)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Advanced DSA (Trees, Graphs)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">DBMS Architecture & Normalization</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">DBMS Architecture & Normalization</span>
                                 </label>
                             </div>
                         </div>
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 4: Systems</div>
-                            <div class="space-y-4">
+                        <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
+                            <div class="font-black text-pink-900 mb-6 text-2xl border-b-4 border-pink-200 pb-3">Semester 4: Systems</div>
+                            <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Operating Systems (Threads, Memory)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Operating Systems (Threads, Memory)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Computer Networks (TCP/IP, HTTP)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Computer Networks (TCP/IP, HTTP)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Building REST APIs</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Building REST APIs</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <!-- YEAR 3 -->
-                    <div id="year3" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 5: Architecture</div>
-                            <div class="space-y-4">
+                    <div id="year3" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
+                        <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
+                            <div class="font-black text-purple-900 mb-6 text-2xl border-b-4 border-purple-200 pb-3">Semester 5: Architecture</div>
+                            <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">Backend Engineering (Node.js/Spring)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">Backend Engineering (Node.js/Spring)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">Cloud Platforms (AWS Core Services)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">Cloud Platforms (AWS Core Services)</span>
                                 </label>
                             </div>
                         </div>
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 6: Engineering</div>
-                            <div class="space-y-4">
+                        <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
+                            <div class="font-black text-purple-900 mb-6 text-2xl border-b-4 border-purple-200 pb-3">Semester 6: Engineering</div>
+                            <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">DevOps Culture (Docker, CI/CD)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">DevOps Culture (Docker, CI/CD)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">App Security & Cryptography</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">App Security & Cryptography</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <!-- YEAR 4 -->
-                    <div id="year4" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 7: Scale & Polish</div>
-                            <div class="space-y-4">
+                    <div id="year4" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
+                        <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
+                            <div class="font-black text-teal-900 mb-6 text-2xl border-b-4 border-teal-200 pb-3">Semester 7: Scale & Polish</div>
+                            <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">System Design (Microservices)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">System Design (Microservices)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Kubernetes & Orchestration</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Kubernetes & Orchestration</span>
                                 </label>
                             </div>
                         </div>
-                        <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 8: Industry Ready</div>
-                            <div class="space-y-4">
+                        <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
+                            <div class="font-black text-teal-900 mb-6 text-2xl border-b-4 border-teal-200 pb-3">Semester 8: Industry Ready</div>
+                            <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Elite DSA Problem Solving</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Elite DSA Problem Solving</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Mock Interviews (Peers)</span>
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Mock Interviews (Peers)</span>
                                 </label>
                             </div>
                         </div>
@@ -1053,116 +947,115 @@
         <section id="career" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white">
                 
-                <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+                <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
                     <div>
-                        <!-- Font sizes reduced, force-wrap added to prevent cutoff -->
-                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 tracking-tight force-wrap flex items-center gap-3">
-                            <span class="text-4xl">🧠</span> Interview Mastery
+                        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-800 tracking-tight force-wrap flex items-center gap-3">
+                            <span class="text-5xl">🧠</span> Interview Mastery
                         </h2>
-                        <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-base bg-white/80 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">Top 1% candidate checklist.</p>
+                        <p class="text-slate-800 font-extrabold mt-4 text-sm sm:text-lg bg-white/80 inline-block px-5 py-2.5 rounded-lg shadow-sm border border-white">Top 1% candidate checklist.</p>
                     </div>
                     
-                    <div class="inner-glass bg-white/95 p-5 rounded-2xl w-full md:w-72 shadow-sm border border-white">
-                        <div class="flex justify-between items-end mb-2">
+                    <div class="inner-glass bg-white/95 p-6 rounded-3xl w-full md:w-80 shadow-md border-2 border-white">
+                        <div class="flex justify-between items-end mb-3">
                             <span class="text-sm font-black uppercase text-slate-600 tracking-widest">Score</span>
-                            <span id="interviewScore" class="text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm">0%</span>
+                            <span id="interviewScore" class="text-5xl sm:text-6xl font-black text-emerald-600 drop-shadow-sm">0%</span>
                         </div>
-                        <div class="w-full bg-slate-200/80 rounded-full h-4 overflow-hidden shadow-inner border border-white/50">
+                        <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white/50">
                             <div id="interviewProgressBar" class="bg-gradient-to-r from-emerald-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-sm" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="grid md:grid-cols-2 gap-6 relative z-10">
+                <div class="grid md:grid-cols-2 gap-8 relative z-10">
                     
                     <!-- Column 1: Core Technical -->
-                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-blue-500 border-2 border-white hover:shadow-lg transition-all">
-                        <div class="flex items-center gap-3 font-black text-blue-900 mb-5 text-xl sm:text-2xl border-b-2 border-blue-200 pb-2">Technical Core</div>
-                        <div class="space-y-4">
+                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-blue-500 border-2 border-white hover:shadow-lg transition-all">
+                        <div class="flex items-center gap-3 font-black text-blue-900 mb-6 text-2xl sm:text-3xl border-b-4 border-blue-200 pb-3">Technical Core</div>
+                        <div class="space-y-5">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Solved 150+ LeetCode (Easy/Med)</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Solved 150+ LeetCode (Easy/Med)</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Mastered 1 Primary Language</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Mastered 1 Primary Language</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">System Design (HLD & LLD)</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">System Design (HLD & LLD)</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Clean Code & SOLID</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Clean Code & SOLID</span>
                             </label>
                         </div>
                     </div>
 
                     <!-- Column 2: Communication -->
-                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-amber-500 border-2 border-white hover:shadow-lg transition-all">
-                        <div class="flex items-center gap-3 font-black text-amber-900 mb-5 text-xl sm:text-2xl border-b-2 border-amber-200 pb-2">Communication</div>
-                        <div class="space-y-4">
+                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-amber-500 border-2 border-white hover:shadow-lg transition-all">
+                        <div class="flex items-center gap-3 font-black text-amber-900 mb-6 text-2xl sm:text-3xl border-b-4 border-amber-200 pb-3">Communication</div>
+                        <div class="space-y-5">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">"Thinking Aloud" while coding</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">"Thinking Aloud" while coding</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">Clear Articulation</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">Clear Articulation</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">Active Listening</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">Active Listening</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">Explaining complex logic simply</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">Explaining complex logic simply</span>
                             </label>
                         </div>
                     </div>
                     
                     <!-- Column 3: HR & Behavioral -->
-                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-rose-500 border-2 border-white hover:shadow-lg transition-all">
-                        <div class="flex items-center gap-3 font-black text-rose-900 mb-5 text-xl sm:text-2xl border-b-2 border-rose-200 pb-2">HR & Behavioral</div>
-                        <div class="space-y-4">
+                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-rose-500 border-2 border-white hover:shadow-lg transition-all">
+                        <div class="flex items-center gap-3 font-black text-rose-900 mb-6 text-2xl sm:text-3xl border-b-4 border-rose-200 pb-3">HR & Behavioral</div>
+                        <div class="space-y-5">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">STAR Storytelling Method</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">STAR Storytelling Method</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">Conflict Resolution Qs</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">Conflict Resolution Qs</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">Company Research</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">Company Research</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">Teamwork Examples</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">Teamwork Examples</span>
                             </label>
                         </div>
                     </div>
                     
                     <!-- Column 4: Brand -->
-                    <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-purple-500 border-2 border-white hover:shadow-lg transition-all">
-                        <div class="flex items-center gap-3 font-black text-purple-900 mb-5 text-xl sm:text-2xl border-b-2 border-purple-200 pb-2">Personal Brand</div>
-                        <div class="space-y-4">
+                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-purple-500 border-2 border-white hover:shadow-lg transition-all">
+                        <div class="flex items-center gap-3 font-black text-purple-900 mb-6 text-2xl sm:text-3xl border-b-4 border-purple-200 pb-3">Personal Brand</div>
+                        <div class="space-y-5">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">ATS-Optimized Resume</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">ATS-Optimized Resume</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">Active GitHub (Green)</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">Active GitHub (Green)</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">Optimized LinkedIn</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">Optimized LinkedIn</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
-                                <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">Live Deployed Projects</span>
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">Live Deployed Projects</span>
                             </label>
                         </div>
                     </div>
@@ -1265,7 +1158,7 @@
             let html = '';
             projects.forEach((p, index) => {
                 html += `
-                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border-2 border-white shadow-md flex flex-col justify-between transform hover:-translate-y-1 transition-transform relative">
+                    <div class="inner-glass p-6 rounded-2xl bg-white/90 border-2 border-white shadow-md flex flex-col justify-between transform hover:-translate-y-1 transition-transform relative">
                         <button onclick="deleteProject(${index})" class="absolute top-4 right-4 text-slate-300 hover:text-rose-500 font-black text-2xl transition-colors">&times;</button>
                         <div>
                             <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-2 force-wrap pr-6">${p.title}</h3>
@@ -1328,7 +1221,7 @@
                 if(j.status === "Rejected") badgeClass = "bg-rose-100 text-rose-700 border-rose-200";
                 
                 html += `
-                    <div class="inner-glass p-5 sm:p-6 rounded-2xl bg-white/80 shadow-sm border border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-lg transition-shadow relative">
+                    <div class="inner-glass p-5 sm:p-6 rounded-2xl bg-white/90 shadow-md border-2 border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-lg transition-shadow relative">
                         <div class="flex-1 pr-6">
                             <h3 class="text-xl sm:text-2xl font-black text-slate-900 force-wrap">${j.company}</h3>
                             <p class="text-sm sm:text-base font-bold text-slate-500 force-wrap">${j.role || 'General Application'}</p>
@@ -1481,7 +1374,7 @@
                 const btn = document.getElementById('nav-' + id);
                 if(btn) {
                     btn.classList.remove('sidebar-active');
-                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md";
+                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md";
                 }
             });
             
@@ -1659,7 +1552,7 @@
             clearTimeout(holdTimer); 
         }
 
-        // --- TASK MANAGEMENT LOGIC (FIXED MATH & 0% BUG) ---
+        // --- TASK MANAGEMENT LOGIC (FIXED 0% BUG AND LAYOUT) ---
         function addTask() {
             const inputElement = document.getElementById('taskInput');
             const dateElement = document.getElementById('taskDate');
@@ -1708,7 +1601,7 @@
                         <div class="font-black text-xl sm:text-2xl force-wrap ${t.completed ? 'line-through text-slate-400' : 'text-slate-900'}">
                             ${t.text}
                         </div>
-                        <div class="text-xs sm:text-sm font-black mt-2 flex gap-3 ${t.completed ? 'text-slate-400' : 'text-pink-600'}">
+                        <div class="text-xs sm:text-sm font-black mt-2 flex gap-3 ${t.completed ? 'text-slate-400' : 'text-indigo-600'}">
                             <span>📅 ${formattedDate}</span>
                             <span>⏰ ${formattedTime}</span>
                         </div>
@@ -1724,7 +1617,7 @@
                     miniHtml += `
                         <div class="bg-white/80 p-4 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm">
                             <span class="font-bold text-slate-800 truncate text-sm flex-1 pr-2">${t.text}</span>
-                            <div class="w-3 h-3 rounded-full bg-pink-500 shadow-sm shrink-0"></div>
+                            <div class="w-3 h-3 rounded-full bg-indigo-500 shadow-sm shrink-0"></div>
                         </div>
                     `;
                     pendingCount++;
@@ -1749,29 +1642,31 @@
                 }
             }
             
-            // Safely Update Dashboard Counters & Progress Bar Math
+            // Safely Update Dashboard Counters & Progress Bar Math (FIXED)
             const completedCount = tasks.filter(t => t.completed).length;
             const totalCount = tasks.length;
             
             const totalTasksEl = document.getElementById('totalTasks');
             const completedTasksEl = document.getElementById('completedTasks');
-            const taskProgressEl = document.getElementById('taskProgress');
-            const progressBarEl = document.getElementById('progressBar');
+            
+            // These are the IDs for the large progress bar in the dashboard
+            const taskProgressMainEl = document.getElementById('taskProgressMain');
+            const progressBarMainEl = document.getElementById('progressBarMain');
             
             if(totalTasksEl) totalTasksEl.textContent = totalCount; 
             if(completedTasksEl) completedTasksEl.textContent = completedCount; 
             
-            // MATH FIX: Ensures 1 out of 1 tasks = 100%
+            // MATH FIX: Calculates correct percentage 
             let progressPercent = 0;
             if (totalCount > 0) {
                 progressPercent = Math.round((completedCount / totalCount) * 100);
             }
             
-            if(taskProgressEl) taskProgressEl.textContent = progressPercent + '%'; 
-            if(progressBarEl) progressBarEl.style.width = progressPercent + '%';
+            if(taskProgressMainEl) taskProgressMainEl.textContent = progressPercent + '%'; 
+            if(progressBarMainEl) progressBarMainEl.style.width = progressPercent + '%';
         }
 
-        // --- PLANNER MANAGEMENT LOGIC ---
+        // --- PLANNER MANAGEMENT LOGIC (FIXED LAYOUT) ---
         function addPlan() {
             const inputElement = document.getElementById('planTitle');
             const dateElement = document.getElementById('planDate');
@@ -1801,7 +1696,7 @@
                 const { formattedDate, formattedTime } = formatDateTime(p.date, p.time);
                 
                 html += `
-                <div class="no-select p-5 sm:p-6 bg-gradient-to-r from-indigo-50/95 to-blue-50/95 rounded-[1.5rem] shadow-md flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all"
+                <div class="no-select p-5 sm:p-6 bg-white/90 rounded-[1.5rem] shadow-md flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all"
                      onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
                      ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()">
                      
@@ -1812,7 +1707,7 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white px-4 py-2 rounded-xl text-xs sm:text-sm font-black text-indigo-700 flex flex-col sm:items-end gap-1 shadow-sm border border-slate-100 shrink-0 min-w-max">
+                    <div class="bg-slate-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-black text-indigo-700 flex flex-col sm:items-end gap-1 shadow-inner border border-slate-200 shrink-0 min-w-max">
                         <span>📅 ${formattedDate}</span>
                         <span>⏰ ${formattedTime}</span>
                     </div>
@@ -1866,7 +1761,7 @@
         
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(e => {
-                navigator.serviceWorker.register('sw.js').catch(console.error);
+                console.log("Service Worker registration skipped or failed");
             });
         }
 
@@ -1959,7 +1854,6 @@
         setInterval(checkNotifications, 10000); 
 
         // Initial Renders to Load Data from Local Storage
-        // Render calls placed safely at the end of script
         document.addEventListener("DOMContentLoaded", () => {
             renderTasks(); 
             renderPlans();

@@ -9,7 +9,7 @@
     
     <title>StudyBuddy - Premium Academic Assistant</title>
     
-    <!-- PWA Manifest Link -->
+    <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
     
     <!-- Tailwind CSS -->
@@ -24,6 +24,8 @@
             --glass-bg: rgba(255, 255, 255, 0.45);
             --glass-border: rgba(255, 255, 255, 0.75);
             --glass-shadow: 0 20px 50px rgba(31, 38, 135, 0.1);
+            --brand-primary: #4f46e5;
+            --brand-secondary: #ec4899;
         }
         
         body {
@@ -34,7 +36,7 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* Fixed Background that will never hang or cut off on Mobile */
+        /* 100% Mobile Fix: Background completely fills screen, no hanging */
         .mesh-bg {
             position: fixed;
             top: 0;
@@ -111,10 +113,10 @@
             .blob {
                 filter: blur(80px);
                 opacity: 0.7;
-                animation: none; /* Disables animation to stop hanging */
+                animation: none; 
             }
             .blob-4 {
-                display: none; /* Removes extra layer for mobile speed */
+                display: none; 
             }
         }
 
@@ -307,9 +309,10 @@
             background: linear-gradient(135deg, #4f46e5, #7c3aed);
             color: white;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
         }
         .btn-primary:hover {
-            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.5);
             transform: translateY(-2px);
         }
         
@@ -317,10 +320,30 @@
             background: linear-gradient(135deg, #10b981, #059669);
             color: white;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
         .btn-success:hover {
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.5);
             transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-danger:hover {
+            box-shadow: 0 10px 25px rgba(244, 63, 94, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Active Sidebar Item Styling */
+        .sidebar-active {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white !important;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
+            border-left: 4px solid #818cf8;
+            transform: scale(1.02);
         }
     </style>
 </head>
@@ -395,7 +418,7 @@
 
             <!-- Navigation Links -->
             <nav class="space-y-2">
-                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-lg font-black transition-all text-base transform hover:scale-105">
+                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base">
                     <span>🏠</span> Dashboard
                 </button>
                 
@@ -480,35 +503,49 @@
             </div>
 
             <!-- Dashboard Stats Grid -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
-                
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
                     <p class="text-sm sm:text-base text-indigo-700 font-black uppercase tracking-widest z-10">Total Tasks</p>
                     <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group">
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('tasks')">
                     <p class="text-sm sm:text-base text-emerald-700 font-black uppercase tracking-widest z-10">Completed</p>
                     <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group">
-                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects Built</p>
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('portfolio')">
+                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects</p>
                     <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-600 z-10">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group">
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group" onclick="showPage('jobs')">
                     <p class="text-sm sm:text-base text-blue-700 font-black uppercase tracking-widest z-10">Job Apps</p>
                     <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 text-blue-600 z-10">0</h2>
                 </div>
             </div>
             
-            <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-sm">
-                <p class="text-sm sm:text-base text-fuchsia-700 font-black uppercase tracking-widest z-10 mb-2">Overall Task Productivity</p>
-                <div class="flex items-center gap-6 z-10">
-                    <h2 id="taskProgress" class="text-5xl sm:text-6xl font-black text-fuchsia-600 w-24">0%</h2>
-                    <div class="w-full bg-slate-200/80 rounded-full h-4 overflow-hidden shadow-inner border border-white">
-                        <div id="progressBar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_10px_rgba(217,70,239,0.8)]" style="width: 0%"></div>
+            <!-- Dashboard Mini-Widgets -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Mini Task List -->
+                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col relative overflow-hidden shadow-sm">
+                    <div class="flex justify-between items-center mb-4">
+                        <p class="text-lg text-slate-800 font-black tracking-tight z-10">Upcoming Tasks</p>
+                        <button onclick="showPage('tasks')" class="text-indigo-600 font-bold text-sm hover:underline">View All</button>
+                    </div>
+                    <div id="dashMiniTasks" class="space-y-3 z-10 max-h-48 overflow-y-auto hide-scroll">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-sm">
+                    <p class="text-lg text-fuchsia-700 font-black uppercase tracking-widest z-10 mb-4 text-center">Task Completion</p>
+                    <div class="flex flex-col items-center gap-4 z-10">
+                        <h2 id="taskProgress" class="text-6xl sm:text-7xl font-black text-fuchsia-600">0%</h2>
+                        <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white">
+                            <div id="progressBar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-700 ease-out shadow-[0_0_15px_rgba(217,70,239,0.8)]" style="width: 0%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -520,7 +557,7 @@
         <section id="planner" class="page px-2">
             <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-lg border-2 border-white">
                 <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Schedule your major study blocks. Hold items to delete.</p>
+                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Schedule your major study blocks. Data is saved locally.</p>
                 
                 <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
                     <input type="text" id="planTitle" placeholder="Milestone name..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base focus:border-indigo-500 outline-none transition-colors">
@@ -544,8 +581,11 @@
         <!-- ========================================== -->
         <section id="tasks" class="page px-2">
             <div class="glass-card p-6 sm:p-8 max-w-5xl mx-auto shadow-lg border-2 border-white">
-                <h2 class="text-3xl sm:text-4xl font-black mb-3 text-slate-800 tracking-tight">✅ Action Items</h2>
-                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Add assignments and deadlines. Hold tasks to delete.</p>
+                <div class="flex justify-between items-end mb-3">
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight">✅ Action Items</h2>
+                    <button onclick="clearCompletedTasks()" class="text-rose-500 font-bold hover:underline text-sm sm:text-base">Clear Completed</button>
+                </div>
+                <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Data is saved locally. Add your assignments below.</p>
                 
                 <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-8 inner-glass bg-white/80 p-4 sm:p-6 rounded-[1.5rem] shadow-sm border border-white items-center">
                     <input type="text" id="taskInput" placeholder="Task description..." class="flex-1 w-full min-w-0 bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm sm:text-base focus:border-pink-500 outline-none transition-colors">
@@ -555,7 +595,7 @@
                         <input type="time" id="taskTime" value="00:00" class="flex-1 lg:flex-none w-full bg-white border-2 border-slate-300 rounded-xl p-3 font-black text-slate-900 text-sm focus:border-pink-500 outline-none transition-colors">
                     </div>
                     
-                    <button onclick="addTask()" class="w-full lg:w-auto bg-slate-900 text-white px-8 py-3.5 rounded-xl font-black hover:shadow-lg transition-all text-sm sm:text-base transform hover:-translate-y-1">
+                    <button onclick="addTask()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm sm:text-base">
                         Add Task
                     </button>
                 </div>
@@ -590,7 +630,7 @@
 
                     <!-- PLAYBACK CONTROLS -->
                     <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="startTimer()" id="startBtn" class="bg-slate-900 text-white px-10 py-4 rounded-xl font-black hover:shadow-lg transition-all text-lg w-40 transform hover:-translate-y-1">Start</button>
+                        <button onclick="startTimer()" id="startBtn" class="btn-primary px-10 py-4 rounded-xl font-black text-lg w-40">Start</button>
                         <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-amber-500 text-white px-10 py-4 rounded-xl font-black hover:shadow-lg transition-all text-lg w-40 transform hover:-translate-y-1">Pause</button>
                         <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-300 px-10 py-4 rounded-xl font-black hover:bg-slate-50 transition-all text-lg w-40 shadow-sm hover:shadow-md">Reset</button>
                     </div>
@@ -614,25 +654,25 @@
                 <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Calculate overall CGPA by entering SGPA for your semesters.</p>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-left">
-                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white">
+                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white transform hover:scale-105 transition-transform">
                         <label class="block font-black text-slate-700 mb-2 text-xs uppercase tracking-widest">Sem 1 SGPA</label>
                         <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500 transition-colors">
                     </div>
-                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white">
+                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white transform hover:scale-105 transition-transform">
                         <label class="block font-black text-slate-700 mb-2 text-xs uppercase tracking-widest">Sem 2 SGPA</label>
                         <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500 transition-colors">
                     </div>
-                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white">
+                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white transform hover:scale-105 transition-transform">
                         <label class="block font-black text-slate-700 mb-2 text-xs uppercase tracking-widest">Sem 3 SGPA</label>
                         <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500 transition-colors">
                     </div>
-                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white">
+                    <div class="inner-glass p-5 rounded-xl bg-white/80 shadow-sm border border-white transform hover:scale-105 transition-transform">
                         <label class="block font-black text-slate-700 mb-2 text-xs uppercase tracking-widest">Sem 4 SGPA</label>
                         <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-white border-2 border-slate-300 rounded-lg p-3 font-black text-lg outline-none focus:border-indigo-500 transition-colors">
                     </div>
                 </div>
 
-                <button onclick="calculateCGPA()" class="btn-primary px-10 py-4 rounded-xl font-black text-lg mb-8 shadow-md">
+                <button onclick="calculateCGPA()" class="btn-primary px-10 py-4 rounded-xl font-black text-lg mb-8">
                     Calculate Result
                 </button>
 
@@ -644,7 +684,7 @@
         </section>
         
         <!-- ========================================== -->
-        <!-- PROJECT PORTFOLIO SECTION                  -->
+        <!-- PROJECT PORTFOLIO SECTION (LOCAL STORAGE)  -->
         <!-- ========================================== -->
         <section id="portfolio" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white">
@@ -660,20 +700,18 @@
                 
                 <!-- Project List -->
                 <div id="projList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black md:col-span-2">
-                        No projects added yet. Start building!
-                    </div>
+                    <!-- Populated by JS -->
                 </div>
             </div>
         </section>
 
         <!-- ========================================== -->
-        <!-- JOB TRACKER SECTION                        -->
+        <!-- JOB TRACKER SECTION (LOCAL STORAGE)        -->
         <!-- ========================================== -->
         <section id="jobs" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-lg border-2 border-white">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="text-3xl sm:text-5xl bg-red-100 rounded-full p-2 w-12 h-12 flex items-center justify-center shadow-inner border border-red-200">🎯</div>
+                    <div class="text-2xl sm:text-4xl bg-gradient-to-br from-red-100 to-rose-50 rounded-full p-2 w-12 h-12 flex items-center justify-center shadow-inner border border-red-200">🎯</div>
                     <h2 class="text-3xl sm:text-5xl font-black text-slate-800 tracking-tight">Job Tracker</h2>
                 </div>
                 <p class="text-slate-700 font-extrabold mb-6 text-sm sm:text-base">Keep track of your internship and job applications.</p>
@@ -691,20 +729,18 @@
                         <option value="Rejected">Rejected</option>
                     </select>
                     
-                    <button onclick="addJob()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm transition-all">Save</button>
+                    <button onclick="addJob()" class="w-full lg:w-auto btn-primary px-8 py-3.5 rounded-xl font-black text-sm transition-all">Save Job</button>
                 </div>
                 
                 <!-- Job List -->
                 <div id="jobList" class="space-y-4">
-                    <div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">
-                        No applications tracked yet. Keep pushing!
-                    </div>
+                    <!-- Populated by JS -->
                 </div>
             </div>
         </section>
 
         <!-- ========================================== -->
-        <!-- RESOURCE VAULT SECTION (6 Dynamic Boxes)   -->
+        <!-- RESOURCE VAULT SECTION                     -->
         <!-- ========================================== -->
         <section id="resources" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-2 border-white">
@@ -713,23 +749,77 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                     
-                    <!-- Subject Box Builder Function -->
-                    <script>
-                        for(let i=1; i<=6; i++) {
-                            document.write(`
-                                <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-shadow">
-                                    <input type="text" placeholder="Subject ${i} Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
-                                    <div class="flex items-center justify-between mt-auto pt-4">
-                                        <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2 transform hover:-translate-y-0.5">
-                                            <span>➕</span> Add File 
-                                            <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'">
-                                        </label>
-                                        <span class="text-xs font-bold text-slate-400">0 files</span>
-                                    </div>
-                                </div>
-                            `);
-                        }
-                    </script>
+                    <!-- Box 1 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex items-center justify-between mt-auto pt-4">
+                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                                <span>➕</span> Add File 
+                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                            </label>
+                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Box 2 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex items-center justify-between mt-auto pt-4">
+                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                                <span>➕</span> Add File 
+                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                            </label>
+                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                        </div>
+                    </div>
+
+                    <!-- Box 3 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex items-center justify-between mt-auto pt-4">
+                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                                <span>➕</span> Add File 
+                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                            </label>
+                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                        </div>
+                    </div>
+
+                    <!-- Box 4 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex items-center justify-between mt-auto pt-4">
+                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                                <span>➕</span> Add File 
+                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                            </label>
+                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Box 5 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex items-center justify-between mt-auto pt-4">
+                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                                <span>➕</span> Add File 
+                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                            </label>
+                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Box 6 -->
+                    <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-white shadow-sm flex flex-col hover:shadow-md transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-xl font-black mb-4 border-b-2 border-slate-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                        <div class="flex items-center justify-between mt-auto pt-4">
+                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg font-bold hover:bg-indigo-200 transition-all text-xs uppercase tracking-wide shadow-sm flex items-center gap-2">
+                                <span>➕</span> Add File 
+                                <input type="file" class="hidden" onchange="this.parentElement.nextElementSibling.innerText = '1 file attached'; this.parentElement.nextElementSibling.classList.add('text-emerald-500');">
+                            </label>
+                            <span class="text-xs font-bold text-slate-400 transition-colors">0 files</span>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -796,7 +886,7 @@
                             <div class="space-y-4">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Data Structures (Arrays, Lists)</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Data Structures (Arrays, Lists, Stacks)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
@@ -808,14 +898,14 @@
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                     <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check mt-0.5 sm:mt-0">
-                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Relational Algebra & SQL</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap">Relational Algebra & SQL Basics</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <!-- YEAR 2 -->
-                    <div id="year2" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
+                    <div id="year2" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
                         <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
                             <div class="font-black text-pink-900 mb-5 text-xl border-b-2 border-pink-200 pb-2">Semester 3: Core CS</div>
                             <div class="space-y-4">
@@ -853,7 +943,7 @@
                     </div>
 
                     <!-- YEAR 3 -->
-                    <div id="year3" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
+                    <div id="year3" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
                         <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
                             <div class="font-black text-purple-900 mb-5 text-xl border-b-2 border-purple-200 pb-2">Semester 5: Architecture</div>
                             <div class="space-y-4">
@@ -883,7 +973,7 @@
                     </div>
 
                     <!-- YEAR 4 -->
-                    <div id="year4" class="year-content hidden md:grid-cols-2 gap-6 transition-opacity duration-300">
+                    <div id="year4" class="year-content hidden grid md:grid-cols-2 gap-6 transition-opacity duration-300">
                         <div class="inner-glass p-6 sm:p-8 rounded-2xl bg-white/80 shadow-sm border border-white hover:shadow-md transition-shadow">
                             <div class="font-black text-teal-900 mb-5 text-xl border-b-2 border-teal-200 pb-2">Semester 7: Scale & Polish</div>
                             <div class="space-y-4">
@@ -923,7 +1013,6 @@
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
                     <div>
-                        <!-- Font sizes reduced, force-wrap added to prevent cutoff -->
                         <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 tracking-tight force-wrap flex items-center gap-3">
                             <span class="text-4xl">🧠</span> Interview Mastery
                         </h2>
@@ -942,11 +1031,11 @@
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-6 relative z-10">
+                    
                     <!-- Column 1: Core Technical -->
                     <div class="inner-glass bg-white/80 p-6 sm:p-8 rounded-2xl border-t-[6px] border-t-blue-500 border border-white hover:shadow-md transition-all">
                         <div class="flex items-center gap-3 font-black text-blue-900 mb-5 text-xl sm:text-2xl border-b-2 border-blue-200 pb-2">Technical Core</div>
                         <div class="space-y-4">
-                            <!-- Items set to flex-start for mobile to align with checkboxes nicely without cutoff -->
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
                                 <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
                                 <span class="text-sm sm:text-base font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Solved 150+ LeetCode (Easy/Med)</span>
@@ -1044,9 +1133,20 @@
     <!-- ========================================== -->
     <script>
         
-        // --- NEW LOGIC: PROJECT PORTFOLIO MANAGER ---
-        let projects = [];
+        // --- LOCAL STORAGE DATA MANAGEMENT ---
+        let tasks = JSON.parse(localStorage.getItem('studybuddy_tasks')) || []; 
+        let plans = JSON.parse(localStorage.getItem('studybuddy_plans')) || [];
+        let projects = JSON.parse(localStorage.getItem('studybuddy_projects')) || [];
+        let jobs = JSON.parse(localStorage.getItem('studybuddy_jobs')) || [];
         
+        function saveData() {
+            localStorage.setItem('studybuddy_tasks', JSON.stringify(tasks));
+            localStorage.setItem('studybuddy_plans', JSON.stringify(plans));
+            localStorage.setItem('studybuddy_projects', JSON.stringify(projects));
+            localStorage.setItem('studybuddy_jobs', JSON.stringify(jobs));
+        }
+
+        // --- NEW LOGIC: PROJECT PORTFOLIO MANAGER ---
         function addProject() {
             const titleInput = document.getElementById('projTitle');
             const stackInput = document.getElementById('projStack');
@@ -1057,8 +1157,8 @@
             if (!title) return;
             
             projects.push({ title, stack });
+            saveData();
             
-            // Clear inputs
             titleInput.value = '';
             stackInput.value = '';
             
@@ -1068,6 +1168,7 @@
         function deleteProject(index) {
             if(confirm("Remove this project from your portfolio?")) {
                 projects.splice(index, 1);
+                saveData();
                 renderProjects();
             }
         }
@@ -1077,8 +1178,6 @@
             
             if (projects.length === 0) {
                 list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black md:col-span-2">No projects added yet. Start building!</div>';
-                
-                // Update Dashboard
                 document.getElementById('dashProjects').textContent = 0;
                 return;
             }
@@ -1087,7 +1186,7 @@
             projects.forEach((p, index) => {
                 html += `
                     <div class="inner-glass p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border-2 border-white shadow-sm flex flex-col justify-between transform hover:-translate-y-1 transition-transform relative">
-                        <button onclick="deleteProject(${index})" class="absolute top-4 right-4 text-slate-300 hover:text-red-500 font-black text-xl">&times;</button>
+                        <button onclick="deleteProject(${index})" class="absolute top-4 right-4 text-slate-300 hover:text-rose-500 font-black text-2xl transition-colors">&times;</button>
                         <div>
                             <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-2 force-wrap pr-6">${p.title}</h3>
                             <p class="text-sm sm:text-base font-bold text-slate-500 force-wrap">Tech: <span class="text-indigo-600">${p.stack || 'Not specified'}</span></p>
@@ -1097,15 +1196,10 @@
             });
             
             list.innerHTML = html;
-            
-            // Update Dashboard Stat
             document.getElementById('dashProjects').textContent = projects.length;
         }
 
-
         // --- NEW LOGIC: JOB TRACKER MANAGER ---
-        let jobs = [];
-        
         function addJob() {
             const companyInput = document.getElementById('jobCompany');
             const roleInput = document.getElementById('jobRole');
@@ -1118,11 +1212,10 @@
             if (!company) return;
             
             jobs.push({ company, role, status });
+            saveData();
             
-            // Clear inputs
             companyInput.value = '';
             roleInput.value = '';
-            // keep status same
             
             renderJobs();
         }
@@ -1130,6 +1223,7 @@
         function deleteJob(index) {
             if(confirm("Delete this job application?")) {
                 jobs.splice(index, 1);
+                saveData();
                 renderJobs();
             }
         }
@@ -1139,8 +1233,6 @@
             
             if (jobs.length === 0) {
                 list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No applications tracked yet. Keep pushing!</div>';
-                
-                // Update Dashboard
                 document.getElementById('dashJobs').textContent = 0;
                 return;
             }
@@ -1148,7 +1240,6 @@
             let html = '';
             jobs.forEach((j, index) => {
                 
-                // Determine Badge Color Based on Status
                 let badgeClass = "bg-slate-100 text-slate-700 border-slate-200";
                 if(j.status === "Applied") badgeClass = "bg-blue-100 text-blue-700 border-blue-200";
                 if(j.status === "Interviewing") badgeClass = "bg-amber-100 text-amber-700 border-amber-200";
@@ -1157,327 +1248,31 @@
                 
                 html += `
                     <div class="inner-glass p-5 sm:p-6 rounded-2xl bg-white/80 shadow-sm border border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-md transition-shadow relative">
-                        
                         <div class="flex-1 pr-6">
                             <h3 class="text-xl sm:text-2xl font-black text-slate-900 force-wrap">${j.company}</h3>
                             <p class="text-sm sm:text-base font-bold text-slate-500 force-wrap">${j.role || 'General Application'}</p>
                         </div>
-                        
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto mt-2 sm:mt-0">
                             <span class="px-4 py-1.5 rounded-lg font-black text-xs sm:text-sm uppercase tracking-wide border ${badgeClass}">
                                 ${j.status}
                             </span>
-                            <button onclick="deleteJob(${index})" class="text-slate-300 hover:text-red-500 font-black text-2xl transition-colors">&times;</button>
+                            <button onclick="deleteJob(${index})" class="text-slate-300 hover:text-rose-500 font-black text-2xl transition-colors">&times;</button>
                         </div>
-                        
                     </div>
                 `;
             });
             
             list.innerHTML = html;
-            
-            // Update Dashboard Stat
             document.getElementById('dashJobs').textContent = jobs.length;
         }
 
-
-        // --- TIMER LOGIC (WITH ADJUST BUTTONS AND CUSTOM INPUT) ---
-        let timerInterval;
-        let timeLeft = 25 * 60; 
-        let isTimerRunning = false;
-
-        function updateTimerDisplay() {
-            const display = document.getElementById('timeDisplay');
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }
-
-        function adjustTimer(mins) {
-            timeLeft += mins * 60;
-            if (timeLeft < 0) {
-                timeLeft = 0;
-            }
-            updateTimerDisplay();
-        }
-        
-        function setCustomTimer() {
-            const inputField = document.getElementById('customFocusTime');
-            const mins = inputField.value;
-            if (mins && mins > 0) {
-                clearInterval(timerInterval);
-                isTimerRunning = false;
-                
-                document.getElementById('startBtn').classList.remove('hidden');
-                document.getElementById('startBtn').textContent = "Start";
-                document.getElementById('pauseBtn').classList.add('hidden');
-                
-                timeLeft = parseInt(mins) * 60;
-                updateTimerDisplay();
-                inputField.value = '';
-            }
-        }
-
-        function startTimer() {
-            if (isTimerRunning || timeLeft <= 0) {
-                return;
-            }
-            isTimerRunning = true;
-            document.getElementById('startBtn').classList.add('hidden');
-            document.getElementById('pauseBtn').classList.remove('hidden');
-            
-            timerInterval = setInterval(() => {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    updateTimerDisplay();
-                } else {
-                    clearInterval(timerInterval);
-                    isTimerRunning = false;
-                    document.getElementById('startBtn').classList.remove('hidden');
-                    document.getElementById('startBtn').textContent = "Restart";
-                    document.getElementById('pauseBtn').classList.add('hidden');
-                    sendNotification("Timer Complete!", "Your session is over. Take a well-deserved break!");
-                }
-            }, 1000);
-        }
-
-        function pauseTimer() {
-            clearInterval(timerInterval);
-            isTimerRunning = false;
-            document.getElementById('startBtn').classList.remove('hidden');
-            document.getElementById('startBtn').textContent = "Resume";
-            document.getElementById('pauseBtn').classList.add('hidden');
-        }
-
-        function resetTimer() {
-            clearInterval(timerInterval);
-            isTimerRunning = false;
-            document.getElementById('startBtn').classList.remove('hidden');
-            document.getElementById('startBtn').textContent = "Start";
-            document.getElementById('pauseBtn').classList.add('hidden');
-            setTimerMode(25);
-        }
-
-        function setTimerMode(minutes) {
-            clearInterval(timerInterval);
-            isTimerRunning = false;
-            document.getElementById('startBtn').classList.remove('hidden');
-            document.getElementById('startBtn').textContent = "Start";
-            document.getElementById('pauseBtn').classList.add('hidden');
-            timeLeft = minutes * 60;
-            updateTimerDisplay();
-        }
-
-        // --- CGPA PREDICTOR LOGIC ---
-        function calculateCGPA() {
-            const inputs = document.querySelectorAll('.sgpa-input');
-            let total = 0; 
-            let count = 0;
-            
-            inputs.forEach(input => {
-                if(input.value) { 
-                    total += parseFloat(input.value); 
-                    count++; 
-                }
-            });
-            
-            const cgpa = count === 0 ? 0 : (total / count);
-            document.getElementById('cgpaResult').textContent = cgpa.toFixed(2);
-        }
-
-        // --- SIDEBAR MENU LOGIC (Slide on Mobile, Fixed on Desktop) ---
-        let isSidebarOpen = false;
-        
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            isSidebarOpen = !isSidebarOpen;
-            
-            if (isSidebarOpen) {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.add('active');
-            } else {
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.remove('active');
-            }
-        }
-
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(p => {
-                p.classList.remove('active');
-            });
-            
-            // Reset all nav buttons
-            const navs = ['dashboard', 'planner', 'tasks', 'timer', 'cgpa', 'roadmap', 'resources', 'portfolio', 'jobs', 'career'];
-            navs.forEach(id => {
-                const btn = document.getElementById('nav-' + id);
-                if(btn) {
-                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md";
-                }
-            });
-            
-            // Activate selected page and button
-            document.getElementById(pageId).classList.add('active');
-            const activeBtn = document.getElementById('nav-' + pageId);
-            if (activeBtn) {
-                activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-lg font-black transition-all text-base transform hover:scale-105";
-            }
-            
-            // Update Header Title
-            const titles = { 
-                dashboard: 'Dashboard', 
-                planner: 'Study Planner', 
-                tasks: 'Action Tasks', 
-                timer: 'Focus Timer',
-                cgpa: 'CGPA Predictor', 
-                roadmap: 'B.Tech Roadmap', 
-                resources: 'Resource Vault', 
-                portfolio: 'Project Portfolio', 
-                jobs: 'Job Tracker', 
-                career: 'Interview Mastery'
-            };
-            document.getElementById('pageTitle').textContent = titles[pageId];
-            
-            // Auto-close sidebar on mobile after making a selection
-            if(isSidebarOpen && window.innerWidth < 1024) {
-                toggleSidebar();
-            }
-        }
-
-        function showYear(yearId, btnElement) {
-            // Hide all year content blocks
-            document.querySelectorAll('.year-content').forEach(el => {
-                el.classList.add('hidden', 'opacity-0', 'pointer-events-none');
-                el.classList.remove('active', 'opacity-100', 'grid');
-            });
-            
-            // Reset all year buttons
-            document.querySelectorAll('.year-tab-btn').forEach(btn => {
-                btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-white px-6 py-3 rounded-xl font-black transition-all border border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap";
-            });
-            
-            // Show target year
-            const target = document.getElementById(yearId);
-            target.classList.remove('hidden', 'pointer-events-none');
-            target.classList.add('grid');
-            setTimeout(() => { 
-                target.classList.add('active', 'opacity-100'); 
-            }, 10);
-            
-            // Style active button
-            btnElement.className = "year-tab-btn bg-slate-900 text-white px-6 py-3 rounded-xl font-black shadow-md transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1";
-        }
-
-        // --- PROGRESS CALCULATORS ---
-        function updateInterviewProgress() {
-            const boxes = document.querySelectorAll('.interview-check');
-            let completed = 0;
-            
-            boxes.forEach(b => { 
-                if(b.checked) {
-                    completed++; 
-                }
-            });
-            
-            const percent = Math.round((completed / boxes.length) * 100); 
-            document.getElementById('interviewScore').textContent = percent + '%'; 
-            document.getElementById('interviewProgressBar').style.width = percent + '%';
-        }
-        
-        function updateRoadmapProgress() {
-            const boxes = document.querySelectorAll('.btech-check'); 
-            let completed = 0; 
-            
-            boxes.forEach(b => { 
-                if(b.checked) {
-                    completed++; 
-                }
-            });
-            
-            const percent = Math.round((completed / boxes.length) * 100); 
-            document.getElementById('roadmapScore').textContent = percent + '%'; 
-            document.getElementById('roadmapProgressBar').style.width = percent + '%';
-        }
-
-        // --- HELPER FUNCTIONS ---
-        function formatDateTime(dateStr, timeStr) {
-            let formattedDate = `00/00/0000`;
-            let formattedTime = `12:00 AM`;
-            
-            if (dateStr && dateStr !== "") {
-                const parts = dateStr.split('-');
-                if(parts.length === 3) {
-                    formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
-                }
-            } 
-            
-            if (timeStr && timeStr !== "") { 
-                let [h, m] = timeStr.split(':'); 
-                h = parseInt(h); 
-                const ampm = h >= 12 ? 'PM' : 'AM'; 
-                h = h % 12 || 12; 
-                formattedTime = `${h}:${m} ${ampm}`; 
-            }
-            
-            return { formattedDate, formattedTime };
-        }
-
-        function sendNotification(title, body) {
-            try { 
-                const alertSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-                alertSound.play().catch(e => {
-                    console.log("Audio blocked by browser.");
-                }); 
-            } catch(e) {
-                console.log("Audio exception");
-            }
-            
-            if (Notification.permission === 'granted') {
-                new Notification(title, { 
-                    body: body, 
-                    icon: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png' 
-                });
-            }
-        }
-
-        // --- HOLD TO DELETE LOGIC ---
-        let holdTimer;
-        
-        function startHold(type, index) {
-            holdTimer = setTimeout(() => {
-                if (type === 'task') {
-                    if(confirm('Delete this task?')) { 
-                        tasks.splice(index, 1); 
-                        renderTasks(); 
-                    }
-                }
-                else if (type === 'plan') {
-                    if(confirm('Delete this study plan?')) { 
-                        plans.splice(index, 1); 
-                        renderPlans(); 
-                    }
-                }
-            }, 1000); 
-        }
-        
-        function cancelHold() { 
-            clearTimeout(holdTimer); 
-        }
-
         // --- TASK MANAGEMENT LOGIC ---
-        let tasks = []; 
-        let plans = [];
-        
         function addTask() {
             const inputElement = document.getElementById('taskInput');
             const dateElement = document.getElementById('taskDate');
             const timeElement = document.getElementById('taskTime');
             
-            if(!inputElement.value.trim()) {
-                return;
-            }
+            if(!inputElement.value.trim()) return;
             
             tasks.push({
                 text: inputElement.value.trim(), 
@@ -1487,22 +1282,28 @@
                 notified: false
             });
             
+            saveData();
             inputElement.value = ''; 
             renderTasks();
         }
         
         function markTaskComplete(index) { 
             tasks[index].completed = !tasks[index].completed; 
+            saveData();
             renderTasks(); 
         }
         
         function renderTasks() {
             const list = document.getElementById('taskList'); 
+            const dashMiniList = document.getElementById('dashMiniTasks');
             let html = '';
+            let miniHtml = '';
+            let pendingCount = 0;
             
             tasks.forEach((t, i) => {
                 const { formattedDate, formattedTime } = formatDateTime(t.date, t.time);
                 
+                // Main List HTML
                 html += `
                 <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border border-white hover:shadow-lg transition-all ${t.completed ? 'opacity-60 bg-white/50' : 'bg-white/95'}"
                      onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
@@ -1518,10 +1319,21 @@
                         </div>
                     </div>
                     
-                    <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm transform hover:-translate-y-1 transition-all ${t.completed ? 'bg-slate-200 text-slate-600' : 'bg-emerald-400 text-white'}">
+                    <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm transform hover:-translate-y-1 transition-all ${t.completed ? 'bg-slate-200 text-slate-600' : 'btn-success'}">
                         ${t.completed ? 'Undo' : '✓ Done'}
                     </button>
                 </div>`;
+                
+                // Dashboard Mini List HTML (Only showing max 3 pending tasks)
+                if (!t.completed && pendingCount < 3) {
+                    miniHtml += `
+                        <div class="bg-white/80 p-3 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm">
+                            <span class="font-bold text-slate-800 truncate text-sm flex-1 pr-2">${t.text}</span>
+                            <div class="w-3 h-3 rounded-full bg-pink-500 shadow-sm shrink-0"></div>
+                        </div>
+                    `;
+                    pendingCount++;
+                }
             });
             
             if(html === '') {
@@ -1530,11 +1342,16 @@
                 list.innerHTML = html;
             }
             
+            if(miniHtml === '') {
+                dashMiniList.innerHTML = '<div class="text-slate-400 font-bold text-sm text-center py-4 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>';
+            } else {
+                dashMiniList.innerHTML = miniHtml;
+            }
+            
             // Update Dashboard Counters
             const completedCount = tasks.filter(t => t.completed).length;
             document.getElementById('totalTasks').textContent = tasks.length; 
             document.getElementById('completedTasks').textContent = completedCount; 
-            document.getElementById('pendingTasks').textContent = tasks.length - completedCount;
             
             const progressPercent = tasks.length === 0 ? 0 : Math.round((completedCount / tasks.length) * 100);
             document.getElementById('taskProgress').textContent = progressPercent + '%'; 
@@ -1547,9 +1364,7 @@
             const dateElement = document.getElementById('planDate');
             const timeElement = document.getElementById('planTime');
             
-            if(!inputElement.value.trim()) {
-                return;
-            }
+            if(!inputElement.value.trim()) return;
             
             plans.push({
                 text: inputElement.value.trim(), 
@@ -1558,6 +1373,7 @@
                 notified: false
             });
             
+            saveData();
             inputElement.value = ''; 
             renderPlans();
         }
@@ -1594,6 +1410,33 @@
                 list.innerHTML = html;
             }
         }
+
+        // --- HOLD TO DELETE LOGIC ---
+        let holdTimer;
+        
+        function startHold(type, index) {
+            holdTimer = setTimeout(() => {
+                if (type === 'task') {
+                    if(confirm('Delete this task?')) { 
+                        tasks.splice(index, 1); 
+                        saveData();
+                        renderTasks(); 
+                    }
+                }
+                else if (type === 'plan') {
+                    if(confirm('Delete this study plan?')) { 
+                        plans.splice(index, 1);
+                        saveData();
+                        renderPlans(); 
+                    }
+                }
+            }, 1000); 
+        }
+        
+        function cancelHold() { 
+            clearTimeout(holdTimer); 
+        }
+
 
         // --- PWA, SERVICE WORKER & NOTIFICATIONS LOGIC ---
         const manifestJSON = {
@@ -1697,6 +1540,7 @@
                     if (now >= taskDateTime) {
                         sendNotification("Task Due: " + t.text, "It is time to complete your action task!");
                         t.notified = true;
+                        saveData();
                     }
                 }
             });
@@ -1708,6 +1552,7 @@
                     if (now >= planDateTime) {
                         sendNotification("Milestone Reached!", p.text);
                         p.notified = true;
+                        saveData();
                     }
                 }
             });
@@ -1715,7 +1560,7 @@
         
         setInterval(checkNotifications, 10000); 
 
-        // Initial Renders
+        // Initial Renders to Load Data from Local Storage
         renderTasks(); 
         renderPlans();
         renderProjects();

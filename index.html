@@ -193,7 +193,8 @@
         
         .interactive-card:hover {
             transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 35px 70px rgba(236, 72, 153, 0.3);
+            box-shadow: 0 35px 70px rgba(236, 72, 153, 0.25);
+            border-color: rgba(236, 72, 153, 0.5);
         }
 
         /* Beautiful Gradient Text */
@@ -351,6 +352,16 @@
             border-left: 5px solid #ff007f;
             transform: scale(1.03);
         }
+
+        /* Custom Input Focus Glow (New Premium Detail) */
+        .focus-glow:focus-within {
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+            border-color: #4f46e5;
+        }
+        .focus-glow-pink:focus-within {
+            box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15);
+            border-color: #ec4899;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col lg:flex-row p-0 sm:p-4 lg:p-6 gap-0 lg:gap-6 relative">
@@ -365,22 +376,22 @@
 
     <!-- AUTHENTICATION MODAL -->
     <div id="authModal" class="modal-overlay fixed inset-0 items-center justify-center p-4">
-        <div class="glass-card bg-white/95 p-12 w-full max-w-md relative shadow-2xl border-2 border-white">
+        <div class="glass-card bg-white/95 p-8 w-full max-w-md relative shadow-2xl border-2 border-white">
             <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
-            <h2 class="text-4xl font-black mb-8 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
-            <div class="space-y-6">
+            <h2 class="text-3xl font-black mb-6 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
+            <div class="space-y-4">
                 <div>
-                    <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Email Address</label>
-                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
+                    <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Email Address</label>
+                    <input type="email" id="authEmail" placeholder="student@university.edu" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors focus-glow-pink">
                 </div>
                 <div>
-                    <label class="block text-sm font-black text-slate-700 mb-2 uppercase tracking-widest">Password</label>
-                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-slate-900 focus:border-indigo-500 focus:bg-white outline-none transition-all shadow-inner font-bold text-lg">
+                    <label class="block text-sm font-black text-slate-700 mb-1 uppercase tracking-widest">Password</label>
+                    <input type="password" id="authPassword" placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-slate-900 focus:border-pink-500 focus:bg-white font-bold text-base transition-colors focus-glow-pink">
                 </div>
                 <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
-                <div class="flex gap-4 pt-4">
-                    <button onclick="mockSignIn()" class="flex-1 bg-slate-900 text-white py-4 rounded-2xl font-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all transform hover:-translate-y-1 text-lg">Sign In</button>
-                    <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-md hover:shadow-lg text-lg">Create Account</button>
+                <div class="flex gap-4 pt-2">
+                    <button onclick="mockSignIn()" class="flex-1 btn-primary py-3 rounded-xl font-black text-base">Sign In</button>
+                    <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-3 rounded-xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-sm text-base">Sign Up</button>
                 </div>
             </div>
         </div>
@@ -405,7 +416,7 @@
     <!-- SLIDE-IN OVERLAY FOR MOBILE -->
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
-    <!-- PREMIUM SIDEBAR -->
+    <!-- PREMIUM SIDEBAR (Fixed on Desktop, Swipe-in on Mobile) -->
     <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/80 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
         
         <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
@@ -422,7 +433,7 @@
 
             <!-- Navigation Links - Restored to dynamically set black active state -->
             <nav class="space-y-2">
-                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 text-white shadow-lg border border-slate-700 font-black transition-all text-base transform hover:scale-105 sidebar-active">
+                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base">
                     <span>🏠</span> Dashboard
                 </button>
                 
@@ -464,7 +475,7 @@
             </nav>
             
             <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
-                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-md font-black text-base mb-3">
+                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-lg font-black text-base mb-3 border-2 border-white/50">
                     Install App 📲
                 </button>
             </div>
@@ -483,7 +494,7 @@
     <!-- MAIN CONTENT AREA -->
     <main class="flex-1 overflow-y-auto overflow-x-hidden pr-2 sm:pr-4 lg:pr-2 pb-10 z-0 hide-scroll">
         
-        <!-- Global Header with Floating Animation Restored -->
+        <!-- Global Header with Floating Animation -->
         <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-8 mt-6 lg:mt-2 px-3 lg:px-2">
             <div class="animate-float">
                 <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
@@ -495,7 +506,7 @@
         </header>
 
         <!-- ========================================== -->
-        <!-- DASHBOARD SECTION                          -->
+        <!-- DASHBOARD SECTION (Vibrant Gradients + SVGs)-->
         <!-- ========================================== -->
         <section id="dashboard" class="page active px-2">
             <!-- Hero with floating animation -->
@@ -507,39 +518,39 @@
                 <p class="text-indigo-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
             </div>
 
-            <!-- Dashboard Stats Grid (RESTORED FADED SVG WATERMARKS) -->
+            <!-- Dashboard Stats Grid (Pure White Cards + Colorful SVGs Restored) -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md" onclick="showPage('tasks')">
-                    <!-- Faded SVG Background -->
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
+                    <!-- Colored Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
                     
                     <p class="text-sm sm:text-base text-indigo-700 font-black uppercase tracking-widest z-10">Total Tasks</p>
-                    <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10">0</h2>
+                    <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10 drop-shadow-sm">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md" onclick="showPage('tasks')">
-                    <!-- Faded SVG Background -->
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
+                    <!-- Colored Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-emerald-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                     
                     <p class="text-sm sm:text-base text-emerald-700 font-black uppercase tracking-widest z-10">Completed</p>
-                    <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10">0</h2>
+                    <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10 drop-shadow-sm">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md" onclick="showPage('portfolio')">
-                    <!-- Faded SVG Background -->
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('portfolio')">
+                    <!-- Colored Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-purple-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
                     
-                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects Built</p>
-                    <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-600 z-10">0</h2>
+                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects</p>
+                    <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-600 z-10 drop-shadow-sm">0</h2>
                 </div>
                 
-                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md" onclick="showPage('jobs')">
-                    <!-- Faded SVG Background -->
+                <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('jobs')">
+                    <!-- Colored Faded SVG Background -->
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-blue-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
                     
                     <p class="text-sm sm:text-base text-blue-700 font-black uppercase tracking-widest z-10">Job Apps</p>
-                    <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 text-blue-600 z-10">0</h2>
+                    <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 text-blue-600 z-10 drop-shadow-sm">0</h2>
                 </div>
             </div>
             
@@ -570,31 +581,40 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- PLANNER SECTION                            -->
+        <!-- PLANNER SECTION (GRID FIX FOR OVERFLOW)    -->
         <!-- ========================================== -->
         <section id="planner" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📅 Strategy & Milestones</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Schedule your major study blocks. Data is saved to the cloud.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center w-full">
-                    <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-indigo-500 transition-colors shadow-sm">
+                <!-- 
+                  THE ULTIMATE LAYOUT FIX: Uses CSS Grid to force everything into a perfectly scaled, responsive layout. 
+                  This mathematically prevents the button from ever coming out of the white outline.
+                -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    
+                    <!-- Title Input (Takes up 5 columns on desktop) -->
+                    <div class="md:col-span-5 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm focus-glow w-full">
                         <span class="text-xl">📝</span>
                         <input type="text" id="planTitle" placeholder="Milestone name..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
                     
-                    <div class="w-full lg:w-48 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-indigo-500 transition-colors shadow-sm shrink-0">
+                    <!-- Date Input (Takes up 3 columns on desktop) -->
+                    <div class="md:col-span-3 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm focus-glow w-full">
                         <span class="text-xl">📅</span>
-                        <input type="date" id="planDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                        <input type="date" id="planDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
                     
-                    <div class="w-full lg:w-40 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-indigo-500 transition-colors shadow-sm shrink-0">
+                    <!-- Time Input (Takes up 2 columns on desktop) -->
+                    <div class="md:col-span-2 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm focus-glow w-full">
                         <span class="text-xl">⏰</span>
-                        <input type="time" id="planTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                        <input type="time" id="planTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
                     
-                    <button onclick="addPlan()" class="w-full lg:w-32 bg-slate-900 text-white px-4 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all shrink-0">
-                        Add
+                    <!-- Submit Button (Takes up 2 columns on desktop) -->
+                    <button onclick="addPlan()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">
+                        Add Plan
                     </button>
                 </div>
                 
@@ -603,7 +623,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- TASKS SECTION                              -->
+        <!-- TASKS SECTION (GRID FIX FOR OVERFLOW)      -->
         <!-- ========================================== -->
         <section id="tasks" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
@@ -613,23 +633,29 @@
                 </div>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Data is saved to the cloud. Add your assignments below.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center w-full">
-                    <div class="flex-1 w-full flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-pink-500 transition-colors shadow-sm">
+                <!-- Identical perfectly scaled Grid layout for tasks -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    
+                    <!-- Title Input -->
+                    <div class="md:col-span-5 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm focus-glow-pink w-full">
                         <span class="text-xl">✍️</span>
                         <input type="text" id="taskInput" placeholder="Task description..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
                     
-                    <div class="w-full lg:w-48 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-pink-500 transition-colors shadow-sm shrink-0">
+                    <!-- Date Input -->
+                    <div class="md:col-span-3 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm focus-glow-pink w-full">
                         <span class="text-xl">📅</span>
-                        <input type="date" id="taskDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                        <input type="date" id="taskDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
                     
-                    <div class="w-full lg:w-40 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3 focus-within:border-pink-500 transition-colors shadow-sm shrink-0">
+                    <!-- Time Input -->
+                    <div class="md:col-span-2 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm focus-glow-pink w-full">
                         <span class="text-xl">⏰</span>
-                        <input type="time" id="taskTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none">
+                        <input type="time" id="taskTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
                     
-                    <button onclick="addTask()" class="w-full lg:w-32 bg-slate-900 text-white px-4 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all shrink-0">
+                    <!-- Button -->
+                    <button onclick="addTask()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">
                         Add Task
                     </button>
                 </div>
@@ -664,7 +690,7 @@
 
                     <!-- PLAYBACK CONTROLS -->
                     <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="startTimer()" id="startBtn" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl w-48 uppercase tracking-widest shadow-xl hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] transition-all">Start</button>
+                        <button onclick="startTimer()" id="startBtn" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl w-48 uppercase tracking-widest shadow-xl">Start</button>
                         <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-gradient-to-r from-amber-400 to-orange-500 text-white px-12 py-5 rounded-2xl font-black hover:shadow-lg transition-all text-xl w-48 uppercase tracking-widest transform hover:-translate-y-1 shadow-xl border border-white/50">Pause</button>
                         <button onclick="resetTimer()" class="bg-white text-slate-800 border-2 border-slate-200 px-12 py-5 rounded-2xl font-black hover:bg-slate-50 transition-all text-xl w-48 uppercase tracking-widest shadow-md hover:shadow-lg">Reset</button>
                     </div>
@@ -680,13 +706,14 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- SGPA CALCULATOR                            -->
+        <!-- SGPA CALCULATOR (EXACTLY 2 SEMESTERS)      -->
         <!-- ========================================== -->
         <section id="cgpa" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">📊 SGPA Predictor</h2>
                 <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Calculate your final academic standing for your two semesters.</p>
                 
+                <!-- EXACTLY 2 SEMESTERS AS REQUESTED -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 text-left max-w-2xl mx-auto">
                     <div class="inner-glass p-8 rounded-3xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
                         <label class="block font-black text-pink-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 1 SGPA</label>
@@ -698,7 +725,7 @@
                     </div>
                 </div>
 
-                <button onclick="calculateCGPA()" class="bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-xl mb-12 shadow-xl uppercase tracking-widest hover:bg-black transition-colors">
+                <button onclick="calculateCGPA()" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl mb-12 shadow-xl uppercase tracking-widest hover:bg-black transition-colors">
                     Calculate Result
                 </button>
 
@@ -711,17 +738,22 @@
         </section>
         
         <!-- ========================================== -->
-        <!-- PROJECT PORTFOLIO SECTION                  -->
+        <!-- PROJECT PORTFOLIO SECTION (GRID FIX)       -->
         <!-- ========================================== -->
         <section id="portfolio" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight">🚀 Project Portfolio</h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Track your personal projects and GitHub repos to show recruiters.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    <input type="text" id="projTitle" placeholder="Project Title" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
-                    <input type="text" id="projStack" placeholder="Tech Stack (e.g., React, Node)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
-                    <button onclick="addProject()" class="w-full lg:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all shrink-0">Add Project</button>
+                <!-- Grid Fix to prevent buttons spilling -->
+                <div class="grid grid-cols-1 md:grid-cols-10 gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    <div class="md:col-span-4 w-full">
+                        <input type="text" id="projTitle" placeholder="Project Title" class="w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors focus-glow">
+                    </div>
+                    <div class="md:col-span-4 w-full">
+                        <input type="text" id="projStack" placeholder="Tech Stack (e.g., React, Node)" class="w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors focus-glow">
+                    </div>
+                    <button onclick="addProject()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">Add Project</button>
                 </div>
                 
                 <div id="projList" class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -731,7 +763,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- JOB TRACKER SECTION                        -->
+        <!-- JOB TRACKER SECTION (GRID FIX)             -->
         <!-- ========================================== -->
         <section id="jobs" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
@@ -741,19 +773,26 @@
                 </div>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl mt-2">Keep track of your internship and job applications.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    <input type="text" id="jobCompany" placeholder="Company Name" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
+                <!-- Grid Fix to prevent buttons spilling -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10 inner-glass bg-white/80 p-5 sm:p-6 rounded-[1.5rem] shadow-md border-2 border-white items-center">
+                    <div class="md:col-span-4 w-full">
+                        <input type="text" id="jobCompany" placeholder="Company Name" class="w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors focus-glow">
+                    </div>
                     
-                    <input type="text" id="jobRole" placeholder="Role (e.g., SDE Intern)" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors">
+                    <div class="md:col-span-3 w-full">
+                        <input type="text" id="jobRole" placeholder="Role (e.g., SDE Intern)" class="w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors focus-glow">
+                    </div>
                     
-                    <select id="jobStatus" class="flex-1 w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base text-slate-700 outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                        <option value="Applied">Applied</option>
-                        <option value="Interviewing">Interviewing</option>
-                        <option value="Offer Received">Offer Received</option>
-                        <option value="Rejected">Rejected</option>
-                    </select>
+                    <div class="md:col-span-3 w-full">
+                        <select id="jobStatus" class="w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base text-slate-700 outline-none focus:border-indigo-500 transition-colors cursor-pointer focus-glow">
+                            <option value="Applied">Applied</option>
+                            <option value="Interviewing">Interviewing</option>
+                            <option value="Offer Received">Offer Received</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
                     
-                    <button onclick="addJob()" class="w-full lg:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all shrink-0">Save App</button>
+                    <button onclick="addJob()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">Save App</button>
                 </div>
                 
                 <div id="jobList" class="space-y-4">
@@ -772,6 +811,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     
+                    <!-- BOX 1 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -783,6 +823,7 @@
                         </div>
                     </div>
                     
+                    <!-- BOX 2 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-blue-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -794,6 +835,7 @@
                         </div>
                     </div>
 
+                    <!-- BOX 3 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-emerald-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -805,6 +847,7 @@
                         </div>
                     </div>
 
+                    <!-- BOX 4 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-purple-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -816,6 +859,7 @@
                         </div>
                     </div>
                     
+                    <!-- BOX 5 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-amber-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -827,6 +871,7 @@
                         </div>
                     </div>
                     
+                    <!-- BOX 6 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-teal-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -843,10 +888,10 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- B.TECH TECH SKILLS ROADMAP                 -->
+        <!-- B.TECH TECH SKILLS ROADMAP SECTION         -->
         <!-- ========================================== -->
         <section id="roadmap" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white animate-float">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-indigo-600 border-2 border-white animate-float">
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-10 gap-6">
                     <div>
@@ -1395,7 +1440,7 @@
             if(dashCounter) dashCounter.textContent = jobs.length;
         }
 
-        // --- TIMER LOGIC ---
+        // --- TIMER LOGIC (WITH ADJUST BUTTONS AND CUSTOM INPUT) ---
         let timerInterval;
         let timeLeft = 25 * 60; 
         let isTimerRunning = false;
@@ -1482,7 +1527,7 @@
             updateTimerDisplay();
         }
 
-        // --- SGPA / CGPA PREDICTOR LOGIC ---
+        // --- SGPA / CGPA PREDICTOR LOGIC (2 SEMESTERS) ---
         function calculateCGPA() {
             const inputs = document.querySelectorAll('.sgpa-input');
             let total = 0; 
@@ -1499,7 +1544,7 @@
             document.getElementById('cgpaResult').textContent = cgpa.toFixed(2);
         }
 
-        // --- SIDEBAR MENU LOGIC ---
+        // --- SIDEBAR MENU LOGIC (Slide on Mobile, Fixed on Desktop) ---
         let isSidebarOpen = false;
         
         function toggleSidebar() {
@@ -1529,7 +1574,7 @@
                 const btn = document.getElementById('nav-' + id);
                 if(btn) {
                     btn.classList.remove('sidebar-active');
-                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md";
+                    btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-pink-600 transition-all text-base hover:shadow-md";
                 }
             });
             
@@ -1566,15 +1611,18 @@
         }
 
         function showYear(yearId, btnElement) {
+            // Hide all year content blocks
             document.querySelectorAll('.year-content').forEach(el => {
                 el.classList.add('hidden', 'opacity-0', 'pointer-events-none');
                 el.classList.remove('active', 'opacity-100', 'grid');
             });
             
+            // Reset all year buttons
             document.querySelectorAll('.year-tab-btn').forEach(btn => {
                 btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase";
             });
             
+            // Show target year
             const target = document.getElementById(yearId);
             target.classList.remove('hidden', 'pointer-events-none');
             target.classList.add('grid');
@@ -1582,6 +1630,7 @@
                 target.classList.add('active', 'opacity-100'); 
             }, 10);
             
+            // Style active button
             btnElement.className = "year-tab-btn btn-primary px-8 py-3.5 rounded-xl font-black shadow-lg transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase";
         }
 
@@ -1647,6 +1696,8 @@
 
         // --- UPGRADED MOBILE NOTIFICATIONS WITH HARDWARE VIBRATION ---
         function sendNotification(title, body) {
+            
+            // 1. Try to play audio (will silently fail if blocked by mobile browser policy)
             try { 
                 const alertSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
                 alertSound.play().catch(e => {
@@ -1654,15 +1705,17 @@
                 }); 
             } catch(e) {}
             
+            // 2. Trigger native mobile notification in system tray
             if (Notification.permission === 'granted') {
                 const options = {
                     body: body,
                     icon: 'https://cdn-icons-png.flaticon.com/512/6104/6104033.png',
-                    vibrate: [200, 100, 200, 100, 200], 
-                    requireInteraction: true, 
+                    vibrate: [200, 100, 200, 100, 200], // Forces strong mobile vibration
+                    requireInteraction: true, // Forces notification to stay until dismissed
                     badge: 'https://cdn-icons-png.flaticon.com/512/6104/6104033.png'
                 };
 
+                // Use ServiceWorker if available (best for mobile), otherwise fallback to standard Notification
                 if ('serviceWorker' in navigator && navigator.serviceWorker.ready) {
                     navigator.serviceWorker.ready.then(function(registration) {
                         registration.showNotification(title, options);
@@ -1937,23 +1990,9 @@
             }
         }, { once: true });
 
-        // --- AUTHENTICATION LOGIC (DUAL-MODE WITH FIREBASE) ---
+        // --- AUTHENTICATION MOCKS ---
         function toggleAuth() { 
-            if (currentUser || document.getElementById('authBtn').textContent === 'Sign Out') {
-                if (isFirebaseReady) auth.signOut();
-                currentUser = null;
-                document.getElementById('userInfo').textContent = 'Not signed in'; 
-                document.getElementById('authBtn').textContent = 'Sign In / Sign Up';
-                
-                // Clear user data from screen on logout
-                tasks = []; plans = []; projects = []; jobs = [];
-                renderTasks(); renderPlans(); renderProjects(); renderJobs();
-            } else {
-                document.getElementById('authError').classList.add('hidden');
-                document.getElementById('authEmail').value = '';
-                document.getElementById('authPassword').value = '';
-                document.getElementById('authModal').classList.add('active'); 
-            }
+            document.getElementById('authModal').classList.add('active'); 
         }
         
         function closeAuthModal() { 

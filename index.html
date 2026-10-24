@@ -12,7 +12,7 @@
     <!-- HARDCODED PWA MANIFEST -->
     <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22StudyBuddy%22%2C%22short_name%22%3A%22StudyBuddy%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230f172a%22%2C%22theme_color%22%3A%22%23ff007f%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fui-avatars.com%2Fapi%2F%3Fname%3DS%26background%3Dff007f%26color%3Dfff%26size%3D512%26font-size%3D0.6%26bold%3Dtrue%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
     
-    <!-- PREMIUM APP ICON -->
+    <!-- PREMIUM APP ICON (Solid Box with White S) -->
     <link rel="apple-touch-icon" href="https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true">
     <link rel="icon" href="https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true">
 
@@ -43,7 +43,7 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* 100% Mobile Fix: Background completely fills screen, no hanging */
+        /* 100% Mobile Fix: Background completely fills screen */
         .mesh-bg {
             position: fixed;
             top: 0;
@@ -65,10 +65,42 @@
             will-change: transform;
         }
         
-        .blob-1 { top: -20%; left: -10%; width: 60vw; height: 60vw; background: #f43f5e; animation-delay: 0s; }
-        .blob-2 { bottom: -20%; right: -10%; width: 70vw; height: 70vw; background: #3b82f6; animation-delay: -5s; animation-direction: alternate-reverse; }
-        .blob-3 { top: 20%; left: 30%; width: 50vw; height: 50vw; background: #10b981; animation-delay: -10s; }
-        .blob-4 { bottom: 10%; left: 10%; width: 45vw; height: 45vw; background: #d946ef; animation-delay: -15s; }
+        .blob-1 { 
+            top: -20%; 
+            left: -10%; 
+            width: 60vw; 
+            height: 60vw; 
+            background: #f43f5e; 
+            animation-delay: 0s; 
+        }
+        
+        .blob-2 { 
+            bottom: -20%; 
+            right: -10%; 
+            width: 70vw; 
+            height: 70vw; 
+            background: #3b82f6; 
+            animation-delay: -5s; 
+            animation-direction: alternate-reverse; 
+        }
+        
+        .blob-3 { 
+            top: 20%; 
+            left: 30%; 
+            width: 50vw; 
+            height: 50vw; 
+            background: #10b981; 
+            animation-delay: -10s; 
+        }
+        
+        .blob-4 { 
+            bottom: 10%; 
+            left: 10%; 
+            width: 45vw; 
+            height: 45vw; 
+            background: #d946ef; 
+            animation-delay: -15s; 
+        }
 
         @keyframes move {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
@@ -88,20 +120,44 @@
             animation: float 6s ease-in-out infinite !important;
         }
 
-        /* Mobile performance - Only background blur is reduced, animations stay on */
+        /* Mobile performance */
         @media (max-width: 1024px) {
-            .blob { filter: blur(75px); opacity: 0.8; animation: none; }
-            .blob-4 { display: none; }
-            .glass-card { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+            .blob { 
+                filter: blur(75px); 
+                opacity: 0.8; 
+                animation: none; 
+            }
+            .blob-4 { 
+                display: none; 
+            }
+            .glass-card { 
+                backdrop-filter: blur(20px); 
+                -webkit-backdrop-filter: blur(20px); 
+            }
         }
 
         /* Page Transition Logic */
-        .page { display: none; opacity: 0; }
-        .page.active { display: block; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .page { 
+            display: none; 
+            opacity: 0; 
+        }
+        
+        .page.active { 
+            display: block; 
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+        }
         
         @keyframes slideUp { 
-            0% { opacity: 0; transform: translateY(40px) scale(0.98); filter: blur(10px); } 
-            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } 
+            0% { 
+                opacity: 0; 
+                transform: translateY(40px) scale(0.98); 
+                filter: blur(10px); 
+            } 
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+                filter: blur(0); 
+            } 
         }
         
         /* Master Glass Card UI */
@@ -122,7 +178,11 @@
             border-radius: 1.5rem;
         }
         
-        .interactive-card { cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .interactive-card { 
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        
         .interactive-card:hover {
             transform: translateY(-8px) scale(1.03);
             box-shadow: 0 35px 70px rgba(236, 72, 153, 0.25);
@@ -144,59 +204,170 @@
         }
         
         #sidebarOverlay {
-            position: fixed; inset: 0; background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(10px); z-index: 40; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+            position: fixed; 
+            inset: 0; 
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(10px); 
+            z-index: 40; 
+            opacity: 0; 
+            pointer-events: none; 
+            transition: opacity 0.4s ease;
         }
-        #sidebarOverlay.active { opacity: 1; pointer-events: auto; }
-
-        .modal-overlay { display: none; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(25px); z-index: 100; }
-        .modal-overlay.active { display: flex; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-        input[type="date"], input[type="time"], input[type="number"], input[type="text"], select {
-            color: #0f172a; background: transparent; font-family: inherit; outline: none;
+        
+        #sidebarOverlay.active { 
+            opacity: 1; 
+            pointer-events: auto; 
         }
-        .no-select { user-select: none; -webkit-user-select: none; }
+
+        .modal-overlay { 
+            display: none; 
+            background: rgba(15, 23, 42, 0.8); 
+            backdrop-filter: blur(25px); 
+            z-index: 100; 
+        }
+        
+        .modal-overlay.active { 
+            display: flex; 
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+        }
+
+        input[type="date"], 
+        input[type="time"], 
+        input[type="number"], 
+        input[type="text"], 
+        select {
+            color: #0f172a; 
+            background: transparent; 
+            font-family: inherit; 
+            outline: none;
+        }
+        
+        .no-select { 
+            user-select: none; 
+            -webkit-user-select: none; 
+        }
         
         .roadmap-check {
-            appearance: none; width: 1.75rem; height: 1.75rem; border: 3px solid #cbd5e1; border-radius: 0.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; background: rgba(255,255,255,0.9); flex-shrink: 0;
+            appearance: none; 
+            width: 1.75rem; 
+            height: 1.75rem; 
+            border: 3px solid #cbd5e1; 
+            border-radius: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            cursor: pointer; 
+            position: relative; 
+            background: rgba(255,255,255,0.9); 
+            flex-shrink: 0;
         }
-        .roadmap-check:checked { background-color: #8b5cf6; border-color: #8b5cf6; transform: scale(1.15); box-shadow: 0 0 25px rgba(139, 92, 246, 0.7); }
-        .roadmap-check:checked::after { content: '✓'; position: absolute; color: white; font-size: 1.1rem; font-weight: 900; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-        .roadmap-check:checked + span { text-decoration: line-through; color: #94a3b8; opacity: 0.5; }
         
-        .force-wrap { word-break: break-word; overflow-wrap: break-word; white-space: normal !important; max-width: 100%; }
-        .timer-display { font-variant-numeric: tabular-nums; }
+        .roadmap-check:checked { 
+            background-color: #8b5cf6; 
+            border-color: #8b5cf6; 
+            transform: scale(1.15); 
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.7); 
+        }
         
-        .hide-scroll::-webkit-scrollbar { display: none; }
-        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        .roadmap-check:checked::after { 
+            content: '✓'; 
+            position: absolute; 
+            color: white; 
+            font-size: 1.1rem; 
+            font-weight: 900; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+        
+        .roadmap-check:checked + span { 
+            text-decoration: line-through; 
+            color: #94a3b8; 
+            opacity: 0.5; 
+        }
+        
+        .force-wrap { 
+            word-break: break-word; 
+            overflow-wrap: break-word; 
+            white-space: normal !important; 
+            max-width: 100%; 
+        }
+        
+        .timer-display { 
+            font-variant-numeric: tabular-nums; 
+        }
+        
+        .hide-scroll::-webkit-scrollbar { 
+            display: none; 
+        }
+        
+        .hide-scroll { 
+            -ms-overflow-style: none; 
+            scrollbar-width: none; 
+        }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ff007f, #7928ca); color: white; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4); border: 2px solid transparent;
+            background: linear-gradient(135deg, #ff007f, #7928ca); 
+            color: white; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4); 
+            border: 2px solid transparent;
         }
+        
         .btn-primary:hover {
             box-shadow: 0 12px 30px rgba(255, 0, 127, 0.7), 0 0 20px rgba(121, 40, 202, 0.5);
-            transform: translateY(-3px) scale(1.02); border: 2px solid rgba(255, 255, 255, 0.8);
+            transform: translateY(-3px) scale(1.02); 
+            border: 2px solid rgba(255, 255, 255, 0.8);
         }
         
-        .btn-success { background: linear-gradient(135deg, #00f2fe, #4facfe); color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4); }
-        .btn-success:hover { box-shadow: 0 12px 30px rgba(79, 172, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.5); transform: translateY(-3px) scale(1.02); }
+        .btn-success { 
+            background: linear-gradient(135deg, #00f2fe, #4facfe); 
+            color: white; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4); 
+        }
+        
+        .btn-success:hover { 
+            box-shadow: 0 12px 30px rgba(79, 172, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.5); 
+            transform: translateY(-3px) scale(1.02); 
+        }
 
         .sidebar-active {
-            background: linear-gradient(135deg, #0f172a, #334155); color: white !important;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4); border-left: 5px solid #ff007f; transform: scale(1.03);
+            background: linear-gradient(135deg, #0f172a, #334155); 
+            color: white !important;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4); 
+            border-left: 5px solid #ff007f; 
+            transform: scale(1.03);
         }
 
-        .focus-glow:focus-within { box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); border-color: #4f46e5; }
-        .focus-glow-pink:focus-within { box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15); border-color: #ec4899; }
-        
-        /* Timetable specific styles */
-        .timetable-input {
-            width: 100%; height: 100%; background: transparent; border: none; outline: none; text-align: center;
-            font-weight: 800; font-size: 0.85rem; color: #1e293b; padding: 0.5rem 0.25rem; transition: all 0.2s;
+        .focus-glow:focus-within { 
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); 
+            border-color: #4f46e5; 
         }
-        .timetable-input:focus { background: rgba(255,255,255,0.9); border-radius: 0.5rem; box-shadow: 0 0 0 2px #8b5cf6; }
+        
+        .focus-glow-pink:focus-within { 
+            box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15); 
+            border-color: #ec4899; 
+        }
+        
+        /* Timetable specific styles - Made perfectly editable */
+        .timetable-input {
+            width: 100%; 
+            height: 100%; 
+            background: transparent; 
+            border: none; 
+            outline: none; 
+            text-align: center;
+            font-weight: 800; 
+            font-size: 0.85rem; 
+            color: #1e293b; 
+            padding: 0.5rem 0.25rem; 
+            transition: all 0.2s;
+        }
+        
+        .timetable-input:focus { 
+            background: rgba(255,255,255,0.9); 
+            border-radius: 0.5rem; 
+            box-shadow: 0 0 0 2px #8b5cf6; 
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col lg:flex-row p-0 sm:p-4 lg:p-6 gap-0 lg:gap-6 relative">
@@ -241,7 +412,9 @@
         
         <button onclick="toggleSidebar()" class="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl text-white shadow-lg flex items-center gap-2 transition-transform transform hover:scale-105 border border-white/50">
             <span class="font-black text-xs uppercase tracking-widest">Menu</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
         </button>
     </div>
 
@@ -253,30 +426,61 @@
 
         <div>
             <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
+                <!-- PREMIUM APP SVG LOGO -->
                 <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='100%25' stop-color='%23000000'/%3E%3C/linearGradient%3E%3ClinearGradient id='gold' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%234facfe'/%3E%3Cstop offset='100%25' stop-color='%237928ca'/%3E%3C/linearGradient%3E%3Cfilter id='glow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='15' result='blur'/%3E%3CfeComposite in='SourceGraphic' in2='blur' operator='over'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 90 C150 90, 90 160, 90 240 C90 320, 160 340, 200 350 C250 360, 270 380, 270 410 C270 440, 230 460, 180 460 C120 460, 80 430, 60 390 L10 420 C40 480, 110 520, 190 520 C290 520, 360 450, 360 370 C360 290, 290 270, 250 260 C200 250, 180 230, 180 200 C180 170, 210 150, 260 150 C310 150, 350 170, 380 210 L430 170 C390 110, 330 90, 256 90 Z' fill='url(%23gold)' filter='url(%23glow)' transform='translate(40, -10)'/%3E%3C/svg%3E" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform rounded-xl">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
+            
             <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
 
             <nav class="space-y-2">
                 <!-- Academic / Core Features First -->
-                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base transform hover:scale-105"><span>🏠</span> Dashboard</button>
-                <button onclick="showPage('timetable')" id="nav-timetable" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>⏰</span> Class Timetable</button>
-                <button onclick="showPage('attendance')" id="nav-attendance" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>📈</span> 75% Attendance</button>
-                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>📅</span> Study Planner</button>
-                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>✅</span> Action Tasks</button>
-                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>⏱️</span> Focus Timer</button>
-                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>📚</span> Resource Vault</button>
-                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>📊</span> SGPA Predictor</button>
+                <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base transform hover:scale-105">
+                    <span>🏠</span> Dashboard
+                </button>
+                <button onclick="showPage('timetable')" id="nav-timetable" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>⏰</span> Class Timetable
+                </button>
+                <button onclick="showPage('attendance')" id="nav-attendance" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>📈</span> 75% Attendance
+                </button>
+                <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>📅</span> Study Planner
+                </button>
+                <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>✅</span> Action Tasks
+                </button>
+                <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>⏱️</span> Focus Timer
+                </button>
+                <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>📚</span> Resource Vault
+                </button>
+                <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>📊</span> SGPA Predictor
+                </button>
+                
+                <!-- Separator Line -->
+                <div class="pt-2 pb-1">
+                    <div class="border-t-2 border-slate-200"></div>
+                </div>
                 
                 <!-- Career / Extra Features Below -->
-                <div class="pt-2 pb-1"><div class="border-t-2 border-slate-200"></div></div>
-                
-                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>🚀</span> Projects Portfolio</button>
-                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>🗺️</span> B.Tech Roadmap</button>
-                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>🎯</span> Job Tracker</button>
-                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>💼</span> Interview Skills</button>
-                <button onclick="showPage('budget')" id="nav-budget" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md"><span>💳</span> Budget Tracker</button>
+                <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>🚀</span> Projects Portfolio
+                </button>
+                <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>🗺️</span> B.Tech Roadmap
+                </button>
+                <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>🎯</span> Job Tracker
+                </button>
+                <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>💼</span> Interview Skills
+                </button>
+                <button onclick="showPage('budget')" id="nav-budget" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
+                    <span>💳</span> Budget Tracker
+                </button>
             </nav>
             
             <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
@@ -287,8 +491,12 @@
         </div>
         
         <div class="mt-2">
-            <div id="userInfo" class="text-sm text-indigo-900 mb-3 truncate font-black bg-white/80 px-3 py-2 rounded-lg text-center shadow-sm border border-white">Not signed in</div>
-            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base transition-all transform hover:-translate-y-1 hover:shadow-lg border-2 border-slate-700">Sign In / Sign Up</button>
+            <div id="userInfo" class="text-sm text-indigo-900 mb-3 truncate font-black bg-white/80 px-3 py-2 rounded-lg text-center shadow-sm border border-white">
+                Not signed in
+            </div>
+            <button onclick="toggleAuth()" id="authBtn" class="w-full bg-slate-900 text-white py-3 rounded-xl shadow-md font-black text-base transition-all transform hover:-translate-y-1 hover:shadow-lg border-2 border-slate-700">
+                Sign In / Sign Up
+            </button>
         </div>
     </aside>
 
@@ -383,6 +591,7 @@
                 
                 <div class="overflow-x-auto hide-scroll pb-6">
                     <div class="min-w-[950px] bg-white/80 rounded-[2rem] border-2 border-white shadow-lg overflow-hidden">
+                        
                         <!-- Header Row (Periods & Times) -->
                         <div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] bg-indigo-900 text-white text-center font-black uppercase tracking-widest text-xs">
                             <div class="p-3 border-r border-indigo-800/50 flex items-center justify-center">Day</div>
@@ -397,10 +606,12 @@
                             <div class="p-3 border-r border-indigo-800/50 leading-tight">7<br><span class="text-[9px] text-indigo-300 font-bold">02:50-03:40</span></div>
                             <div class="p-3 leading-tight">8<br><span class="text-[9px] text-indigo-300 font-bold">03:40-04:20</span></div>
                         </div>
-                        <!-- Grid Body -->
+                        
+                        <!-- Grid Body (Rows 0 to 5) -->
                         <div id="timetableGrid" class="divide-y divide-slate-200/50">
-                            <!-- Populated via JS -->
+                            <!-- Populated via JavaScript dynamically -->
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -480,6 +691,7 @@
                         Add Plan
                     </button>
                 </div>
+                
                 <div id="plannerList" class="space-y-4"></div>
             </div>
         </section>
@@ -512,6 +724,7 @@
                         Add Task
                     </button>
                 </div>
+                
                 <div id="taskList" class="space-y-4"></div>
             </div>
         </section>
@@ -560,6 +773,8 @@
                 <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Upload a PDF file to instantly view your study materials.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    
+                    <!-- BOX 1 -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -570,6 +785,8 @@
                             <a id="pdfLink1" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
+                    
+                    <!-- BOX 2 -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-blue-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -580,6 +797,8 @@
                             <a id="pdfLink2" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
+
+                    <!-- BOX 3 -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-emerald-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -590,6 +809,8 @@
                             <a id="pdfLink3" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
+
+                    <!-- BOX 4 -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-purple-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -600,6 +821,8 @@
                             <a id="pdfLink4" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
+                    
+                    <!-- BOX 5 -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-amber-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -610,6 +833,8 @@
                             <a id="pdfLink5" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
+                    
+                    <!-- BOX 6 -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-teal-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -620,6 +845,7 @@
                             <a id="pdfLink6" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -670,8 +896,11 @@
                     <div class="md:col-span-4 w-full">
                         <input type="text" id="projStack" placeholder="Tech Stack (e.g., React, Node)" class="w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-indigo-500 transition-colors focus-glow">
                     </div>
-                    <button onclick="addProject()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">Add Project</button>
+                    <button onclick="addProject()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">
+                        Add Project
+                    </button>
                 </div>
+                
                 <div id="projList" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
             </div>
         </section>
@@ -709,6 +938,7 @@
                 </div>
 
                 <div>
+                    <!-- YEAR 1 -->
                     <div id="year1" class="year-content active grid md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 1: Foundation</div>
@@ -753,6 +983,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- YEAR 2 -->
                     <div id="year2" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-pink-900 mb-6 text-2xl border-b-4 border-pink-200 pb-3">Semester 3: Core CS</div>
@@ -789,6 +1021,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- YEAR 3 -->
                     <div id="year3" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-purple-900 mb-6 text-2xl border-b-4 border-purple-200 pb-3">Semester 5: Architecture</div>
@@ -817,6 +1051,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- YEAR 4 -->
                     <div id="year4" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-teal-900 mb-6 text-2xl border-b-4 border-teal-200 pb-3">Semester 7: Scale & Polish</div>
@@ -878,8 +1114,11 @@
                         </select>
                     </div>
                     
-                    <button onclick="addJob()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">Save App</button>
+                    <button onclick="addJob()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">
+                        Save App
+                    </button>
                 </div>
+                
                 <div id="jobList" class="space-y-4"></div>
             </div>
         </section>
@@ -1033,8 +1272,11 @@
                     <div class="md:col-span-3 w-full">
                         <input type="number" id="expenseAmount" placeholder="Amount (₹)" class="w-full bg-white border-2 border-slate-200 rounded-xl p-4 font-black text-sm sm:text-base outline-none focus:border-emerald-500 transition-colors focus-glow">
                     </div>
-                    <button onclick="addExpense()" class="md:col-span-2 w-full btn-success px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">Add Expense</button>
+                    <button onclick="addExpense()" class="md:col-span-2 w-full btn-success px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">
+                        Add Expense
+                    </button>
                 </div>
+                
                 <div id="expenseList" class="space-y-3"></div>
             </div>
         </section>
@@ -1042,9 +1284,13 @@
     </main>
 
     <!-- ========================================== -->
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT LOGIC (COMPLETELY EXPANDED)      -->
     <!-- ========================================== -->
     <script>
+        
+        // -------------------------------------------
+        // 1. FIREBASE CONFIGURATION
+        // -------------------------------------------
         const firebaseConfig = {
             apiKey: "AIzaSyCAJEfO4803FjASyp6ZQUWbArvMeaKSdZI",
             authDomain: "study-buddy-1c988.firebaseapp.com",
@@ -1055,9 +1301,10 @@
             measurementId: "G-9SKKGP2R9L"
         };
 
-        const premiumAppIcon = "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='100%25' stop-color='%23000000'/%3E%3C/linearGradient%3E%3ClinearGradient id='gold' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%234facfe'/%3E%3Cstop offset='100%25' stop-color='%237928ca'/%3E%3C/linearGradient%3E%3Cfilter id='glow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='15' result='blur'/%3E%3CfeComposite in='SourceGraphic' in2='blur' operator='over'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 90 C150 90, 90 160, 90 240 C90 320, 160 340, 200 350 C250 360, 270 380, 270 410 C270 440, 230 460, 180 460 C120 460, 80 430, 60 390 L10 420 C40 480, 110 520, 190 520 C290 520, 360 450, 360 370 C360 290, 290 270, 250 260 C200 250, 180 230, 180 200 C180 170, 210 150, 260 150 C310 150, 350 170, 380 210 L430 170 C390 110, 330 90, 256 90 Z' fill='url(%23gold)' filter='url(%23glow)' transform='translate(40, -10)'/%3E%3C/svg%3E";
+        const premiumAppIcon = "https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true";
 
-        let auth, db;
+        let auth;
+        let db;
         let isFirebaseReady = false;
         let currentUser = null;
 
@@ -1068,7 +1315,7 @@
                 db = firebase.firestore();
                 isFirebaseReady = true;
                 
-                auth.onAuthStateChanged((user) => {
+                auth.onAuthStateChanged(function(user) {
                     if (user && user.emailVerified) {
                         currentUser = user;
                         document.getElementById('userInfo').textContent = user.email;
@@ -1083,13 +1330,23 @@
             console.log("Firebase not configured properly.");
         }
 
-        const getSavedData = (key, defaultData) => {
+        // -------------------------------------------
+        // 2. DATA MANAGEMENT (LOCAL & CLOUD)
+        // -------------------------------------------
+        function getSavedData(key, defaultData) {
             try {
                 const item = localStorage.getItem(key);
-                return item ? JSON.parse(item) : defaultData;
-            } catch (error) { return defaultData; }
-        };
+                if (item) {
+                    return JSON.parse(item);
+                } else {
+                    return defaultData;
+                }
+            } catch (error) {
+                return defaultData;
+            }
+        }
 
+        // Initialize state variables
         let tasks = getSavedData('studybuddy_tasks', []);
         let plans = getSavedData('studybuddy_plans', []);
         let projects = getSavedData('studybuddy_projects', []);
@@ -1098,7 +1355,15 @@
         let monthlyBudget = getSavedData('studybuddy_budget', 0);
         let attendanceSubjects = getSavedData('studybuddy_attendance_list', []);
         
-        let defaultTimetable = Array(6).fill().map(() => Array(8).fill(""));
+        // Timetable is a 6x8 grid (6 days, 8 periods)
+        let defaultTimetable = [
+            ["", "", "", "", "", "", "", ""], // Monday
+            ["", "", "", "", "", "", "", ""], // Tuesday
+            ["", "", "", "", "", "", "", ""], // Wednesday
+            ["", "", "", "", "", "", "", ""], // Thursday
+            ["", "", "", "", "", "", "", ""], // Friday
+            ["", "", "", "", "", "", "", ""]  // Saturday
+        ];
         let timetable = getSavedData('studybuddy_timetable', defaultTimetable);
 
         function saveData() {
@@ -1111,18 +1376,31 @@
                 localStorage.setItem('studybuddy_expenses', JSON.stringify(expenses));
                 localStorage.setItem('studybuddy_budget', JSON.stringify(monthlyBudget));
                 localStorage.setItem('studybuddy_attendance_list', JSON.stringify(attendanceSubjects));
-            } catch (error) {}
+            } catch (error) {
+                console.log("Local storage error:", error);
+            }
 
             if (isFirebaseReady && currentUser) {
                 db.collection('users').doc(currentUser.uid).set({
-                    tasks, plans, projects, jobs, timetable, expenses, monthlyBudget, attendanceSubjects
-                }).catch(e => console.error("Cloud save error:", e));
+                    tasks: tasks,
+                    plans: plans,
+                    projects: projects,
+                    jobs: jobs,
+                    timetable: timetable,
+                    expenses: expenses,
+                    monthlyBudget: monthlyBudget,
+                    attendanceSubjects: attendanceSubjects
+                }).then(function() {
+                    console.log("Data saved to cloud");
+                }).catch(function(e) {
+                    console.error("Cloud save error:", e);
+                });
             }
         }
 
         function loadCloudData() {
             if(isFirebaseReady && currentUser) {
-                db.collection('users').doc(currentUser.uid).get().then((doc) => {
+                db.collection('users').doc(currentUser.uid).get().then(function(doc) {
                     if (doc.exists) {
                         const data = doc.data();
                         tasks = data.tasks || [];
@@ -1134,35 +1412,58 @@
                         monthlyBudget = data.monthlyBudget || 0;
                         attendanceSubjects = data.attendanceSubjects || [];
                     } else {
-                        tasks = []; plans = []; projects = []; jobs = []; timetable = defaultTimetable; expenses = []; monthlyBudget = 0; attendanceSubjects = [];
+                        tasks = []; 
+                        plans = []; 
+                        projects = []; 
+                        jobs = []; 
+                        timetable = defaultTimetable; 
+                        expenses = []; 
+                        monthlyBudget = 0; 
+                        attendanceSubjects = [];
                     }
-                    renderTasks(); renderPlans(); renderProjects(); renderJobs(); renderTimetable(); renderBudget(); renderAttendance();
-                }).catch(error => { console.log("Error fetching cloud data:", error); });
+                    renderTasks(); 
+                    renderPlans(); 
+                    renderProjects(); 
+                    renderJobs(); 
+                    renderTimetable(); 
+                    renderBudget(); 
+                    renderAttendance();
+                }).catch(function(error) { 
+                    console.log("Error fetching cloud data:", error); 
+                });
             }
         }
 
-        // --- NEW TIMETABLE LOGIC ---
+        // -------------------------------------------
+        // 3. TIMETABLE LOGIC
+        // -------------------------------------------
         function renderTimetable() {
             const grid = document.getElementById('timetableGrid');
             const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             let html = '';
             
-            days.forEach((day, r) => {
+            for (let r = 0; r < days.length; r++) {
                 html += `<div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] divide-x divide-slate-200/50 hover:bg-slate-50 transition-colors border-b border-slate-200/50">`;
-                html += `<div class="p-3 bg-slate-100 flex items-center justify-center font-black text-slate-700 text-[10px]">${day}</div>`;
+                html += `   <div class="p-3 bg-slate-100 flex items-center justify-center font-black text-slate-700 text-[10px]">${days[r]}</div>`;
                 
-                for(let c=0; c<8; c++) {
-                    if(c === 3) html += `<div class="bg-rose-50 flex items-center justify-center border-x border-slate-200/50"><span class="text-rose-300 font-black text-[9px] transform -rotate-90">BREAK</span></div>`;
-                    if(c === 5) html += `<div class="bg-blue-50 flex items-center justify-center border-x border-slate-200/50"><span class="text-blue-300 font-black text-[9px] transform -rotate-90">LUNCH</span></div>`;
+                for(let c = 0; c < 8; c++) {
+                    // Add Break Column after period 3
+                    if(c === 3) {
+                        html += `<div class="bg-rose-50 flex items-center justify-center border-x border-slate-200/50"><span class="text-rose-300 font-black text-[9px] transform -rotate-90">BREAK</span></div>`;
+                    }
+                    // Add Lunch Column after period 5
+                    if(c === 5) {
+                        html += `<div class="bg-blue-50 flex items-center justify-center border-x border-slate-200/50"><span class="text-blue-300 font-black text-[9px] transform -rotate-90">LUNCH</span></div>`;
+                    }
 
                     let val = timetable[r][c] || "";
                     let bgClass = val ? "bg-indigo-50/50" : "bg-white";
-                    html += `<div class="p-1 ${bgClass} flex items-center justify-center h-16">
-                                <input type="text" value="${val}" onchange="updateTimetable(${r}, ${c}, this.value)" class="timetable-input w-full h-full text-center font-bold text-xs outline-none bg-transparent" placeholder="-">
-                             </div>`;
+                    html += `   <div class="p-1 ${bgClass} flex items-center justify-center h-16">
+                                    <input type="text" value="${val}" onchange="updateTimetable(${r}, ${c}, this.value)" class="timetable-input w-full h-full text-center font-bold text-xs outline-none bg-transparent" placeholder="-">
+                                </div>`;
                 }
                 html += `</div>`;
-            });
+            }
             grid.innerHTML = html;
         }
 
@@ -1172,20 +1473,34 @@
             renderTimetable();
         }
 
-        // --- NEW SUBJECT-WISE 75% ATTENDANCE LOGIC ---
+        // -------------------------------------------
+        // 4. ATTENDANCE LOGIC
+        // -------------------------------------------
         function addAttendanceSubject() {
-            const subj = document.getElementById('attSubject').value.trim();
-            const total = parseInt(document.getElementById('attTotal').value) || 0;
-            const attended = parseInt(document.getElementById('attAttended').value) || 0;
-
-            if(!subj) return;
+            const subjInput = document.getElementById('attSubject');
+            const totalInput = document.getElementById('attTotal');
+            const attendedInput = document.getElementById('attAttended');
             
-            attendanceSubjects.push({ name: subj, total: total, attended: attended });
+            const subj = subjInput.value.trim();
+            const total = parseInt(totalInput.value);
+            const attended = parseInt(attendedInput.value);
+
+            if(!subj || isNaN(total) || isNaN(attended)) {
+                return;
+            }
+            
+            attendanceSubjects.push({ 
+                name: subj, 
+                total: total, 
+                attended: attended 
+            });
+            
             saveData();
             
-            document.getElementById('attSubject').value = '';
-            document.getElementById('attTotal').value = '';
-            document.getElementById('attAttended').value = '';
+            subjInput.value = '';
+            totalInput.value = '';
+            attendedInput.value = '';
+            
             renderAttendance();
         }
 
@@ -1204,22 +1519,34 @@
 
             if (attendanceSubjects.length === 0) {
                 list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No subjects added yet.</div>';
+                
                 document.getElementById('overallAttPercentage').textContent = "0%";
                 document.getElementById('overallAttMessage').textContent = "Add subjects below";
                 
                 const dashPercent = document.getElementById('dashAttPercent');
                 const dashText = document.getElementById('dashAttText');
-                if(dashPercent) { dashPercent.textContent = "0%"; dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm"; }
-                if(dashText) dashText.textContent = "0 / 0 Classes";
+                if(dashPercent) { 
+                    dashPercent.textContent = "0%"; 
+                    dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm"; 
+                }
+                if(dashText) {
+                    dashText.textContent = "0 / 0 Classes";
+                }
                 return;
             }
 
             let html = '';
-            attendanceSubjects.forEach((sub, i) => {
+            
+            for (let i = 0; i < attendanceSubjects.length; i++) {
+                const sub = attendanceSubjects[i];
                 overallTotal += sub.total;
                 overallAttended += sub.attended;
                 
-                let percent = sub.total > 0 ? ((sub.attended / sub.total) * 100) : 0;
+                let percent = 0;
+                if (sub.total > 0) {
+                    percent = (sub.attended / sub.total) * 100;
+                }
+                
                 let isSafe = percent >= 75;
                 let colorClass = isSafe ? "text-emerald-500" : "text-rose-500";
                 let badgeClass = isSafe ? "bg-emerald-100 text-emerald-700 border-emerald-200" : "bg-rose-100 text-rose-700 border-rose-200";
@@ -1247,11 +1574,15 @@
                             <button onclick="deleteAttendanceSubject(${i})" class="absolute sm:relative top-4 sm:top-auto right-4 sm:right-auto text-slate-300 hover:text-rose-500 font-black text-2xl">&times;</button>
                         </div>
                     </div>`;
-            });
+            }
 
             list.innerHTML = html;
 
-            let overallPercent = overallTotal > 0 ? ((overallAttended / overallTotal) * 100) : 0;
+            let overallPercent = 0;
+            if (overallTotal > 0) {
+                overallPercent = (overallAttended / overallTotal) * 100;
+            }
+            
             document.getElementById('overallAttPercentage').textContent = overallPercent.toFixed(1) + "%";
             
             let msgEl = document.getElementById('overallAttMessage');
@@ -1268,30 +1599,56 @@
             const dashText = document.getElementById('dashAttText');
             if(dashPercent) {
                 dashPercent.textContent = overallPercent.toFixed(1) + "%";
-                dashPercent.className = overallPercent >= 75 ? "text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm" : "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm";
+                if (overallPercent >= 75) {
+                    dashPercent.className = "text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm";
+                } else {
+                    dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm";
+                }
             }
-            if(dashText) dashText.textContent = `${overallAttended} / ${overallTotal} Classes`;
+            if(dashText) {
+                dashText.textContent = `${overallAttended} / ${overallTotal} Classes`;
+            }
         }
 
-        // --- BUDGET TRACKER LOGIC ---
+        // -------------------------------------------
+        // 5. BUDGET TRACKER LOGIC
+        // -------------------------------------------
         function updateBudget() {
-            monthlyBudget = parseFloat(document.getElementById('budgetLimit').value) || 0;
-            saveData(); renderBudget();
+            const budgetInput = document.getElementById('budgetLimit').value;
+            monthlyBudget = parseFloat(budgetInput) || 0;
+            saveData();
+            renderBudget();
         }
 
         function addExpense() {
-            const name = document.getElementById('expenseName').value.trim();
-            const amt = parseFloat(document.getElementById('expenseAmount').value);
-            if(!name || isNaN(amt)) return;
-            expenses.push({ name, amount: amt, date: new Date().toLocaleDateString() });
+            const nameInput = document.getElementById('expenseName');
+            const amountInput = document.getElementById('expenseAmount');
+            
+            const name = nameInput.value.trim();
+            const amt = parseFloat(amountInput.value);
+            
+            if(!name || isNaN(amt)) {
+                return;
+            }
+            
+            expenses.push({ 
+                name: name, 
+                amount: amt, 
+                date: new Date().toLocaleDateString() 
+            });
+            
             saveData();
-            document.getElementById('expenseName').value = '';
-            document.getElementById('expenseAmount').value = '';
+            
+            nameInput.value = '';
+            amountInput.value = '';
+            
             renderBudget();
         }
 
         function deleteExpense(index) {
-            expenses.splice(index, 1); saveData(); renderBudget();
+            expenses.splice(index, 1);
+            saveData();
+            renderBudget();
         }
 
         function renderBudget() {
@@ -1299,13 +1656,23 @@
             const remEl = document.getElementById('budgetRemaining');
             const listEl = document.getElementById('expenseList');
             
-            if(!document.activeElement.isEqualNode(inputEl)) { inputEl.value = monthlyBudget || ''; }
-            let totalSpent = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+            if(!document.activeElement.isEqualNode(inputEl)) {
+                inputEl.value = monthlyBudget || '';
+            }
+
+            let totalSpent = 0;
+            for (let i = 0; i < expenses.length; i++) {
+                totalSpent += expenses[i].amount;
+            }
+            
             let remaining = monthlyBudget - totalSpent;
             
             remEl.textContent = `₹${remaining.toFixed(2)}`;
-            if(remaining < 0) { remEl.className = "text-5xl font-black text-rose-300"; } 
-            else { remEl.className = "text-5xl font-black text-white"; }
+            if(remaining < 0) {
+                remEl.className = "text-5xl font-black text-rose-300";
+            } else {
+                remEl.className = "text-5xl font-black text-white";
+            }
 
             if (expenses.length === 0) {
                 listEl.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No expenses logged yet.</div>';
@@ -1313,7 +1680,8 @@
             }
 
             let html = '';
-            expenses.forEach((e, i) => {
+            for (let i = 0; i < expenses.length; i++) {
+                const e = expenses[i];
                 html += `
                     <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white flex justify-between items-center hover:shadow-md transition-shadow">
                         <div>
@@ -1325,17 +1693,272 @@
                             <button onclick="deleteExpense(${i})" class="text-slate-300 hover:text-rose-500 font-black text-xl">&times;</button>
                         </div>
                     </div>`;
-            });
+            }
             listEl.innerHTML = html;
         }
 
-        // --- EXISTING LOGIC RETAINED ---
+        // -------------------------------------------
+        // 6. TASKS LOGIC
+        // -------------------------------------------
+        function addTask() {
+            const inp = document.getElementById('taskInput');
+            const d = document.getElementById('taskDate');
+            const t = document.getElementById('taskTime');
+            
+            if(!inp.value.trim()) {
+                return;
+            }
+            
+            tasks.push({ 
+                text: inp.value.trim(), 
+                date: d.value, 
+                time: t.value, 
+                completed: false, 
+                notified: false 
+            });
+            
+            saveData();
+            
+            inp.value = '';
+            
+            renderTasks();
+        }
+
+        function markTaskComplete(index) {
+            tasks[index].completed = !tasks[index].completed;
+            saveData();
+            renderTasks();
+        }
+        
+        function clearCompletedTasks() {
+            if(confirm("Are you sure you want to clear all completed tasks?")) {
+                let newTasks = [];
+                for (let i = 0; i < tasks.length; i++) {
+                    if (!tasks[i].completed) {
+                        newTasks.push(tasks[i]);
+                    }
+                }
+                tasks = newTasks;
+                saveData();
+                renderTasks();
+            }
+        }
+
+        function renderTasks() {
+            const list = document.getElementById('taskList'); 
+            const dashMiniList = document.getElementById('dashMiniTasks');
+            let html = '';
+            let miniHtml = '';
+            let pendingCount = 0;
+            
+            for (let i = 0; i < tasks.length; i++) {
+                const t = tasks[i];
+                
+                let fDate = "No Date";
+                if (t.date) {
+                    const parts = t.date.split('-');
+                    if (parts.length === 3) {
+                        fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                    }
+                }
+                
+                let fTime = "12:00 AM";
+                if(t.time) { 
+                    let timeParts = t.time.split(':'); 
+                    let h = parseInt(timeParts[0]); 
+                    let m = timeParts[1];
+                    let ampm = h >= 12 ? 'PM' : 'AM'; 
+                    h = h % 12 || 12; 
+                    fTime = `${h}:${m} ${ampm}`; 
+                }
+                
+                let completionClass = t.completed ? 'opacity-60 bg-white/50' : 'bg-white/90';
+                let textClass = t.completed ? 'line-through text-slate-400' : 'text-slate-900';
+                let btnClass = t.completed ? 'bg-slate-200 text-slate-600' : 'btn-success';
+                let btnText = t.completed ? 'Undo' : '✓ Done';
+                
+                html += `
+                <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all ${completionClass}"
+                     onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()">
+                    <div class="flex-1 w-full min-w-0 pr-2">
+                        <div class="font-black text-xl sm:text-2xl force-wrap ${textClass}">${t.text}</div>
+                        <div class="text-xs sm:text-sm font-black mt-2 flex gap-3 ${t.completed ? 'text-slate-400' : 'text-indigo-600'}">
+                            <span>📅 ${fDate}</span>
+                            <span>⏰ ${fTime}</span>
+                        </div>
+                    </div>
+                    <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm transform hover:-translate-y-1 transition-all border border-white/50 ${btnClass}">
+                        ${btnText}
+                    </button>
+                </div>`;
+                
+                if (!t.completed && pendingCount < 3) {
+                    miniHtml += `
+                        <div class="bg-white/80 p-4 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm">
+                            <span class="font-bold text-slate-800 truncate text-sm flex-1 pr-2">${t.text}</span>
+                            <div class="w-3 h-3 rounded-full bg-indigo-500 shadow-sm shrink-0"></div>
+                        </div>`;
+                    pendingCount++;
+                }
+            }
+            
+            if (list) {
+                if (html === '') {
+                    list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
+                } else {
+                    list.innerHTML = html;
+                }
+            }
+            
+            if (dashMiniList) {
+                if (miniHtml === '') {
+                    dashMiniList.innerHTML = '<div class="text-slate-400 font-bold text-sm text-center py-6 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>';
+                } else {
+                    dashMiniList.innerHTML = miniHtml;
+                }
+            }
+            
+            let completedCount = 0;
+            for (let i = 0; i < tasks.length; i++) {
+                if (tasks[i].completed) {
+                    completedCount++;
+                }
+            }
+            
+            const totalCount = tasks.length;
+            
+            if(document.getElementById('totalTasks')) {
+                document.getElementById('totalTasks').textContent = totalCount;
+            }
+            if(document.getElementById('completedTasks')) {
+                document.getElementById('completedTasks').textContent = completedCount;
+            }
+            
+            let percent = 0;
+            if (totalCount > 0) {
+                percent = Math.round((completedCount / totalCount) * 100);
+            }
+            
+            if(document.getElementById('taskProgressMain')) {
+                document.getElementById('taskProgressMain').textContent = percent + '%';
+            }
+            if(document.getElementById('progressBarMain')) {
+                document.getElementById('progressBarMain').style.width = percent + '%';
+            }
+        }
+
+        // -------------------------------------------
+        // 7. STUDY PLANNER LOGIC
+        // -------------------------------------------
+        function addPlan() {
+            const inputElement = document.getElementById('planTitle');
+            const dateElement = document.getElementById('planDate');
+            const timeElement = document.getElementById('planTime');
+            
+            if(!inputElement.value.trim()) {
+                return;
+            }
+            
+            plans.push({
+                text: inputElement.value.trim(), 
+                date: dateElement.value, 
+                time: timeElement.value, 
+                notified: false
+            });
+            
+            saveData();
+            
+            inputElement.value = ''; 
+            
+            renderPlans();
+        }
+        
+        function renderPlans() {
+            const list = document.getElementById('plannerList'); 
+            let html = '';
+            
+            for (let i = 0; i < plans.length; i++) {
+                const p = plans[i];
+                
+                let fDate = "No Date";
+                if (p.date) {
+                    const parts = p.date.split('-');
+                    if (parts.length === 3) {
+                        fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                    }
+                }
+                
+                let fTime = "12:00 AM";
+                if (p.time) { 
+                    let timeParts = p.time.split(':'); 
+                    let h = parseInt(timeParts[0]); 
+                    let m = timeParts[1];
+                    let ampm = h >= 12 ? 'PM' : 'AM'; 
+                    h = h % 12 || 12; 
+                    fTime = `${h}:${m} ${ampm}`; 
+                }
+                
+                html += `
+                <div class="no-select p-5 sm:p-6 bg-white/90 rounded-[1.5rem] shadow-md flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all"
+                     onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
+                     ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()">
+                     
+                    <div class="flex items-start gap-4 flex-1 w-full min-w-0 pr-2">
+                        <div class="w-1.5 h-full min-h-[3rem] bg-indigo-500 rounded-full shrink-0 shadow-sm"></div>
+                        <div class="force-wrap font-black text-slate-900 text-xl sm:text-2xl pt-1">
+                            ${p.text}
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-black text-indigo-700 flex flex-col sm:items-end gap-1 shadow-inner border border-slate-200 shrink-0 min-w-max">
+                        <span>📅 ${fDate}</span>
+                        <span>⏰ ${fTime}</span>
+                    </div>
+                </div>`;
+            }
+            
+            if (list) {
+                if (html === '') {
+                    list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No plans yet. Schedule a milestone!</div>';
+                } else {
+                    list.innerHTML = html;
+                }
+            }
+        }
+
+        // -------------------------------------------
+        // 8. OTHER HELPERS (PDF, HOLD-TO-DELETE, MENUS)
+        // -------------------------------------------
+        let holdTimer;
+        function startHold(type, index) {
+            holdTimer = setTimeout(function() {
+                if (type === 'task') {
+                    if (confirm('Delete this task?')) { 
+                        tasks.splice(index, 1); 
+                        saveData(); 
+                        renderTasks(); 
+                    }
+                } else if (type === 'plan') {
+                    if (confirm('Delete this study plan?')) { 
+                        plans.splice(index, 1); 
+                        saveData(); 
+                        renderPlans(); 
+                    }
+                }
+            }, 1000); 
+        }
+        
+        function cancelHold() {
+            clearTimeout(holdTimer); 
+        }
+
         function handlePDFUpload(inputElement, linkId) {
             if (inputElement.files && inputElement.files[0]) {
                 const fileURL = URL.createObjectURL(inputElement.files[0]);
                 const linkElement = document.getElementById(linkId);
                 linkElement.href = fileURL;
-                linkElement.classList.remove('hidden'); linkElement.classList.add('block');
+                linkElement.classList.remove('hidden');
+                linkElement.classList.add('block');
             }
         }
 
@@ -1343,117 +1966,112 @@
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
+            
             isSidebarOpen = !isSidebarOpen;
+            
             if (isSidebarOpen) {
-                sidebar.classList.remove('-translate-x-full'); overlay.classList.add('active');
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.add('active');
             } else {
-                sidebar.classList.add('-translate-x-full'); overlay.classList.remove('active');
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.remove('active');
             }
         }
 
         function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); });
+            const pages = document.querySelectorAll('.page');
+            for (let i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            
             const navs = ['dashboard', 'timetable', 'attendance', 'planner', 'tasks', 'timer', 'resources', 'cgpa', 'portfolio', 'roadmap', 'jobs', 'career', 'budget'];
-            navs.forEach(id => {
-                const btn = document.getElementById('nav-' + id);
-                if(btn) {
+            
+            for (let i = 0; i < navs.length; i++) {
+                const btn = document.getElementById('nav-' + navs[i]);
+                if (btn) {
                     btn.classList.remove('sidebar-active');
                     btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md";
                 }
-            });
+            }
+            
             document.getElementById(pageId).classList.add('active');
+            
             const activeBtn = document.getElementById('nav-' + pageId);
             if (activeBtn) {
                 activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base";
             }
             
             const titles = { 
-                dashboard: 'Dashboard', timetable: 'Class Timetable', attendance: 'Attendance Tracker', budget: 'Pocket Money',
-                planner: 'Study Planner', tasks: 'Action Tasks', timer: 'Focus Timer', cgpa: 'SGPA Predictor', 
-                roadmap: 'B.Tech Roadmap', resources: 'Resource Vault', portfolio: 'Project Portfolio', 
-                jobs: 'Job Tracker', career: 'Interview Mastery'
+                dashboard: 'Dashboard', 
+                timetable: 'Class Timetable', 
+                attendance: 'Attendance Tracker', 
+                budget: 'Pocket Money',
+                planner: 'Study Planner', 
+                tasks: 'Action Tasks', 
+                timer: 'Focus Timer', 
+                cgpa: 'SGPA Predictor', 
+                roadmap: 'B.Tech Roadmap', 
+                resources: 'Resource Vault', 
+                portfolio: 'Project Portfolio', 
+                jobs: 'Job Tracker', 
+                career: 'Interview Mastery'
             };
+            
             const titleElement = document.getElementById('pageTitle');
-            if (titleElement) titleElement.textContent = titles[pageId];
-            if(isSidebarOpen && window.innerWidth < 1024) toggleSidebar();
-        }
-
-        function showYear(yearId, btnElement) {
-            document.querySelectorAll('.year-content').forEach(el => {
-                el.classList.add('hidden', 'opacity-0', 'pointer-events-none'); el.classList.remove('active', 'opacity-100', 'grid');
-            });
-            document.querySelectorAll('.year-tab-btn').forEach(btn => {
-                btn.className = "year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-8 py-3.5 rounded-xl font-black transition-all border-2 border-slate-200 text-sm sm:text-base shadow-sm whitespace-nowrap tracking-widest uppercase";
-            });
-            const target = document.getElementById(yearId);
-            target.classList.remove('hidden', 'pointer-events-none'); target.classList.add('grid');
-            setTimeout(() => { target.classList.add('active', 'opacity-100'); }, 10);
-            btnElement.className = "year-tab-btn btn-primary px-8 py-3.5 rounded-xl font-black shadow-lg transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase";
-        }
-
-        function renderTasks() {
-            const list = document.getElementById('taskList'); 
-            const dashMiniList = document.getElementById('dashMiniTasks');
-            let html = ''; let miniHtml = ''; let pendingCount = 0;
+            if (titleElement) {
+                titleElement.textContent = titles[pageId];
+            }
             
-            tasks.forEach((t, i) => {
-                const parts = (t.date || "00-00-0000").split('-');
-                let fDate = parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : "No Date";
-                let fTime = "12:00 AM";
-                if(t.time) { let [h, m] = t.time.split(':'); h = parseInt(h); let ampm = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; fTime = `${h}:${m.padStart(2, '0')} ${ampm}`; }
-                
-                html += `
-                <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all ${t.completed ? 'opacity-60 bg-white/50' : 'bg-white/90'}"
-                     onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()">
-                    <div class="flex-1 w-full min-w-0 pr-2">
-                        <div class="font-black text-xl sm:text-2xl force-wrap ${t.completed ? 'line-through text-slate-400' : 'text-slate-900'}">${t.text}</div>
-                        <div class="text-xs sm:text-sm font-black mt-2 flex gap-3 ${t.completed ? 'text-slate-400' : 'text-indigo-600'}"><span>📅 ${fDate}</span><span>⏰ ${fTime}</span></div>
-                    </div>
-                    <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm transform hover:-translate-y-1 transition-all border border-white/50 ${t.completed ? 'bg-slate-200 text-slate-600' : 'btn-success'}">${t.completed ? 'Undo' : '✓ Done'}</button>
-                </div>`;
-                if (!t.completed && pendingCount < 3) {
-                    miniHtml += `<div class="bg-white/80 p-4 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm"><span class="font-bold text-slate-800 truncate text-sm flex-1 pr-2">${t.text}</span><div class="w-3 h-3 rounded-full bg-indigo-500 shadow-sm shrink-0"></div></div>`;
-                    pendingCount++;
-                }
-            });
-            if (list) list.innerHTML = html === '' ? '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>' : html;
-            if (dashMiniList) dashMiniList.innerHTML = miniHtml === '' ? '<div class="text-slate-400 font-bold text-sm text-center py-6 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>' : miniHtml;
-            
-            const completedCount = tasks.filter(t => t.completed).length; const totalCount = tasks.length;
-            if(document.getElementById('totalTasks')) document.getElementById('totalTasks').textContent = totalCount; 
-            if(document.getElementById('completedTasks')) document.getElementById('completedTasks').textContent = completedCount; 
-            let percent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
-            if(document.getElementById('taskProgressMain')) document.getElementById('taskProgressMain').textContent = percent + '%'; 
-            if(document.getElementById('progressBarMain')) document.getElementById('progressBarMain').style.width = percent + '%';
+            if (isSidebarOpen && window.innerWidth < 1024) {
+                toggleSidebar();
+            }
         }
 
-        function clearCompletedTasks() { if(confirm("Are you sure?")) { tasks = tasks.filter(t => !t.completed); saveData(); renderTasks(); } }
-        let holdTimer; function startHold(type, index) { holdTimer = setTimeout(() => { if (type === 'task' && confirm('Delete this task?')) { tasks.splice(index, 1); saveData(); renderTasks(); } else if (type === 'plan' && confirm('Delete this study plan?')) { plans.splice(index, 1); saveData(); renderPlans(); } }, 1000); }
-        function cancelHold() { clearTimeout(holdTimer); }
-        function addTask() { const inp = document.getElementById('taskInput'), d = document.getElementById('taskDate'), t = document.getElementById('taskTime'); if(!inp.value.trim()) return; tasks.push({ text: inp.value.trim(), date: d.value, time: t.value, completed: false, notified: false }); saveData(); inp.value = ''; renderTasks(); }
-        function markTaskComplete(index) { tasks[index].completed = !tasks[index].completed; saveData(); renderTasks(); }
-
-        // PWA REGISTRATION
+        // --- PWA REGISTRATION ---
         if ('serviceWorker' in navigator) {
-            const swCode = `self.addEventListener('install', (e) => self.skipWaiting()); self.addEventListener('activate', (e) => e.waitUntil(clients.claim())); self.addEventListener('fetch', (e) => {});`;
+            const swCode = `
+                self.addEventListener('install', function(e) {
+                    self.skipWaiting();
+                }); 
+                self.addEventListener('activate', function(e) {
+                    e.waitUntil(clients.claim());
+                }); 
+                self.addEventListener('fetch', function(e) {});
+            `;
             const swBlob = new Blob([swCode], {type: 'application/javascript'});
-            navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(e => {});
+            navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(function(e) {
+                console.log("Service worker not registered.");
+            });
         }
 
         let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault(); deferredPrompt = e; 
+        window.addEventListener('beforeinstallprompt', function(e) {
+            e.preventDefault();
+            deferredPrompt = e; 
             const installBtn = document.getElementById('installAppBtn');
-            if(installBtn) installBtn.classList.remove('hidden');
-            installBtn?.addEventListener('click', () => { 
-                installBtn.classList.add('hidden'); deferredPrompt.prompt(); 
-                deferredPrompt.userChoice.then(() => { deferredPrompt = null; }); 
-            });
+            if (installBtn) {
+                installBtn.classList.remove('hidden');
+            }
+            if (installBtn) {
+                installBtn.addEventListener('click', function() { 
+                    installBtn.classList.add('hidden');
+                    deferredPrompt.prompt(); 
+                    deferredPrompt.userChoice.then(function() {
+                        deferredPrompt = null; 
+                    }); 
+                });
+            }
         });
 
-        document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", function() {
             showPage('dashboard');
-            renderTasks(); renderProjects(); renderJobs(); renderTimetable(); renderBudget(); renderAttendance();
+            renderTasks(); 
+            renderPlans(); 
+            renderProjects(); 
+            renderJobs(); 
+            renderTimetable(); 
+            renderBudget(); 
+            renderAttendance();
         });
 
     </script>

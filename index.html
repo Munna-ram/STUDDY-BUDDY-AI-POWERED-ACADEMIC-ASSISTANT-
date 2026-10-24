@@ -265,7 +265,7 @@
 
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
-    <!-- PREMIUM SIDEBAR -->
+    <!-- PREMIUM SIDEBAR (Reordered for Study Focus) -->
     <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/80 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
         <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
 
@@ -279,7 +279,7 @@
             <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
 
             <nav class="space-y-2">
-                <!-- Academic / Core Features -->
+                <!-- Academic / Core Features First -->
                 <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base transform hover:scale-105">
                     <span>🏠</span> Dashboard
                 </button>
@@ -305,12 +305,12 @@
                     <span>📊</span> SGPA Predictor
                 </button>
                 
-                <!-- Separator -->
+                <!-- Separator Line -->
                 <div class="pt-2 pb-1">
                     <div class="border-t-2 border-slate-200"></div>
                 </div>
                 
-                <!-- Career / Extra Features -->
+                <!-- Career / Extra Features Below -->
                 <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>🚀</span> Projects Portfolio
                 </button>
@@ -396,7 +396,7 @@
                 </div>
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('portfolio')">
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-purple-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
-                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects</p>
+                    <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects Built</p>
                     <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-600 z-10 drop-shadow-sm">0</h2>
                 </div>
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('jobs')">
@@ -554,15 +554,15 @@
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Data is saved to the cloud. Add your assignments below.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center">
-                    <div class="md:col-span-5 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm focus-glow w-full">
+                    <div class="md:col-span-5 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm focus-glow-pink w-full">
                         <span class="text-xl">✍️</span>
                         <input type="text" id="taskInput" placeholder="Task description..." class="w-full bg-transparent font-black text-slate-900 text-sm sm:text-base outline-none">
                     </div>
-                    <div class="md:col-span-3 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm focus-glow w-full">
+                    <div class="md:col-span-3 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm focus-glow-pink w-full">
                         <span class="text-xl">📅</span>
                         <input type="date" id="taskDate" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
-                    <div class="md:col-span-2 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-indigo-500 transition-colors shadow-sm focus-glow w-full">
+                    <div class="md:col-span-2 flex items-center gap-3 bg-white border-2 border-slate-200 rounded-xl p-3.5 focus-within:border-pink-500 transition-colors shadow-sm focus-glow-pink w-full">
                         <span class="text-xl">⏰</span>
                         <input type="time" id="taskTime" value="00:00" class="w-full bg-transparent font-black text-slate-900 text-sm outline-none cursor-pointer">
                     </div>
@@ -1159,8 +1159,10 @@
                 auth.onAuthStateChanged(function(user) {
                     if (user && user.emailVerified) {
                         currentUser = user;
-                        document.getElementById('userInfo').textContent = user.email;
-                        document.getElementById('authBtn').textContent = 'Sign Out';
+                        const userInfoEl = document.getElementById('userInfo');
+                        const authBtnEl = document.getElementById('authBtn');
+                        if (userInfoEl) userInfoEl.textContent = user.email;
+                        if (authBtnEl) authBtnEl.textContent = 'Sign Out';
                         loadCloudData();
                     } else if (user && !user.emailVerified) {
                         auth.signOut();
@@ -1168,7 +1170,7 @@
                 });
             }
         } catch (error) {
-            console.log("Firebase not configured properly.");
+            console.log("Firebase not configured properly.", error);
         }
 
         // -------------------------------------------
@@ -1277,35 +1279,48 @@
         // 3. TIMETABLE LOGIC
         // -------------------------------------------
         function renderTimetable() {
-            const grid = document.getElementById('timetableGrid');
-            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            let html = '';
-            
-            for (let r = 0; r < days.length; r++) {
-                html += `<div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] divide-x divide-slate-200/80 hover:bg-slate-50 transition-colors">`;
-                html += `   <div class="p-3 bg-slate-100 flex items-center justify-center font-black text-slate-700 text-[10px] uppercase">${days[r]}</div>`;
+            try {
+                const grid = document.getElementById('timetableGrid');
+                if (!grid) return;
                 
-                for(let c = 0; c < 8; c++) {
-                    if(c === 3) {
-                        html += `<div class="bg-rose-50 flex items-center justify-center border-x border-slate-300"><span class="text-rose-400 font-black text-[9px] transform -rotate-90 tracking-widest">BREAK</span></div>`;
-                    }
-                    if(c === 5) {
-                        html += `<div class="bg-blue-50 flex items-center justify-center border-x border-slate-300"><span class="text-blue-400 font-black text-[9px] transform -rotate-90 tracking-widest">LUNCH</span></div>`;
-                    }
-
-                    let val = timetable[r][c] || "";
-                    let bgClass = val ? "bg-indigo-50" : "bg-white";
+                const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                let html = '';
+                
+                for (let r = 0; r < days.length; r++) {
+                    html += `<div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] divide-x divide-slate-200/80 hover:bg-slate-50 transition-colors border-b border-slate-200/50">`;
+                    html += `   <div class="p-3 bg-slate-100 flex items-center justify-center font-black text-slate-700 text-[10px] uppercase">${days[r]}</div>`;
                     
-                    html += `   <div class="p-2 ${bgClass} flex items-center justify-center h-16">
-                                    <input type="text" value="${val}" onchange="updateTimetable(${r}, ${c}, this.value)" class="timetable-input" placeholder="Subject">
-                                </div>`;
+                    for(let c = 0; c < 8; c++) {
+                        if(c === 3) {
+                            html += `<div class="bg-rose-50 flex items-center justify-center border-x border-slate-300"><span class="text-rose-400 font-black text-[9px] transform -rotate-90 tracking-widest">BREAK</span></div>`;
+                        }
+                        if(c === 5) {
+                            html += `<div class="bg-blue-50 flex items-center justify-center border-x border-slate-300"><span class="text-blue-400 font-black text-[9px] transform -rotate-90 tracking-widest">LUNCH</span></div>`;
+                        }
+
+                        let val = "";
+                        if (timetable[r] && timetable[r][c]) {
+                            val = timetable[r][c];
+                        }
+                        
+                        let bgClass = val ? "bg-indigo-50" : "bg-white";
+                        
+                        html += `   <div class="p-2 ${bgClass} flex items-center justify-center h-16">
+                                        <input type="text" value="${val}" onchange="updateTimetable(${r}, ${c}, this.value)" class="timetable-input" placeholder="Subject">
+                                    </div>`;
+                    }
+                    html += `</div>`;
                 }
-                html += `</div>`;
+                grid.innerHTML = html;
+            } catch (e) {
+                console.error("Error rendering timetable:", e);
             }
-            grid.innerHTML = html;
         }
 
         function updateTimetable(r, c, val) {
+            if (!timetable[r]) {
+                timetable[r] = ["", "", "", "", "", "", "", ""];
+            }
             timetable[r][c] = val;
             saveData();
             renderTimetable();
@@ -1315,31 +1330,38 @@
         // 4. ATTENDANCE LOGIC (WITH PLUS/MINUS BUTTONS)
         // -------------------------------------------
         function addAttendanceSubject() {
-            const subjInput = document.getElementById('attSubject');
-            const totalInput = document.getElementById('attTotal');
-            const attendedInput = document.getElementById('attAttended');
-            
-            const subj = subjInput.value.trim();
-            const total = parseInt(totalInput.value);
-            const attended = parseInt(attendedInput.value);
+            try {
+                const subjInput = document.getElementById('attSubject');
+                const totalInput = document.getElementById('attTotal');
+                const attendedInput = document.getElementById('attAttended');
+                
+                if (!subjInput || !totalInput || !attendedInput) return;
+                
+                const subj = subjInput.value.trim();
+                const total = parseInt(totalInput.value);
+                const attended = parseInt(attendedInput.value);
 
-            if(!subj || isNaN(total) || isNaN(attended)) {
-                return;
+                if(!subj || isNaN(total) || isNaN(attended)) {
+                    alert("Please enter subject name and valid numbers for classes.");
+                    return;
+                }
+                
+                attendanceSubjects.push({ 
+                    name: subj, 
+                    total: total, 
+                    attended: attended 
+                });
+                
+                saveData();
+                
+                subjInput.value = '';
+                totalInput.value = '';
+                attendedInput.value = '';
+                
+                renderAttendance();
+            } catch (e) {
+                console.error("Error adding attendance:", e);
             }
-            
-            attendanceSubjects.push({ 
-                name: subj, 
-                total: total, 
-                attended: attended 
-            });
-            
-            saveData();
-            
-            subjInput.value = '';
-            totalInput.value = '';
-            attendedInput.value = '';
-            
-            renderAttendance();
         }
 
         function deleteAttendanceSubject(index) {
@@ -1351,137 +1373,151 @@
         }
 
         function modifyAttendance(index, field, amount) {
-            if(field === 'total') {
-                attendanceSubjects[index].total += amount;
-            } else if (field === 'attended') {
-                attendanceSubjects[index].attended += amount;
-                attendanceSubjects[index].total += amount; 
+            try {
+                if(field === 'total') {
+                    attendanceSubjects[index].total += amount;
+                } else if (field === 'attended') {
+                    attendanceSubjects[index].attended += amount;
+                    attendanceSubjects[index].total += amount; 
+                }
+                
+                if (attendanceSubjects[index].total < 0) attendanceSubjects[index].total = 0;
+                if (attendanceSubjects[index].attended < 0) attendanceSubjects[index].attended = 0;
+                if (attendanceSubjects[index].attended > attendanceSubjects[index].total) {
+                    attendanceSubjects[index].attended = attendanceSubjects[index].total;
+                }
+                
+                saveData();
+                renderAttendance();
+            } catch (e) {
+                console.error("Error modifying attendance:", e);
             }
-            
-            if (attendanceSubjects[index].total < 0) attendanceSubjects[index].total = 0;
-            if (attendanceSubjects[index].attended < 0) attendanceSubjects[index].attended = 0;
-            if (attendanceSubjects[index].attended > attendanceSubjects[index].total) {
-                attendanceSubjects[index].attended = attendanceSubjects[index].total;
-            }
-            
-            saveData();
-            renderAttendance();
         }
 
         function renderAttendance() {
-            const list = document.getElementById('attendanceList');
-            let overallTotal = 0;
-            let overallAttended = 0;
+            try {
+                const list = document.getElementById('attendanceList');
+                if (!list) return;
+                
+                let overallTotal = 0;
+                let overallAttended = 0;
 
-            if (attendanceSubjects.length === 0) {
-                list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No subjects added yet. Add below!</div>';
+                if (attendanceSubjects.length === 0) {
+                    list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No subjects added yet. Add below!</div>';
+                    
+                    const pEl = document.getElementById('overallAttPercentage');
+                    const mEl = document.getElementById('overallAttMessage');
+                    if (pEl) pEl.textContent = "0%";
+                    if (mEl) mEl.textContent = "Add subjects below";
+                    
+                    const dashPercent = document.getElementById('dashAttPercent');
+                    const dashText = document.getElementById('dashAttText');
+                    if(dashPercent) { 
+                        dashPercent.textContent = "0%"; 
+                        dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm"; 
+                    }
+                    if(dashText) {
+                        dashText.textContent = "0 / 0 Classes";
+                    }
+                    return;
+                }
+
+                let html = '';
                 
-                document.getElementById('overallAttPercentage').textContent = "0%";
-                document.getElementById('overallAttMessage').textContent = "Add subjects below";
+                for (let i = 0; i < attendanceSubjects.length; i++) {
+                    const sub = attendanceSubjects[i];
+                    overallTotal += sub.total;
+                    overallAttended += sub.attended;
+                    
+                    let percent = 0;
+                    if (sub.total > 0) {
+                        percent = (sub.attended / sub.total) * 100;
+                    }
+                    
+                    let isSafe = percent >= 75;
+                    let colorClass = isSafe ? "text-emerald-500" : "text-rose-500";
+                    let badgeClass = isSafe ? "bg-emerald-100 text-emerald-700 border-emerald-200" : "bg-rose-100 text-rose-700 border-rose-200";
+                    
+                    let statusText = "";
+                    if(isSafe) {
+                        let bunkable = Math.floor((sub.attended - (0.75 * sub.total)) / 0.75);
+                        statusText = bunkable > 0 ? `Can bunk ${bunkable} classes` : "On the edge (Exact 75%)";
+                    } else {
+                        let needed = Math.ceil((0.75 * sub.total - sub.attended) / 0.25);
+                        statusText = `Need ${needed} more classes`;
+                    }
+
+                    html += `
+                        <div class="inner-glass p-5 rounded-2xl bg-white/80 shadow-sm border border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-lg transition-shadow relative">
+                            <div class="flex-1 pr-8">
+                                <h3 class="text-xl font-black text-slate-900 force-wrap">${sub.name}</h3>
+                                
+                                <div class="flex items-center gap-6 mt-3">
+                                    <div>
+                                        <p class="text-[10px] font-black uppercase text-slate-400 mb-1">Total Classes</p>
+                                        <div class="flex items-center gap-2">
+                                            <button onclick="modifyAttendance(${i}, 'total', -1)" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-black hover:bg-slate-200">-</button>
+                                            <span class="font-black text-lg w-6 text-center text-slate-800">${sub.total}</span>
+                                            <button onclick="modifyAttendance(${i}, 'total', 1)" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-black hover:bg-slate-200">+</button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-black uppercase text-slate-400 mb-1">Attended</p>
+                                        <div class="flex items-center gap-2">
+                                            <button onclick="modifyAttendance(${i}, 'attended', -1)" class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 font-black hover:bg-emerald-100 border border-emerald-200">-</button>
+                                            <span class="font-black text-lg w-6 text-center text-emerald-600">${sub.attended}</span>
+                                            <button onclick="modifyAttendance(${i}, 'attended', 1)" class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 font-black hover:bg-emerald-100 border border-emerald-200">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="flex flex-col sm:flex-row items-end sm:items-center gap-4 sm:gap-6 mt-2 sm:mt-0">
+                                <div class="text-right">
+                                    <div class="text-3xl font-black ${colorClass}">${percent.toFixed(1)}%</div>
+                                    <div class="text-[10px] sm:text-xs font-black uppercase mt-1 px-2 py-1 rounded border ${badgeClass}">${statusText}</div>
+                                </div>
+                                <button onclick="deleteAttendanceSubject(${i})" class="absolute sm:relative top-4 sm:top-auto right-4 sm:right-auto text-slate-300 hover:text-rose-500 font-black text-2xl">&times;</button>
+                            </div>
+                        </div>`;
+                }
+
+                list.innerHTML = html;
+
+                let overallPercent = 0;
+                if (overallTotal > 0) {
+                    overallPercent = (overallAttended / overallTotal) * 100;
+                }
                 
+                const pEl = document.getElementById('overallAttPercentage');
+                if (pEl) pEl.textContent = overallPercent.toFixed(1) + "%";
+                
+                let msgEl = document.getElementById('overallAttMessage');
+                if(msgEl) {
+                    if(overallPercent >= 75) {
+                        msgEl.textContent = "Safe Zone 😎";
+                        msgEl.className = "px-5 py-2.5 rounded-xl font-black text-sm bg-indigo-500/20 text-indigo-100 border border-indigo-400/30 backdrop-blur-md";
+                    } else {
+                        msgEl.textContent = "Danger Zone 🚨";
+                        msgEl.className = "px-5 py-2.5 rounded-xl font-black text-sm bg-rose-500/20 text-rose-100 border border-rose-400/30 backdrop-blur-md";
+                    }
+                }
+
                 const dashPercent = document.getElementById('dashAttPercent');
                 const dashText = document.getElementById('dashAttText');
-                if(dashPercent) { 
-                    dashPercent.textContent = "0%"; 
-                    dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm"; 
+                if(dashPercent) {
+                    dashPercent.textContent = overallPercent.toFixed(1) + "%";
+                    if (overallPercent >= 75) {
+                        dashPercent.className = "text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm";
+                    } else {
+                        dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm";
+                    }
                 }
                 if(dashText) {
-                    dashText.textContent = "0 / 0 Classes";
+                    dashText.textContent = `${overallAttended} / ${overallTotal} Classes`;
                 }
-                return;
-            }
-
-            let html = '';
-            
-            for (let i = 0; i < attendanceSubjects.length; i++) {
-                const sub = attendanceSubjects[i];
-                overallTotal += sub.total;
-                overallAttended += sub.attended;
-                
-                let percent = 0;
-                if (sub.total > 0) {
-                    percent = (sub.attended / sub.total) * 100;
-                }
-                
-                let isSafe = percent >= 75;
-                let colorClass = isSafe ? "text-emerald-500" : "text-rose-500";
-                let badgeClass = isSafe ? "bg-emerald-100 text-emerald-700 border-emerald-200" : "bg-rose-100 text-rose-700 border-rose-200";
-                
-                let statusText = "";
-                if(isSafe) {
-                    let bunkable = Math.floor((sub.attended - (0.75 * sub.total)) / 0.75);
-                    statusText = bunkable > 0 ? `Can bunk ${bunkable} classes` : "On the edge (Exact 75%)";
-                } else {
-                    let needed = Math.ceil((0.75 * sub.total - sub.attended) / 0.25);
-                    statusText = `Need ${needed} more classes`;
-                }
-
-                html += `
-                    <div class="inner-glass p-5 rounded-2xl bg-white/80 shadow-sm border border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-lg transition-shadow relative">
-                        <div class="flex-1 pr-8">
-                            <h3 class="text-xl font-black text-slate-900 force-wrap">${sub.name}</h3>
-                            
-                            <div class="flex items-center gap-6 mt-3">
-                                <div>
-                                    <p class="text-[10px] font-black uppercase text-slate-400 mb-1">Total Classes</p>
-                                    <div class="flex items-center gap-2">
-                                        <button onclick="modifyAttendance(${i}, 'total', -1)" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-black hover:bg-slate-200">-</button>
-                                        <span class="font-black text-lg w-6 text-center text-slate-800">${sub.total}</span>
-                                        <button onclick="modifyAttendance(${i}, 'total', 1)" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-black hover:bg-slate-200">+</button>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] font-black uppercase text-slate-400 mb-1">Attended</p>
-                                    <div class="flex items-center gap-2">
-                                        <button onclick="modifyAttendance(${i}, 'attended', -1)" class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 font-black hover:bg-emerald-100 border border-emerald-200">-</button>
-                                        <span class="font-black text-lg w-6 text-center text-emerald-600">${sub.attended}</span>
-                                        <button onclick="modifyAttendance(${i}, 'attended', 1)" class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 font-black hover:bg-emerald-100 border border-emerald-200">+</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="flex flex-col sm:flex-row items-end sm:items-center gap-4 sm:gap-6 mt-2 sm:mt-0">
-                            <div class="text-right">
-                                <div class="text-3xl font-black ${colorClass}">${percent.toFixed(1)}%</div>
-                                <div class="text-[10px] sm:text-xs font-black uppercase mt-1 px-2 py-1 rounded border ${badgeClass}">${statusText}</div>
-                            </div>
-                            <button onclick="deleteAttendanceSubject(${i})" class="absolute sm:relative top-4 sm:top-auto right-4 sm:right-auto text-slate-300 hover:text-rose-500 font-black text-2xl">&times;</button>
-                        </div>
-                    </div>`;
-            }
-
-            list.innerHTML = html;
-
-            let overallPercent = 0;
-            if (overallTotal > 0) {
-                overallPercent = (overallAttended / overallTotal) * 100;
-            }
-            
-            document.getElementById('overallAttPercentage').textContent = overallPercent.toFixed(1) + "%";
-            
-            let msgEl = document.getElementById('overallAttMessage');
-            if(overallPercent >= 75) {
-                msgEl.textContent = "Safe Zone 😎";
-                msgEl.className = "px-5 py-2.5 rounded-xl font-black text-sm bg-indigo-500/20 text-indigo-100 border border-indigo-400/30 backdrop-blur-md";
-            } else {
-                msgEl.textContent = "Danger Zone 🚨";
-                msgEl.className = "px-5 py-2.5 rounded-xl font-black text-sm bg-rose-500/20 text-rose-100 border border-rose-400/30 backdrop-blur-md";
-            }
-
-            // Update Dashboard Widget
-            const dashPercent = document.getElementById('dashAttPercent');
-            const dashText = document.getElementById('dashAttText');
-            if(dashPercent) {
-                dashPercent.textContent = overallPercent.toFixed(1) + "%";
-                if (overallPercent >= 75) {
-                    dashPercent.className = "text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm";
-                } else {
-                    dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm";
-                }
-            }
-            if(dashText) {
-                dashText.textContent = `${overallAttended} / ${overallTotal} Classes`;
+            } catch (e) {
+                console.error("Error rendering attendance:", e);
             }
         }
 
@@ -1489,35 +1525,47 @@
         // 5. BUDGET TRACKER LOGIC
         // -------------------------------------------
         function updateBudget() {
-            const budgetInput = document.getElementById('budgetLimit').value;
-            monthlyBudget = parseFloat(budgetInput) || 0;
-            saveData();
-            renderBudget();
+            try {
+                const budgetInput = document.getElementById('budgetLimit');
+                if (budgetInput) {
+                    monthlyBudget = parseFloat(budgetInput.value) || 0;
+                    saveData();
+                    renderBudget();
+                }
+            } catch (e) {
+                console.error("Error updating budget:", e);
+            }
         }
 
         function addExpense() {
-            const nameInput = document.getElementById('expenseName');
-            const amountInput = document.getElementById('expenseAmount');
-            
-            const name = nameInput.value.trim();
-            const amt = parseFloat(amountInput.value);
-            
-            if(!name || isNaN(amt)) {
-                return;
+            try {
+                const nameInput = document.getElementById('expenseName');
+                const amountInput = document.getElementById('expenseAmount');
+                
+                if (!nameInput || !amountInput) return;
+                
+                const name = nameInput.value.trim();
+                const amt = parseFloat(amountInput.value);
+                
+                if(!name || isNaN(amt)) {
+                    return;
+                }
+                
+                expenses.push({ 
+                    name: name, 
+                    amount: amt, 
+                    date: new Date().toLocaleDateString() 
+                });
+                
+                saveData();
+                
+                nameInput.value = '';
+                amountInput.value = '';
+                
+                renderBudget();
+            } catch (e) {
+                console.error("Error adding expense:", e);
             }
-            
-            expenses.push({ 
-                name: name, 
-                amount: amt, 
-                date: new Date().toLocaleDateString() 
-            });
-            
-            saveData();
-            
-            nameInput.value = '';
-            amountInput.value = '';
-            
-            renderBudget();
         }
 
         function deleteExpense(index) {
@@ -1527,76 +1575,88 @@
         }
 
         function renderBudget() {
-            const inputEl = document.getElementById('budgetLimit');
-            const remEl = document.getElementById('budgetRemaining');
-            const listEl = document.getElementById('expenseList');
-            
-            if(!document.activeElement.isEqualNode(inputEl)) {
-                inputEl.value = monthlyBudget || '';
-            }
+            try {
+                const inputEl = document.getElementById('budgetLimit');
+                const remEl = document.getElementById('budgetRemaining');
+                const listEl = document.getElementById('expenseList');
+                
+                if (!remEl || !listEl) return;
+                
+                if(inputEl && document.activeElement !== inputEl) {
+                    inputEl.value = monthlyBudget || '';
+                }
 
-            let totalSpent = 0;
-            for (let i = 0; i < expenses.length; i++) {
-                totalSpent += expenses[i].amount;
-            }
-            
-            let remaining = monthlyBudget - totalSpent;
-            
-            remEl.textContent = `₹${remaining.toFixed(2)}`;
-            if(remaining < 0) {
-                remEl.className = "text-5xl font-black text-rose-300";
-            } else {
-                remEl.className = "text-5xl font-black text-white";
-            }
+                let totalSpent = 0;
+                for (let i = 0; i < expenses.length; i++) {
+                    totalSpent += expenses[i].amount;
+                }
+                
+                let remaining = monthlyBudget - totalSpent;
+                
+                remEl.textContent = `₹${remaining.toFixed(2)}`;
+                if(remaining < 0) {
+                    remEl.className = "text-5xl font-black text-rose-300";
+                } else {
+                    remEl.className = "text-5xl font-black text-white";
+                }
 
-            if (expenses.length === 0) {
-                listEl.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No expenses logged yet.</div>';
-                return;
-            }
+                if (expenses.length === 0) {
+                    listEl.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No expenses logged yet.</div>';
+                    return;
+                }
 
-            let html = '';
-            for (let i = 0; i < expenses.length; i++) {
-                const e = expenses[i];
-                html += `
-                    <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white flex justify-between items-center hover:shadow-md transition-shadow">
-                        <div>
-                            <h4 class="font-black text-slate-800 text-lg">${e.name}</h4>
-                            <p class="text-xs font-bold text-slate-400">${e.date}</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <span class="font-black text-rose-500 text-xl">-₹${e.amount}</span>
-                            <button onclick="deleteExpense(${i})" class="text-slate-300 hover:text-rose-500 font-black text-xl">&times;</button>
-                        </div>
-                    </div>`;
+                let html = '';
+                for (let i = 0; i < expenses.length; i++) {
+                    const e = expenses[i];
+                    html += `
+                        <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white flex justify-between items-center hover:shadow-md transition-shadow">
+                            <div>
+                                <h4 class="font-black text-slate-800 text-lg">${e.name}</h4>
+                                <p class="text-xs font-bold text-slate-400">${e.date}</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="font-black text-rose-500 text-xl">-₹${e.amount}</span>
+                                <button onclick="deleteExpense(${i})" class="text-slate-300 hover:text-rose-500 font-black text-xl">&times;</button>
+                            </div>
+                        </div>`;
+                }
+                listEl.innerHTML = html;
+            } catch (e) {
+                console.error("Error rendering budget:", e);
             }
-            listEl.innerHTML = html;
         }
 
         // -------------------------------------------
         // 6. TASKS LOGIC
         // -------------------------------------------
         function addTask() {
-            const inp = document.getElementById('taskInput');
-            const d = document.getElementById('taskDate');
-            const t = document.getElementById('taskTime');
-            
-            if(!inp.value.trim()) {
-                return;
+            try {
+                const inp = document.getElementById('taskInput');
+                const d = document.getElementById('taskDate');
+                const t = document.getElementById('taskTime');
+                
+                if (!inp || !d || !t) return;
+                
+                if(!inp.value.trim()) {
+                    return;
+                }
+                
+                tasks.push({ 
+                    text: inp.value.trim(), 
+                    date: d.value, 
+                    time: t.value, 
+                    completed: false, 
+                    notified: false 
+                });
+                
+                saveData();
+                
+                inp.value = '';
+                
+                renderTasks();
+            } catch (e) {
+                console.error("Error adding task:", e);
             }
-            
-            tasks.push({ 
-                text: inp.value.trim(), 
-                date: d.value, 
-                time: t.value, 
-                completed: false, 
-                notified: false 
-            });
-            
-            saveData();
-            
-            inp.value = '';
-            
-            renderTasks();
         }
 
         function markTaskComplete(index) {
@@ -1620,105 +1680,109 @@
         }
 
         function renderTasks() {
-            const list = document.getElementById('taskList'); 
-            const dashMiniList = document.getElementById('dashMiniTasks');
-            let html = '';
-            let miniHtml = '';
-            let pendingCount = 0;
-            
-            for (let i = 0; i < tasks.length; i++) {
-                const t = tasks[i];
+            try {
+                const list = document.getElementById('taskList'); 
+                const dashMiniList = document.getElementById('dashMiniTasks');
                 
-                let fDate = "No Date";
-                if (t.date) {
-                    const parts = t.date.split('-');
-                    if (parts.length === 3) {
-                        fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                let html = '';
+                let miniHtml = '';
+                let pendingCount = 0;
+                
+                for (let i = 0; i < tasks.length; i++) {
+                    const t = tasks[i];
+                    
+                    let fDate = "No Date";
+                    if (t.date) {
+                        const parts = t.date.split('-');
+                        if (parts.length === 3) {
+                            fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                        }
+                    }
+                    
+                    let fTime = "12:00 AM";
+                    if(t.time) { 
+                        let timeParts = t.time.split(':'); 
+                        let h = parseInt(timeParts[0]); 
+                        let m = timeParts[1];
+                        let ampm = h >= 12 ? 'PM' : 'AM'; 
+                        h = h % 12 || 12; 
+                        fTime = `${h}:${m} ${ampm}`; 
+                    }
+                    
+                    let completionClass = t.completed ? 'opacity-60 bg-white/50' : 'bg-white/90';
+                    let textClass = t.completed ? 'line-through text-slate-400' : 'text-slate-900';
+                    let btnClass = t.completed ? 'bg-slate-200 text-slate-600' : 'btn-success';
+                    let btnText = t.completed ? 'Undo' : '✓ Done';
+                    
+                    html += `
+                    <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all ${completionClass}"
+                         onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()">
+                        <div class="flex-1 w-full min-w-0 pr-2">
+                            <div class="font-black text-xl sm:text-2xl force-wrap ${textClass}">${t.text}</div>
+                            <div class="text-xs sm:text-sm font-black mt-2 flex gap-3 ${t.completed ? 'text-slate-400' : 'text-indigo-600'}">
+                                <span>📅 ${fDate}</span>
+                                <span>⏰ ${fTime}</span>
+                            </div>
+                        </div>
+                        <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm transform hover:-translate-y-1 transition-all border border-white/50 ${btnClass}">
+                            ${btnText}
+                        </button>
+                    </div>`;
+                    
+                    if (!t.completed && pendingCount < 3) {
+                        miniHtml += `
+                            <div class="bg-white/80 p-4 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm">
+                                <span class="font-bold text-slate-800 truncate text-sm flex-1 pr-2">${t.text}</span>
+                                <div class="w-3 h-3 rounded-full bg-indigo-500 shadow-sm shrink-0"></div>
+                            </div>`;
+                        pendingCount++;
                     }
                 }
                 
-                let fTime = "12:00 AM";
-                if(t.time) { 
-                    let timeParts = t.time.split(':'); 
-                    let h = parseInt(timeParts[0]); 
-                    let m = timeParts[1];
-                    let ampm = h >= 12 ? 'PM' : 'AM'; 
-                    h = h % 12 || 12; 
-                    fTime = `${h}:${m} ${ampm}`; 
+                if (list) {
+                    if (html === '') {
+                        list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
+                    } else {
+                        list.innerHTML = html;
+                    }
                 }
                 
-                let completionClass = t.completed ? 'opacity-60 bg-white/50' : 'bg-white/90';
-                let textClass = t.completed ? 'line-through text-slate-400' : 'text-slate-900';
-                let btnClass = t.completed ? 'bg-slate-200 text-slate-600' : 'btn-success';
-                let btnText = t.completed ? 'Undo' : '✓ Done';
+                if (dashMiniList) {
+                    if (miniHtml === '') {
+                        dashMiniList.innerHTML = '<div class="text-slate-400 font-bold text-sm text-center py-6 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>';
+                    } else {
+                        dashMiniList.innerHTML = miniHtml;
+                    }
+                }
                 
-                html += `
-                <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all ${completionClass}"
-                     onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" ontouchstart="startHold('task', ${i})" ontouchend="cancelHold()">
-                    <div class="flex-1 w-full min-w-0 pr-2">
-                        <div class="font-black text-xl sm:text-2xl force-wrap ${textClass}">${t.text}</div>
-                        <div class="text-xs sm:text-sm font-black mt-2 flex gap-3 ${t.completed ? 'text-slate-400' : 'text-indigo-600'}">
-                            <span>📅 ${fDate}</span>
-                            <span>⏰ ${fTime}</span>
-                        </div>
-                    </div>
-                    <button onclick="markTaskComplete(${i}); event.stopPropagation();" class="px-5 py-2 rounded-xl font-black text-sm whitespace-nowrap shadow-sm transform hover:-translate-y-1 transition-all border border-white/50 ${btnClass}">
-                        ${btnText}
-                    </button>
-                </div>`;
+                let completedCount = 0;
+                for (let i = 0; i < tasks.length; i++) {
+                    if (tasks[i].completed) {
+                        completedCount++;
+                    }
+                }
                 
-                if (!t.completed && pendingCount < 3) {
-                    miniHtml += `
-                        <div class="bg-white/80 p-4 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm">
-                            <span class="font-bold text-slate-800 truncate text-sm flex-1 pr-2">${t.text}</span>
-                            <div class="w-3 h-3 rounded-full bg-indigo-500 shadow-sm shrink-0"></div>
-                        </div>`;
-                    pendingCount++;
+                const totalCount = tasks.length;
+                
+                const totalEl = document.getElementById('totalTasks');
+                if (totalEl) totalEl.textContent = totalCount;
+                
+                const compEl = document.getElementById('completedTasks');
+                if (compEl) compEl.textContent = completedCount;
+                
+                let percent = 0;
+                if (totalCount > 0) {
+                    percent = Math.round((completedCount / totalCount) * 100);
                 }
-            }
-            
-            if (list) {
-                if (html === '') {
-                    list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
-                } else {
-                    list.innerHTML = html;
-                }
-            }
-            
-            if (dashMiniList) {
-                if (miniHtml === '') {
-                    dashMiniList.innerHTML = '<div class="text-slate-400 font-bold text-sm text-center py-6 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>';
-                } else {
-                    dashMiniList.innerHTML = miniHtml;
-                }
-            }
-            
-            let completedCount = 0;
-            for (let i = 0; i < tasks.length; i++) {
-                if (tasks[i].completed) {
-                    completedCount++;
-                }
-            }
-            
-            const totalCount = tasks.length;
-            
-            if(document.getElementById('totalTasks')) {
-                document.getElementById('totalTasks').textContent = totalCount;
-            }
-            if(document.getElementById('completedTasks')) {
-                document.getElementById('completedTasks').textContent = completedCount;
-            }
-            
-            let percent = 0;
-            if (totalCount > 0) {
-                percent = Math.round((completedCount / totalCount) * 100);
-            }
-            
-            if(document.getElementById('taskProgressMain')) {
-                document.getElementById('taskProgressMain').textContent = percent + '%';
-            }
-            if(document.getElementById('progressBarMain')) {
-                document.getElementById('progressBarMain').style.width = percent + '%';
+                
+                const progTxt = document.getElementById('taskProgressMain');
+                if (progTxt) progTxt.textContent = percent + '%';
+                
+                const progBar = document.getElementById('progressBarMain');
+                if (progBar) progBar.style.width = percent + '%';
+                
+            } catch (e) {
+                console.error("Error rendering tasks:", e);
             }
         }
 
@@ -1726,83 +1790,241 @@
         // 7. STUDY PLANNER LOGIC
         // -------------------------------------------
         function addPlan() {
-            const inputElement = document.getElementById('planTitle');
-            const dateElement = document.getElementById('planDate');
-            const timeElement = document.getElementById('planTime');
-            
-            if(!inputElement.value.trim()) {
-                return;
+            try {
+                const inputElement = document.getElementById('planTitle');
+                const dateElement = document.getElementById('planDate');
+                const timeElement = document.getElementById('planTime');
+                
+                if (!inputElement) return;
+                
+                if(!inputElement.value.trim()) {
+                    return;
+                }
+                
+                plans.push({
+                    text: inputElement.value.trim(), 
+                    date: dateElement ? dateElement.value : '', 
+                    time: timeElement ? timeElement.value : '', 
+                    notified: false
+                });
+                
+                saveData();
+                inputElement.value = ''; 
+                renderPlans();
+            } catch (e) {
+                console.error("Error adding plan:", e);
             }
-            
-            plans.push({
-                text: inputElement.value.trim(), 
-                date: dateElement.value, 
-                time: timeElement.value, 
-                notified: false
-            });
-            
-            saveData();
-            
-            inputElement.value = ''; 
-            
-            renderPlans();
         }
         
         function renderPlans() {
-            const list = document.getElementById('plannerList'); 
-            let html = '';
-            
-            for (let i = 0; i < plans.length; i++) {
-                const p = plans[i];
+            try {
+                const list = document.getElementById('plannerList'); 
+                if (!list) return;
                 
-                let fDate = "No Date";
-                if (p.date) {
-                    const parts = p.date.split('-');
-                    if (parts.length === 3) {
-                        fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
-                    }
-                }
+                let html = '';
                 
-                let fTime = "12:00 AM";
-                if (p.time) { 
-                    let timeParts = p.time.split(':'); 
-                    let h = parseInt(timeParts[0]); 
-                    let m = timeParts[1];
-                    let ampm = h >= 12 ? 'PM' : 'AM'; 
-                    h = h % 12 || 12; 
-                    fTime = `${h}:${m} ${ampm}`; 
-                }
-                
-                html += `
-                <div class="no-select p-5 sm:p-6 bg-white/90 rounded-[1.5rem] shadow-md flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all"
-                     onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
-                     ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()">
-                     
-                    <div class="flex items-start gap-4 flex-1 w-full min-w-0 pr-2">
-                        <div class="w-1.5 h-full min-h-[3rem] bg-indigo-500 rounded-full shrink-0 shadow-sm"></div>
-                        <div class="force-wrap font-black text-slate-900 text-xl sm:text-2xl pt-1">
-                            ${p.text}
-                        </div>
-                    </div>
+                for (let i = 0; i < plans.length; i++) {
+                    const p = plans[i];
                     
-                    <div class="bg-slate-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-black text-indigo-700 flex flex-col sm:items-end gap-1 shadow-inner border border-slate-200 shrink-0 min-w-max">
-                        <span>📅 ${fDate}</span>
-                        <span>⏰ ${fTime}</span>
-                    </div>
-                </div>`;
-            }
-            
-            if (list) {
+                    let fDate = "No Date";
+                    if (p.date) {
+                        const parts = p.date.split('-');
+                        if (parts.length === 3) {
+                            fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                        }
+                    }
+                    
+                    let fTime = "12:00 AM";
+                    if (p.time) { 
+                        let timeParts = p.time.split(':'); 
+                        let h = parseInt(timeParts[0]); 
+                        let m = timeParts[1];
+                        let ampm = h >= 12 ? 'PM' : 'AM'; 
+                        h = h % 12 || 12; 
+                        fTime = `${h}:${m} ${ampm}`; 
+                    }
+                    
+                    html += `
+                    <div class="no-select p-5 sm:p-6 bg-white/90 rounded-[1.5rem] shadow-md flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all"
+                         onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
+                         ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()">
+                         
+                        <div class="flex items-start gap-4 flex-1 w-full min-w-0 pr-2">
+                            <div class="w-1.5 h-full min-h-[3rem] bg-indigo-500 rounded-full shrink-0 shadow-sm"></div>
+                            <div class="force-wrap font-black text-slate-900 text-xl sm:text-2xl pt-1">
+                                ${p.text}
+                            </div>
+                        </div>
+                        
+                        <div class="bg-slate-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-black text-indigo-700 flex flex-col sm:items-end gap-1 shadow-inner border border-slate-200 shrink-0 min-w-max">
+                            <span>📅 ${fDate}</span>
+                            <span>⏰ ${fTime}</span>
+                        </div>
+                    </div>`;
+                }
+                
                 if (html === '') {
                     list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No plans yet. Schedule a milestone!</div>';
                 } else {
                     list.innerHTML = html;
                 }
+            } catch (e) {
+                console.error("Error rendering plans:", e);
             }
         }
 
         // -------------------------------------------
-        // 8. OTHER HELPERS (PDF, HOLD-TO-DELETE, MENUS)
+        // 8. PROJECT PORTFOLIO LOGIC
+        // -------------------------------------------
+        function addProject() {
+            try {
+                const titleInput = document.getElementById('projTitle');
+                const stackInput = document.getElementById('projStack');
+                
+                if (!titleInput || !stackInput) return;
+                
+                const title = titleInput.value.trim();
+                const stack = stackInput.value.trim();
+                
+                if (!title) return;
+                
+                projects.push({ title: title, stack: stack });
+                saveData();
+                
+                titleInput.value = '';
+                stackInput.value = '';
+                
+                renderProjects();
+            } catch (e) {
+                console.error("Error adding project:", e);
+            }
+        }
+
+        function deleteProject(index) {
+            if(confirm("Remove this project from your portfolio?")) {
+                projects.splice(index, 1);
+                saveData();
+                renderProjects();
+            }
+        }
+
+        function renderProjects() {
+            try {
+                const list = document.getElementById('projList');
+                const dashCounter = document.getElementById('dashProjects');
+                if (!list) return;
+                
+                if (projects.length === 0) {
+                    list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black md:col-span-2">No projects added yet. Start building!</div>';
+                    if(dashCounter) dashCounter.textContent = 0;
+                    return;
+                }
+                
+                let html = '';
+                for (let i = 0; i < projects.length; i++) {
+                    const p = projects[i];
+                    html += `
+                        <div class="inner-glass p-6 rounded-2xl bg-white/90 border-2 border-white shadow-md flex flex-col justify-between transform hover:-translate-y-1 transition-transform relative">
+                            <button onclick="deleteProject(${i})" class="absolute top-4 right-4 text-slate-300 hover:text-rose-500 font-black text-2xl transition-colors">&times;</button>
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-2 force-wrap pr-6">${p.title}</h3>
+                                <p class="text-sm sm:text-base font-bold text-slate-500 force-wrap">Tech: <span class="text-indigo-600">${p.stack || 'Not specified'}</span></p>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                list.innerHTML = html;
+                if(dashCounter) dashCounter.textContent = projects.length;
+            } catch (e) {
+                console.error("Error rendering projects:", e);
+            }
+        }
+
+        // -------------------------------------------
+        // 9. JOB TRACKER LOGIC
+        // -------------------------------------------
+        function addJob() {
+            try {
+                const companyInput = document.getElementById('jobCompany');
+                const roleInput = document.getElementById('jobRole');
+                const statusInput = document.getElementById('jobStatus');
+                
+                if (!companyInput || !roleInput || !statusInput) return;
+                
+                const company = companyInput.value.trim();
+                const role = roleInput.value.trim();
+                const status = statusInput.value;
+                
+                if (!company) return;
+                
+                jobs.push({ company: company, role: role, status: status });
+                saveData();
+                
+                companyInput.value = '';
+                roleInput.value = '';
+                
+                renderJobs();
+            } catch (e) {
+                console.error("Error adding job:", e);
+            }
+        }
+
+        function deleteJob(index) {
+            if(confirm("Delete this job application?")) {
+                jobs.splice(index, 1);
+                saveData();
+                renderJobs();
+            }
+        }
+
+        function renderJobs() {
+            try {
+                const list = document.getElementById('jobList');
+                const dashCounter = document.getElementById('dashJobs');
+                if (!list) return;
+                
+                if (jobs.length === 0) {
+                    list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No applications tracked yet. Keep pushing!</div>';
+                    if(dashCounter) dashCounter.textContent = 0;
+                    return;
+                }
+                
+                let html = '';
+                for (let i = 0; i < jobs.length; i++) {
+                    const j = jobs[i];
+                    
+                    let badgeClass = "bg-slate-100 text-slate-700 border-slate-200";
+                    if(j.status === "Applied") badgeClass = "bg-blue-100 text-blue-700 border-blue-200";
+                    if(j.status === "Interviewing") badgeClass = "bg-amber-100 text-amber-700 border-amber-200";
+                    if(j.status === "Offer Received") badgeClass = "bg-emerald-100 text-emerald-700 border-emerald-200";
+                    if(j.status === "Rejected") badgeClass = "bg-rose-100 text-rose-700 border-rose-200";
+                    
+                    html += `
+                        <div class="inner-glass p-5 sm:p-6 rounded-2xl bg-white/80 shadow-sm border border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-lg transition-shadow relative">
+                            <div class="flex-1 pr-6">
+                                <h3 class="text-xl sm:text-2xl font-black text-slate-900 force-wrap">${j.company}</h3>
+                                <p class="text-sm sm:text-base font-bold text-slate-500 force-wrap">${j.role || 'General Application'}</p>
+                            </div>
+                            <div class="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto mt-2 sm:mt-0">
+                                <span class="px-4 py-1.5 rounded-lg font-black text-xs sm:text-sm uppercase tracking-wide border ${badgeClass}">
+                                    ${j.status}
+                                </span>
+                                <button onclick="deleteJob(${i})" class="text-slate-300 hover:text-rose-500 font-black text-2xl transition-colors">&times;</button>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                list.innerHTML = html;
+                if(dashCounter) dashCounter.textContent = jobs.length;
+            } catch (e) {
+                console.error("Error rendering jobs:", e);
+            }
+        }
+
+        // -------------------------------------------
+        // 10. OTHER HELPERS (PDF, HOLD-TO-DELETE, MENUS)
         // -------------------------------------------
         let holdTimer;
         function startHold(type, index) {
@@ -1831,9 +2053,11 @@
             if (inputElement.files && inputElement.files[0]) {
                 const fileURL = URL.createObjectURL(inputElement.files[0]);
                 const linkElement = document.getElementById(linkId);
-                linkElement.href = fileURL;
-                linkElement.classList.remove('hidden');
-                linkElement.classList.add('block');
+                if (linkElement) {
+                    linkElement.href = fileURL;
+                    linkElement.classList.remove('hidden');
+                    linkElement.classList.add('block');
+                }
             }
         }
 
@@ -1845,11 +2069,11 @@
             isSidebarOpen = !isSidebarOpen;
             
             if (isSidebarOpen) {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.add('active');
+                if(sidebar) sidebar.classList.remove('-translate-x-full');
+                if(overlay) overlay.classList.add('active');
             } else {
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.remove('active');
+                if(sidebar) sidebar.classList.add('-translate-x-full');
+                if(overlay) overlay.classList.remove('active');
             }
         }
 
@@ -1869,7 +2093,10 @@
                 }
             }
             
-            document.getElementById(pageId).classList.add('active');
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
             
             const activeBtn = document.getElementById('nav-' + pageId);
             if (activeBtn) {
@@ -1938,6 +2165,7 @@
             }
         });
 
+        // Initialize App
         document.addEventListener("DOMContentLoaded", function() {
             showPage('dashboard');
             renderTasks(); 

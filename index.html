@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#fce7f3">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="description" content="StudyBuddy - Premium Academic and Career Command Center">
     
     <title>StudyBuddy - Premium Academic Assistant</title>
     
-    <!-- PWA MANIFEST FOR PREMIUM APP INSTALLATION -->
-    <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22StudyBuddy%22%2C%22short_name%22%3A%22StudyBuddy%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230f172a%22%2C%22theme_color%22%3A%22%230ea5e9%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Bcharset%3Dutf-8%2C%253Csvg%2520xmlns%253D%2527http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2527%2520viewBox%253D%25270%25200%2520512%2520512%2527%253E%253Cdefs%253E%253ClinearGradient%2520id%253D%2527bg%2527%2520x1%253D%25270%2525%2527%2520y1%253D%25270%2525%2527%2520x2%253D%2527100%2525%2527%2520y2%253D%2527100%2525%2527%253E%253Cstop%2520offset%253D%25270%2525%2527%2520stop-color%253D%2527%2523020617%2527%252F%253E%253Cstop%2520offset%253D%2527100%2525%2527%2520stop-color%253D%2527%25230f172a%2527%252F%253E%253C%252FlinearGradient%253E%253ClinearGradient%2520id%253D%2527logo%2527%2520x1%253D%25270%2525%2527%2520y1%253D%25270%2525%2527%2520x2%253D%2527100%2525%2527%2520y2%253D%2527100%2525%2527%253E%253Cstop%2520offset%253D%25270%2525%2527%2520stop-color%253D%2527%252300f2fe%2527%252F%253E%253Cstop%2520offset%253D%2527100%2525%2527%2520stop-color%253D%2527%25234facfe%2527%252F%253E%253C%252FlinearGradient%253E%253Cfilter%2520id%253D%2527shadow%2527%253E%253CfeDropShadow%2520dx%253D%25270%2527%2520dy%253D%252710%2527%2520stdDeviation%253D%252710%2527%2520flood-color%253D%2527%252300f2fe%2527%2520flood-opacity%253D%25270.5%2527%252F%253E%253C%252Ffilter%253E%253C%252Fdefs%253E%253Crect%2520width%253D%2527512%2527%2520height%253D%2527512%2527%2520rx%253D%2527120%2527%2520fill%253D%2527url%28%2523bg%29%2527%252F%253E%253Cpath%2520d%253D%2527M256%2520120%2520C150%2520120%2520100%2520170%2520100%2520250%2520C100%2520320%2520150%2520340%2520200%2520350%2520C240%2520360%2520260%2520370%2520260%2520390%2520C260%2520420%2520220%2520440%2520170%2520440%2520C120%2520440%252080%2520410%252060%2520370%2520L20%2520400%2520C50%2520460%2520110%2520500%2520180%2520500%2520C280%2520500%2520340%2520440%2520340%2520360%2520C340%2520290%2520280%2520270%2520230%2520260%2520C180%2520250%2520170%2520240%2520170%2520210%2520C170%2520180%2520200%2520160%2520250%2520160%2520C290%2520160%2520330%2520180%2520350%2520220%2520L390%2520190%2520C360%2520130%2520310%2520120%2520256%2520120%2520Z%2527%2520fill%253D%2527url%28%2523logo%29%2527%2520filter%253D%2527url%28%2523shadow%29%2527%2520transform%253D%2527translate%2855%252C%25200%29%2527%252F%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+    <!-- ========================================== -->
+    <!-- PWA MANIFEST FOR NATIVE CHROME INSTALLATION-->
+    <!-- ========================================== -->
+    <link rel="manifest" href="data:application/json;charset=utf-8,%7B%0A%20%20%22name%22%3A%20%22StudyBuddy%20Premium%22%2C%0A%20%20%22short_name%22%3A%20%22StudyBuddy%22%2C%0A%20%20%22description%22%3A%20%22Premium%20Academic%20and%20Career%20Assistant%22%2C%0A%20%20%22start_url%22%3A%20%22.%2F%22%2C%0A%20%20%22display%22%3A%20%22standalone%22%2C%0A%20%20%22background_color%22%3A%20%22%23ffffff%22%2C%0A%20%20%22theme_color%22%3A%20%22%23fce7f3%22%2C%0A%20%20%22icons%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22src%22%3A%20%22data%3Aimage%2Fsvg%2Bxml%3Bcharset%3Dutf-8%2C%253Csvg%2520xmlns%253D%2527http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2527%2520viewBox%253D%25270%25200%2520512%2520512%2527%253E%253Cdefs%253E%253ClinearGradient%2520id%253D%2527bg%2527%2520x1%253D%25270%2525%2527%2520y1%253D%25270%2525%2527%2520x2%253D%2527100%2525%2527%2520y2%253D%2527100%2525%2527%253E%253Cstop%2520offset%253D%25270%2525%2527%2520stop-color%253D%2527%2523ffffff%2527%252F%253E%253Cstop%2520offset%253D%2527100%2525%2527%2520stop-color%253D%2527%2523fce7f3%2527%252F%253E%253C%252FlinearGradient%253E%253ClinearGradient%2520id%253D%2527glass%2527%2520x1%253D%25270%2525%2527%2520y1%253D%25270%2525%2527%2520x2%253D%2527100%2525%2527%2520y2%253D%2527100%2525%2527%253E%253Cstop%2520offset%253D%25270%2525%2527%2520stop-color%253D%2527rgba%28255%2C255%2C255%2C0.9%29%2527%252F%253E%253Cstop%2520offset%253D%2527100%2525%2527%2520stop-color%253D%2527rgba%28233%2C213%2C255%2C0.5%29%2527%252F%253E%253C%252FlinearGradient%253E%253ClinearGradient%2520id%253D%2527logo%2527%2520x1%253D%25270%2525%2527%2520y1%253D%25270%2525%2527%2520x2%253D%2527100%2525%2527%2520y2%253D%2527100%2525%2527%253E%253Cstop%2520offset%253D%25270%2525%2527%2520stop-color%253D%2527%2523d946ef%2527%252F%253E%253Cstop%2520offset%253D%2527100%2525%2527%2520stop-color%253D%2527%25238b5cf6%2527%252F%253E%253C%252FlinearGradient%253E%253Cfilter%2520id%253D%2527shadow%2527%253E%253CfeDropShadow%2520dx%253D%25270%2527%2520dy%253D%252710%2527%2520stdDeviation%253D%252710%2527%2520flood-color%253D%2527%25238b5cf6%2527%2520flood-opacity%253D%25270.3%2527%252F%253E%253C%252Ffilter%253E%253Cfilter%2520id%253D%2527glass-blur%2527%253E%253CfeGaussianBlur%2520stdDeviation%253D%25276%2527%252F%253E%253C%252Ffilter%253E%253C%252Fdefs%253E%253Crect%2520width%253D%2527512%2527%2520height%253D%2527512%2527%2520rx%253D%2527120%2527%2520fill%253D%2527url%28%2523bg%29%2527%252F%253E%253Crect%2520x%253D%252730%2527%2520y%253D%252730%2527%2520width%253D%2527452%2527%2520height%253D%2527452%2527%2520rx%253D%2527100%2527%2520fill%253D%2527url%28%2523glass%29%2527%2520filter%253D%2527url%28%2523glass-blur%29%2527%2520stroke%253D%2527%2523ffffff%2527%2520stroke-width%253D%25276%2527%252F%253E%253Cpath%2520d%253D%2527M256%2520120%2520C150%2520120%2520100%2520170%2520100%2520250%2520C100%2520320%2520150%2520340%2520200%2520350%2520C240%2520360%2520260%2520370%2520260%2520390%2520C260%2520420%2520220%2520440%2520170%2520440%2520C120%2520440%252080%2520410%252060%2520370%2520L20%2520400%2520C50%2520460%2520110%2520500%2520180%2520500%2520C280%2520500%2520340%2520440%2520340%2520360%2520C340%2520290%2520280%2520270%2520230%2520260%2520C180%2520250%2520170%2520240%2520170%2520210%2520C170%2520180%2520200%2520160%2520250%2520160%2520C290%2520160%2520330%2520180%2520350%2520220%2520L390%2520190%2520C360%2520130%2520310%2520120%2520256%2520120%2520Z%2527%2520fill%253D%2527url%28%2523logo%29%2527%2520filter%253D%2527url%28%2523shadow%29%2527%2520transform%253D%2527translate%2855%252C%25200%29%2527%252F%253E%253C%252Fsvg%253E%22%2C%0A%20%20%20%20%20%20%22sizes%22%3A%20%22192x192%22%2C%0A%20%20%20%20%20%20%22type%22%3A%20%22image%2Fsvg%2Bxml%22%2C%0A%20%20%20%20%20%20%22purpose%22%3A%20%22any%20maskable%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22src%22%3A%20%22data%3Aimage%2Fsvg%2Bxml%3Bcharset%3Dutf-8%2C%253Csvg%2520xmlns%253D%2527http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2527%2520viewBox%253D%25270%25200%2520512%2520512%2527%253E%253Cdefs%253E%253ClinearGradient%2520id%253D%2527bg%2527%2520x1%253D%25270%2525%2527%2520y1%253D%25270%2525%2527%2520x2%253D%2527100%2525%2527%2520y2%253D%2527100%2525%2527%253E%253Cstop%2520offset%253D%25270%2525%2527%2520stop-color%253D%2527%2523ffffff%2527%252F%253E%253Cstop%2520offset%253D%2527100%2525%2527%2520stop-color%253D%2527%2523fce7f3%2527%252F%253E%253C%252FlinearGradient%253E%253ClinearGradient%2520id%253D%2527glass%2527%2520x1%253D%25270%2525%2527%2520y1%253D%25270%2525%2527%2520x2%253D%2527100%2525%2527%2520y2%253D%2527100%2525%2527%253E%253Cstop%2520offset%253D%25270%2525%2527%2520stop-color%253D%2527rgba%28255%2C255%2C255%2C0.9%29%2527%252F%253E%253Cstop%2520offset%253D%2527100%2525%2527%2520stop-color%253D%2527rgba%28233%2C213%2C255%2C0.5%29%2527%252F%253E%253C%252FlinearGradient%253E%253ClinearGradient%2520id%253D%2527logo%2527%2520x1%253D%25270%2525%2527%2520y1%253D%25270%2525%2527%2520x2%253D%2527100%2525%2527%2520y2%253D%2527100%2525%2527%253E%253Cstop%2520offset%253D%25270%2525%2527%2520stop-color%253D%2527%2523d946ef%2527%252F%253E%253Cstop%2520offset%253D%2527100%2525%2527%2520stop-color%253D%2527%25238b5cf6%2527%252F%253E%253C%252FlinearGradient%253E%253Cfilter%2520id%253D%2527shadow%2527%253E%253CfeDropShadow%2520dx%253D%25270%2527%2520dy%253D%252710%2527%2520stdDeviation%253D%252710%2527%2520flood-color%253D%2527%25238b5cf6%2527%2520flood-opacity%253D%25270.3%2527%252F%253E%253C%252Ffilter%253E%253Cfilter%2520id%253D%2527glass-blur%2527%253E%253CfeGaussianBlur%2520stdDeviation%253D%25276%2527%252F%253E%253C%252Ffilter%253E%253C%252Fdefs%253E%253Crect%2520width%253D%2527512%2527%2520height%253D%2527512%2527%2520rx%253D%2527120%2527%2520fill%253D%2527url%28%2523bg%29%2527%252F%253E%253Crect%2520x%253D%252730%2527%2520y%253D%252730%2527%2520width%253D%2527452%2527%2520height%253D%2527452%2527%2520rx%253D%2527100%2527%2520fill%253D%2527url%28%2523glass%29%2527%2520filter%253D%2527url%28%2523glass-blur%29%2527%2520stroke%253D%2527%2523ffffff%2527%2520stroke-width%253D%25276%2527%252F%253E%253Cpath%2520d%253D%2527M256%2520120%2520C150%2520120%2520100%2520170%2520100%2520250%2520C100%2520320%2520150%2520340%2520200%2520350%2520C240%2520360%2520260%2520370%2520260%2520390%2520C260%2520420%2520220%2520440%2520170%2520440%2520C120%2520440%252080%2520410%252060%2520370%2520L20%2520400%2520C50%2520460%2520110%2520500%2520180%2520500%2520C280%2520500%2520340%2520440%2520340%2520360%2520C340%2520290%2520280%2520270%2520230%2520260%2520C180%2520250%2520170%2520240%2520170%2520210%2520C170%2520180%2520200%2520160%2520250%2520160%2520C290%2520160%2520330%2520180%2520350%2520220%2520L390%2520190%2520C360%2520130%2520310%2520120%2520256%2520120%2520Z%2527%2520fill%253D%2527url%28%2523logo%29%2527%2520filter%253D%2527url%28%2523shadow%29%2527%2520transform%253D%2527translate%2855%252C%25200%29%2527%252F%253E%253C%252Fsvg%253E%22%2C%0A%20%20%20%20%20%20%22sizes%22%3A%20%22512x512%22%2C%0A%20%20%20%20%20%20%22type%22%3A%20%22image%2Fsvg%2Bxml%22%2C%0A%20%20%20%20%20%20%22purpose%22%3A%20%22any%20maskable%22%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D">
     
-    <!-- PREMIUM 3D SVG APP ICON FOR BROWSERS & HOME SCREEN -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23020617'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='100%25' stop-color='%234facfe'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%2300f2fe' flood-opacity='0.5'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E">
-    <link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23020617'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='100%25' stop-color='%234facfe'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%2300f2fe' flood-opacity='0.5'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E">
+    <!-- PREMIUM 3D GLASS APP ICON FOR BROWSERS & HOME SCREEN -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff'/%3E%3Cstop offset='100%25' stop-color='%23fce7f3'/%3E%3C/linearGradient%3E%3ClinearGradient id='glass' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='rgba(255,255,255,0.9)'/%3E%3Cstop offset='100%25' stop-color='rgba(233,213,255,0.5)'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23d946ef'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%238b5cf6' flood-opacity='0.3'/%3E%3C/filter%3E%3Cfilter id='glass-blur'%3E%3CfeGaussianBlur stdDeviation='6'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Crect x='30' y='30' width='452' height='452' rx='100' fill='url(%23glass)' filter='url(%23glass-blur)' stroke='%23ffffff' stroke-width='6'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff'/%3E%3Cstop offset='100%25' stop-color='%23fce7f3'/%3E%3C/linearGradient%3E%3ClinearGradient id='glass' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='rgba(255,255,255,0.9)'/%3E%3Cstop offset='100%25' stop-color='rgba(233,213,255,0.5)'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23d946ef'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%238b5cf6' flood-opacity='0.3'/%3E%3C/filter%3E%3Cfilter id='glass-blur'%3E%3CfeGaussianBlur stdDeviation='6'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Crect x='30' y='30' width='452' height='452' rx='100' fill='url(%23glass)' filter='url(%23glass-blur)' stroke='%23ffffff' stroke-width='6'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E">
 
     <!-- Tailwind CSS Integration -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -299,7 +301,7 @@
     <!-- Mobile Hamburger Header -->
     <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
         <div class="text-xl font-black flex items-center gap-3">
-            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23020617'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='100%25' stop-color='%234facfe'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%2300f2fe' flood-opacity='0.5'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E" alt="Logo" class="w-8 h-8 drop-shadow-md rounded-lg">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff'/%3E%3Cstop offset='100%25' stop-color='%23fce7f3'/%3E%3C/linearGradient%3E%3ClinearGradient id='glass' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='rgba(255,255,255,0.9)'/%3E%3Cstop offset='100%25' stop-color='rgba(233,213,255,0.5)'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23d946ef'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%238b5cf6' flood-opacity='0.3'/%3E%3C/filter%3E%3Cfilter id='glass-blur'%3E%3CfeGaussianBlur stdDeviation='6'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Crect x='30' y='30' width='452' height='452' rx='100' fill='url(%23glass)' filter='url(%23glass-blur)' stroke='%23ffffff' stroke-width='6'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E" alt="Logo" class="w-8 h-8 drop-shadow-md rounded-lg">
             <span class="text-gradient tracking-tight">StudyBuddy</span>
         </div>
         
@@ -321,7 +323,8 @@
         <div>
             <!-- Branding -->
             <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
-                <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23020617'/%3E%3Cstop offset='100%25' stop-color='%231e1b4b'/%3E%3C/linearGradient%3E%3ClinearGradient id='crystal' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%234facfe'/%3E%3Cstop offset='100%25' stop-color='%23d946ef'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 80 L400 256 L256 432 L112 256 Z' fill='none' stroke='url(%23crystal)' stroke-width='30'/%3E%3Cpath d='M256 130 L350 256 L256 382 L162 256 Z' fill='url(%23crystal)' opacity='0.8'/%3E%3Ctext x='256' y='295' font-family='Arial' font-size='140' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform rounded-xl">
+                <!-- Premium Glass Icon -->
+                <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff'/%3E%3Cstop offset='100%25' stop-color='%23fce7f3'/%3E%3C/linearGradient%3E%3ClinearGradient id='glass' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='rgba(255,255,255,0.9)'/%3E%3Cstop offset='100%25' stop-color='rgba(233,213,255,0.5)'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23d946ef'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%238b5cf6' flood-opacity='0.3'/%3E%3C/filter%3E%3Cfilter id='glass-blur'%3E%3CfeGaussianBlur stdDeviation='6'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Crect x='30' y='30' width='452' height='452' rx='100' fill='url(%23glass)' filter='url(%23glass-blur)' stroke='%23ffffff' stroke-width='6'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform rounded-xl">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
             
@@ -366,6 +369,7 @@
                     <div class="border-t-2 border-slate-200"></div>
                 </div>
                 
+                <!-- Career / Extra Features -->
                 <button type="button" onclick="showPage('portfolio')" id="nav-portfolio" class="nav-item nav-item-inactive">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     <span>Projects Portfolio</span>
@@ -418,8 +422,9 @@
                 <h1 id="pageTitle" class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter drop-shadow-md">Dashboard</h1>
                 <p class="text-slate-800 font-extrabold mt-2 text-sm sm:text-base bg-white/80 inline-block px-4 py-1.5 rounded-lg shadow-sm border border-white">Your premium academic command center</p>
             </div>
-            <div class="text-xs sm:text-sm glass-card bg-white/95 px-5 py-3 font-black text-indigo-900 flex items-center gap-2 shadow-md border-2 border-white self-start sm:self-auto transform hover:scale-105 transition-transform">
-                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active
+            <!-- Notifications Test Badge -->
+            <div onclick="testNotification()" class="text-xs sm:text-sm glass-card bg-white/95 px-5 py-3 font-black text-indigo-900 flex items-center gap-2 shadow-md border-2 border-white self-start sm:self-auto transform hover:scale-105 transition-transform cursor-pointer">
+                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.9)]"></span> Workspace Active (Test Alert)
             </div>
         </header>
 
@@ -453,22 +458,22 @@
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <p class="text-sm sm:text-base text-indigo-700 font-black uppercase tracking-widest z-10">Total Tasks</p>
                     <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10 drop-shadow-sm">0</h2>
                 </div>
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-emerald-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-emerald-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                     <p class="text-sm sm:text-base text-emerald-700 font-black uppercase tracking-widest z-10">Completed</p>
                     <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10 drop-shadow-sm">0</h2>
                 </div>
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('portfolio')">
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-purple-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-purple-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects</p>
                     <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-600 z-10 drop-shadow-sm">0</h2>
                 </div>
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('jobs')">
-                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-blue-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <svg class="absolute -right-4 -top-4 w-48 h-48 text-blue-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     <p class="text-sm sm:text-base text-blue-700 font-black uppercase tracking-widest z-10">Job Apps</p>
                     <h2 id="dashJobs" class="text-4xl sm:text-6xl font-black mt-2 text-blue-600 z-10 drop-shadow-sm">0</h2>
                 </div>
@@ -495,7 +500,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- 2. TIMETABLE SECTION                       -->
+        <!-- 2. TIMETABLE SECTION (PERFECT GRID)        -->
         <!-- ========================================== -->
         <section id="timetable" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white animate-float overflow-hidden">
@@ -507,6 +512,7 @@
                 
                 <div class="overflow-x-auto hide-scroll pb-6">
                     <div class="min-w-[950px] bg-white/80 rounded-[2rem] border-2 border-white shadow-lg overflow-hidden">
+                        
                         <!-- Header Row -->
                         <div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] bg-slate-900 text-white text-center font-black uppercase tracking-widest text-xs">
                             <div class="p-3 border-r border-slate-700 flex items-center justify-center">Day</div>
@@ -698,10 +704,10 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     <!-- PDF Box 1 -->
-                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-indigo-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-indigo-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
+                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
-                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-4 rounded-xl font-black hover:bg-indigo-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-indigo-200 text-center w-full">
+                            <label class="cursor-pointer bg-pink-100 text-pink-700 px-4 py-4 rounded-xl font-black hover:bg-pink-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-pink-200 text-center w-full">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
                                 Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink1')">
@@ -1233,7 +1239,7 @@
     </main>
 
     <!-- ========================================== -->
-    <!-- JAVASCRIPT LOGIC (BULLETPROOF & UNCOMPRESSED) -->
+    <!-- JAVASCRIPT LOGIC (ROBUST & UNCOMPRESSED)   -->
     <!-- ========================================== -->
     <script>
         
@@ -1304,12 +1310,12 @@
         let attendanceSubjects = getSavedData('studybuddy_attendance_list', []);
         
         let defaultTimetable = [
-            ["", "", "", "", "", "", "", ""], 
-            ["", "", "", "", "", "", "", ""], 
-            ["", "", "", "", "", "", "", ""], 
-            ["", "", "", "", "", "", "", ""], 
-            ["", "", "", "", "", "", "", ""], 
-            ["", "", "", "", "", "", "", ""]  
+            ["", "", "", "", "", "", "", ""], // Monday
+            ["", "", "", "", "", "", "", ""], // Tuesday
+            ["", "", "", "", "", "", "", ""], // Wednesday
+            ["", "", "", "", "", "", "", ""], // Thursday
+            ["", "", "", "", "", "", "", ""], // Friday
+            ["", "", "", "", "", "", "", ""]  // Saturday
         ];
         let timetable = getSavedData('studybuddy_timetable', defaultTimetable);
 
@@ -1725,7 +1731,7 @@
         }
 
         // -------------------------------------------
-        // 6. TASKS LOGIC 
+        // 6. TASKS LOGIC (FIXED CONFLICTS)
         // -------------------------------------------
         function addTask() {
             try {
@@ -1742,7 +1748,8 @@
                     date: d.value, 
                     time: t.value, 
                     completed: false, 
-                    notified: false 
+                    notified: false,
+                    notified1Hr: false
                 });
                 
                 saveData();
@@ -2259,11 +2266,11 @@
             isSidebarOpen = !isSidebarOpen;
             
             if (isSidebarOpen) {
-                if (sidebar) sidebar.classList.remove('-translate-x-full');
-                if (overlay) overlay.classList.add('active');
+                if(sidebar) sidebar.classList.remove('-translate-x-full');
+                if(overlay) overlay.classList.add('active');
             } else {
-                if (sidebar) sidebar.classList.add('-translate-x-full');
-                if (overlay) overlay.classList.remove('active');
+                if(sidebar) sidebar.classList.add('-translate-x-full');
+                if(overlay) overlay.classList.remove('active');
             }
         }
 
@@ -2469,7 +2476,98 @@
             }
         }
 
-        // --- UNIVERSAL PWA INSTALLATION FIX ---
+        // --- 11. NOTIFICATIONS ENGINE (Test & 1-Hour Early) ---
+        function sendNotification(title, body) {
+            try { 
+                const alertSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+                alertSound.play().catch(e => { console.log("Audio auto-play blocked."); }); 
+            } catch(e) {}
+            
+            if (Notification.permission === 'granted') {
+                const options = {
+                    body: body,
+                    icon: "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff'/%3E%3Cstop offset='100%25' stop-color='%23fce7f3'/%3E%3C/linearGradient%3E%3ClinearGradient id='glass' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='rgba(255,255,255,0.9)'/%3E%3Cstop offset='100%25' stop-color='rgba(233,213,255,0.5)'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23d946ef'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%238b5cf6' flood-opacity='0.3'/%3E%3C/filter%3E%3Cfilter id='glass-blur'%3E%3CfeGaussianBlur stdDeviation='6'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Crect x='30' y='30' width='452' height='452' rx='100' fill='url(%23glass)' filter='url(%23glass-blur)' stroke='%23ffffff' stroke-width='6'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E",
+                    vibrate: [200, 100, 200, 100, 200], 
+                    requireInteraction: true 
+                };
+
+                if ('serviceWorker' in navigator && navigator.serviceWorker.ready) {
+                    navigator.serviceWorker.ready.then(function(registration) {
+                        registration.showNotification(title, options);
+                    });
+                } else {
+                    new Notification(title, options);
+                }
+            }
+        }
+
+        function testNotification() {
+            if (Notification.permission === 'granted') {
+                sendNotification("StudyBuddy Active!", "Your notification system is working perfectly.");
+            } else if (Notification.permission !== 'denied') {
+                Notification.requestPermission().then(function(permission) {
+                    if (permission === 'granted') {
+                        sendNotification("StudyBuddy Active!", "Notifications successfully enabled.");
+                    } else {
+                        alert("Please allow notifications in your browser settings to receive alerts.");
+                    }
+                });
+            } else {
+                alert("Notifications are currently blocked in your browser settings.");
+            }
+        }
+
+        function checkNotifications() {
+            const now = new Date();
+            
+            tasks.forEach(function(t) {
+                if (!t.completed && t.date && t.date !== "No Date") {
+                    const taskTime = (t.time && t.time !== "No Time") ? t.time : '00:00';
+                    const taskDateTime = new Date(`${t.date}T${taskTime}`);
+                    const timeDiff = taskDateTime.getTime() - now.getTime();
+                    
+                    // 1-Hour Early Notification
+                    if (timeDiff > 0 && timeDiff <= 3600000 && !t.notified1Hr) {
+                        sendNotification("Upcoming Task: " + t.text, "This task is due in 1 hour!");
+                        t.notified1Hr = true;
+                        saveData();
+                    }
+                    
+                    // Exact Time Notification
+                    if (timeDiff <= 0 && timeDiff > -60000 && !t.notified) { 
+                        sendNotification("Task Due: " + t.text, "It is time to complete your action task!");
+                        t.notified = true;
+                        saveData();
+                    }
+                }
+            });
+            
+            plans.forEach(function(p) {
+                if (p.date && p.date !== "No Date") {
+                    const planTime = (p.time && p.time !== "No Time") ? p.time : '00:00';
+                    const planDateTime = new Date(`${p.date}T${planTime}`);
+                    const timeDiff = planDateTime.getTime() - now.getTime();
+                    
+                    // 1-Hour Early Notification
+                    if (timeDiff > 0 && timeDiff <= 3600000 && !p.notified1Hr) {
+                        sendNotification("Upcoming Milestone: " + p.text, "Your study block starts in 1 hour!");
+                        p.notified1Hr = true;
+                        saveData();
+                    }
+
+                    // Exact Time Notification
+                    if (timeDiff <= 0 && timeDiff > -60000 && !p.notified) {
+                        sendNotification("Milestone Reached!", p.text);
+                        p.notified = true;
+                        saveData();
+                    }
+                }
+            });
+        }
+        
+        setInterval(checkNotifications, 10000);
+
+        // --- 12. UNIVERSAL PWA INSTALLATION FIX ---
         function closeInstallAlert() {
             const alertBox = document.getElementById('customInstallAlert');
             if (alertBox) {
@@ -2486,6 +2584,13 @@
         });
 
         document.addEventListener("DOMContentLoaded", function() {
+            // Notification Permission trigger on first touch
+            document.addEventListener('click', function() { 
+                if (Notification.permission === "default") {
+                    Notification.requestPermission(); 
+                }
+            }, { once: true });
+
             const installBtn = document.getElementById('installAppBtn');
             const customAlert = document.getElementById('customInstallAlert');
             

@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#4f46e5">
+    <meta name="theme-color" content="#ff007f">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <title>StudyBuddy - Premium Academic Assistant</title>
-    
-    <!-- PWA Manifest Link -->
-    <link rel="manifest" href="manifest.json">
     
     <!-- Tailwind CSS Integration -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -117,23 +114,10 @@
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
+        
+        /* This forces the floating animation to stay ON for mobile */
         .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Performance Optimizations for Mobile Phones */
-        @media (max-width: 1024px) {
-            .blob {
-                filter: blur(75px);
-                opacity: 0.8;
-                animation: none; 
-            }
-            .blob-4 {
-                display: none; 
-            }
-            .animate-float {
-                animation: none;
-            }
+            animation: float 6s ease-in-out infinite !important;
         }
 
         /* Page Transition Logic */
@@ -169,13 +153,6 @@
             border-radius: 2rem;
             box-shadow: var(--glass-shadow);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        @media (max-width: 1024px) {
-            .glass-card {
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-            }
         }
         
         .inner-glass {
@@ -400,7 +377,7 @@
     <!-- MOBILE HAMBURGER HEADER (Only visible on phones) -->
     <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
         <div class="text-xl font-black flex items-center gap-3">
-            <!-- LUXURY DIAMOND LOGO -->
+            <!-- RESTORED: Inner App Diamond Logo -->
             <img src="https://cdn-icons-png.flaticon.com/512/6104/6104033.png" alt="Logo" class="w-8 h-8 drop-shadow-md">
             <span class="text-gradient tracking-tight">StudyBuddy</span>
         </div>
@@ -424,7 +401,7 @@
         <div>
             <!-- Desktop Logo -->
             <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
-                <!-- LUXURY DIAMOND LOGO -->
+                <!-- RESTORED: Inner App Diamond Logo -->
                 <img src="https://cdn-icons-png.flaticon.com/512/6104/6104033.png" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
@@ -518,7 +495,7 @@
                 <p class="text-indigo-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
             </div>
 
-            <!-- Dashboard Stats Grid (Pure White Cards + Colorful SVGs Restored) -->
+            <!-- Dashboard Stats Grid -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
                 
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
@@ -1180,6 +1157,41 @@
             measurementId: "G-9SKKGP2R9L"
         };
 
+        // --- GENERATE A PERFECT SOLID HOME SCREEN APP ICON ---
+        // This guarantees your app icon looks exactly like a YouTube/WhatsApp premium icon
+        // without getting corrupted by Android systems.
+        function generateAppIcon() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 512;
+            canvas.height = 512;
+            const ctx = canvas.getContext('2d');
+            
+            // Draw Solid Premium Background
+            const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+            gradient.addColorStop(0, '#0f172a'); // Very Dark Slate
+            gradient.addColorStop(1, '#ff007f'); // Premium Pink
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 512, 512);
+            
+            // Draw Glowing 'S'
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '900 350px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.shadowColor = 'rgba(0,0,0,0.5)';
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetY = 10;
+            ctx.fillText('S', 256, 290);
+            
+            return canvas.toDataURL('image/png');
+        }
+        
+        const premiumAppIcon = generateAppIcon();
+
+        // Inject the generated icon into the header so Apple/Android can see it
+        document.head.insertAdjacentHTML('beforeend', `<link rel="apple-touch-icon" href="${premiumAppIcon}">`);
+        document.head.insertAdjacentHTML('beforeend', `<link rel="icon" href="${premiumAppIcon}">`);
+
         let auth, db;
         let isFirebaseReady = false;
         let currentUser = null;
@@ -1670,10 +1682,10 @@
             if (Notification.permission === 'granted') {
                 const options = {
                     body: body,
-                    icon: 'https://cdn-icons-png.flaticon.com/512/6104/6104033.png',
+                    icon: premiumAppIcon,
                     vibrate: [200, 100, 200, 100, 200], 
                     requireInteraction: true, 
-                    badge: 'https://cdn-icons-png.flaticon.com/512/6104/6104033.png'
+                    badge: premiumAppIcon
                 };
 
                 if ('serviceWorker' in navigator && navigator.serviceWorker.ready) {
@@ -1886,10 +1898,10 @@
             "short_name": "StudyBuddy", 
             "start_url": ".", 
             "display": "standalone",
-            "background_color": "#f1f5f9", 
-            "theme_color": "#4f46e5",
+            "background_color": "#0f172a", 
+            "theme_color": "#ff007f",
             "icons": [{
-                "src": "https://cdn-icons-png.flaticon.com/512/6104/6104033.png", 
+                "src": premiumAppIcon, 
                 "sizes": "512x512", 
                 "type": "image/png", 
                 "purpose": "any maskable"
@@ -1907,7 +1919,7 @@
                 const data = e.data ? e.data.json() : { title: 'StudyBuddy', body: 'Notification!' }; 
                 e.waitUntil(self.registration.showNotification(data.title, { 
                     body: data.body, 
-                    icon: 'https://cdn-icons-png.flaticon.com/512/6104/6104033.png',
+                    icon: '${premiumAppIcon}',
                     vibrate: [200, 100, 200, 100, 200],
                     requireInteraction: true 
                 })); 

@@ -6,13 +6,11 @@
     <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="description" content="StudyBuddy - Premium Academic and Career Command Center for B.Tech Students">
+    <meta name="description" content="StudyBuddy - Premium Academic and Career Command Center">
     
     <title>StudyBuddy - Premium Academic Assistant</title>
     
-    <!-- ========================================== -->
-    <!-- PWA MANIFEST FOR APP INSTALLATION          -->
-    <!-- ========================================== -->
+    <!-- PWA MANIFEST FOR PREMIUM APP INSTALLATION -->
     <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22StudyBuddy%22%2C%22short_name%22%3A%22StudyBuddy%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230f172a%22%2C%22theme_color%22%3A%22%230ea5e9%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Bcharset%3Dutf-8%2C%253Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%253E%253Cdefs%253E%253ClinearGradient%20id%3D%27bg%27%20x1%3D%270%2525%27%20y1%3D%270%2525%27%20x2%3D%27100%2525%27%20y2%3D%27100%2525%27%253E%253Cstop%20offset%3D%270%2525%27%20stop-color%3D%27%2523020617%27%2F%253E%253Cstop%20offset%3D%27100%2525%27%20stop-color%3D%27%25230f172a%27%2F%253E%253C%2FlinearGradient%253E%253ClinearGradient%20id%3D%27logo%27%20x1%3D%270%2525%27%20y1%3D%270%2525%27%20x2%3D%27100%2525%27%20y2%3D%27100%2525%27%253E%253Cstop%20offset%3D%270%2525%27%20stop-color%3D%27%252300f2fe%27%2F%253E%253Cstop%20offset%3D%27100%2525%27%20stop-color%3D%27%25234facfe%27%2F%253E%253C%2FlinearGradient%253E%253Cfilter%20id%3D%27shadow%27%253E%253CfeDropShadow%20dx%3D%270%27%20dy%3D%2710%27%20stdDeviation%3D%2710%27%20flood-color%3D%27%252300f2fe%27%20flood-opacity%3D%270.5%27%2F%253E%253C%2Ffilter%253E%253C%2Fdefs%253E%253Crect%20width%3D%27512%27%20height%3D%27512%27%20rx%3D%27120%27%20fill%3D%27url%28%2523bg%29%27%2F%253E%253Cpath%20d%3D%27M256%20120%20C150%20120%20100%20170%20100%20250%20C100%20320%20150%20340%20200%20350%20C240%20360%20260%20370%20260%20390%20C260%20420%20220%20440%20170%20440%20C120%20440%2080%20410%2060%20370%20L20%20400%20C50%20460%20110%20500%20180%20500%20C280%20500%20340%20440%20340%20360%20C340%20290%20280%20270%20230%20260%20C180%20250%20170%20240%20170%20210%20C170%20180%20200%20160%20250%20160%20C290%20160%20330%20180%20350%20220%20L390%20190%20C360%20130%20310%20120%20256%20120%20Z%27%20fill%3D%27url%28%2523logo%29%27%20filter%3D%27url%28%2523shadow%29%27%20transform%3D%27translate%2855%2C%200%29%27%2F%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
     
     <!-- PREMIUM 3D SVG APP ICON FOR BROWSERS & HOME SCREEN -->
@@ -107,7 +105,7 @@
             .blob { 
                 filter: blur(75px); 
                 opacity: 0.8; 
-                animation: none; /* Stop massive DOM paints on mobile */
+                animation: none; 
             }
             .blob-4 { display: none; }
             .glass-card { 
@@ -380,7 +378,7 @@
     <!-- Firebase Authentication Modal -->
     <div id="authModal" class="modal-overlay">
         <div class="glass-card bg-white/95 p-12 w-full max-w-md relative shadow-2xl border-2 border-white">
-            <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
+            <button onclick="closeAuthModal()" class="absolute top-4 right-6 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors cursor-pointer">&times;</button>
             <h2 class="text-4xl font-black mb-8 text-center tracking-tight">Join <span class="text-gradient">StudyBuddy</span></h2>
             <div class="space-y-6">
                 <div>
@@ -393,7 +391,7 @@
                 </div>
                 <div id="authError" class="text-rose-500 text-sm font-bold hidden"></div>
                 <div class="flex gap-4 pt-4">
-                    <button onclick="mockSignIn()" class="flex-1 btn-primary py-4 rounded-2xl font-black text-lg">Sign In</button>
+                    <button onclick="mockSignIn()" class="flex-1 btn-primary py-4 rounded-2xl font-black text-lg cursor-pointer">Sign In</button>
                     <button onclick="mockSignUp()" class="flex-1 bg-white text-slate-800 py-4 rounded-2xl font-black hover:bg-slate-50 transition-all border-2 border-slate-200 shadow-md hover:shadow-lg text-lg border-solid cursor-pointer">Create Account</button>
                 </div>
             </div>
@@ -420,7 +418,7 @@
     <!-- MAIN SIDEBAR NAVIGATION                    -->
     <!-- ========================================== -->
     <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/80 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
-        <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors">&times;</button>
+        <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors cursor-pointer">&times;</button>
 
         <div>
             <!-- Branding -->
@@ -502,7 +500,7 @@
     </aside>
 
     <!-- ========================================== -->
-    <!-- MAIN CONTENT AREA                          -->
+    <!-- MAIN CONTENT AREA (NO DUPLICATES)          -->
     <!-- ========================================== -->
     <main class="flex-1 overflow-y-auto overflow-x-hidden pr-2 sm:pr-4 lg:pr-2 pb-10 z-0 hide-scroll">
         
@@ -792,7 +790,7 @@
                                 <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink1')">
                             </label>
-                            <a id="pdfLink1" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
+                            <a id="pdfLink1" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400 cursor-pointer">📄 Open PDF File</a>
                         </div>
                     </div>
                     
@@ -804,7 +802,7 @@
                                 <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink2')">
                             </label>
-                            <a id="pdfLink2" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
+                            <a id="pdfLink2" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400 cursor-pointer">📄 Open PDF File</a>
                         </div>
                     </div>
 
@@ -816,7 +814,7 @@
                                 <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink3')">
                             </label>
-                            <a id="pdfLink3" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
+                            <a id="pdfLink3" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400 cursor-pointer">📄 Open PDF File</a>
                         </div>
                     </div>
 
@@ -828,7 +826,7 @@
                                 <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink4')">
                             </label>
-                            <a id="pdfLink4" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
+                            <a id="pdfLink4" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400 cursor-pointer">📄 Open PDF File</a>
                         </div>
                     </div>
                     
@@ -840,7 +838,7 @@
                                 <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink5')">
                             </label>
-                            <a id="pdfLink5" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
+                            <a id="pdfLink5" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400 cursor-pointer">📄 Open PDF File</a>
                         </div>
                     </div>
                     
@@ -852,7 +850,7 @@
                                 <span class="text-xl">➕</span> Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink6')">
                             </label>
-                            <a id="pdfLink6" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400">📄 Open PDF File</a>
+                            <a id="pdfLink6" href="#" target="_blank" class="hidden bg-emerald-500 text-white font-black px-4 py-4 rounded-xl text-center text-sm uppercase tracking-widest shadow-md hover:bg-emerald-600 transition-colors border-2 border-emerald-400 cursor-pointer">📄 Open PDF File</a>
                         </div>
                     </div>
                 </div>
@@ -1293,10 +1291,13 @@
     </main>
 
     <!-- ========================================== -->
-    <!-- JAVASCRIPT LOGIC (ROBUST & UNCOMPRESSED)   -->
+    <!-- JAVASCRIPT LOGIC (PERFECTLY UNCOMPRESSED)  -->
     <!-- ========================================== -->
     <script>
-        // --- 1. FIREBASE INITIALIZATION ---
+        
+        // -------------------------------------------
+        // 1. FIREBASE CONFIGURATION
+        // -------------------------------------------
         const firebaseConfig = {
             apiKey: "AIzaSyCAJEfO4803FjASyp6ZQUWbArvMeaKSdZI",
             authDomain: "study-buddy-1c988.firebaseapp.com",
@@ -1313,7 +1314,7 @@
         let currentUser = null;
 
         try {
-            if(firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+            if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
                 firebase.initializeApp(firebaseConfig);
                 auth = firebase.auth();
                 db = firebase.firestore();
@@ -1336,7 +1337,9 @@
             console.error("Firebase Initialization Error:", error);
         }
 
-        // --- 2. DATA MANAGEMENT (Local Storage & Cloud) ---
+        // -------------------------------------------
+        // 2. DATA MANAGEMENT (Local Storage & Cloud)
+        // -------------------------------------------
         function getSavedData(key, defaultData) {
             try {
                 const item = localStorage.getItem(key);
@@ -1398,7 +1401,7 @@
         }
 
         function loadCloudData() {
-            if(isFirebaseReady && currentUser) {
+            if (isFirebaseReady && currentUser) {
                 db.collection('users').doc(currentUser.uid).get().then(function(doc) {
                     if (doc.exists) {
                         const data = doc.data();
@@ -1432,7 +1435,9 @@
             renderAttendance();
         }
 
-        // --- 3. TIMETABLE LOGIC ---
+        // -------------------------------------------
+        // 3. TIMETABLE LOGIC
+        // -------------------------------------------
         function renderTimetable() {
             try {
                 const grid = document.getElementById('timetableGrid');
@@ -1445,13 +1450,13 @@
                     html += `<div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] divide-x divide-slate-200/80 hover:bg-slate-50 transition-colors border-b border-slate-200/50">`;
                     html += `   <div class="p-3 bg-slate-100 flex items-center justify-center font-black text-slate-700 text-[10px] uppercase">${days[r]}</div>`;
                     
-                    for(let c = 0; c < 8; c++) {
+                    for (let c = 0; c < 8; c++) {
                         // Break Column
-                        if(c === 3) {
+                        if (c === 3) {
                             html += `<div class="bg-rose-50 flex items-center justify-center border-x border-slate-300"><span class="text-rose-400 font-black text-[9px] transform -rotate-90 tracking-widest">BREAK</span></div>`;
                         }
                         // Lunch Column
-                        if(c === 5) {
+                        if (c === 5) {
                             html += `<div class="bg-blue-50 flex items-center justify-center border-x border-slate-300"><span class="text-blue-400 font-black text-[9px] transform -rotate-90 tracking-widest">LUNCH</span></div>`;
                         }
 
@@ -1481,7 +1486,9 @@
             renderTimetable();
         }
 
-        // --- 4. ATTENDANCE LOGIC ---
+        // -------------------------------------------
+        // 4. ATTENDANCE LOGIC
+        // -------------------------------------------
         function addAttendanceSubject() {
             try {
                 const subjInput = document.getElementById('attSubject');
@@ -1494,7 +1501,7 @@
                 const total = parseInt(totalInput.value);
                 const attended = parseInt(attendedInput.value);
 
-                if(!subj || isNaN(total) || isNaN(attended)) {
+                if (!subj || isNaN(total) || isNaN(attended)) {
                     alert("Please enter subject name and valid numbers.");
                     return;
                 }
@@ -1513,7 +1520,7 @@
         }
 
         function deleteAttendanceSubject(index) {
-            if(confirm("Delete this subject?")) {
+            if (confirm("Delete this subject?")) {
                 attendanceSubjects.splice(index, 1);
                 saveData();
                 renderAttendance();
@@ -1522,7 +1529,7 @@
 
         function modifyAttendance(index, field, amount) {
             try {
-                if(field === 'total') {
+                if (field === 'total') {
                     attendanceSubjects[index].total += amount;
                 } else if (field === 'attended') {
                     attendanceSubjects[index].attended += amount;
@@ -1560,11 +1567,13 @@
                     
                     const dashPercent = document.getElementById('dashAttPercent');
                     const dashText = document.getElementById('dashAttText');
-                    if(dashPercent) { 
+                    if (dashPercent) { 
                         dashPercent.textContent = "0%"; 
                         dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm"; 
                     }
-                    if(dashText) dashText.textContent = "0 / 0 Classes";
+                    if (dashText) {
+                        dashText.textContent = "0 / 0 Classes";
+                    }
                     return;
                 }
 
@@ -1575,13 +1584,17 @@
                     overallTotal += sub.total;
                     overallAttended += sub.attended;
                     
-                    let percent = sub.total > 0 ? (sub.attended / sub.total) * 100 : 0;
+                    let percent = 0;
+                    if (sub.total > 0) {
+                        percent = (sub.attended / sub.total) * 100;
+                    }
+                    
                     let isSafe = percent >= 75;
                     let colorClass = isSafe ? "text-emerald-500" : "text-rose-500";
                     let badgeClass = isSafe ? "bg-emerald-100 text-emerald-700 border-emerald-200" : "bg-rose-100 text-rose-700 border-rose-200";
                     
                     let statusText = "";
-                    if(isSafe) {
+                    if (isSafe) {
                         let bunkable = Math.floor((sub.attended - (0.75 * sub.total)) / 0.75);
                         statusText = bunkable > 0 ? `Can bunk ${bunkable} classes` : "On the edge (Exact 75%)";
                     } else {
@@ -1625,13 +1638,16 @@
 
                 list.innerHTML = html;
 
-                let overallPercent = overallTotal > 0 ? (overallAttended / overallTotal) * 100 : 0;
+                let overallPercent = 0;
+                if (overallTotal > 0) {
+                    overallPercent = (overallAttended / overallTotal) * 100;
+                }
                 
                 const pEl = document.getElementById('overallAttPercentage');
                 if (pEl) pEl.textContent = overallPercent.toFixed(1) + "%";
                 
                 const msgEl = document.getElementById('overallAttMessage');
-                if(msgEl) {
+                if (msgEl) {
                     if(overallPercent >= 75) {
                         msgEl.textContent = "Safe Zone 😎";
                         msgEl.className = "px-5 py-2.5 rounded-xl font-black text-sm bg-indigo-500/20 text-indigo-100 border border-indigo-400/30 backdrop-blur-md";
@@ -1643,18 +1659,130 @@
 
                 const dashPercent = document.getElementById('dashAttPercent');
                 const dashText = document.getElementById('dashAttText');
-                if(dashPercent) {
+                if (dashPercent) {
                     dashPercent.textContent = overallPercent.toFixed(1) + "%";
-                    dashPercent.className = overallPercent >= 75 ? "text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm" : "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm";
+                    if (overallPercent >= 75) {
+                        dashPercent.className = "text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm";
+                    } else {
+                        dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm";
+                    }
                 }
-                if(dashText) dashText.textContent = `${overallAttended} / ${overallTotal} Classes`;
-                
+                if (dashText) {
+                    dashText.textContent = `${overallAttended} / ${overallTotal} Classes`;
+                }
             } catch (e) {
                 console.error("Error rendering attendance:", e);
             }
         }
 
-        // --- 5. TASKS LOGIC ---
+        // -------------------------------------------
+        // 5. BUDGET TRACKER LOGIC
+        // -------------------------------------------
+        function updateBudget() {
+            try {
+                const budgetInput = document.getElementById('budgetLimit');
+                if (budgetInput) {
+                    monthlyBudget = parseFloat(budgetInput.value) || 0;
+                    saveData();
+                    renderBudget();
+                }
+            } catch (e) {
+                console.error("Error updating budget:", e);
+            }
+        }
+
+        function addExpense() {
+            try {
+                const nameInput = document.getElementById('expenseName');
+                const amountInput = document.getElementById('expenseAmount');
+                
+                if (!nameInput || !amountInput) return;
+                
+                const name = nameInput.value.trim();
+                const amt = parseFloat(amountInput.value);
+                
+                if (!name || isNaN(amt)) {
+                    return;
+                }
+                
+                expenses.push({ 
+                    name: name, 
+                    amount: amt, 
+                    date: new Date().toLocaleDateString() 
+                });
+                
+                saveData();
+                
+                nameInput.value = '';
+                amountInput.value = '';
+                
+                renderBudget();
+            } catch (e) {
+                console.error("Error adding expense:", e);
+            }
+        }
+
+        function deleteExpense(index) {
+            expenses.splice(index, 1);
+            saveData();
+            renderBudget();
+        }
+
+        function renderBudget() {
+            try {
+                const inputEl = document.getElementById('budgetLimit');
+                const remEl = document.getElementById('budgetRemaining');
+                const listEl = document.getElementById('expenseList');
+                
+                if (!remEl || !listEl) return;
+                
+                if (inputEl && document.activeElement !== inputEl) {
+                    inputEl.value = monthlyBudget || '';
+                }
+
+                let totalSpent = 0;
+                for (let i = 0; i < expenses.length; i++) {
+                    totalSpent += expenses[i].amount;
+                }
+                
+                let remaining = monthlyBudget - totalSpent;
+                
+                remEl.textContent = `₹${remaining.toFixed(2)}`;
+                if (remaining < 0) {
+                    remEl.className = "text-5xl font-black text-rose-300";
+                } else {
+                    remEl.className = "text-5xl font-black text-white";
+                }
+
+                if (expenses.length === 0) {
+                    listEl.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No expenses logged yet.</div>';
+                    return;
+                }
+
+                let html = '';
+                for (let i = 0; i < expenses.length; i++) {
+                    const e = expenses[i];
+                    html += `
+                        <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white flex justify-between items-center hover:shadow-md transition-shadow">
+                            <div>
+                                <h4 class="font-black text-slate-800 text-lg">${e.name}</h4>
+                                <p class="text-xs font-bold text-slate-400">${e.date}</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="font-black text-rose-500 text-xl">-₹${e.amount}</span>
+                                <button onclick="deleteExpense(${i})" class="text-slate-300 hover:text-rose-500 font-black text-xl cursor-pointer">&times;</button>
+                            </div>
+                        </div>`;
+                }
+                listEl.innerHTML = html;
+            } catch (e) {
+                console.error("Error rendering budget:", e);
+            }
+        }
+
+        // -------------------------------------------
+        // 6. TASKS LOGIC
+        // -------------------------------------------
         function addTask() {
             try {
                 const inp = document.getElementById('taskInput');
@@ -1663,7 +1791,7 @@
                 
                 if (!inp || !d || !t) return;
                 
-                if(!inp.value.trim()) return;
+                if (!inp.value.trim()) return;
                 
                 tasks.push({ 
                     text: inp.value.trim(), 
@@ -1688,7 +1816,7 @@
         }
         
         function clearCompletedTasks() {
-            if(confirm("Are you sure you want to clear all completed tasks?")) {
+            if (confirm("Are you sure you want to clear all completed tasks?")) {
                 let newTasks = [];
                 for (let i = 0; i < tasks.length; i++) {
                     if (!tasks[i].completed) {
@@ -1716,11 +1844,13 @@
                     let fDate = "No Date";
                     if (t.date) {
                         const parts = t.date.split('-');
-                        if (parts.length === 3) fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                        if (parts.length === 3) {
+                            fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                        }
                     }
                     
                     let fTime = "12:00 AM";
-                    if(t.time) { 
+                    if (t.time) { 
                         let timeParts = t.time.split(':'); 
                         let h = parseInt(timeParts[0]); 
                         let m = timeParts[1];
@@ -1777,7 +1907,9 @@
                 
                 let completedCount = 0;
                 for (let i = 0; i < tasks.length; i++) {
-                    if (tasks[i].completed) completedCount++;
+                    if (tasks[i].completed) {
+                        completedCount++;
+                    }
                 }
                 
                 const totalCount = tasks.length;
@@ -1788,7 +1920,10 @@
                 const compEl = document.getElementById('completedTasks');
                 if (compEl) compEl.textContent = completedCount;
                 
-                let percent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+                let percent = 0;
+                if (totalCount > 0) {
+                    percent = Math.round((completedCount / totalCount) * 100);
+                }
                 
                 const progTxt = document.getElementById('taskProgressMain');
                 if (progTxt) progTxt.textContent = percent + '%';
@@ -1801,7 +1936,9 @@
             }
         }
 
-        // --- 6. STUDY PLANNER LOGIC ---
+        // -------------------------------------------
+        // 7. STUDY PLANNER LOGIC
+        // -------------------------------------------
         function addPlan() {
             try {
                 const inputElement = document.getElementById('planTitle');
@@ -1810,7 +1947,7 @@
                 
                 if (!inputElement) return;
                 
-                if(!inputElement.value.trim()) return;
+                if (!inputElement.value.trim()) return;
                 
                 plans.push({
                     text: inputElement.value.trim(), 
@@ -1840,7 +1977,9 @@
                     let fDate = "No Date";
                     if (p.date) {
                         const parts = p.date.split('-');
-                        if (parts.length === 3) fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                        if (parts.length === 3) {
+                            fDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                        }
                     }
                     
                     let fTime = "12:00 AM";
@@ -1857,10 +1996,14 @@
                     <div class="no-select p-5 sm:p-6 bg-white/90 rounded-[1.5rem] shadow-md flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all"
                          onmousedown="startHold('plan', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
                          ontouchstart="startHold('plan', ${i})" ontouchend="cancelHold()">
+                         
                         <div class="flex items-start gap-4 flex-1 w-full min-w-0 pr-2">
                             <div class="w-1.5 h-full min-h-[3rem] bg-indigo-500 rounded-full shrink-0 shadow-sm"></div>
-                            <div class="force-wrap font-black text-slate-900 text-xl sm:text-2xl pt-1">${p.text}</div>
+                            <div class="force-wrap font-black text-slate-900 text-xl sm:text-2xl pt-1">
+                                ${p.text}
+                            </div>
                         </div>
+                        
                         <div class="bg-slate-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-black text-indigo-700 flex flex-col sm:items-end gap-1 shadow-inner border border-slate-200 shrink-0 min-w-max">
                             <span>📅 ${fDate}</span>
                             <span>⏰ ${fTime}</span>
@@ -1878,124 +2021,35 @@
             }
         }
 
-        // --- 7. BUDGET LOGIC ---
-        function updateBudget() {
-            try {
-                const budgetInput = document.getElementById('budgetLimit');
-                if (budgetInput) {
-                    monthlyBudget = parseFloat(budgetInput.value) || 0;
-                    saveData();
-                    renderBudget();
-                }
-            } catch (e) {
-                console.error("Error updating budget:", e);
-            }
-        }
-
-        function addExpense() {
-            try {
-                const nameInput = document.getElementById('expenseName');
-                const amountInput = document.getElementById('expenseAmount');
-                
-                if (!nameInput || !amountInput) return;
-                
-                const name = nameInput.value.trim();
-                const amt = parseFloat(amountInput.value);
-                
-                if(!name || isNaN(amt)) return;
-                
-                expenses.push({ 
-                    name: name, 
-                    amount: amt, 
-                    date: new Date().toLocaleDateString() 
-                });
-                
-                saveData();
-                nameInput.value = '';
-                amountInput.value = '';
-                renderBudget();
-            } catch (e) {
-                console.error("Error adding expense:", e);
-            }
-        }
-
-        function deleteExpense(index) {
-            expenses.splice(index, 1);
-            saveData();
-            renderBudget();
-        }
-
-        function renderBudget() {
-            try {
-                const inputEl = document.getElementById('budgetLimit');
-                const remEl = document.getElementById('budgetRemaining');
-                const listEl = document.getElementById('expenseList');
-                
-                if (!remEl || !listEl) return;
-                
-                if(inputEl && document.activeElement !== inputEl) {
-                    inputEl.value = monthlyBudget || '';
-                }
-
-                let totalSpent = 0;
-                for (let i = 0; i < expenses.length; i++) {
-                    totalSpent += expenses[i].amount;
-                }
-                
-                let remaining = monthlyBudget - totalSpent;
-                
-                remEl.textContent = `₹${remaining.toFixed(2)}`;
-                if(remaining < 0) {
-                    remEl.className = "text-5xl font-black text-rose-300";
-                } else {
-                    remEl.className = "text-5xl font-black text-white";
-                }
-
-                if (expenses.length === 0) {
-                    listEl.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No expenses logged yet.</div>';
-                    return;
-                }
-
-                let html = '';
-                for (let i = 0; i < expenses.length; i++) {
-                    const e = expenses[i];
-                    html += `
-                        <div class="inner-glass p-4 rounded-xl bg-white/80 shadow-sm border border-white flex justify-between items-center hover:shadow-md transition-shadow">
-                            <div>
-                                <h4 class="font-black text-slate-800 text-lg">${e.name}</h4>
-                                <p class="text-xs font-bold text-slate-400">${e.date}</p>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <span class="font-black text-rose-500 text-xl">-₹${e.amount}</span>
-                                <button onclick="deleteExpense(${i})" class="text-slate-300 hover:text-rose-500 font-black text-xl cursor-pointer">&times;</button>
-                            </div>
-                        </div>`;
-                }
-                listEl.innerHTML = html;
-            } catch (e) {
-                console.error("Error rendering budget:", e);
-            }
-        }
-
-        // --- 8. PROJECT & JOB TRACKERS ---
+        // -------------------------------------------
+        // 8. PROJECT PORTFOLIO LOGIC
+        // -------------------------------------------
         function addProject() {
             try {
                 const titleInput = document.getElementById('projTitle');
                 const stackInput = document.getElementById('projStack');
+                
                 if (!titleInput || !stackInput) return;
+                
                 const title = titleInput.value.trim();
                 const stack = stackInput.value.trim();
+                
                 if (!title) return;
+                
                 projects.push({ title: title, stack: stack });
                 saveData();
+                
                 titleInput.value = '';
                 stackInput.value = '';
+                
                 renderProjects();
-            } catch (e) { console.error("Error adding project:", e); }
+            } catch (e) {
+                console.error("Error adding project:", e);
+            }
         }
 
         function deleteProject(index) {
-            if(confirm("Remove this project from your portfolio?")) {
+            if (confirm("Remove this project from your portfolio?")) {
                 projects.splice(index, 1);
                 saveData();
                 renderProjects();
@@ -2005,10 +2059,12 @@
         function renderProjects() {
             try {
                 const list = document.getElementById('projList');
+                const dashCounter = document.getElementById('dashProjects');
                 if (!list) return;
                 
                 if (projects.length === 0) {
                     list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black md:col-span-2">No projects added yet. Start building!</div>';
+                    if (dashCounter) dashCounter.textContent = 0;
                     return;
                 }
                 
@@ -2022,32 +2078,48 @@
                                 <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-2 force-wrap pr-6">${p.title}</h3>
                                 <p class="text-sm sm:text-base font-bold text-slate-500 force-wrap">Tech: <span class="text-indigo-600">${p.stack || 'Not specified'}</span></p>
                             </div>
-                        </div>`;
+                        </div>
+                    `;
                 }
+                
                 list.innerHTML = html;
-            } catch (e) { console.error("Error rendering projects:", e); }
+                if (dashCounter) dashCounter.textContent = projects.length;
+            } catch (e) {
+                console.error("Error rendering projects:", e);
+            }
         }
 
+        // -------------------------------------------
+        // 9. JOB TRACKER LOGIC
+        // -------------------------------------------
         function addJob() {
             try {
                 const companyInput = document.getElementById('jobCompany');
                 const roleInput = document.getElementById('jobRole');
                 const statusInput = document.getElementById('jobStatus');
+                
                 if (!companyInput || !roleInput || !statusInput) return;
+                
                 const company = companyInput.value.trim();
                 const role = roleInput.value.trim();
                 const status = statusInput.value;
+                
                 if (!company) return;
+                
                 jobs.push({ company: company, role: role, status: status });
                 saveData();
+                
                 companyInput.value = '';
                 roleInput.value = '';
+                
                 renderJobs();
-            } catch (e) { console.error("Error adding job:", e); }
+            } catch (e) {
+                console.error("Error adding job:", e);
+            }
         }
 
         function deleteJob(index) {
-            if(confirm("Delete this job application?")) {
+            if (confirm("Delete this job application?")) {
                 jobs.splice(index, 1);
                 saveData();
                 renderJobs();
@@ -2057,16 +2129,19 @@
         function renderJobs() {
             try {
                 const list = document.getElementById('jobList');
+                const dashCounter = document.getElementById('dashJobs');
                 if (!list) return;
                 
                 if (jobs.length === 0) {
                     list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No applications tracked yet. Keep pushing!</div>';
+                    if(dashCounter) dashCounter.textContent = 0;
                     return;
                 }
                 
                 let html = '';
                 for (let i = 0; i < jobs.length; i++) {
                     const j = jobs[i];
+                    
                     let badgeClass = "bg-slate-100 text-slate-700 border-slate-200";
                     if(j.status === "Applied") badgeClass = "bg-blue-100 text-blue-700 border-blue-200";
                     if(j.status === "Interviewing") badgeClass = "bg-amber-100 text-amber-700 border-amber-200";
@@ -2085,13 +2160,20 @@
                                 </span>
                                 <button onclick="deleteJob(${i})" class="text-slate-300 hover:text-rose-500 font-black text-2xl transition-colors cursor-pointer">&times;</button>
                             </div>
-                        </div>`;
+                        </div>
+                    `;
                 }
+                
                 list.innerHTML = html;
-            } catch (e) { console.error("Error rendering jobs:", e); }
+                if(dashCounter) dashCounter.textContent = jobs.length;
+            } catch (e) {
+                console.error("Error rendering jobs:", e);
+            }
         }
 
-        // --- 9. OTHER UTILS (Timer, CGPA, PDF, Navigation) ---
+        // -------------------------------------------
+        // 10. OTHER HELPERS (Timer, Nav, PDF)
+        // -------------------------------------------
         let timerInterval;
         let timeLeft = 25 * 60; 
         let isTimerRunning = false;
@@ -2179,7 +2261,7 @@
             let count = 0;
             
             for (let i = 0; i < inputs.length; i++) {
-                if(inputs[i].value) { 
+                if (inputs[i].value) { 
                     total += parseFloat(inputs[i].value); 
                     count++; 
                 }
@@ -2187,7 +2269,7 @@
             
             const cgpa = count === 0 ? 0 : (total / count);
             const res = document.getElementById('cgpaResult');
-            if(res) res.textContent = cgpa.toFixed(2);
+            if (res) res.textContent = cgpa.toFixed(2);
         }
 
         let holdTimer;
@@ -2233,11 +2315,11 @@
             isSidebarOpen = !isSidebarOpen;
             
             if (isSidebarOpen) {
-                if(sidebar) sidebar.classList.remove('-translate-x-full');
-                if(overlay) overlay.classList.add('active');
+                if (sidebar) sidebar.classList.remove('-translate-x-full');
+                if (overlay) overlay.classList.add('active');
             } else {
-                if(sidebar) sidebar.classList.add('-translate-x-full');
-                if(overlay) overlay.classList.remove('active');
+                if (sidebar) sidebar.classList.add('-translate-x-full');
+                if (overlay) overlay.classList.remove('active');
             }
         }
 
@@ -2322,15 +2404,15 @@
             let completed = 0;
             
             for (let i = 0; i < boxes.length; i++) {
-                if(boxes[i].checked) completed++;
+                if (boxes[i].checked) completed++;
             }
             
             const percent = boxes.length === 0 ? 0 : Math.round((completed / boxes.length) * 100); 
             const scoreEl = document.getElementById('roadmapScore');
             const barEl = document.getElementById('roadmapProgressBar');
             
-            if(scoreEl) scoreEl.textContent = percent + '%'; 
-            if(barEl) barEl.style.width = percent + '%';
+            if (scoreEl) scoreEl.textContent = percent + '%'; 
+            if (barEl) barEl.style.width = percent + '%';
         }
 
         function updateInterviewProgress() {
@@ -2338,15 +2420,108 @@
             let completed = 0;
             
             for (let i = 0; i < boxes.length; i++) {
-                if(boxes[i].checked) completed++;
+                if (boxes[i].checked) completed++;
             }
             
             const percent = boxes.length === 0 ? 0 : Math.round((completed / boxes.length) * 100); 
             const scoreEl = document.getElementById('interviewScore');
             const barEl = document.getElementById('interviewProgressBar');
             
-            if(scoreEl) scoreEl.textContent = percent + '%'; 
-            if(barEl) barEl.style.width = percent + '%';
+            if (scoreEl) scoreEl.textContent = percent + '%'; 
+            if (barEl) barEl.style.width = percent + '%';
+        }
+
+        function toggleAuth() { 
+            if (currentUser || (document.getElementById('authBtn') && document.getElementById('authBtn').textContent === 'Sign Out')) {
+                if (isFirebaseReady) auth.signOut();
+                currentUser = null;
+                if(document.getElementById('userInfo')) document.getElementById('userInfo').textContent = 'Not signed in'; 
+                if(document.getElementById('authBtn')) document.getElementById('authBtn').textContent = 'Sign In / Sign Up';
+                
+                tasks = []; plans = []; projects = []; jobs = [];
+                renderTasks(); renderPlans(); renderProjects(); renderJobs();
+            } else {
+                if(document.getElementById('authError')) document.getElementById('authError').classList.add('hidden');
+                if(document.getElementById('authEmail')) document.getElementById('authEmail').value = '';
+                if(document.getElementById('authPassword')) document.getElementById('authPassword').value = '';
+                if(document.getElementById('authModal')) document.getElementById('authModal').classList.add('active'); 
+            }
+        }
+        
+        function closeAuthModal() { 
+            if(document.getElementById('authModal')) document.getElementById('authModal').classList.remove('active'); 
+        }
+
+        async function mockSignIn() { 
+            const emailInput = document.getElementById('authEmail').value.trim();
+            const passwordInput = document.getElementById('authPassword').value;
+            const errorEl = document.getElementById('authError');
+
+            if (!emailInput || !passwordInput) {
+                if(errorEl) {
+                    errorEl.textContent = 'Please enter both email and password.';
+                    errorEl.classList.remove('hidden');
+                }
+                return;
+            }
+
+            if (isFirebaseReady) {
+                try {
+                    const userCredential = await auth.signInWithEmailAndPassword(emailInput, passwordInput);
+                    if (!userCredential.user.emailVerified) {
+                        alert('Access Denied. Please verify your email first.');
+                        auth.signOut();
+                        return;
+                    }
+                    currentUser = userCredential.user;
+                    if(document.getElementById('userInfo')) document.getElementById('userInfo').textContent = currentUser.email; 
+                    if(document.getElementById('authBtn')) document.getElementById('authBtn').textContent = 'Sign Out';
+                    closeAuthModal();
+                    loadCloudData();
+                } catch (error) {
+                    if(errorEl) {
+                        errorEl.textContent = error.message;
+                        errorEl.classList.remove('hidden');
+                    }
+                }
+            } else {
+                currentUser = { email: emailInput };
+                if(document.getElementById('userInfo')) document.getElementById('userInfo').textContent = emailInput; 
+                if(document.getElementById('authBtn')) document.getElementById('authBtn').textContent = 'Sign Out';
+                closeAuthModal(); 
+            }
+        }
+
+        async function mockSignUp() { 
+            const emailInput = document.getElementById('authEmail').value.trim();
+            const passwordInput = document.getElementById('authPassword').value;
+            const errorEl = document.getElementById('authError');
+
+            if (!emailInput || !passwordInput) {
+                if(errorEl) {
+                    errorEl.textContent = 'Please enter both email and password.';
+                    errorEl.classList.remove('hidden');
+                }
+                return;
+            }
+
+            if (isFirebaseReady) {
+                try {
+                    const userCredential = await auth.createUserWithEmailAndPassword(emailInput, passwordInput);
+                    await userCredential.user.sendEmailVerification();
+                    alert('Verification email sent to ' + emailInput);
+                    auth.signOut();
+                    closeAuthModal();
+                } catch(error) {
+                    if(errorEl) {
+                        errorEl.textContent = error.message;
+                        errorEl.classList.remove('hidden');
+                    }
+                }
+            } else {
+                alert('DEMO MODE: Verification email sent to ' + emailInput);
+                mockSignIn(); 
+            }
         }
 
         // --- PWA REGISTRATION (Install App Button Fix) ---

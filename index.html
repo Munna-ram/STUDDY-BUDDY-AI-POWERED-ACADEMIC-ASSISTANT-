@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#1e1b4b">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="description" content="StudyBuddy - Premium Academic and Career Command Center">
     
     <title>StudyBuddy - Premium Academic Assistant</title>
     
-    <!-- PWA MANIFEST FOR PREMIUM APP INSTALLATION -->
-    <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22StudyBuddy%22%2C%22short_name%22%3A%22StudyBuddy%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230f172a%22%2C%22theme_color%22%3A%22%230ea5e9%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Bcharset%3Dutf-8%2C%253Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%253E%253Cdefs%253E%253ClinearGradient%20id%3D%27bg%27%20x1%3D%270%2525%27%20y1%3D%270%2525%27%20x2%3D%27100%2525%27%20y2%3D%27100%2525%27%253E%253Cstop%20offset%3D%270%2525%27%20stop-color%3D%27%2523020617%27%2F%253E%253Cstop%20offset%3D%27100%2525%27%20stop-color%3D%27%25230f172a%27%2F%253E%253C%2FlinearGradient%253E%253ClinearGradient%20id%3D%27logo%27%20x1%3D%270%2525%27%20y1%3D%270%2525%27%20x2%3D%27100%2525%27%20y2%3D%27100%2525%27%253E%253Cstop%20offset%3D%270%2525%27%20stop-color%3D%27%252300f2fe%27%2F%253E%253Cstop%20offset%3D%27100%2525%27%20stop-color%3D%27%25234facfe%27%2F%253E%253C%2FlinearGradient%253E%253Cfilter%20id%3D%27shadow%27%253E%253CfeDropShadow%20dx%3D%270%27%20dy%3D%2710%27%20stdDeviation%3D%2710%27%20flood-color%3D%27%252300f2fe%27%20flood-opacity%3D%270.5%27%2F%253E%253C%2Ffilter%253E%253C%2Fdefs%253E%253Crect%20width%3D%27512%27%20height%3D%27512%27%20rx%3D%27120%27%20fill%3D%27url%28%2523bg%29%27%2F%253E%253Cpath%20d%3D%27M256%20120%20C150%20120%20100%20170%20100%20250%20C100%20320%20150%20340%20200%20350%20C240%20360%20260%20370%20260%20390%20C260%20420%20220%20440%20170%20440%20C120%20440%2080%20410%2060%20370%20L20%20400%20C50%20460%20110%20500%20180%20500%20C280%20500%20340%20440%20340%20360%20C340%20290%20280%20270%20230%20260%20C180%20250%20170%20240%20170%20210%20C170%20180%20200%20160%20250%20160%20C290%20160%20330%20180%20350%20220%20L390%20190%20C360%20130%20310%20120%20256%20120%20Z%27%20fill%3D%27url%28%2523logo%29%27%20filter%3D%27url%28%2523shadow%29%27%20transform%3D%27translate%2855%2C%200%29%27%2F%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+    <!-- ========================================== -->
+    <!-- PWA MANIFEST FOR UNIVERSAL INSTALLATION    -->
+    <!-- ========================================== -->
+    <link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22StudyBuddy%22%2C%22short_name%22%3A%22StudyBuddy%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230f172a%22%2C%22theme_color%22%3A%22%234c1d95%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Bcharset%3Dutf-8%2C%253Csvg%2520xmlns%253D%2527http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2527%2520viewBox%253D%25270%25200%2520512%2520512%2527%253E%253Cdefs%253E%253ClinearGradient%2520id%253D%2527bg%2527%2520x1%253D%25270%2525%2527%2520y1%253D%25270%2525%2527%2520x2%253D%2527100%2525%2527%2520y2%253D%2527100%2525%2527%253E%253Cstop%2520offset%253D%25270%2525%2527%2520stop-color%253D%2527%25231e1b4b%2527%252F%253E%253Cstop%2520offset%253D%2527100%2525%2527%2520stop-color%253D%2527%25234c1d95%2527%252F%253E%253C%252FlinearGradient%253E%253Cfilter%2520id%253D%2527shadow%2527%253E%253CfeDropShadow%2520dx%253D%25270%2527%2520dy%253D%252715%2527%2520stdDeviation%253D%252720%2527%2520flood-color%253D%2527%2523000000%2527%2520flood-opacity%253D%25270.4%2527%252F%253E%253C%252Ffilter%253E%253C%252Fdefs%253E%253Crect%2520width%253D%2527512%2527%2520height%253D%2527512%2527%2520rx%253D%2527120%2527%2520fill%253D%2527url%28%2523bg%29%2527%252F%253E%253Cpath%2520d%253D%2527M256%2520120%2520C150%2520120%2520100%2520170%2520100%2520250%2520C100%2520320%2520150%2520340%2520200%2520350%2520C240%2520360%2520260%2520370%2520260%2520390%2520C260%2520420%2520220%2520440%2520170%2520440%2520C120%2520440%252080%2520410%252060%2520370%2520L20%2520400%2520C50%2520460%2520110%2520500%2520180%2520500%2520C280%2520500%2520340%2520440%2520340%2520360%2520C340%2520290%2520280%2520270%2520230%2520260%2520C180%2520250%2520170%2520240%2520170%2520210%2520C170%2520180%2520200%2520160%2520250%2520160%2520C290%2520160%2520330%2520180%2520350%2520220%2520L390%2520190%2520C360%2520130%2520310%2520120%2520256%2520120%2520Z%2527%2520fill%253D%2527%2523ffffff%2527%2520filter%253D%2527url%28%2523shadow%29%2527%2520transform%253D%2527translate%2855%252C%25200%29%2527%252F%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
     
-    <!-- PREMIUM 3D SVG APP ICON FOR BROWSERS & HOME SCREEN -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23020617'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='100%25' stop-color='%234facfe'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%2300f2fe' flood-opacity='0.5'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E">
-    <link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23020617'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='100%25' stop-color='%234facfe'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%2300f2fe' flood-opacity='0.5'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E">
+    <!-- PREMIUM SAPPHIRE BLUE APP ICON -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e1b4b'/%3E%3Cstop offset='100%25' stop-color='%234c1d95'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='15' stdDeviation='20' flood-color='%23000000' flood-opacity='0.4'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='%23ffffff' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e1b4b'/%3E%3Cstop offset='100%25' stop-color='%234c1d95'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='15' stdDeviation='20' flood-color='%23000000' flood-opacity='0.4'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='%23ffffff' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E">
 
     <!-- Tailwind CSS Integration -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,7 +25,7 @@
     <!-- Premium Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Firebase SDK Modules (Real Cloud Storage and Email Verification) -->
+    <!-- Firebase SDK Modules -->
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
@@ -32,13 +34,10 @@
     <!-- MASTER STYLESHEET                          -->
     <!-- ========================================== -->
     <style>
-        /* Global CSS Variables for Ultra-Vibrant Glassmorphism */
         :root {
             --glass-bg: rgba(255, 255, 255, 0.65);
             --glass-border: rgba(255, 255, 255, 0.95);
             --glass-shadow: 0 25px 60px rgba(79, 70, 229, 0.15);
-            --primary-accent: #0ea5e9;
-            --secondary-accent: #6366f1;
         }
         
         * {
@@ -55,7 +54,6 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* 100% Mobile Fix: Background completely fills screen, no hanging */
         .mesh-bg {
             position: fixed;
             top: 0;
@@ -67,7 +65,6 @@
             overflow: hidden;
         }
         
-        /* Animated Gradient Blobs for Luxury Background */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -88,19 +85,16 @@
             100% { transform: translate(-8%, -8%) scale(0.9) rotate(-15deg); }
         }
 
-        /* Continuous Floating Animation for Dashboard Elements */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
             100% { transform: translateY(0px); }
         }
         
-        /* Floating Animation FORCED ON for Mobile */
         .animate-float {
             animation: float 6s ease-in-out infinite !important;
         }
 
-        /* Mobile performance optimizations */
         @media (max-width: 1024px) {
             .blob { 
                 filter: blur(75px); 
@@ -114,7 +108,6 @@
             }
         }
 
-        /* Page Transition Logic - Ensures only ONE section shows at a time */
         .page { 
             display: none; 
             opacity: 0; 
@@ -133,7 +126,6 @@
             100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } 
         }
         
-        /* Master Glass Card UI */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(40px);
@@ -151,7 +143,6 @@
             border-radius: 1.5rem;
         }
         
-        /* Interactive Cards */
         .interactive-card { 
             cursor: pointer; 
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
@@ -163,7 +154,6 @@
             border-color: rgba(236, 72, 153, 0.5);
         }
 
-        /* Beautiful Gradient Text */
         .text-gradient { 
             background: linear-gradient(135deg, #0ea5e9, #6366f1, #d946ef); 
             background-size: 300% 300%;
@@ -178,7 +168,6 @@
             100% { background-position: 0% 50% }
         }
         
-        /* Mobile Sidebar Overlay */
         #sidebarOverlay {
             position: fixed; 
             inset: 0; 
@@ -195,7 +184,6 @@
             pointer-events: auto; 
         }
 
-        /* Modal Popups */
         .modal-overlay { 
             display: none; 
             background: rgba(15, 23, 42, 0.8); 
@@ -212,7 +200,6 @@
             animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
 
-        /* Form Inputs */
         input[type="date"], 
         input[type="time"], 
         input[type="number"], 
@@ -231,7 +218,6 @@
             -webkit-user-select: none; 
         }
         
-        /* B.Tech Roadmap Checkboxes */
         .roadmap-check {
             appearance: none; 
             width: 1.75rem; 
@@ -280,11 +266,9 @@
             font-variant-numeric: tabular-nums; 
         }
         
-        /* Hide scrollbars for clean UI */
         .hide-scroll::-webkit-scrollbar { display: none; }
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Glowing Buttons */
         .btn-primary {
             background: linear-gradient(135deg, #0ea5e9, #6366f1); 
             color: white; 
@@ -313,7 +297,6 @@
             transform: translateY(-3px) scale(1.02); 
         }
 
-        /* Sidebar Navigation Active State */
         .sidebar-active {
             background: linear-gradient(135deg, #0f172a, #1e293b); 
             color: white !important;
@@ -322,7 +305,6 @@
             transform: scale(1.03);
         }
         
-        /* Nav Item Styling */
         .nav-item {
             width: 100%;
             display: flex;
@@ -337,16 +319,15 @@
         }
         
         .nav-item-inactive {
-            color: #475569; /* slate-600 */
+            color: #475569; 
         }
         
         .nav-item-inactive:hover {
             background-color: rgba(255, 255, 255, 0.9);
-            color: #4338ca; /* indigo-700 */
+            color: #4338ca; 
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        /* Form Focus Glows */
         .focus-glow:focus-within { 
             box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15); 
             border-color: #0ea5e9; 
@@ -357,7 +338,6 @@
             border-color: #ec4899; 
         }
         
-        /* Perfectly Editable Timetable Boxes */
         .timetable-input {
             width: 100%; 
             height: 100%; 
@@ -389,9 +369,6 @@
 </head>
 <body class="min-h-screen flex flex-col lg:flex-row p-0 sm:p-4 lg:p-6 gap-0 lg:gap-6 relative">
 
-    <!-- ========================================== -->
-    <!-- BACKGROUND & MODALS                        -->
-    <!-- ========================================== -->
     <div class="mesh-bg">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -425,7 +402,7 @@
     <!-- Mobile Hamburger Header -->
     <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
         <div class="text-xl font-black flex items-center gap-3">
-            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23020617'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='100%25' stop-color='%234facfe'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%2300f2fe' flood-opacity='0.5'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E" alt="Logo" class="w-8 h-8 drop-shadow-md rounded-lg">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e1b4b'/%3E%3Cstop offset='100%25' stop-color='%234c1d95'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='15' stdDeviation='20' flood-color='%23000000' flood-opacity='0.4'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='%23ffffff' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E" alt="Logo" class="w-8 h-8 drop-shadow-md rounded-lg">
             <span class="text-gradient tracking-tight">StudyBuddy</span>
         </div>
         
@@ -439,7 +416,7 @@
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="lg:hidden"></div>
 
     <!-- ========================================== -->
-    <!-- MAIN SIDEBAR NAVIGATION (NO EMOJIS, PREMIUM SVGS) -->
+    <!-- MAIN SIDEBAR NAVIGATION                    -->
     <!-- ========================================== -->
     <aside id="sidebar" class="w-72 glass-card bg-white/95 lg:bg-white/80 flex flex-col justify-between p-6 z-50 fixed lg:relative top-0 left-0 h-full lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-400 ease-in-out shadow-2xl lg:shadow-[0_12px_40px_rgba(31,38,135,0.08)] overflow-y-auto hide-scroll shrink-0 border-r-2 border-white lg:border-2">
         <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-slate-400 hover:text-rose-500 text-4xl font-black transition-colors cursor-pointer">&times;</button>
@@ -447,46 +424,44 @@
         <div>
             <!-- Branding -->
             <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
-                <!-- PREMIUM APP SVG LOGO -->
-                <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23020617'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='logo' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='100%25' stop-color='%234facfe'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%2300f2fe' flood-opacity='0.5'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='url(%23logo)' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform rounded-xl">
+                <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e1b4b'/%3E%3Cstop offset='100%25' stop-color='%234c1d95'/%3E%3C/linearGradient%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='15' stdDeviation='20' flood-color='%23000000' flood-opacity='0.4'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 120 C150 120 100 170 100 250 C100 320 150 340 200 350 C240 360 260 370 260 390 C260 420 220 440 170 440 C120 440 80 410 60 370 L20 400 C50 460 110 500 180 500 C280 500 340 440 340 360 C340 290 280 270 230 260 C180 250 170 240 170 210 C170 180 200 160 250 160 C290 160 330 180 350 220 L390 190 C360 130 310 120 256 120 Z' fill='%23ffffff' filter='url(%23shadow)' transform='translate(55, 0)'/%3E%3C/svg%3E" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform rounded-xl">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
             
             <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
 
-            <!-- Nav Links WITH PREMIUM SVG ICONS -->
             <nav class="space-y-2">
                 <!-- Academic / Core Features -->
                 <button onclick="showPage('dashboard')" id="nav-dashboard" class="nav-item sidebar-active">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                     <span>Dashboard</span>
                 </button>
                 <button onclick="showPage('timetable')" id="nav-timetable" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                     <span>Class Timetable</span>
                 </button>
                 <button onclick="showPage('attendance')" id="nav-attendance" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     <span>75% Attendance</span>
                 </button>
                 <button onclick="showPage('planner')" id="nav-planner" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     <span>Study Planner</span>
                 </button>
                 <button onclick="showPage('tasks')" id="nav-tasks" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span>Action Tasks</span>
                 </button>
                 <button onclick="showPage('timer')" id="nav-timer" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span>Focus Timer</span>
                 </button>
                 <button onclick="showPage('resources')" id="nav-resources" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     <span>Resource Vault</span>
                 </button>
                 <button onclick="showPage('cgpa')" id="nav-cgpa" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                     <span>SGPA Predictor</span>
                 </button>
                 
@@ -497,30 +472,30 @@
                 
                 <!-- Career / Extra Features -->
                 <button onclick="showPage('portfolio')" id="nav-portfolio" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     <span>Projects Portfolio</span>
                 </button>
                 <button onclick="showPage('roadmap')" id="nav-roadmap" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     <span>B.Tech Roadmap</span>
                 </button>
                 <button onclick="showPage('jobs')" id="nav-jobs" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     <span>Job Tracker</span>
                 </button>
                 <button onclick="showPage('career')" id="nav-career" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                     <span>Interview Skills</span>
                 </button>
                 <button onclick="showPage('budget')" id="nav-budget" class="nav-item nav-item-inactive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span>Budget Tracker</span>
                 </button>
             </nav>
             
-            <!-- Install PWA Button -->
+            <!-- Install PWA Button (Always Visible Now) -->
             <div class="mt-6 pt-6 border-t-2 border-slate-300/50">
-                <button id="installAppBtn" class="w-full hidden flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-md font-black text-base mb-3 border-2 border-white/50 cursor-pointer">
+                <button id="installAppBtn" class="w-full flex items-center justify-center gap-2 btn-success py-3 rounded-xl shadow-md font-black text-base mb-3 border-2 border-white/50 cursor-pointer">
                     Install App
                     <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 </button>
@@ -563,7 +538,7 @@
             <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(79,70,229,0.3)] border-2 border-white/50 bg-slate-900 animate-float">
                 <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-blue-500 opacity-40 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-cyan-500 opacity-40 rounded-full blur-3xl"></div>
-                <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-4 relative z-10 drop-shadow-xl tracking-tight leading-tight">Welcome to your future.</h2>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-4 relative z-10 drop-shadow-xl tracking-tight leading-tight">Welcome to your future. ✨</h2>
                 <p class="text-blue-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
             </div>
 
@@ -571,7 +546,7 @@
             <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-center gap-6 mb-8 relative overflow-hidden shadow-md border-2 border-white interactive-card" onclick="showPage('attendance')">
                 <div class="flex items-center gap-5 z-10">
                     <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 border-2 border-emerald-200 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     </div>
                     <div>
                         <h3 class="text-2xl font-black text-slate-800">Attendance Status</h3>
@@ -613,7 +588,7 @@
                 <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col relative overflow-hidden shadow-md border-2 border-white">
                     <div class="flex justify-between items-center mb-4">
                         <p class="text-lg text-slate-800 font-black tracking-tight z-10">Upcoming Tasks</p>
-                        <button onclick="showPage('tasks')" class="text-pink-600 font-black text-sm hover:underline uppercase tracking-wide cursor-pointer">View All</button>
+                        <button onclick="showPage('tasks')" class="text-indigo-600 font-black text-sm hover:underline uppercase tracking-wide cursor-pointer">View All</button>
                     </div>
                     <div id="dashMiniTasks" class="space-y-3 z-10 max-h-48 overflow-y-auto hide-scroll">
                         <!-- Populated via Javascript -->
@@ -632,12 +607,12 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- 2. TIMETABLE SECTION (PERFECT GRID)        -->
+        <!-- 2. TIMETABLE SECTION                       -->
         <!-- ========================================== -->
         <section id="timetable" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white animate-float overflow-hidden">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight flex items-center gap-4">
-                    <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                     Class Timetable
                 </h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Your Mon-Sat schedule. Click any empty box to type and save your subjects.</p>
@@ -645,7 +620,7 @@
                 <div class="overflow-x-auto hide-scroll pb-6">
                     <div class="min-w-[950px] bg-white/80 rounded-[2rem] border-2 border-white shadow-lg overflow-hidden">
                         
-                        <!-- Header Row (Periods & Times) -->
+                        <!-- Header Row -->
                         <div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] bg-slate-900 text-white text-center font-black uppercase tracking-widest text-xs">
                             <div class="p-3 border-r border-slate-700 flex items-center justify-center">Day</div>
                             <div class="p-3 border-r border-slate-700 leading-tight">1<br><span class="text-[9px] text-slate-400 font-bold">09:00-09:50</span></div>
@@ -660,7 +635,6 @@
                             <div class="p-3 leading-tight">8<br><span class="text-[9px] text-slate-400 font-bold">03:40-04:20</span></div>
                         </div>
                         
-                        <!-- Grid Body (Populated via JS to avoid compression) -->
                         <div id="timetableGrid" class="divide-y divide-slate-200/80">
                             <!-- Populated via JavaScript dynamically -->
                         </div>
@@ -671,13 +645,13 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- 3. ATTENDANCE TRACKER (+/- BUTTONS ADDED)  -->
+        <!-- 3. ATTENDANCE TRACKER                      -->
         <!-- ========================================== -->
         <section id="attendance" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <div class="flex justify-between items-end mb-4">
                     <h2 class="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight flex items-center gap-4">
-                        <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                         75% Tracker
                     </h2>
                 </div>
@@ -702,24 +676,20 @@
                     </div>
                     <div class="md:col-span-3 flex flex-col w-full">
                         <label class="text-xs font-black text-slate-500 uppercase tracking-widest mb-1 ml-2">Total Classes</label>
-                        <input type="number" id="attTotal" placeholder="0" min="0" class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-rose-500 transition-colors shadow-sm focus-glow-pink">
+                        <input type="number" id="attTotal" placeholder="0" min="0" class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-blue-500 transition-colors shadow-sm focus-glow">
                     </div>
                     <div class="md:col-span-3 flex flex-col w-full">
                         <label class="text-xs font-black text-slate-500 uppercase tracking-widest mb-1 ml-2">Attended</label>
-                        <input type="number" id="attAttended" placeholder="0" min="0" class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-emerald-500 transition-colors shadow-sm focus-glow">
+                        <input type="number" id="attAttended" placeholder="0" min="0" class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-indigo-500 transition-colors shadow-sm focus-glow">
                     </div>
                     <div class="md:col-span-2 flex flex-col w-full justify-end h-full">
-                        <!-- Add Button -->
                         <button onclick="addAttendanceSubject()" class="w-full btn-primary px-4 py-3.5 mt-auto rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all cursor-pointer">
                             Add
                         </button>
                     </div>
                 </div>
 
-                <!-- Subject List -->
-                <div id="attendanceList" class="space-y-4">
-                    <!-- Populated via JavaScript dynamically -->
-                </div>
+                <div id="attendanceList" class="space-y-4"></div>
             </div>
         </section>
 
@@ -729,8 +699,8 @@
         <section id="planner" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight flex items-center gap-4">
-                    <svg class="w-10 h-10 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    Strategy & Milestones
+                    <svg class="w-10 h-10 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    Study Planner
                 </h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Schedule your major study blocks. Data is saved to the cloud.</p>
                 
@@ -765,7 +735,7 @@
             <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
                 <div class="flex justify-between items-end mb-4">
                     <h2 class="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight flex items-center gap-4">
-                        <svg class="w-10 h-10 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-10 h-10 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         Action Items
                     </h2>
                     <button onclick="clearCompletedTasks()" class="text-rose-500 font-black bg-rose-100 px-4 py-2 rounded-lg hover:bg-rose-200 transition-colors text-xs sm:text-sm shadow-sm uppercase tracking-wide border border-rose-200 cursor-pointer">Clear Done</button>
@@ -775,15 +745,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10 inner-glass bg-white/80 p-5 rounded-[1.5rem] shadow-md border-2 border-white items-center">
                     <div class="md:col-span-5 flex flex-col w-full">
                         <label class="text-xs font-black text-slate-500 uppercase tracking-widest mb-1 ml-2">Task</label>
-                        <input type="text" id="taskInput" placeholder="Task description..." class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-pink-500 transition-colors shadow-sm focus-glow-pink">
+                        <input type="text" id="taskInput" placeholder="Task description..." class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-indigo-500 transition-colors shadow-sm focus-glow">
                     </div>
                     <div class="md:col-span-3 flex flex-col w-full">
                         <label class="text-xs font-black text-slate-500 uppercase tracking-widest mb-1 ml-2">Date</label>
-                        <input type="date" id="taskDate" class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-pink-500 transition-colors shadow-sm focus-glow-pink cursor-pointer">
+                        <input type="date" id="taskDate" class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-indigo-500 transition-colors shadow-sm focus-glow cursor-pointer">
                     </div>
                     <div class="md:col-span-2 flex flex-col w-full">
                         <label class="text-xs font-black text-slate-500 uppercase tracking-widest mb-1 ml-2">Time</label>
-                        <input type="time" id="taskTime" value="00:00" class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-pink-500 transition-colors shadow-sm focus-glow-pink cursor-pointer">
+                        <input type="time" id="taskTime" value="00:00" class="w-full bg-white border-2 border-slate-200 rounded-xl p-3.5 font-black text-sm outline-none focus:border-indigo-500 transition-colors shadow-sm focus-glow cursor-pointer">
                     </div>
                     <div class="md:col-span-2 flex flex-col w-full justify-end h-full">
                         <button onclick="addTask()" class="w-full btn-primary px-4 py-3.5 mt-auto rounded-xl font-black text-sm uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center cursor-pointer">
@@ -802,7 +772,7 @@
         <section id="timer" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight flex items-center justify-center gap-4">
-                    <svg class="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Focus Timer
                 </h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Set your study time and take planned breaks.</p>
@@ -840,18 +810,18 @@
         <section id="resources" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight flex items-center gap-4">
-                    <svg class="w-10 h-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     Resources & Notes
                 </h2>
                 <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Upload a PDF file to instantly view your study materials.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     <!-- PDF Box 1 -->
-                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
-                        <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
+                    <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-indigo-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-indigo-200 focus:border-indigo-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
-                            <label class="cursor-pointer bg-pink-100 text-pink-700 px-4 py-4 rounded-xl font-black hover:bg-pink-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-pink-200 text-center w-full">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                            <label class="cursor-pointer bg-indigo-100 text-indigo-700 px-4 py-4 rounded-xl font-black hover:bg-indigo-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-indigo-200 text-center w-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
                                 Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink1')">
                             </label>
@@ -864,7 +834,7 @@
                         <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
                             <label class="cursor-pointer bg-blue-100 text-blue-700 px-4 py-4 rounded-xl font-black hover:bg-blue-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-blue-200 text-center w-full">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
                                 Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink2')">
                             </label>
@@ -877,7 +847,7 @@
                         <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
                             <label class="cursor-pointer bg-emerald-100 text-emerald-700 px-4 py-4 rounded-xl font-black hover:bg-emerald-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-emerald-200 text-center w-full">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
                                 Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink3')">
                             </label>
@@ -890,7 +860,7 @@
                         <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
                             <label class="cursor-pointer bg-purple-100 text-purple-700 px-4 py-4 rounded-xl font-black hover:bg-purple-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-purple-200 text-center w-full">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
                                 Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink4')">
                             </label>
@@ -903,7 +873,7 @@
                         <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
                             <label class="cursor-pointer bg-amber-100 text-amber-700 px-4 py-4 rounded-xl font-black hover:bg-amber-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-amber-200 text-center w-full">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
                                 Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink5')">
                             </label>
@@ -916,7 +886,7 @@
                         <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
                             <label class="cursor-pointer bg-teal-100 text-teal-700 px-4 py-4 rounded-xl font-black hover:bg-teal-200 transition-all text-sm uppercase tracking-wider shadow-sm flex items-center justify-center gap-3 border border-teal-200 text-center w-full">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
                                 Add PDF File 
                                 <input type="file" class="hidden" accept="application/pdf" onchange="handlePDFUpload(this, 'pdfLink6')">
                             </label>
@@ -933,19 +903,19 @@
         <section id="cgpa" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight flex items-center justify-center gap-4">
-                    <svg class="w-10 h-10 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                     SGPA Predictor
                 </h2>
                 <p class="text-slate-700 font-extrabold mb-10 text-lg sm:text-xl">Calculate your final academic standing for your two semesters.</p>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 text-left max-w-2xl mx-auto">
                     <div class="inner-glass p-8 rounded-3xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
-                        <label class="block font-black text-pink-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 1 SGPA</label>
-                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-5 font-black text-3xl text-slate-800 outline-none focus:border-pink-500 transition-colors shadow-inner text-center">
+                        <label class="block font-black text-indigo-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 1 SGPA</label>
+                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-5 font-black text-3xl text-slate-800 outline-none focus:border-indigo-500 transition-colors shadow-inner text-center">
                     </div>
                     <div class="inner-glass p-8 rounded-3xl bg-white/90 shadow-md border-2 border-white transform hover:scale-105 transition-transform">
-                        <label class="block font-black text-indigo-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 2 SGPA</label>
-                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-5 font-black text-3xl text-slate-800 outline-none focus:border-indigo-500 transition-colors shadow-inner text-center">
+                        <label class="block font-black text-blue-600 mb-4 text-sm uppercase tracking-widest text-center">Semester 2 SGPA</label>
+                        <input type="number" step="0.01" max="10" class="sgpa-input w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-5 font-black text-3xl text-slate-800 outline-none focus:border-blue-500 transition-colors shadow-inner text-center">
                     </div>
                 </div>
 
@@ -953,9 +923,9 @@
                     Calculate Result
                 </button>
 
-                <div class="inner-glass bg-gradient-to-br from-indigo-50 to-pink-50 border-2 border-white p-10 rounded-[3rem] shadow-xl max-w-md mx-auto transform hover:scale-105 transition-transform">
+                <div class="inner-glass bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-white p-10 rounded-[3rem] shadow-xl max-w-md mx-auto transform hover:scale-105 transition-transform">
                     <p class="text-sm font-black uppercase text-slate-500 tracking-widest mb-4">Final Result</p>
-                    <h2 id="cgpaResult" class="text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 drop-shadow-sm">0.00</h2>
+                    <h2 id="cgpaResult" class="text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-blue-600 drop-shadow-sm">0.00</h2>
                     <p class="text-sm font-black uppercase text-indigo-400 tracking-widest mt-4">SGPA / CGPA</p>
                 </div>
             </div>
@@ -967,7 +937,7 @@
         <section id="portfolio" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <h2 class="text-4xl sm:text-5xl font-black mb-4 text-slate-800 tracking-tight flex items-center gap-4">
-                    <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <svg class="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     Project Portfolio
                 </h2>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl">Track your personal projects and GitHub repos to show recruiters.</p>
@@ -1001,7 +971,7 @@
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 sm:mb-10 gap-6">
                     <div>
                         <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-800 flex items-center gap-3 tracking-tight force-wrap">
-                            <svg class="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                            <svg class="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                             B.Tech Skills Roadmap
                         </h2>
                         <p class="text-slate-800 font-extrabold mt-3 text-sm sm:text-lg bg-white/70 inline-block px-4 py-2 rounded-lg shadow-sm border border-white">Your 4-year path to Software Engineer.</p>
@@ -1075,36 +1045,36 @@
                     <!-- YEAR 2 -->
                     <div id="year2" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-pink-900 mb-6 text-2xl border-b-4 border-pink-200 pb-3">Semester 3: Core CS</div>
+                            <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 3: Core CS</div>
                             <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Object-Oriented Programming (Java/C++)</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Object-Oriented Programming (Java/C++)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Advanced DSA (Trees, Graphs)</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Advanced DSA (Trees, Graphs)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">DBMS Architecture & Normalization</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">DBMS Architecture & Normalization</span>
                                 </label>
                             </div>
                         </div>
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-pink-900 mb-6 text-2xl border-b-4 border-pink-200 pb-3">Semester 4: Systems</div>
+                            <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 4: Systems</div>
                             <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Operating Systems (Threads, Memory)</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Operating Systems (Threads, Memory)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Computer Networks (TCP/IP, HTTP)</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Computer Networks (TCP/IP, HTTP)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-pink-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-pink-600 transition-colors">Building REST APIs</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Building REST APIs</span>
                                 </label>
                             </div>
                         </div>
@@ -1113,28 +1083,28 @@
                     <!-- YEAR 3 -->
                     <div id="year3" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-purple-900 mb-6 text-2xl border-b-4 border-purple-200 pb-3">Semester 5: Architecture</div>
+                            <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 5: Architecture</div>
                             <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">Backend Engineering (Node.js/Spring)</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Backend Engineering (Node.js/Spring)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">Cloud Platforms (AWS Core Services)</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Cloud Platforms (AWS Core Services)</span>
                                 </label>
                             </div>
                         </div>
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-purple-900 mb-6 text-2xl border-b-4 border-purple-200 pb-3">Semester 6: Engineering</div>
+                            <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 6: Engineering</div>
                             <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">DevOps Culture (Docker, CI/CD)</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">DevOps Culture (Docker, CI/CD)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-purple-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-purple-600 transition-colors">App Security & Cryptography</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">App Security & Cryptography</span>
                                 </label>
                             </div>
                         </div>
@@ -1143,28 +1113,28 @@
                     <!-- YEAR 4 -->
                     <div id="year4" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-teal-900 mb-6 text-2xl border-b-4 border-teal-200 pb-3">Semester 7: Scale & Polish</div>
+                            <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 7: Scale & Polish</div>
                             <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">System Design (Microservices)</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">System Design (Microservices)</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Kubernetes & Orchestration</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Kubernetes & Orchestration</span>
                                 </label>
                             </div>
                         </div>
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
-                            <div class="font-black text-teal-900 mb-6 text-2xl border-b-4 border-teal-200 pb-3">Semester 8: Industry Ready</div>
+                            <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 8: Industry Ready</div>
                             <div class="space-y-5">
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Elite DSA Problem Solving</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Elite DSA Problem Solving</span>
                                 </label>
                                 <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-teal-400 mt-0.5 sm:mt-0">
-                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-teal-600 transition-colors">Mock Interviews (Peers)</span>
+                                    <input type="checkbox" onchange="updateRoadmapProgress()" class="btech-check roadmap-check border-indigo-400 mt-0.5 sm:mt-0">
+                                    <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap group-hover:text-indigo-600 transition-colors">Mock Interviews (Peers)</span>
                                 </label>
                             </div>
                         </div>
@@ -1179,7 +1149,7 @@
         <section id="jobs" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <div class="flex items-center gap-4 mb-4">
-                    <svg class="w-16 h-16 text-blue-500 bg-blue-50 rounded-full p-3 border-2 border-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <svg class="w-16 h-16 text-blue-600 bg-blue-50 rounded-full p-3 border-2 border-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     <h2 class="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight">Job Tracker</h2>
                 </div>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl mt-2">Keep track of your internship and job applications.</p>
@@ -1220,12 +1190,12 @@
         <!-- 12. INTERVIEW SKILLS SECTION               -->
         <!-- ========================================== -->
         <section id="career" class="page px-2">
-            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-emerald-500 border-2 border-white animate-float">
+            <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-lg border-t-[8px] sm:border-t-[10px] border-t-indigo-500 border-2 border-white animate-float">
                 
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
                     <div>
                         <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-800 tracking-tight force-wrap flex items-center gap-3">
-                            <svg class="w-12 h-12 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                            <svg class="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                             Interview Mastery
                         </h2>
                         <p class="text-slate-800 font-extrabold mt-4 text-sm sm:text-lg bg-white/80 inline-block px-5 py-2.5 rounded-lg shadow-sm border border-white">Top 1% candidate checklist.</p>
@@ -1234,99 +1204,99 @@
                     <div class="inner-glass bg-white/95 p-6 rounded-3xl w-full md:w-80 shadow-md border-2 border-white">
                         <div class="flex justify-between items-end mb-3">
                             <span class="text-sm font-black uppercase text-slate-600 tracking-widest">Score</span>
-                            <span id="interviewScore" class="text-5xl sm:text-6xl font-black text-emerald-600 drop-shadow-sm">0%</span>
+                            <span id="interviewScore" class="text-5xl sm:text-6xl font-black text-indigo-600 drop-shadow-sm">0%</span>
                         </div>
                         <div class="w-full bg-slate-200/80 rounded-full h-5 overflow-hidden shadow-inner border border-white/50">
-                            <div id="interviewProgressBar" class="bg-gradient-to-r from-emerald-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-sm" style="width: 0%"></div>
+                            <div id="interviewProgressBar" class="bg-gradient-to-r from-indigo-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-sm" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-8 relative z-10">
-                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-blue-500 border-2 border-white hover:shadow-lg transition-all">
-                        <div class="flex items-center gap-3 font-black text-blue-900 mb-6 text-2xl sm:text-3xl border-b-4 border-blue-200 pb-3">Technical Core</div>
+                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-indigo-500 border-2 border-white hover:shadow-lg transition-all">
+                        <div class="flex items-center gap-3 font-black text-indigo-900 mb-6 text-2xl sm:text-3xl border-b-4 border-indigo-200 pb-3">Technical Core</div>
                         <div class="space-y-5">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Solved 150+ LeetCode (Easy/Med)</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Solved 150+ LeetCode (Easy/Med)</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Mastered 1 Primary Language</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Mastered 1 Primary Language</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">System Design (HLD & LLD)</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">System Design (HLD & LLD)</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-blue-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-blue-700 transition-colors">Clean Code & SOLID</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Clean Code & SOLID</span>
                             </label>
                         </div>
                     </div>
 
-                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-amber-500 border-2 border-white hover:shadow-lg transition-all">
-                        <div class="flex items-center gap-3 font-black text-amber-900 mb-6 text-2xl sm:text-3xl border-b-4 border-amber-200 pb-3">Communication</div>
+                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-indigo-500 border-2 border-white hover:shadow-lg transition-all">
+                        <div class="flex items-center gap-3 font-black text-indigo-900 mb-6 text-2xl sm:text-3xl border-b-4 border-indigo-200 pb-3">Communication</div>
                         <div class="space-y-5">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">"Thinking Aloud" while coding</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">"Thinking Aloud" while coding</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">Clear Articulation</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Clear Articulation</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">Active Listening</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Active Listening</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-amber-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-amber-700 transition-colors">Explaining complex logic simply</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Explaining complex logic simply</span>
                             </label>
                         </div>
                     </div>
                     
-                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-rose-500 border-2 border-white hover:shadow-lg transition-all">
-                        <div class="flex items-center gap-3 font-black text-rose-900 mb-6 text-2xl sm:text-3xl border-b-4 border-rose-200 pb-3">HR & Behavioral</div>
+                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-indigo-500 border-2 border-white hover:shadow-lg transition-all">
+                        <div class="flex items-center gap-3 font-black text-indigo-900 mb-6 text-2xl sm:text-3xl border-b-4 border-indigo-200 pb-3">HR & Behavioral</div>
                         <div class="space-y-5">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">STAR Storytelling Method</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">STAR Storytelling Method</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">Conflict Resolution Qs</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Conflict Resolution Qs</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">Company Research</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Company Research</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-rose-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-rose-700 transition-colors">Teamwork Examples</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Teamwork Examples</span>
                             </label>
                         </div>
                     </div>
                     
-                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-purple-500 border-2 border-white hover:shadow-lg transition-all">
-                        <div class="flex items-center gap-3 font-black text-purple-900 mb-6 text-2xl sm:text-3xl border-b-4 border-purple-200 pb-3">Personal Brand</div>
+                    <div class="inner-glass bg-white/80 p-8 sm:p-10 rounded-3xl border-t-[8px] border-t-indigo-500 border-2 border-white hover:shadow-lg transition-all">
+                        <div class="flex items-center gap-3 font-black text-indigo-900 mb-6 text-2xl sm:text-3xl border-b-4 border-indigo-200 pb-3">Personal Brand</div>
                         <div class="space-y-5">
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">ATS-Optimized Resume</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">ATS-Optimized Resume</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">Active GitHub (Green)</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Active GitHub (Green)</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">Optimized LinkedIn</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Optimized LinkedIn</span>
                             </label>
                             <label class="flex items-start sm:items-center gap-4 cursor-pointer group">
-                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-purple-400">
-                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-purple-700 transition-colors">Live Deployed Projects</span>
+                                <input type="checkbox" onchange="updateInterviewProgress()" class="interview-check roadmap-check mt-1 sm:mt-0 border-indigo-400">
+                                <span class="text-base sm:text-lg font-bold text-slate-800 force-wrap pt-0.5 group-hover:text-indigo-700 transition-colors">Live Deployed Projects</span>
                             </label>
                         </div>
                     </div>
@@ -1340,7 +1310,7 @@
         <section id="budget" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
                 <div class="flex items-center gap-4 mb-4">
-                    <svg class="w-16 h-16 text-emerald-600 bg-emerald-50 rounded-full p-3 border-2 border-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    <svg class="w-16 h-16 text-emerald-600 bg-emerald-50 rounded-full p-3 border-2 border-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <h2 class="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight">Pocket Money</h2>
                 </div>
                 <p class="text-slate-700 font-extrabold mb-8 text-lg sm:text-xl mt-2">Manage your monthly allowance and expenses.</p>
@@ -1382,13 +1352,10 @@
     </main>
 
     <!-- ========================================== -->
-    <!-- JAVASCRIPT LOGIC (PERFECTLY UNCOMPRESSED)  -->
+    <!-- JAVASCRIPT LOGIC (ROBUST & UNCOMPRESSED)   -->
     <!-- ========================================== -->
     <script>
-        
-        // -------------------------------------------
-        // 1. FIREBASE CONFIGURATION & SAFE INIT
-        // -------------------------------------------
+        // --- 1. FIREBASE INITIALIZATION ---
         const firebaseConfig = {
             apiKey: "AIzaSyCAJEfO4803FjASyp6ZQUWbArvMeaKSdZI",
             authDomain: "study-buddy-1c988.firebaseapp.com",
@@ -1405,7 +1372,7 @@
         let currentUser = null;
 
         try {
-            if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+            if(firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
                 firebase.initializeApp(firebaseConfig);
                 auth = firebase.auth();
                 db = firebase.firestore();
@@ -1428,15 +1395,12 @@
             console.error("Firebase Initialization Error:", error);
         }
 
-        // -------------------------------------------
-        // 2. DATA MANAGEMENT (Local Storage & Cloud)
-        // -------------------------------------------
+        // --- 2. DATA MANAGEMENT (Local Storage & Cloud) ---
         function getSavedData(key, defaultData) {
             try {
                 const item = localStorage.getItem(key);
                 if (item) {
-                    const parsed = JSON.parse(item);
-                    return Array.isArray(defaultData) && !Array.isArray(parsed) ? defaultData : parsed;
+                    return JSON.parse(item);
                 }
             } catch (error) {
                 console.error("Storage Read Error:", error);
@@ -1476,23 +1440,19 @@
                 console.error("Storage Write Error:", error);
             }
 
-            try {
-                if (isFirebaseReady && currentUser && db) {
-                    db.collection('users').doc(currentUser.uid).set({
-                        tasks: tasks,
-                        plans: plans,
-                        projects: projects,
-                        jobs: jobs,
-                        timetable: timetable,
-                        expenses: expenses,
-                        monthlyBudget: monthlyBudget,
-                        attendanceSubjects: attendanceSubjects
-                    }).catch(function(e) {
-                        console.error("Cloud save error:", e);
-                    });
-                }
-            } catch (e) {
-                console.error("Safe Cloud Save Error:", e);
+            if (isFirebaseReady && currentUser && db) {
+                db.collection('users').doc(currentUser.uid).set({
+                    tasks: tasks,
+                    plans: plans,
+                    projects: projects,
+                    jobs: jobs,
+                    timetable: timetable,
+                    expenses: expenses,
+                    monthlyBudget: monthlyBudget,
+                    attendanceSubjects: attendanceSubjects
+                }).catch(function(e) {
+                    console.error("Cloud save error:", e);
+                });
             }
         }
 
@@ -1501,19 +1461,19 @@
                 db.collection('users').doc(currentUser.uid).get().then(function(doc) {
                     if (doc.exists) {
                         const data = doc.data();
-                        tasks = Array.isArray(data.tasks) ? data.tasks : [];
-                        plans = Array.isArray(data.plans) ? data.plans : [];
-                        projects = Array.isArray(data.projects) ? data.projects : [];
-                        jobs = Array.isArray(data.jobs) ? data.jobs : [];
-                        timetable = Array.isArray(data.timetable) ? data.timetable : defaultTimetable;
-                        expenses = Array.isArray(data.expenses) ? data.expenses : [];
+                        tasks = data.tasks || [];
+                        plans = data.plans || [];
+                        projects = data.projects || [];
+                        jobs = data.jobs || [];
+                        timetable = data.timetable || defaultTimetable;
+                        expenses = data.expenses || [];
                         monthlyBudget = data.monthlyBudget || 0;
-                        attendanceSubjects = Array.isArray(data.attendanceSubjects) ? data.attendanceSubjects : [];
+                        attendanceSubjects = data.attendanceSubjects || [];
                     }
                     renderAll();
                 }).catch(function(error) { 
                     console.error("Error fetching cloud data:", error); 
-                    renderAll(); // Render local data if cloud fails
+                    renderAll();
                 });
             }
         }
@@ -1528,9 +1488,7 @@
             renderAttendance();
         }
 
-        // -------------------------------------------
-        // 3. TIMETABLE LOGIC
-        // -------------------------------------------
+        // --- 3. TIMETABLE LOGIC ---
         function renderTimetable() {
             try {
                 const grid = document.getElementById('timetableGrid');
@@ -1543,13 +1501,13 @@
                     html += `<div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] divide-x divide-slate-200/80 hover:bg-slate-50 transition-colors border-b border-slate-200/50">`;
                     html += `   <div class="p-3 bg-slate-100 flex items-center justify-center font-black text-slate-700 text-[10px] uppercase">${days[r]}</div>`;
                     
-                    for (let c = 0; c < 8; c++) {
+                    for(let c = 0; c < 8; c++) {
                         // Break Column
-                        if (c === 3) {
+                        if(c === 3) {
                             html += `<div class="bg-rose-50 flex items-center justify-center border-x border-slate-300"><span class="text-rose-400 font-black text-[9px] transform -rotate-90 tracking-widest">BREAK</span></div>`;
                         }
                         // Lunch Column
-                        if (c === 5) {
+                        if(c === 5) {
                             html += `<div class="bg-blue-50 flex items-center justify-center border-x border-slate-300"><span class="text-blue-400 font-black text-[9px] transform -rotate-90 tracking-widest">LUNCH</span></div>`;
                         }
 
@@ -1579,9 +1537,7 @@
             renderTimetable();
         }
 
-        // -------------------------------------------
-        // 4. ATTENDANCE LOGIC
-        // -------------------------------------------
+        // --- 4. ATTENDANCE LOGIC ---
         function addAttendanceSubject() {
             try {
                 const subjInput = document.getElementById('attSubject');
@@ -1594,7 +1550,7 @@
                 const total = parseInt(totalInput.value);
                 const attended = parseInt(attendedInput.value);
 
-                if (!subj || isNaN(total) || isNaN(attended)) {
+                if(!subj || isNaN(total) || isNaN(attended)) {
                     alert("Please enter subject name and valid numbers.");
                     return;
                 }
@@ -1613,7 +1569,7 @@
         }
 
         function deleteAttendanceSubject(index) {
-            if (confirm("Delete this subject?")) {
+            if(confirm("Delete this subject?")) {
                 attendanceSubjects.splice(index, 1);
                 saveData();
                 renderAttendance();
@@ -1622,7 +1578,7 @@
 
         function modifyAttendance(index, field, amount) {
             try {
-                if (field === 'total') {
+                if(field === 'total') {
                     attendanceSubjects[index].total += amount;
                 } else if (field === 'attended') {
                     attendanceSubjects[index].attended += amount;
@@ -1660,13 +1616,11 @@
                     
                     const dashPercent = document.getElementById('dashAttPercent');
                     const dashText = document.getElementById('dashAttText');
-                    if (dashPercent) { 
+                    if(dashPercent) { 
                         dashPercent.textContent = "0%"; 
                         dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm"; 
                     }
-                    if (dashText) {
-                        dashText.textContent = "0 / 0 Classes";
-                    }
+                    if(dashText) dashText.textContent = "0 / 0 Classes";
                     return;
                 }
 
@@ -1677,17 +1631,13 @@
                     overallTotal += sub.total;
                     overallAttended += sub.attended;
                     
-                    let percent = 0;
-                    if (sub.total > 0) {
-                        percent = (sub.attended / sub.total) * 100;
-                    }
-                    
+                    let percent = sub.total > 0 ? (sub.attended / sub.total) * 100 : 0;
                     let isSafe = percent >= 75;
                     let colorClass = isSafe ? "text-emerald-500" : "text-rose-500";
                     let badgeClass = isSafe ? "bg-emerald-100 text-emerald-700 border-emerald-200" : "bg-rose-100 text-rose-700 border-rose-200";
                     
                     let statusText = "";
-                    if (isSafe) {
+                    if(isSafe) {
                         let bunkable = Math.floor((sub.attended - (0.75 * sub.total)) / 0.75);
                         statusText = bunkable > 0 ? `Can bunk ${bunkable} classes` : "On the edge (Exact 75%)";
                     } else {
@@ -1731,17 +1681,14 @@
 
                 list.innerHTML = html;
 
-                let overallPercent = 0;
-                if (overallTotal > 0) {
-                    overallPercent = (overallAttended / overallTotal) * 100;
-                }
+                let overallPercent = overallTotal > 0 ? (overallAttended / overallTotal) * 100 : 0;
                 
                 const pEl = document.getElementById('overallAttPercentage');
                 if (pEl) pEl.textContent = overallPercent.toFixed(1) + "%";
                 
                 const msgEl = document.getElementById('overallAttMessage');
-                if (msgEl) {
-                    if (overallPercent >= 75) {
+                if(msgEl) {
+                    if(overallPercent >= 75) {
                         msgEl.textContent = "Safe Zone 😎";
                         msgEl.className = "px-5 py-2.5 rounded-xl font-black text-sm bg-indigo-500/20 text-indigo-100 border border-indigo-400/30 backdrop-blur-md";
                     } else {
@@ -1752,17 +1699,12 @@
 
                 const dashPercent = document.getElementById('dashAttPercent');
                 const dashText = document.getElementById('dashAttText');
-                if (dashPercent) {
+                if(dashPercent) {
                     dashPercent.textContent = overallPercent.toFixed(1) + "%";
-                    if (overallPercent >= 75) {
-                        dashPercent.className = "text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm";
-                    } else {
-                        dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm";
-                    }
+                    dashPercent.className = overallPercent >= 75 ? "text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm" : "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm";
                 }
-                if (dashText) {
-                    dashText.textContent = `${overallAttended} / ${overallTotal} Classes`;
-                }
+                if(dashText) dashText.textContent = `${overallAttended} / ${overallTotal} Classes`;
+                
             } catch (e) {
                 console.error("Error rendering attendance:", e);
             }
@@ -1794,7 +1736,7 @@
                 const name = nameInput.value.trim();
                 const amt = parseFloat(amountInput.value);
                 
-                if (!name || isNaN(amt)) {
+                if(!name || isNaN(amt)) {
                     return;
                 }
                 
@@ -1829,7 +1771,7 @@
                 
                 if (!remEl || !listEl) return;
                 
-                if (inputEl && document.activeElement !== inputEl) {
+                if(inputEl && document.activeElement !== inputEl) {
                     inputEl.value = monthlyBudget || '';
                 }
 
@@ -1841,7 +1783,7 @@
                 let remaining = monthlyBudget - totalSpent;
                 
                 remEl.textContent = `₹${remaining.toFixed(2)}`;
-                if (remaining < 0) {
+                if(remaining < 0) {
                     remEl.className = "text-5xl font-black text-rose-300";
                 } else {
                     remEl.className = "text-5xl font-black text-white";
@@ -1874,7 +1816,7 @@
         }
 
         // -------------------------------------------
-        // 6. TASKS LOGIC (FIXED CONFLICTS)
+        // 6. TASKS LOGIC 
         // -------------------------------------------
         function addTask() {
             try {
@@ -1884,7 +1826,7 @@
                 
                 if (!inp || !d || !t) return;
                 
-                if (!inp.value.trim()) return;
+                if(!inp.value.trim()) return;
                 
                 tasks.push({ 
                     text: inp.value.trim(), 
@@ -1909,7 +1851,7 @@
         }
         
         function clearCompletedTasks() {
-            if (confirm("Are you sure you want to clear all completed tasks?")) {
+            if(confirm("Are you sure you want to clear all completed tasks?")) {
                 let newTasks = [];
                 for (let i = 0; i < tasks.length; i++) {
                     if (!tasks[i].completed) {
@@ -1943,7 +1885,7 @@
                     }
                     
                     let fTime = "12:00 AM";
-                    if (t.time) { 
+                    if(t.time) { 
                         let timeParts = t.time.split(':'); 
                         let h = parseInt(timeParts[0]); 
                         let m = timeParts[1];
@@ -2040,7 +1982,7 @@
                 
                 if (!inputElement) return;
                 
-                if (!inputElement.value.trim()) return;
+                if(!inputElement.value.trim()) return;
                 
                 plans.push({
                     text: inputElement.value.trim(), 
@@ -2142,7 +2084,7 @@
         }
 
         function deleteProject(index) {
-            if (confirm("Remove this project from your portfolio?")) {
+            if(confirm("Remove this project from your portfolio?")) {
                 projects.splice(index, 1);
                 saveData();
                 renderProjects();
@@ -2157,7 +2099,7 @@
                 
                 if (projects.length === 0) {
                     list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black md:col-span-2">No projects added yet. Start building!</div>';
-                    if (dashCounter) dashCounter.textContent = 0;
+                    if(dashCounter) dashCounter.textContent = 0;
                     return;
                 }
                 
@@ -2176,7 +2118,7 @@
                 }
                 
                 list.innerHTML = html;
-                if (dashCounter) dashCounter.textContent = projects.length;
+                if(dashCounter) dashCounter.textContent = projects.length;
             } catch (e) {
                 console.error("Error rendering projects:", e);
             }
@@ -2212,7 +2154,7 @@
         }
 
         function deleteJob(index) {
-            if (confirm("Delete this job application?")) {
+            if(confirm("Delete this job application?")) {
                 jobs.splice(index, 1);
                 saveData();
                 renderJobs();
@@ -2408,11 +2350,11 @@
             isSidebarOpen = !isSidebarOpen;
             
             if (isSidebarOpen) {
-                if (sidebar) sidebar.classList.remove('-translate-x-full');
-                if (overlay) overlay.classList.add('active');
+                if(sidebar) sidebar.classList.remove('-translate-x-full');
+                if(overlay) overlay.classList.add('active');
             } else {
-                if (sidebar) sidebar.classList.add('-translate-x-full');
-                if (overlay) overlay.classList.remove('active');
+                if(sidebar) sidebar.classList.add('-translate-x-full');
+                if(overlay) overlay.classList.remove('active');
             }
         }
 
@@ -2527,7 +2469,7 @@
 
         function toggleAuth() { 
             if (currentUser || (document.getElementById('authBtn') && document.getElementById('authBtn').textContent === 'Sign Out')) {
-                if (isFirebaseReady) auth.signOut();
+                if (isFirebaseReady && auth) auth.signOut();
                 currentUser = null;
                 if(document.getElementById('userInfo')) document.getElementById('userInfo').textContent = 'Not signed in'; 
                 if(document.getElementById('authBtn')) document.getElementById('authBtn').textContent = 'Sign In / Sign Up';
@@ -2559,7 +2501,7 @@
                 return;
             }
 
-            if (isFirebaseReady) {
+            if (isFirebaseReady && auth) {
                 try {
                     const userCredential = await auth.signInWithEmailAndPassword(emailInput, passwordInput);
                     if (!userCredential.user.emailVerified) {
@@ -2579,7 +2521,7 @@
                     }
                 }
             } else {
-                currentUser = { email: emailInput };
+                currentUser = { email: emailInput, uid: 'demo123' };
                 if(document.getElementById('userInfo')) document.getElementById('userInfo').textContent = emailInput; 
                 if(document.getElementById('authBtn')) document.getElementById('authBtn').textContent = 'Sign Out';
                 closeAuthModal(); 
@@ -2599,7 +2541,7 @@
                 return;
             }
 
-            if (isFirebaseReady) {
+            if (isFirebaseReady && auth) {
                 try {
                     const userCredential = await auth.createUserWithEmailAndPassword(emailInput, passwordInput);
                     await userCredential.user.sendEmailVerification();
@@ -2618,7 +2560,7 @@
             }
         }
 
-        // --- PWA REGISTRATION (Install App Button Fix) ---
+        // --- UNIVERSAL PWA INSTALLATION FIX ---
         if ('serviceWorker' in navigator) {
             const swCode = `
                 self.addEventListener('install', function(e) {
@@ -2639,21 +2581,34 @@
         window.addEventListener('beforeinstallprompt', function(e) {
             e.preventDefault();
             deferredPrompt = e; 
-            const installBtn = document.getElementById('installAppBtn');
-            if (installBtn) {
-                installBtn.classList.remove('hidden');
-                installBtn.addEventListener('click', function() { 
-                    installBtn.classList.add('hidden');
-                    deferredPrompt.prompt(); 
-                    deferredPrompt.userChoice.then(function() {
-                        deferredPrompt = null; 
-                    }); 
-                });
-            }
         });
 
-        // Initialize App on Load
         document.addEventListener("DOMContentLoaded", function() {
+            const installBtn = document.getElementById('installAppBtn');
+            if (installBtn) {
+                // Ensure it's ALWAYS visible in the menu for manual instruction fallback
+                installBtn.classList.remove('hidden');
+                
+                installBtn.addEventListener('click', function() { 
+                    if (deferredPrompt) {
+                        // Triggers the native Android/Chrome popup
+                        deferredPrompt.prompt(); 
+                        deferredPrompt.userChoice.then(function() {
+                            deferredPrompt = null; 
+                        }); 
+                    } else {
+                        // Custom Alert for iPhones, iPads, and Samsung Internet users
+                        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                        if (isIOS) {
+                            alert("To install on iOS: \n1. Tap the 'Share' icon at the bottom of Safari.\n2. Scroll down and tap 'Add to Home Screen'.");
+                        } else {
+                            alert("To install: \nTap your browser's menu button (usually 3 dots ⋮) and select 'Install App' or 'Add to Home screen'.");
+                        }
+                    }
+                });
+            }
+
+            // Initialize App state
             showPage('dashboard');
             renderAll();
         });

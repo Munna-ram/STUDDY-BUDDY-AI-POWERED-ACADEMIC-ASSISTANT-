@@ -193,10 +193,10 @@
         
         /* Timetable specific styles */
         .timetable-input {
-            width: 100%; background: transparent; border: none; outline: none; text-align: center;
-            font-weight: 800; font-size: 0.75rem; color: #1e293b; padding: 0.5rem 0.25rem; transition: all 0.2s;
+            width: 100%; height: 100%; background: transparent; border: none; outline: none; text-align: center;
+            font-weight: 800; font-size: 0.85rem; color: #1e293b; padding: 0.5rem 0.25rem; transition: all 0.2s;
         }
-        .timetable-input:focus { background: rgba(255,255,255,0.8); border-radius: 0.5rem; box-shadow: 0 0 0 2px #8b5cf6; }
+        .timetable-input:focus { background: rgba(255,255,255,0.9); border-radius: 0.5rem; box-shadow: 0 0 0 2px #8b5cf6; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col lg:flex-row p-0 sm:p-4 lg:p-6 gap-0 lg:gap-6 relative">
@@ -235,7 +235,7 @@
     <!-- MOBILE HAMBURGER HEADER -->
     <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
         <div class="text-xl font-black flex items-center gap-3">
-            <img src="https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true" alt="Logo" class="w-8 h-8 drop-shadow-md rounded-lg">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='100%25' stop-color='%23000000'/%3E%3C/linearGradient%3E%3ClinearGradient id='gold' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%234facfe'/%3E%3Cstop offset='100%25' stop-color='%237928ca'/%3E%3C/linearGradient%3E%3Cfilter id='glow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='15' result='blur'/%3E%3CfeComposite in='SourceGraphic' in2='blur' operator='over'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 90 C150 90, 90 160, 90 240 C90 320, 160 340, 200 350 C250 360, 270 380, 270 410 C270 440, 230 460, 180 460 C120 460, 80 430, 60 390 L10 420 C40 480, 110 520, 190 520 C290 520, 360 450, 360 370 C360 290, 290 270, 250 260 C200 250, 180 230, 180 200 C180 170, 210 150, 260 150 C310 150, 350 170, 380 210 L430 170 C390 110, 330 90, 256 90 Z' fill='url(%23gold)' filter='url(%23glow)' transform='translate(40, -10)'/%3E%3C/svg%3E" alt="Logo" class="w-8 h-8 drop-shadow-md rounded-lg">
             <span class="text-gradient tracking-tight">StudyBuddy</span>
         </div>
         
@@ -253,7 +253,7 @@
 
         <div>
             <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
-                <img src="https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform rounded-xl">
+                <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='100%25' stop-color='%23000000'/%3E%3C/linearGradient%3E%3ClinearGradient id='gold' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%234facfe'/%3E%3Cstop offset='100%25' stop-color='%237928ca'/%3E%3C/linearGradient%3E%3Cfilter id='glow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='15' result='blur'/%3E%3CfeComposite in='SourceGraphic' in2='blur' operator='over'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='512' height='512' rx='120' fill='url(%23bg)'/%3E%3Cpath d='M256 90 C150 90, 90 160, 90 240 C90 320, 160 340, 200 350 C250 360, 270 380, 270 410 C270 440, 230 460, 180 460 C120 460, 80 430, 60 390 L10 420 C40 480, 110 520, 190 520 C290 520, 360 450, 360 370 C360 290, 290 270, 250 260 C200 250, 180 230, 180 200 C180 170, 210 150, 260 150 C310 150, 350 170, 380 210 L430 170 C390 110, 330 90, 256 90 Z' fill='url(%23gold)' filter='url(%23glow)' transform='translate(40, -10)'/%3E%3C/svg%3E" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform rounded-xl">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
             <div class="text-xl font-black mb-6 lg:hidden text-indigo-900 border-b-2 border-slate-200 pb-3">Main Menu</div>
@@ -315,6 +315,21 @@
                 <p class="text-indigo-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
             </div>
 
+            <!-- Dashboard Attendance Overview Widget -->
+            <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-center gap-6 mb-8 relative overflow-hidden shadow-md border-2 border-white interactive-card" onclick="showPage('attendance')">
+                <div class="flex items-center gap-5 z-10">
+                    <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-3xl border-2 border-emerald-200 shadow-inner">📈</div>
+                    <div>
+                        <h3 class="text-2xl font-black text-slate-800">Attendance Status</h3>
+                        <p class="text-slate-500 font-bold text-sm mt-1">Track your 75% safety margin</p>
+                    </div>
+                </div>
+                <div class="text-center sm:text-right z-10">
+                    <div class="text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm" id="dashAttPercent">0%</div>
+                    <div class="text-sm font-black text-slate-500 mt-1 uppercase tracking-widest" id="dashAttText">0 / 0 Classes</div>
+                </div>
+            </div>
+
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
@@ -369,18 +384,18 @@
                 <div class="overflow-x-auto hide-scroll pb-6">
                     <div class="min-w-[950px] bg-white/80 rounded-[2rem] border-2 border-white shadow-lg overflow-hidden">
                         <!-- Header Row (Periods & Times) -->
-                        <div class="grid grid-cols-[100px_1fr_1fr_1fr_50px_1fr_1fr_50px_1fr_1fr_1fr] bg-indigo-900 text-white text-center font-black uppercase tracking-widest text-xs">
+                        <div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] bg-indigo-900 text-white text-center font-black uppercase tracking-widest text-xs">
                             <div class="p-3 border-r border-indigo-800/50 flex items-center justify-center">Day</div>
-                            <div class="p-3 border-r border-indigo-800/50 leading-tight">P1<br><span class="text-[10px] text-indigo-300 font-bold">09:00</span></div>
-                            <div class="p-3 border-r border-indigo-800/50 leading-tight">P2<br><span class="text-[10px] text-indigo-300 font-bold">09:50</span></div>
-                            <div class="p-3 border-r border-indigo-800/50 leading-tight">P3<br><span class="text-[10px] text-indigo-300 font-bold">10:40</span></div>
-                            <div class="p-3 border-r border-indigo-800/50 bg-indigo-950 flex items-center justify-center"><span class="text-rose-300 text-[10px] transform -rotate-90">BREAK</span></div>
-                            <div class="p-3 border-r border-indigo-800/50 leading-tight">P4<br><span class="text-[10px] text-indigo-300 font-bold">11:45</span></div>
-                            <div class="p-3 border-r border-indigo-800/50 leading-tight">P5<br><span class="text-[10px] text-indigo-300 font-bold">12:35</span></div>
-                            <div class="p-3 border-r border-indigo-800/50 bg-indigo-950 flex items-center justify-center"><span class="text-rose-300 text-[10px] transform -rotate-90">LUNCH</span></div>
-                            <div class="p-3 border-r border-indigo-800/50 leading-tight">P6<br><span class="text-[10px] text-indigo-300 font-bold">02:15</span></div>
-                            <div class="p-3 border-r border-indigo-800/50 leading-tight">P7<br><span class="text-[10px] text-indigo-300 font-bold">03:05</span></div>
-                            <div class="p-3 leading-tight">P8<br><span class="text-[10px] text-indigo-300 font-bold">03:55</span></div>
+                            <div class="p-3 border-r border-indigo-800/50 leading-tight">1<br><span class="text-[9px] text-indigo-300 font-bold">09:00-09:50</span></div>
+                            <div class="p-3 border-r border-indigo-800/50 leading-tight">2<br><span class="text-[9px] text-indigo-300 font-bold">09:50-10:40</span></div>
+                            <div class="p-3 border-r border-indigo-800/50 leading-tight">3<br><span class="text-[9px] text-indigo-300 font-bold">10:40-11:30</span></div>
+                            <div class="p-3 border-r border-indigo-800/50 bg-indigo-950 flex items-center justify-center"></div>
+                            <div class="p-3 border-r border-indigo-800/50 leading-tight">4<br><span class="text-[9px] text-indigo-300 font-bold">11:40-12:30</span></div>
+                            <div class="p-3 border-r border-indigo-800/50 leading-tight">5<br><span class="text-[9px] text-indigo-300 font-bold">12:30-01:20</span></div>
+                            <div class="p-3 border-r border-indigo-800/50 bg-indigo-950 flex items-center justify-center"></div>
+                            <div class="p-3 border-r border-indigo-800/50 leading-tight">6<br><span class="text-[9px] text-indigo-300 font-bold">02:00-02:50</span></div>
+                            <div class="p-3 border-r border-indigo-800/50 leading-tight">7<br><span class="text-[9px] text-indigo-300 font-bold">02:50-03:40</span></div>
+                            <div class="p-3 leading-tight">8<br><span class="text-[9px] text-indigo-300 font-bold">03:40-04:20</span></div>
                         </div>
                         <!-- Grid Body -->
                         <div id="timetableGrid" class="divide-y divide-slate-200/50">
@@ -694,7 +709,6 @@
                 </div>
 
                 <div>
-                    <!-- YEAR 1 -->
                     <div id="year1" class="year-content active grid md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-indigo-900 mb-6 text-2xl border-b-4 border-indigo-200 pb-3">Semester 1: Foundation</div>
@@ -739,8 +753,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- YEAR 2 -->
                     <div id="year2" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-pink-900 mb-6 text-2xl border-b-4 border-pink-200 pb-3">Semester 3: Core CS</div>
@@ -777,8 +789,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- YEAR 3 -->
                     <div id="year3" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-purple-900 mb-6 text-2xl border-b-4 border-purple-200 pb-3">Semester 5: Architecture</div>
@@ -807,8 +817,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- YEAR 4 -->
                     <div id="year4" class="year-content hidden md:grid-cols-2 gap-8 transition-opacity duration-300">
                         <div class="inner-glass p-8 sm:p-10 rounded-3xl bg-white/90 shadow-md border-2 border-white hover:shadow-lg transition-shadow">
                             <div class="font-black text-teal-900 mb-6 text-2xl border-b-4 border-teal-200 pb-3">Semester 7: Scale & Polish</div>
@@ -1140,17 +1148,17 @@
             let html = '';
             
             days.forEach((day, r) => {
-                html += `<div class="grid grid-cols-[100px_1fr_1fr_1fr_50px_1fr_1fr_50px_1fr_1fr_1fr] divide-x divide-slate-200/50 hover:bg-slate-50 transition-colors">`;
-                html += `<div class="p-3 bg-slate-100 flex items-center justify-center font-black text-slate-700 text-xs">${day}</div>`;
+                html += `<div class="grid grid-cols-[80px_1fr_1fr_1fr_30px_1fr_1fr_30px_1fr_1fr_1fr] divide-x divide-slate-200/50 hover:bg-slate-50 transition-colors border-b border-slate-200/50">`;
+                html += `<div class="p-3 bg-slate-100 flex items-center justify-center font-black text-slate-700 text-[10px]">${day}</div>`;
                 
                 for(let c=0; c<8; c++) {
-                    if(c === 3) html += `<div class="bg-rose-50 flex items-center justify-center border-x border-slate-200/50"><span class="text-rose-300 font-black text-[10px] transform -rotate-90">BREAK</span></div>`;
-                    if(c === 5) html += `<div class="bg-rose-50 flex items-center justify-center border-x border-slate-200/50"><span class="text-rose-300 font-black text-[10px] transform -rotate-90">LUNCH</span></div>`;
+                    if(c === 3) html += `<div class="bg-rose-50 flex items-center justify-center border-x border-slate-200/50"><span class="text-rose-300 font-black text-[9px] transform -rotate-90">BREAK</span></div>`;
+                    if(c === 5) html += `<div class="bg-blue-50 flex items-center justify-center border-x border-slate-200/50"><span class="text-blue-300 font-black text-[9px] transform -rotate-90">LUNCH</span></div>`;
 
                     let val = timetable[r][c] || "";
-                    let bgClass = val ? "bg-indigo-50/30" : "";
-                    html += `<div class="p-1 ${bgClass} flex items-center justify-center">
-                                <input type="text" value="${val}" onchange="updateTimetable(${r}, ${c}, this.value)" class="timetable-input" placeholder="-">
+                    let bgClass = val ? "bg-indigo-50/50" : "bg-white";
+                    html += `<div class="p-1 ${bgClass} flex items-center justify-center h-16">
+                                <input type="text" value="${val}" onchange="updateTimetable(${r}, ${c}, this.value)" class="timetable-input w-full h-full text-center font-bold text-xs outline-none bg-transparent" placeholder="-">
                              </div>`;
                 }
                 html += `</div>`;
@@ -1198,6 +1206,11 @@
                 list.innerHTML = '<div class="inner-glass p-8 text-center bg-white/50 border-dashed border-2 border-slate-300 rounded-2xl text-slate-500 font-black">No subjects added yet.</div>';
                 document.getElementById('overallAttPercentage').textContent = "0%";
                 document.getElementById('overallAttMessage').textContent = "Add subjects below";
+                
+                const dashPercent = document.getElementById('dashAttPercent');
+                const dashText = document.getElementById('dashAttText');
+                if(dashPercent) { dashPercent.textContent = "0%"; dashPercent.className = "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm"; }
+                if(dashText) dashText.textContent = "0 / 0 Classes";
                 return;
             }
 
@@ -1222,16 +1235,16 @@
 
                 html += `
                     <div class="inner-glass p-5 rounded-2xl bg-white/80 shadow-sm border border-white flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:shadow-lg transition-shadow relative">
-                        <div class="flex-1">
+                        <div class="flex-1 pr-8">
                             <h3 class="text-xl font-black text-slate-900 force-wrap">${sub.name}</h3>
                             <p class="text-sm font-bold text-slate-500 mt-1">${sub.attended} / ${sub.total} Classes Attended</p>
                         </div>
-                        <div class="flex items-center gap-6">
+                        <div class="flex flex-col sm:flex-row items-end sm:items-center gap-4 sm:gap-6 mt-2 sm:mt-0">
                             <div class="text-right">
                                 <div class="text-3xl font-black ${colorClass}">${percent.toFixed(1)}%</div>
-                                <div class="text-xs font-black uppercase mt-1 px-2 py-1 rounded border ${badgeClass}">${statusText}</div>
+                                <div class="text-[10px] sm:text-xs font-black uppercase mt-1 px-2 py-1 rounded border ${badgeClass}">${statusText}</div>
                             </div>
-                            <button onclick="deleteAttendanceSubject(${i})" class="text-slate-300 hover:text-rose-500 font-black text-2xl">&times;</button>
+                            <button onclick="deleteAttendanceSubject(${i})" class="absolute sm:relative top-4 sm:top-auto right-4 sm:right-auto text-slate-300 hover:text-rose-500 font-black text-2xl">&times;</button>
                         </div>
                     </div>`;
             });
@@ -1249,6 +1262,15 @@
                 msgEl.textContent = "Danger Zone 🚨";
                 msgEl.className = "px-5 py-2.5 rounded-xl font-black text-sm bg-rose-500/20 text-rose-100 border border-rose-400/30 backdrop-blur-md";
             }
+
+            // Update Dashboard Widget
+            const dashPercent = document.getElementById('dashAttPercent');
+            const dashText = document.getElementById('dashAttText');
+            if(dashPercent) {
+                dashPercent.textContent = overallPercent.toFixed(1) + "%";
+                dashPercent.className = overallPercent >= 75 ? "text-4xl sm:text-5xl font-black text-emerald-600 drop-shadow-sm" : "text-4xl sm:text-5xl font-black text-rose-600 drop-shadow-sm";
+            }
+            if(dashText) dashText.textContent = `${overallAttended} / ${overallTotal} Classes`;
         }
 
         // --- BUDGET TRACKER LOGIC ---
@@ -1331,7 +1353,7 @@
 
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); });
-            const navs = ['dashboard', 'timetable', 'attendance', 'budget', 'planner', 'tasks', 'timer', 'cgpa', 'roadmap', 'resources', 'portfolio', 'jobs', 'career'];
+            const navs = ['dashboard', 'timetable', 'attendance', 'planner', 'tasks', 'timer', 'resources', 'cgpa', 'portfolio', 'roadmap', 'jobs', 'career', 'budget'];
             navs.forEach(id => {
                 const btn = document.getElementById('nav-' + id);
                 if(btn) {

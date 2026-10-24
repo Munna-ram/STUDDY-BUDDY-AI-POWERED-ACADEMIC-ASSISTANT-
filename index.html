@@ -9,6 +9,10 @@
     
     <title>StudyBuddy - Premium Academic Assistant</title>
     
+    <!-- PREMIUM APP ICON -->
+    <link rel="apple-touch-icon" href="https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true">
+    <link rel="icon" href="https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true">
+
     <!-- Tailwind CSS Integration -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -97,15 +101,9 @@
 
         /* Smooth Background Animation Keyframes */
         @keyframes move {
-            0% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-            50% {
-                transform: translate(8%, 12%) scale(1.15) rotate(15deg);
-            }
-            100% {
-                transform: translate(-8%, -8%) scale(0.9) rotate(-15deg);
-            }
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(8%, 12%) scale(1.15) rotate(15deg); }
+            100% { transform: translate(-8%, -8%) scale(0.9) rotate(-15deg); }
         }
 
         /* Continuous Floating Animation for Dashboard Elements */
@@ -115,9 +113,23 @@
             100% { transform: translateY(0px); }
         }
         
-        /* This forces the floating animation to stay ON for mobile */
+        /* Floating Animation FORCED ON for Mobile */
         .animate-float {
             animation: float 6s ease-in-out infinite !important;
+        }
+
+        /* Mobile performance - Only background blur is reduced, animations stay on */
+        @media (max-width: 1024px) {
+            .blob {
+                filter: blur(75px);
+                opacity: 0.8;
+                animation: none; 
+            }
+            .blob-4 { display: none; }
+            .glass-card {
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
         }
 
         /* Page Transition Logic */
@@ -144,7 +156,7 @@
             } 
         }
         
-        /* Master Glass Card UI - Enhanced Colorful Borders */
+        /* Master Glass Card UI */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(40px);
@@ -220,11 +232,7 @@
         }
 
         /* Input Resets */
-        input[type="date"],
-        input[type="time"],
-        input[type="number"],
-        input[type="text"],
-        select {
+        input[type="date"], input[type="time"], input[type="number"], input[type="text"], select {
             color: #0f172a;
             background: transparent;
             font-family: inherit;
@@ -287,14 +295,8 @@
         }
         
         /* Scrollbar hide for tabs and lists */
-        .hide-scroll::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .hide-scroll {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
         /* Beautiful Gradient Buttons - Glowing Animations */
         .btn-primary {
@@ -330,7 +332,7 @@
             transform: scale(1.03);
         }
 
-        /* Custom Input Focus Glow (Premium Detail) */
+        /* Custom Input Focus Glow */
         .focus-glow:focus-within {
             box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
             border-color: #4f46e5;
@@ -377,8 +379,7 @@
     <!-- MOBILE HAMBURGER HEADER (Only visible on phones) -->
     <div class="lg:hidden flex items-center justify-between p-4 glass-card mx-3 mt-3 relative z-30 shadow-lg border-2 border-white/80 bg-white/70">
         <div class="text-xl font-black flex items-center gap-3">
-            <!-- RESTORED: Inner App Diamond Logo -->
-            <img src="https://cdn-icons-png.flaticon.com/512/6104/6104033.png" alt="Logo" class="w-8 h-8 drop-shadow-md">
+            <img src="https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true" alt="Logo" class="w-8 h-8 drop-shadow-md rounded-lg">
             <span class="text-gradient tracking-tight">StudyBuddy</span>
         </div>
         
@@ -401,8 +402,7 @@
         <div>
             <!-- Desktop Logo -->
             <div class="text-3xl font-black mb-8 hidden lg:flex items-center gap-4 tracking-tighter cursor-default">
-                <!-- RESTORED: Inner App Diamond Logo -->
-                <img src="https://cdn-icons-png.flaticon.com/512/6104/6104033.png" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform">
+                <img src="https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true" alt="Logo" class="w-10 h-10 drop-shadow-lg transform hover:scale-110 transition-transform rounded-xl">
                 <span class="text-gradient">StudyBuddy</span>
             </div>
             
@@ -413,39 +413,30 @@
                 <button onclick="showPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base transform hover:scale-105">
                     <span>🏠</span> Dashboard
                 </button>
-                
                 <button onclick="showPage('planner')" id="nav-planner" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>📅</span> Study Planner
                 </button>
-                
                 <button onclick="showPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>✅</span> Action Tasks
                 </button>
-                
                 <button onclick="showPage('timer')" id="nav-timer" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>⏱️</span> Focus Timer
                 </button>
-                
                 <button onclick="showPage('cgpa')" id="nav-cgpa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>📊</span> SGPA Predictor
                 </button>
-                
                 <button onclick="showPage('portfolio')" id="nav-portfolio" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>🚀</span> Projects Portfolio
                 </button>
-                
                 <button onclick="showPage('jobs')" id="nav-jobs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>🎯</span> Job Tracker
                 </button>
-
                 <button onclick="showPage('roadmap')" id="nav-roadmap" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>🗺️</span> B.Tech Roadmap
                 </button>
-                
                 <button onclick="showPage('resources')" id="nav-resources" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>📚</span> Resource Vault
                 </button>
-                
                 <button onclick="showPage('career')" id="nav-career" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/90 font-black text-slate-600 hover:text-indigo-700 transition-all text-base hover:shadow-md">
                     <span>💼</span> Interview Skills
                 </button>
@@ -483,10 +474,9 @@
         </header>
 
         <!-- ========================================== -->
-        <!-- DASHBOARD SECTION (Vibrant Gradients + SVGs)-->
+        <!-- DASHBOARD SECTION -->
         <!-- ========================================== -->
         <section id="dashboard" class="page active px-2">
-            <!-- Hero with floating animation -->
             <div class="glass-card p-6 sm:p-10 text-white mb-8 relative overflow-hidden shadow-[0_20px_40px_rgba(79,70,229,0.3)] border-2 border-white/50 bg-slate-900 animate-float">
                 <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 sm:w-80 sm:h-80 bg-indigo-500 opacity-40 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 sm:w-64 sm:h-64 bg-fuchsia-500 opacity-40 rounded-full blur-3xl"></div>
@@ -495,27 +485,22 @@
                 <p class="text-indigo-50 text-base sm:text-lg md:text-xl max-w-2xl relative z-10 font-bold leading-relaxed">Organize your assignments, track milestones, and land your dream job with absolute precision.</p>
             </div>
 
-            <!-- Dashboard Stats Grid -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
-                
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-indigo-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
                     <p class="text-sm sm:text-base text-indigo-700 font-black uppercase tracking-widest z-10">Total Tasks</p>
                     <h2 id="totalTasks" class="text-4xl sm:text-6xl font-black mt-2 text-slate-900 z-10 drop-shadow-sm">0</h2>
                 </div>
-                
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('tasks')">
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-emerald-500 opacity-[0.08] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                     <p class="text-sm sm:text-base text-emerald-700 font-black uppercase tracking-widest z-10">Completed</p>
                     <h2 id="completedTasks" class="text-4xl sm:text-6xl font-black mt-2 text-emerald-600 z-10 drop-shadow-sm">0</h2>
                 </div>
-                
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('portfolio')">
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-purple-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
                     <p class="text-sm sm:text-base text-purple-700 font-black uppercase tracking-widest z-10">Projects Built</p>
                     <h2 id="dashProjects" class="text-4xl sm:text-6xl font-black mt-2 text-purple-600 z-10 drop-shadow-sm">0</h2>
                 </div>
-                
                 <div class="glass-card inner-glass interactive-card p-5 sm:p-6 flex flex-col justify-center relative overflow-hidden group border-2 border-white shadow-md bg-white/95" onclick="showPage('jobs')">
                     <svg class="absolute -right-4 -top-4 w-48 h-48 text-blue-500 opacity-[0.05] group-hover:scale-125 group-hover:opacity-[0.15] transition-all duration-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/></svg>
                     <p class="text-sm sm:text-base text-blue-700 font-black uppercase tracking-widest z-10">Job Apps</p>
@@ -523,20 +508,14 @@
                 </div>
             </div>
             
-            <!-- Dashboard Mini-Widgets -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Mini Task List -->
                 <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col relative overflow-hidden shadow-md border-2 border-white">
                     <div class="flex justify-between items-center mb-4">
                         <p class="text-lg text-slate-800 font-black tracking-tight z-10">Upcoming Tasks</p>
                         <button onclick="showPage('tasks')" class="text-pink-600 font-black text-sm hover:underline uppercase tracking-wide">View All</button>
                     </div>
-                    <div id="dashMiniTasks" class="space-y-3 z-10 max-h-48 overflow-y-auto hide-scroll">
-                        <!-- Populated by JS -->
-                    </div>
+                    <div id="dashMiniTasks" class="space-y-3 z-10 max-h-48 overflow-y-auto hide-scroll"></div>
                 </div>
-
-                <!-- Progress Section -->
                 <div class="glass-card inner-glass p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-md border-2 border-white">
                     <p class="text-lg text-indigo-700 font-black uppercase tracking-widest z-10 mb-4 text-center">Task Completion</p>
                     <div class="flex flex-col items-center gap-4 z-10">
@@ -550,7 +529,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- PLANNER SECTION (GRID FIX FOR OVERFLOW)    -->
+        <!-- PLANNER SECTION -->
         <!-- ========================================== -->
         <section id="planner" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
@@ -574,13 +553,12 @@
                         Add Plan
                     </button>
                 </div>
-                
                 <div id="plannerList" class="space-y-4"></div>
             </div>
         </section>
 
         <!-- ========================================== -->
-        <!-- TASKS SECTION (GRID FIX FOR OVERFLOW)      -->
+        <!-- TASKS SECTION -->
         <!-- ========================================== -->
         <section id="tasks" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-6xl mx-auto shadow-xl border-2 border-white animate-float">
@@ -607,13 +585,12 @@
                         Add Task
                     </button>
                 </div>
-                
                 <div id="taskList" class="space-y-4"></div>
             </div>
         </section>
 
         <!-- ========================================== -->
-        <!-- FOCUS TIMER SECTION                        -->
+        <!-- FOCUS TIMER SECTION -->
         <!-- ========================================== -->
         <section id="timer" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
@@ -623,20 +600,15 @@
                 <div class="inner-glass bg-white/90 p-8 sm:p-12 rounded-[2rem] shadow-lg border-2 border-white mb-8">
                     <div id="timeDisplay" class="timer-display text-[5rem] sm:text-[10rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 drop-shadow-md mb-6 leading-none py-2">25:00</div>
                     
-                    <!-- ADJUSTABLE TIMER CONTROLS -->
                     <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
                         <button onclick="adjustTimer(-5)" class="px-5 py-2.5 rounded-xl font-black bg-rose-100 text-rose-700 hover:bg-rose-200 transition-all shadow-sm transform hover:-translate-y-1 w-full sm:w-auto">- 5 Min</button>
-                        
-                        <!-- Custom Input Field -->
                         <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border-2 border-slate-200 shadow-inner w-full sm:w-auto justify-between">
                             <input type="number" id="customFocusTime" placeholder="Min" class="w-16 text-center font-black text-lg text-slate-800 bg-transparent outline-none">
                             <button onclick="setCustomTimer()" class="text-indigo-600 font-black hover:text-white hover:bg-indigo-500 transition-colors text-sm bg-indigo-50 px-4 py-2 rounded-lg uppercase border border-indigo-100">Set</button>
                         </div>
-                        
                         <button onclick="adjustTimer(5)" class="px-5 py-2.5 rounded-xl font-black bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-all shadow-sm transform hover:-translate-y-1 w-full sm:w-auto">+ 5 Min</button>
                     </div>
 
-                    <!-- PLAYBACK CONTROLS -->
                     <div class="flex flex-wrap justify-center gap-4">
                         <button onclick="startTimer()" id="startBtn" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl w-48 uppercase tracking-widest shadow-xl">Start</button>
                         <button onclick="pauseTimer()" id="pauseBtn" class="hidden bg-gradient-to-r from-amber-400 to-orange-500 text-white px-12 py-5 rounded-2xl font-black hover:shadow-lg transition-all text-xl w-48 uppercase tracking-widest transform hover:-translate-y-1 shadow-xl border border-white/50">Pause</button>
@@ -644,7 +616,6 @@
                     </div>
                 </div>
                 
-                <!-- QUICK PRESETS -->
                 <div class="flex flex-wrap justify-center gap-4">
                     <button onclick="setTimerMode(25)" class="px-6 py-3 rounded-xl font-black transition-all bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 text-sm sm:text-base shadow-sm transform hover:-translate-y-1">25m Focus</button>
                     <button onclick="setTimerMode(5)" class="px-6 py-3 rounded-xl font-black transition-all bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-sm sm:text-base shadow-sm transform hover:-translate-y-1">5m Break</button>
@@ -654,7 +625,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- SGPA CALCULATOR                            -->
+        <!-- SGPA CALCULATOR -->
         <!-- ========================================== -->
         <section id="cgpa" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white text-center animate-float">
@@ -685,7 +656,7 @@
         </section>
         
         <!-- ========================================== -->
-        <!-- PROJECT PORTFOLIO SECTION                  -->
+        <!-- PROJECT PORTFOLIO -->
         <!-- ========================================== -->
         <section id="portfolio" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
@@ -702,14 +673,12 @@
                     <button onclick="addProject()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">Add Project</button>
                 </div>
                 
-                <div id="projList" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <!-- Populated by JS -->
-                </div>
+                <div id="projList" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
             </div>
         </section>
 
         <!-- ========================================== -->
-        <!-- JOB TRACKER SECTION                        -->
+        <!-- JOB TRACKER SECTION -->
         <!-- ========================================== -->
         <section id="jobs" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-5xl mx-auto shadow-xl border-2 border-white animate-float">
@@ -740,14 +709,12 @@
                     <button onclick="addJob()" class="md:col-span-2 w-full btn-primary px-4 py-4 rounded-xl font-black text-sm sm:text-base uppercase tracking-wide hover:shadow-lg transition-all text-center flex justify-center">Save App</button>
                 </div>
                 
-                <div id="jobList" class="space-y-4">
-                    <!-- Populated by JS -->
-                </div>
+                <div id="jobList" class="space-y-4"></div>
             </div>
         </section>
 
         <!-- ========================================== -->
-        <!-- RESOURCE VAULT SECTION                     -->
+        <!-- RESOURCE VAULT SECTION -->
         <!-- ========================================== -->
         <section id="resources" class="page px-2">
             <div class="glass-card p-6 sm:p-10 max-w-[1500px] mx-auto shadow-xl border-2 border-white animate-float">
@@ -756,7 +723,6 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     
-                    <!-- BOX 1 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-pink-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 1 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-pink-200 focus:border-pink-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -768,7 +734,6 @@
                         </div>
                     </div>
                     
-                    <!-- BOX 2 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-blue-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 2 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-blue-200 focus:border-blue-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -780,7 +745,6 @@
                         </div>
                     </div>
 
-                    <!-- BOX 3 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-emerald-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 3 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-emerald-200 focus:border-emerald-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -792,7 +756,6 @@
                         </div>
                     </div>
 
-                    <!-- BOX 4 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-purple-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 4 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-purple-200 focus:border-purple-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -804,7 +767,6 @@
                         </div>
                     </div>
                     
-                    <!-- BOX 5 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-amber-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 5 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-amber-200 focus:border-amber-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -816,7 +778,6 @@
                         </div>
                     </div>
                     
-                    <!-- BOX 6 WITH WORKING PDF HANDLER -->
                     <div class="inner-glass p-8 rounded-3xl bg-gradient-to-br from-white to-teal-50 border-2 border-white shadow-md flex flex-col hover:shadow-xl transition-all transform hover:-translate-y-1">
                         <input type="text" placeholder="Subject 6 Name..." class="w-full bg-transparent text-2xl font-black mb-6 border-b-4 border-teal-200 focus:border-teal-500 outline-none text-slate-800 py-2 transition-colors">
                         <div class="flex flex-col gap-4 mt-auto pt-6">
@@ -860,11 +821,8 @@
                 <!-- STYLED SCROLLABLE TABS -->
                 <div class="flex gap-3 sm:gap-6 mb-10 overflow-x-auto pb-4 hide-scroll border-b-4 border-slate-200/50">
                     <button onclick="showYear('year1', this)" class="year-tab-btn btn-primary px-10 py-4 rounded-2xl font-black shadow-lg transition-all text-sm sm:text-lg whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase">Year 1</button>
-                    
                     <button onclick="showYear('year2', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-sm sm:text-lg shadow-sm whitespace-nowrap tracking-widest uppercase">Year 2</button>
-                    
                     <button onclick="showYear('year3', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-sm sm:text-lg shadow-sm whitespace-nowrap tracking-widest uppercase">Year 3</button>
-                    
                     <button onclick="showYear('year4', this)" class="year-tab-btn bg-white/95 text-slate-800 hover:bg-slate-100 px-10 py-4 rounded-2xl font-black transition-all border-2 border-slate-200 text-sm sm:text-lg shadow-sm whitespace-nowrap tracking-widest uppercase">Year 4</button>
                 </div>
 
@@ -1140,13 +1098,10 @@
     </main>
 
     <!-- ========================================== -->
-    <!-- JAVASCRIPT LOGIC - STRICTLY FAILSAFE       -->
+    <!-- JAVASCRIPT LOGIC -->
     <!-- ========================================== -->
     <script>
         
-        // ==========================================
-        // FIREBASE CLOUD STORAGE & EMAIL VERIFICATION SETUP
-        // ==========================================
         const firebaseConfig = {
             apiKey: "AIzaSyCAJEfO4803FjASyp6ZQUWbArvMeaKSdZI",
             authDomain: "study-buddy-1c988.firebaseapp.com",
@@ -1157,46 +1112,12 @@
             measurementId: "G-9SKKGP2R9L"
         };
 
-        // --- GENERATE A PERFECT SOLID HOME SCREEN APP ICON ---
-        // This guarantees your app icon looks exactly like a YouTube/WhatsApp premium icon
-        // without getting corrupted by Android systems.
-        function generateAppIcon() {
-            const canvas = document.createElement('canvas');
-            canvas.width = 512;
-            canvas.height = 512;
-            const ctx = canvas.getContext('2d');
-            
-            // Draw Solid Premium Background
-            const gradient = ctx.createLinearGradient(0, 0, 512, 512);
-            gradient.addColorStop(0, '#0f172a'); // Very Dark Slate
-            gradient.addColorStop(1, '#ff007f'); // Premium Pink
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, 512, 512);
-            
-            // Draw Glowing 'S'
-            ctx.fillStyle = '#ffffff';
-            ctx.font = '900 350px Arial, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.shadowColor = 'rgba(0,0,0,0.5)';
-            ctx.shadowBlur = 20;
-            ctx.shadowOffsetY = 10;
-            ctx.fillText('S', 256, 290);
-            
-            return canvas.toDataURL('image/png');
-        }
-        
-        const premiumAppIcon = generateAppIcon();
-
-        // Inject the generated icon into the header so Apple/Android can see it
-        document.head.insertAdjacentHTML('beforeend', `<link rel="apple-touch-icon" href="${premiumAppIcon}">`);
-        document.head.insertAdjacentHTML('beforeend', `<link rel="icon" href="${premiumAppIcon}">`);
+        const premiumAppIcon = "https://ui-avatars.com/api/?name=S&background=ff007f&color=fff&size=512&font-size=0.6&bold=true";
 
         let auth, db;
         let isFirebaseReady = false;
         let currentUser = null;
 
-        // Initialize Firebase
         try {
             if(firebaseConfig.apiKey !== "YOUR_API_KEY") {
                 firebase.initializeApp(firebaseConfig);
@@ -1204,7 +1125,6 @@
                 db = firebase.firestore();
                 isFirebaseReady = true;
                 
-                // Listen for Real Cloud Logins
                 auth.onAuthStateChanged((user) => {
                     if (user && user.emailVerified) {
                         currentUser = user;
@@ -1220,13 +1140,11 @@
             console.log("Firebase not configured properly. Running in Local Storage Mode.");
         }
 
-        // --- LOCAL STORAGE DATA MANAGEMENT (CRASH PROOF FAILSAFE) ---
         const getSavedData = (key) => {
             try {
                 const item = localStorage.getItem(key);
                 return item ? JSON.parse(item) : [];
             } catch (error) {
-                console.error("Local storage error for", key, error);
                 return [];
             }
         };
@@ -1246,7 +1164,6 @@
                 console.error("Local storage error", error);
             }
 
-            // Save to Real Cloud if logged in
             if (isFirebaseReady && currentUser) {
                 db.collection('users').doc(currentUser.uid).set({
                     tasks: tasks,
@@ -1276,7 +1193,6 @@
             }
         }
 
-        // --- NEW LOGIC: RESOURCE VAULT PDF OPENER ---
         function handlePDFUpload(inputElement, linkId) {
             if (inputElement.files && inputElement.files[0]) {
                 const file = inputElement.files[0];
@@ -1289,7 +1205,6 @@
             }
         }
 
-        // --- CLEAR COMPLETED TASKS ---
         function clearCompletedTasks() {
             if(confirm("Are you sure you want to clear all completed tasks?")) {
                 tasks = tasks.filter(t => !t.completed);
@@ -1298,7 +1213,6 @@
             }
         }
 
-        // --- PROJECT PORTFOLIO MANAGER ---
         function addProject() {
             const titleInput = document.getElementById('projTitle');
             const stackInput = document.getElementById('projStack');
@@ -1352,7 +1266,6 @@
             if(dashCounter) dashCounter.textContent = projects.length;
         }
 
-        // --- JOB TRACKER MANAGER ---
         function addJob() {
             const companyInput = document.getElementById('jobCompany');
             const roleInput = document.getElementById('jobRole');
@@ -1420,7 +1333,6 @@
             if(dashCounter) dashCounter.textContent = jobs.length;
         }
 
-        // --- TIMER LOGIC ---
         let timerInterval;
         let timeLeft = 25 * 60; 
         let isTimerRunning = false;
@@ -1507,7 +1419,6 @@
             updateTimerDisplay();
         }
 
-        // --- SGPA / CGPA PREDICTOR LOGIC ---
         function calculateCGPA() {
             const inputs = document.querySelectorAll('.sgpa-input');
             let total = 0; 
@@ -1524,7 +1435,6 @@
             document.getElementById('cgpaResult').textContent = cgpa.toFixed(2);
         }
 
-        // --- SIDEBAR MENU LOGIC ---
         let isSidebarOpen = false;
         
         function toggleSidebar() {
@@ -1543,12 +1453,10 @@
         }
 
         function showPage(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page').forEach(p => {
                 p.classList.remove('active');
             });
             
-            // Reset all nav buttons
             const navs = ['dashboard', 'planner', 'tasks', 'timer', 'cgpa', 'roadmap', 'resources', 'portfolio', 'jobs', 'career'];
             navs.forEach(id => {
                 const btn = document.getElementById('nav-' + id);
@@ -1558,14 +1466,12 @@
                 }
             });
             
-            // Activate selected page and button
             document.getElementById(pageId).classList.add('active');
             const activeBtn = document.getElementById('nav-' + pageId);
             if (activeBtn) {
                 activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl sidebar-active font-black transition-all text-base";
             }
             
-            // Update Header Title
             const titles = { 
                 dashboard: 'Dashboard', 
                 planner: 'Study Planner', 
@@ -1584,7 +1490,6 @@
                 titleElement.textContent = titles[pageId];
             }
             
-            // Auto-close sidebar on mobile after making a selection
             if(isSidebarOpen && window.innerWidth < 1024) {
                 toggleSidebar();
             }
@@ -1610,7 +1515,6 @@
             btnElement.className = "year-tab-btn btn-primary px-8 py-3.5 rounded-xl font-black shadow-lg transition-all text-sm sm:text-base whitespace-nowrap transform hover:-translate-y-1 tracking-widest uppercase";
         }
 
-        // --- PROGRESS CALCULATORS ---
         function updateInterviewProgress() {
             const boxes = document.querySelectorAll('.interview-check');
             let completed = 0;
@@ -1647,7 +1551,6 @@
             if(barEl) barEl.style.width = percent + '%';
         }
 
-        // --- HELPER FUNCTIONS ---
         function formatDateTime(dateStr, timeStr) {
             let formattedDate = `00/00/0000`;
             let formattedTime = `12:00 AM`;
@@ -1670,7 +1573,6 @@
             return { formattedDate, formattedTime };
         }
 
-        // --- UPGRADED MOBILE NOTIFICATIONS WITH HARDWARE VIBRATION ---
         function sendNotification(title, body) {
             try { 
                 const alertSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
@@ -1698,7 +1600,6 @@
             }
         }
 
-        // --- HOLD TO DELETE LOGIC ---
         let holdTimer;
         
         function startHold(type, index) {
@@ -1724,7 +1625,6 @@
             clearTimeout(holdTimer); 
         }
 
-        // --- TASK MANAGEMENT LOGIC ---
         function addTask() {
             const inputElement = document.getElementById('taskInput');
             const dateElement = document.getElementById('taskDate');
@@ -1763,7 +1663,6 @@
             tasks.forEach((t, i) => {
                 const { formattedDate, formattedTime } = formatDateTime(t.date, t.time);
                 
-                // Main List HTML
                 html += `
                 <div class="no-select inner-glass p-5 sm:p-6 rounded-[1.5rem] flex flex-col sm:flex-row justify-between gap-4 border-2 border-white hover:shadow-lg transition-all ${t.completed ? 'opacity-60 bg-white/50' : 'bg-white/90'}"
                      onmousedown="startHold('task', ${i})" onmouseup="cancelHold()" onmouseleave="cancelHold()" 
@@ -1784,7 +1683,6 @@
                     </button>
                 </div>`;
                 
-                // Dashboard Mini List HTML
                 if (!t.completed && pendingCount < 3) {
                     miniHtml += `
                         <div class="bg-white/80 p-4 rounded-xl border border-slate-200 flex justify-between items-center shadow-sm">
@@ -1796,7 +1694,6 @@
                 }
             });
             
-            // Inject Task HTML
             if (list) {
                 if(html === '') {
                     list.innerHTML = '<div class="text-slate-500 font-black p-8 inner-glass rounded-2xl text-center text-lg border-2 border-white border-dashed bg-white/60">No tasks yet! Add one above.</div>';
@@ -1805,7 +1702,6 @@
                 }
             }
             
-            // Inject Dashboard Mini List HTML
             if (dashMiniList) {
                 if(miniHtml === '') {
                     dashMiniList.innerHTML = '<div class="text-slate-400 font-bold text-sm text-center py-6 border-2 border-dashed border-slate-200 rounded-xl bg-white/50">All caught up! 🎉</div>';
@@ -1814,7 +1710,6 @@
                 }
             }
             
-            // Safely Update Dashboard Counters & Progress Bar Math
             const completedCount = tasks.filter(t => t.completed).length;
             const totalCount = tasks.length;
             
@@ -1835,7 +1730,6 @@
             if(progressBarMainEl) progressBarMainEl.style.width = progressPercent + '%';
         }
 
-        // --- PLANNER MANAGEMENT LOGIC ---
         function addPlan() {
             const inputElement = document.getElementById('planTitle');
             const dateElement = document.getElementById('planDate');
@@ -1892,7 +1786,7 @@
             }
         }
 
-        // --- PWA, SERVICE WORKER & NOTIFICATIONS LOGIC ---
+        // --- PWA, SERVICE WORKER & NOTIFICATIONS LOGIC RESTORED ---
         const manifestJSON = {
             "name": "StudyBuddy", 
             "short_name": "StudyBuddy", 
@@ -1959,7 +1853,6 @@
             }
         }, { once: true });
 
-        // --- AUTHENTICATION LOGIC (DUAL-MODE WITH FIREBASE) ---
         function toggleAuth() { 
             if (currentUser || document.getElementById('authBtn').textContent === 'Sign Out') {
                 if (isFirebaseReady) auth.signOut();
@@ -1967,7 +1860,6 @@
                 document.getElementById('userInfo').textContent = 'Not signed in'; 
                 document.getElementById('authBtn').textContent = 'Sign In / Sign Up';
                 
-                // Clear user data from screen on logout
                 tasks = []; plans = []; projects = []; jobs = [];
                 renderTasks(); renderPlans(); renderProjects(); renderJobs();
             } else {
@@ -2005,13 +1897,12 @@
                     document.getElementById('userInfo').textContent = currentUser.email; 
                     document.getElementById('authBtn').textContent = 'Sign Out';
                     closeAuthModal();
-                    loadCloudData(); // Pull data from Cloud
+                    loadCloudData();
                 } catch (error) {
                     errorEl.textContent = error.message;
                     errorEl.classList.remove('hidden');
                 }
             } else {
-                // Fallback Demo Mode
                 currentUser = { email: emailInput };
                 document.getElementById('userInfo').textContent = emailInput || 'Guest User'; 
                 document.getElementById('authBtn').textContent = 'Sign Out';
@@ -2042,22 +1933,11 @@
                     errorEl.classList.remove('hidden');
                 }
             } else {
-                // Fallback Demo Mode
                 alert('DEMO MODE: Verification email sent to ' + emailInput + '. (Please open your Mail app to verify).');
                 mockSignIn(); 
             }
         }
 
-        // --- TASK MODAL LAUNCHERS ---
-        function openTaskModal(filterType) { 
-            document.getElementById('taskModal').classList.add('active'); 
-        }
-        
-        function closeTaskModal() { 
-            document.getElementById('taskModal').classList.remove('active'); 
-        }
-        
-        // Background notification checker interval
         function checkNotifications() {
             const now = new Date();
             
@@ -2088,7 +1968,6 @@
         
         setInterval(checkNotifications, 10000); 
 
-        // Initial Renders to Load Data from Local Storage
         document.addEventListener("DOMContentLoaded", () => {
             const activeBtn = document.getElementById('nav-dashboard');
             if (activeBtn) {
